@@ -1,0 +1,33 @@
+Hexad Meeting Minutes
+
+Date: Friday, January 26th, 2024
+Time: 4h30 pm - 5h15 pm (45 min)
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Sydney Campbell (40243309)
+Yaroslava (40242907)
+Rania Maoukout (40249281)
+Malak Sefrioui(40252907)
+
+Agenda (informal meeting) :
+
+1.Finding a team name and registering the team on moodle
+
+Team Name: Hexad
+
+2.Creating a new email/github account for the team
+
+Email : hexad97@gmail.com
+
+3.Languages and tools to use
+
+Discussion: Everyone took SOEN 287 therefore HTML, CSS, JavaScript and PHP will be the main languages. Node.js and/or React will also be used.
+
+4.Set up weekly meeting time
+
+Disscussion: Weekly meetings tuesday's 11h45 to 12h45. Other meetings can be scheduled if needed based on the team's availability.
+
+Next meeting: Tuesday, January 30th 11h45
+Agenda: Disscuss the project and seperate tasks for sprint 1
