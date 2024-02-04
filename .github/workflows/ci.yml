@@ -2,7 +2,7 @@ name: Continuous Integration Workflow
 
 on:
   push:
-    branches: 
+    branches:
       - '*'
   pull_request:
     branches:
@@ -10,7 +10,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -18,16 +17,17 @@ jobs:
         node-version: [14.x, 16.x, 18.x]
         
     steps:
-    - name: Checkout Repository
-    - uses: actions/checkout@v3
-    
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Run Tests
-    - run: npm ci
-    - run: npm run build:dev
-    - run: npm test
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Run Tests
+        run: |
+          npm ci
+          npm run build:dev
+          npm test
