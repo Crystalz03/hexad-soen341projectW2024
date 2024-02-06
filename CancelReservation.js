@@ -24,12 +24,12 @@ try {
         }
         else
         {
-            cancelReservation(confNumber);
+            cancelReservation(confNumber,'reserved');
         }
     }
 catch(error)
 {
-    console.error('errorType: ', error.message);
+    console.error('error');
 }
 finally
 {sql.close();}
@@ -39,17 +39,35 @@ finally
 }
 
 
-function cancelReservation(confNumber)
+async function cancelReservation(confNumber,STATUS)
 {
    
-         //code to update the status of car to available.
-            console.log(`Reservation with confirmation number ${confNumber} has been cancelled`);     
+    try {
+        await sql.connect('mysql://user:password@host/database');
+        const result= await sql.query (` SELECT * FROM OurTableName WHERE confirmationNumbersColumn= '${confNumber}' AND STATUS='${STATUS}'`);
+        console.log(result.recordset);
+        if (result.recordset.length===0)
+        {
+            console.log('Car not available');
+        }
+        else
+        {
+          await sql.query(`UPDATE OurTableName SET STATUS= 'available' WHERE confirmationNumbersColumn='${confNumber}'`);
+          console.log(`Reservation with confirmation number ${confNumber} has been cancelled.`);
+        }
+    }
+    catch(error)
+    {
+        console.error('error');
+    }
+    finally
+    {sql.close();}
+
+
+}   
     
-    
- 
     
 
-}
 
 
   
