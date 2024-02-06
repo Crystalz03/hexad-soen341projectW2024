@@ -5,8 +5,8 @@ const app = express();
 
 // Database configuration
 const config = {
-  user: 'christelle',
-  password: 'monamour.12',
+  user: 'admin',
+  password: 'hexad2024',
   server: 'database-2.croi8mqokugc.ca-central-1.rds.amazonaws.com',
   database: 'database-2',
   port: 1433, // Change if your database is using a different port
