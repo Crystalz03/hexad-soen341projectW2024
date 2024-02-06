@@ -1,5 +1,4 @@
-const mysql=require('mssql'); //needs review 
-
+const mysql=require('mysql'); //needs review 
 
 function isValidConfirmationNumber(confNumber) {
     const regex=/^[A-Z]{2}\d{9}$/;
@@ -14,31 +13,40 @@ function isValidConfirmationNumber(confNumber) {
 
 }
 
-function cancelReservation(confNumber)
-{
-    SELECT *
-    FROM Reservations WHERE student_name + age + student_id + class LIKE '%confNumber%';
-    connection.query(query,[confNumber], (error,results)=> 
-    { 
-        if (error)
-        {
-            console.error('could not proceed:', error);
-            return;
-        }
-
-        if (results.length===0)
+async function findConfirmationNumber(confNumber){
+try {
+        await sql.connect('mysql://user:password@host/database');
+        const result= await sql.query (` SELECT * FROM OurTableName WHERE confirmationNumbersColumn= '${confNumber}'`);
+        console.log(result.recordset);
+        if (result.recordset.length===0)
         {
             console.log('No Reservation found under the given number');
         }
-        
-        else 
+        else
         {
-            //code to update the status of car to available.
-            console.log(`Reservation with confirmation number ${confNumber} has been cancelled`);     
+            cancelReservation(confNumber);
         }
-    
-    })
+    }
+catch(error)
+{
+    console.error('errorType: ', error.message);
+}
+finally
+{sql.close();}
 
+
+
+}
+
+
+function cancelReservation(confNumber)
+{
+   
+         //code to update the status of car to available.
+            console.log(`Reservation with confirmation number ${confNumber} has been cancelled`);     
+    
+    
+ 
     
 
 }
