@@ -1,25 +1,5 @@
-const mysql=require('mysql'); //needs review 
-const connection=mysql.createConnection(
+const mysql=require('mssql'); //needs review 
 
-  {
-    host:'',      
-    user:'',     
-    password:'',  
-    database: '', 
-  });
-  //Replace above with actual values
-  
-
-connection.connect
-(
-    (error)=>
-    {
-        if (error) {
-            throw error;
-        }
-        console.log('Connected.');
-    }
-);
 
 function isValidConfirmationNumber(confNumber) {
     const regex=/^[A-Z]{2}\d{9}$/;
@@ -36,8 +16,9 @@ function isValidConfirmationNumber(confNumber) {
 
 function cancelReservation(confNumber)
 {
-    const query='SELECT * FROM Table WHERE ConfirmationNumber=?';
-    connection.query(query,[confNumber], (error, results)=> 
+    SELECT *
+    FROM Reservations WHERE student_name + age + student_id + class LIKE '%confNumber%';
+    connection.query(query,[confNumber], (error,results)=> 
     { 
         if (error)
         {
