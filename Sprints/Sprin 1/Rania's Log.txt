@@ -1,5 +1,5 @@
-4.1 Backend Integration-Outline the strategy for integrating the chosen backend.  
-The chosen backend is JavaScript, MySQL, Node.js,Express.js, Jest and webpack.
+4.1 Backend Integration-Outline the strategy for integrating the chosen backend:
+The chosen backend technologies are JavaScript, MySQL, Node.js,Express.js, Jest and webpack.
 The strategy for integrating JavaScript is to use it as the programming language on which the functionality of the website relies.
 It will be handling core functionality, such as confirming a reservation. 
 MySQL will be integrated in every back end code related to CRUD operations. 
