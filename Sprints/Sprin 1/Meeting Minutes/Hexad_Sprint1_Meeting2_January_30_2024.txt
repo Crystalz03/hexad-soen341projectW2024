@@ -1,0 +1,25 @@
+Hexad Meeting Minutes
+
+Date: Saturday, January 30th, 2024
+Time: 11h45 pm - 12h00 pm (15 min)
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Sydney Campbell (40243309)
+Yaroslava (40242907)
+
+Agenda: 
+
+1. Disscuss the project and the requirements
+
+2. Set up the repository 
+
+
+Action items :
+Christelle : Set up the github project and initial commit, meeting minutes 
+
+Team: Seperate tasks during the next lab session friday, assign roles, discuss the 6 user stories, create a log system
+
+Next meeting: Tuesday, February 6th, 2024
+Agenda: 

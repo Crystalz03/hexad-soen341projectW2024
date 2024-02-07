@@ -1,0 +1,44 @@
+Hexad Meeting Minutes
+
+Date: Friday, February 2nd, 2024
+Time: 7h00 pm - 9h00 pm (45 min)
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Sydney Campbell (40243309)
+Yaroslava (40242907)
+Rania Maoukout (40249281)
+Malak Sefrioui(40252907)
+
+Agenda (informal meeting) :
+
+Design and System Architectures
+
+As a team we will work the website design and write a css to have a coherent frontend throughout the project.
+The database will be sql due to...
+
+Projects tasks seperation
+
+Technologies: Html, CSS, JavaScript + React + SQL
+
+Hosting: Netlify - Sydney will 
+
+Start a reservation (User story 1)
+- Reservation page will include a form
+
+View/Modify/Cancel a reservation (User story 2)
+
+Browse vehicles for rent (User story 3)
+
+CRUD operations on users (User story 4)
+
+CRUD operations on vehicles (User story 5)
+
+CRUD operations on reservations (User story 6)
+
+Roles :
+Whole 
+
+Quiestions :
+- 
