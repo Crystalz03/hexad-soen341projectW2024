@@ -1,7 +1,8 @@
 Hexad Meeting Minutes
 
 Date: Friday, February 2nd, 2024
-Time: 7h00 pm - 9h00 pm (45 min)
+Time: 7h00 pm - 9h00 pm (2h)
+Location: Concordia University, Hall Building 8th floor
 
 Attendees: 
 Christelle Charles (40249246)
@@ -11,34 +12,49 @@ Yaroslava (40242907)
 Rania Maoukout (40249281)
 Malak Sefrioui(40252907)
 
-Agenda (informal meeting) :
+Agenda:
 
-Design and System Architectures
+1. Frontend
+2. Database design
+3. CI/CD and Hosting
+4. Seperating the tasks
 
-As a team we will work the website design and write a css to have a coherent frontend throughout the project.
-The database will be sql due to...
 
-Projects tasks seperation
+Discussion: 
 
-Technologies: Html, CSS, JavaScript + React + SQL
+    Frontend 
+        The team decided to use Figma to design the frontend of the website. We will take inspiration on other 
+        rental car websites. The team decided that almost all memebers will work fullstack in order to learn more
+        about the frameworks and tools we will use. This decision was made because of the concern about the frontend and 
+        backend not being working together if different students work on the same feature. Therefore,we agreed on creating 
+        a "master" CSS file in order to facilitate the coherence of the design throughout the website.
 
-Hosting: Netlify - Sydney will 
+        Action item: Create a figma project and start design the website
 
-Start a reservation (User story 1)
-- Reservation page will include a form
+    Database design
+        The team decided to use an sql database how we want to use a structured schema and have clear relationship
+        between entities such as users, resvations and vehicles. 
 
-View/Modify/Cancel a reservation (User story 2)
+        Action item: Choose which sql database to use
 
-Browse vehicles for rent (User story 3)
+    Hosting
+        The team discussed what it would take for our website to follow the idea of continuous integration and continuous deployment.
+        We plan on researching which tools to use. Possibly docker and jenkins. To host the website netlify seems to be a good
+        choice as it is free to use and allow the integration of automatic continuous deployment. Therefore any feature merged into 'main'
+        will automatically triggere a new deploy. 
 
-CRUD operations on users (User story 4)
+        Action item: Find which CI workflow to use, set up netlify and link it to our github
 
-CRUD operations on vehicles (User story 5)
+    Task seperation
+        The team divided the task base on the list of main use cases. We discussed how each point should be implementd.
+        The team divided the "Approach and Technology" so that everyone cn work on it. The plan for sprint 1 writing part is 
+        seperated based on who was associated which task.
 
-CRUD operations on reservations (User story 6)
+        Action item: Write the documentation
 
-Roles :
-Whole 
-
-Quiestions :
-- 
+Next steps:
+- Finish setting up the git hub and all the tools
+- Design the website on figma
+- Write the  6 user stories for sprint 2
+- Write the "approach and technology "document
+- Write the "plan for sprint 2" document

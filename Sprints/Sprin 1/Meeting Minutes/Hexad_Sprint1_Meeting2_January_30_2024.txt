@@ -2,6 +2,7 @@ Hexad Meeting Minutes
 
 Date: Saturday, January 30th, 2024
 Time: 11h45 pm - 12h00 pm (15 min)
+Location: Online 
 
 Attendees: 
 Christelle Charles (40249246)
@@ -13,13 +14,17 @@ Agenda:
 
 1. Disscuss the project and the requirements
 
-2. Set up the repository 
+
+Discussion: 
+
+    Project and requirements
+         As some members where absent we decided to only concentrate on setting up the github project as well as the initial commits
+         until the whole team can meet and seperate the tasks. Some of the points from the project approcah document where already discussed
+         during the first meeting. We decided to keep our initial take and add agreed that an SQL database will work best for the project's scope.
 
 
-Action items :
-Christelle : Set up the github project and initial commit, meeting minutes 
+Next steps :
+- Set up the github project and initial commit, meeting minutes 
+- Seperate tasks during the next lab session friday, assign roles, discuss the 6 user stories, create a log system
 
-Team: Seperate tasks during the next lab session friday, assign roles, discuss the 6 user stories, create a log system
 
-Next meeting: Tuesday, February 6th, 2024
-Agenda: 
