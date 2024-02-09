@@ -1,10 +1,9 @@
-import React from 'react';
+// App.js
+import React from "react";
+import Home from "./components/home";
 
-function App() {
-  return (
-    <div className="app">
-    </div>
-  );
+function AnotherApp() {
+  return <Home />;
 }
 
-export default App;
+export default AnotherApp;
