@@ -1,9 +1,9 @@
 30 jan - weekly meeting only lasted about 20min
 2 feb  - we had a team meeting where we divided each feature of the website and also the project description
-4 feb  - worked on setting up the database
-5 feb  - Worked on setting up the database
+4 feb  - worked on setting up the database with Christelle
+5 feb  - Worked on setting up the database with Christelle
 6 feb  - Weekly meeting where we discussed a few issues, worked with Cristelle on setting up the database/ server and succeeded
 7 feb  - updated the user story description for the CRUD operation user stories (US4, US5 and US6) and i did #2 project approach in the appendix A of the google doc
 9 feb  - Worked on dividing the user stories into more specific tasks, decided on story points, priority and risk for each user story with the team
 10 feb - Worked on creating sub tasks for my tasks
-11 feb - Worked on user descriptions for my tasks, filled out the missing risk descriptions and wrote my personnal log
+11 feb - Worked on user descriptions for my tasks, filled out the missing risk descriptions and wrote my personal log
