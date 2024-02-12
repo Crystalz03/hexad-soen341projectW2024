@@ -2,3 +2,6 @@ Feb 03-1h30: 30 min with Christelle who gave me overview of github and git. 1h w
 Feb 05-2hrs: wrote the documentation about strategy integration of the backend technologies and I finished my code of cancelling the reservation including checking if the confirmation number is in valid format, found in DB and the status is updated to available after the cancellation has been processed.
 Feb 06-1h: Meeting with team at school to go over the progress of the project.
 Feb 07-1h: Wrote some security considerations for both the backend and frontend.
+Feb 09-2h: Meeting with team and the TA to go over the division of stories into substories. Mainly implemented the plan for Sprint 2 with the team.
+Feb 10-1h: Completed the property column of the excel sheet about the sprint 2 plan.
+Feb 12-1h:
