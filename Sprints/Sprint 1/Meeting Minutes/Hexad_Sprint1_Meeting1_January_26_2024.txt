@@ -1,0 +1,42 @@
+Hexad Meeting Minutes
+
+Date: Friday, January 26th, 2024
+Time: 4h30 pm - 5h15 pm (45 min)
+Location: Concordia University, Hall building 8th floor
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Sydney Campbell (40243309)
+Yaroslava (40242907)
+Rania Maoukout (40249281)
+Malak Sefrioui(40252907)
+
+Agenda:
+
+1.Finding a team name and registering the team on moodle
+2.Creating a new email/github account for the team
+3.Coding languages and frameworks to use
+4.Set up weekly meeting time
+
+Discussion:
+
+    Team Registration
+        The team agreed on naming ourselves "Hexad"
+
+    Setting up github
+        We created a new email as instructed during the tutorial and created the github account and the repository.
+
+    Discussing languages and frameworks
+        All memebers of the teamm previously took SOEN 287 therefore HTML, CSS, JavaScript will be the main languages. 
+        We started the discussion about include Node.js and React. At this time, we decided to include them and rely on the fact that
+        members with prior experience to guide those who havent used those framwork thorughout the project.
+
+    Weekly Meeting
+        Set to be every tuesday 11h45 to 12h45. Those present at the school will meet in person and the others will join using the hexad discord channel.
+         Other meetings can be scheduled if needed based on the team's availability.
+
+
+Next steps: Tuesday, January 30th 11h45
+
+- Wait for the project to be posted
