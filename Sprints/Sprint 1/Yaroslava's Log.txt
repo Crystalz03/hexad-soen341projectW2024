@@ -1,5 +1,0 @@
-Feb 04: Did some basic setting up with git on my end. Started looking into tools that might be usefull during the development process.
-Feb 05: Reseached frameworks that we'll be using in our project like React.js and Node.js as well as more general web dev. Tried playing around with React.js to get more familiar with it.
-Feb 06: Wrote documentation about one of the backend framework. Had a general team meeting to discuss future plans. 
-Feb 09: Worked on the plan for sprint 2 with Christelle and  Imen, we split the main 6 user stories into more specific tasks in the excel sheet. Started the readme file. We also had a team meeting to seperate each task and discuss the priority, risk and due date of each task.
-Feb 11: Updated some of the user stories assigned to me + added subtasks, updated the readme file, and updated my logs.
