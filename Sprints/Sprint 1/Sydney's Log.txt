@@ -1,5 +1,0 @@
-Feb 03-2hrs: Designed front-end homepage for the web application on Figma and wrote in the project overview section.
-Feb 04-2hrs: Created a new branch and started implementing the front-end into code.
-Feb 06-1h: Meeting with team to go over progress of the project.
-Feb 08-30min: Updated the user story description for the browse vehicles section.
-Feb 11:-30min: Updated the user stories for all the new issues I am assigned to.
