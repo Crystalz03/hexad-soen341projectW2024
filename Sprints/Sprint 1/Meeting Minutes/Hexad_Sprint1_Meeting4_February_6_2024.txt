@@ -1,0 +1,45 @@
+Hexad Meeting Minutes
+
+Date: Friday, February 6th, 2024
+Time: 11h45 am - 12h25 pm (40 min)
+Location: Concordia University, Hall building 10th floor
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Sydney Campbell (40243309) - Joined online
+Yaroslava (40242907) - Joined online
+Rania Maoukout (40249281)
+Malak Sefrioui(40252907)
+
+Agenda:
+
+1. How and where to host our database for free
+2. Steps taken to make a reservation
+3. Extra features Ideas
+
+Discussion points:
+
+    Hosting
+        The team discussed the different hosting services we could use that are either free or have a free trial. 
+        We decided to try the free trial offered by microsoft azure and try amazon aws trial and choose from these two wich one 
+        is easiest to learn/use with a Microsoft sql database.
+    
+    Making a Reservation
+        The team discussed if the reservation should be made by selecting a car from the catalogue of by filling up a form.
+        We decided to only implement the form for sprint 2 and in sprint 3, when selecting from the catalogue the informations of the car
+        will be filled up automatically.
+
+    Extra features
+        -  The team decided to implement a age check so that only people 18 and above can make a reservation and those under 21 must 
+        pay an automatic insurance fee. We will require them to show their ID at the customer representative when the costumer comes 
+        for the pick up.
+
+        -  The user stories for the CRUD operations will include a frontend design for the system admin only. When signing up, users will be
+        assigned a user type in the database. This type will allow/deny users to see certain pages of the website
+
+
+Next steps :
+- Find where to host our website and database.
+- Finish writng our users stories following the template found in the course notes
+
