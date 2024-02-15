@@ -8,7 +8,7 @@ module.exports = {
   entry: './App/src/index.js',
   output: {
     path: path.resolve(__dirname, './App/dist'),
-    filename: 'bundle.js',
+    filename: 'App.js',
   },
   optimization:{
     minimizer: [
