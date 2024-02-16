@@ -27,8 +27,10 @@ pool.connect()
     console.error('Error connecting to the database:', err);
   });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+//const server = app.listen(port, () => {
+//  console.log(`Server is running on http://localhost:${port}`);
+//});
+
+
 
 module.exports = pool;
