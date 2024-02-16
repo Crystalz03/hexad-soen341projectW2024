@@ -5,7 +5,7 @@
   "engines": {
     "node": "14.x"
   },
-  "main": "index.js",
+  "main": "App/src/index.js",
   "scripts": {
     "test": "jest",
     "start": "webpack-dev-server --config webpack.dev.js --open",
