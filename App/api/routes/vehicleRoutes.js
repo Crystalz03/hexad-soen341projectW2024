@@ -20,7 +20,7 @@ router.post('/vehicles', async (req, res) => {
 router.get('/vehicles', async (req, res) => {
   try {
     const result = await pool.query`SELECT * FROM Vehicle`;
-    res.status(2002).json({vehicle : result.recordset[0]}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
+    res.status(200).json({vehicle : result.recordset[0]}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
   } catch (error) {
     console.error('Error retrieving vehicles:', error);
     res.status(500).json({ error: 'Server Error' });
@@ -53,7 +53,7 @@ router.put('/vehicles/:id', async (req, res) => {
 
   try {
     const result = await pool.query`UPDATE Vehicle SET Type = ${type}, Category = ${category}, Model = ${model}, Price = ${price} WHERE ID = ${vehicleId}`;
-    res.status(200).json({ message: 'Vehicle updated successfully' }); // e.g. Vehicle = response.body.vehicle -> Vehicle.name
+    res.status(200).json({ message: 'Vehicle updated successfully',  vehicle: req.body }); // e.g. Vehicle = response.body.vehicle -> Vehicle.name
   } catch (error) {
     console.error('Error updating vehicle:', error);
     res.status(500).json({ error: 'Server Error' });

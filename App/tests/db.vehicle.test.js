@@ -30,7 +30,7 @@ describe('Vehicle Routes', () => {
     const response = await request(app)
       .post('/vehicles')
       .send({
-        id: 'V12345',
+        id: 'V123456789',
         type: 'Sedan',
         category: 'Compact',
         model: 'Civic',
@@ -40,7 +40,7 @@ describe('Vehicle Routes', () => {
     expect(response.status).toBe(201);
     expect(response.body.message).toBe('Vehicle created successfully');
     expect(response.body.vehicle).toEqual({
-      id: 'V12345',
+      id: 'V123456789',
       type: 'Sedan',
       category: 'Compact',
       model: 'Civic',
@@ -57,12 +57,12 @@ describe('Vehicle Routes', () => {
 
   // Test getting a vehicle by ID
   it('should get a vehicle by ID', async () => {
-    const response = await request(app).get('/vehicles/V12345');
+    const response = await request(app).get('/vehicles/V123456789');
 
     expect(response.status).toBe(200);
     expect(response.body.vehicle).toEqual({
-      ID: 'V12345',
-      Textype: 'Sedan',
+      ID: 'V123456789',
+      Type: 'Sedan',
       Category: 'Compact',
       Model: 'Civic',
       Price: 25000.00,
@@ -73,7 +73,7 @@ describe('Vehicle Routes', () => {
   // Test updating a vehicle by ID
   it('should update a vehicle by ID', async () => {
     const response = await request(app)
-      .put('/vehicles/V12345')
+      .put('/vehicles/V123456789')
       .send({
         type: 'SUV',
         category: 'Midsize',
@@ -92,7 +92,7 @@ describe('Vehicle Routes', () => {
 
   // Test deleting a vehicle by ID
   it('should delete a vehicle by ID', async () => {
-    const response = await request(app).delete('/vehicles/V12345');
+    const response = await request(app).delete('/vehicles/V123456789');
 
     expect(response.status).toBe(200);
     expect(response.body.message).toBe('Vehicle deleted successfully');
