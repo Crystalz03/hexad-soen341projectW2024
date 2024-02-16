@@ -3,13 +3,11 @@ const express = require('express');
 const vehicleRoutes = require('../api/routes/vehicleRoutes');
 const pool = require('../database/db');
 
-// Create an Express app and use the vehicleRoutes
 const app = express();
 app.use(express.json());
 app.use(vehicleRoutes);
 
 describe('Vehicle Routes', () => {
-    // Check if the database connection is established before tests
     beforeAll(async () => {
       try {
         await pool.connect();
@@ -19,7 +17,6 @@ describe('Vehicle Routes', () => {
       }
     });
   
-    // Check if the database connection is closed after tests
     afterAll(async () => {
       try {
         await pool.close();
@@ -56,7 +53,6 @@ describe('Vehicle Routes', () => {
     const response = await request(app).get('/vehicles');
 
     expect(response.status).toBe(200);
-    // Add more assertions based on the expected response for retrieving all vehicles
   });
 
   // Test getting a vehicle by ID
@@ -64,7 +60,14 @@ describe('Vehicle Routes', () => {
     const response = await request(app).get('/vehicles/V12345');
 
     expect(response.status).toBe(200);
-    // Add more assertions based on the expected response for retrieving a vehicle by ID
+    expect(response.body.vehicle).toEqual({
+      ID: 'V12345',
+      Textype: 'Sedan',
+      Category: 'Compact',
+      Model: 'Civic',
+      Price: 25000.00,
+
+    });
   });
 
   // Test updating a vehicle by ID
@@ -79,7 +82,12 @@ describe('Vehicle Routes', () => {
       });
 
     expect(response.status).toBe(200);
-    expect(response.body.message).toBe('Vehicle updated successfully');
+    expect(response.body.vehicle).toEqual({
+      type: 'SUV',
+      category: 'Midsize',
+      model: 'Pilot',
+      price: 35999.99,
+    });
   });
 
   // Test deleting a vehicle by ID
