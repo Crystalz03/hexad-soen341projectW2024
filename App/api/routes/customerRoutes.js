@@ -8,7 +8,7 @@ router.post('/customers', async (req, res) => {
   const { id, name, lastName, location, email} = req.body;
 
   try {
-    const result = await pool.request().query`INSERT INTO Customers (ID, Name, Last_Name, Location, Email) VALUES (${id}, ${name}, ${lastName}, ${location}, ${email})`;
+    const result = await pool.query`INSERT INTO Customers (ID, Name, Last_Name, Location, Email) VALUES (${id}, ${name}, ${lastName}, ${location}, ${email})`;
     res.status(201).json({ message: 'New customer created successfully', customer: req.body }); // e.g.Customer = response.body.customer -> Customer.name
   } catch (error) {
     console.error('Error creating a new customer:', error);

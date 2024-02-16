@@ -8,7 +8,7 @@ router.post('/csr', async (req, res) => {
   const { id, name, lastName, branch, email} = req.body;
 
   try {
-    const result = await pool.request().query`INSERT INTO CSR (ID, Name, Last_Name, Branch, Email) VALUES (${id}, ${name}, ${lastName}, ${branch}, ${email})`;
+    const result = await pool.query`INSERT INTO CSR (ID, Name, Last_Name, Branch, Email) VALUES (${id}, ${name}, ${lastName}, ${branch}, ${email})`;
     res.status(201).json({ message: 'New customer service representative created successfully', csr: req.body }); // e.g.CSR = response.body.csr -> CSR.name
   } catch (error) {
     console.error('Error creating a new customer service representative:', error);

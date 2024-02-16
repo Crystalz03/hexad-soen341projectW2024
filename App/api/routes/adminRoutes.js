@@ -8,7 +8,7 @@ router.post('/admin', async (req, res) => {
   const { id, name, lastName, email} = req.body;
 
   try {
-    const result = await pool.request().query`INSERT INTO Admin (ID, Name, Last_Name, Email) VALUES (${id}, ${name}, ${lastName}, ${email})`;
+    const result = await pool.query`INSERT INTO Admin (ID, Name, Last_Name, Email) VALUES (${id}, ${name}, ${lastName}, ${email})`;
     res.status(201).json({ message: 'New system admin  created successfully', admin: req.body }); // e.g.Admin = response.body.amin -> Admin.name
   } catch (error) {
     console.error('Error creating a new system admin :', error);
