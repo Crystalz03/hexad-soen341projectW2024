@@ -20,7 +20,7 @@ router.post('/customers', async (req, res) => {
 router.get('/customers', async (req, res) => {
   try {
     const result = await pool.query`SELECT * FROM Customers`;
-    res.status(200).json({customers : result.recordset}); // e.g.Customers = response.body.customers -> Customer[#].Name
+    res.status(200).json({customers : result.recordsets}); // e.g.Customers = response.body.customers -> Customer[#].Name
   } catch (error) {
     console.error('Error finding the customers:', error);
     res.status(500).json({ error: 'Server Error' });

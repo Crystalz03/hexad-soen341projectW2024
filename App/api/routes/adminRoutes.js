@@ -20,7 +20,7 @@ router.post('/admin', async (req, res) => {
 router.get('/admin', async (req, res) => {
   try {
     const result = await pool.query`SELECT * FROM Admin`;
-    res.status(200).json({admin : result.recordset}); // e.g.Admin = response.body.admin -> Admin[#].Name
+    res.status(200).json({admins : result.recordsets}); // e.g.Admins = response.body.admins -> Admins[#].Name
   } catch (error) {
     console.error('Error finding the system admin:', error);
     res.status(500).json({ error: 'Server Error' });

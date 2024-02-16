@@ -20,7 +20,7 @@ router.post('/csr', async (req, res) => {
 router.get('/csr', async (req, res) => {
   try {
     const result = await pool.query`SELECT * FROM CSR`;
-    res.status(200).json({csr : result.recordset}); // e.g.CSR = response.body.csr -> CSR[#].Name
+    res.status(200).json({csr : result.recordsets}); // e.g.CSR = response.body.csr -> CSR[#].Name
   } catch (error) {
     console.error('Error finding the customer service representative:', error);
     res.status(500).json({ error: 'Server Error' });
