@@ -7,6 +7,9 @@ function Home() {
     <Link to="/SignUp">
         <button>Sign Up</button>
     </Link>
+    <Link to="/SignIn">
+        <button>Sign In</button>
+    </Link>
     </div>
     
   );

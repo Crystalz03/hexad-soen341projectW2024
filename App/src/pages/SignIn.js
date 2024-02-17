@@ -1,12 +1,13 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React, { useState } from "react";
+
 
 function SignIn() {
   return (
-    <div>Sign In page
-    
+    <div>
+      <input type="text" placeholder="Username" required></input>
+      <input type="password" placeholder="Password" required></input>
+      <button type="submit">Sign In</button>
     </div>
-    
   );
 }
 
