@@ -8,7 +8,7 @@ module.exports = {
   entry: './App/src/index.js',
   output: {
     path: path.resolve(__dirname, './App/dist'),
-    filename: 'bundle.js',
+    filename: 'App.js',
   },
   optimization:{
     minimizer: [
@@ -35,7 +35,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './App/src/index.html',
+      template: './App/public/index.html',
       minify: {
         collapseWhitespace: true,
         removeComments: true,
