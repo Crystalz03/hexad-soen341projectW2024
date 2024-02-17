@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(reservationRoutes);
 const date = new Date();
-const dateString = date.toISOString();
+const dateString = date.toJSON();
 
 describe('Reservation Routes', () => {
     beforeAll(async () => {
@@ -55,7 +55,6 @@ describe('Reservation Routes', () => {
         additionalServices: '1',
         total: 25000.00
     });
-    await pool.query`DELETE FROM Customers WHERE ID = 'C123456789' `;
   });
 
   // Test getting all resevations by customer
@@ -120,5 +119,6 @@ describe('Reservation Routes', () => {
 
     expect(response.status).toBe(200);
     expect(response.body.message).toBe('Reservation deleted successfully');
+    await pool.query`DELETE FROM Customers WHERE ID = 'C123456789' `;
   });
 });
