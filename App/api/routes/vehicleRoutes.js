@@ -8,8 +8,8 @@ router.post('/vehicles', async (req, res) => {
   const { id, type, category, model, price } = req.body;
 
   try {
-    const result = await pool.request().query`INSERT INTO Vehicle (ID, Type, Category, Model, Price) VALUES (${id}, ${type}, ${category}, ${model}, ${price})`;
-    res.status(201).json({ message: 'Vehicle created successfully', vehicle: req.body });
+    const result = await pool.query`INSERT INTO Vehicle (ID, Type, Category, Model, Price) VALUES (${id}, ${type}, ${category}, ${model}, ${price})`;
+    res.status(201).json({ message: 'Vehicle created successfully', vehicle: req.body }); // e.g. Vehicle = response.body.vehicle -> Vehicle.name
   } catch (error) {
     console.error('Error creating vehicle:', error);
     res.status(500).json({ error: 'Server Error' });
@@ -20,7 +20,7 @@ router.post('/vehicles', async (req, res) => {
 router.get('/vehicles', async (req, res) => {
   try {
     const result = await pool.query`SELECT * FROM Vehicle`;
-    res.json(result.recordset);
+    res.status(200).json({vehicle : result.recordsets}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
   } catch (error) {
     console.error('Error retrieving vehicles:', error);
     res.status(500).json({ error: 'Server Error' });
@@ -38,7 +38,7 @@ router.get('/vehicles/:id', async (req, res) => {
     if (!vehicle) {
       res.status(404).json({ error: 'Vehicle not found' });
     } else {
-      res.json(vehicle);
+      res.status(200).json({vehicle : vehicle}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
     }
   } catch (error) {
     console.error('Error retrieving vehicle:', error);
@@ -53,7 +53,7 @@ router.put('/vehicles/:id', async (req, res) => {
 
   try {
     const result = await pool.query`UPDATE Vehicle SET Type = ${type}, Category = ${category}, Model = ${model}, Price = ${price} WHERE ID = ${vehicleId}`;
-    res.json({ message: 'Vehicle updated successfully' });
+    res.status(200).json({ message: 'Vehicle updated successfully',  vehicle: req.body }); // e.g. Vehicle = response.body.vehicle -> Vehicle.name
   } catch (error) {
     console.error('Error updating vehicle:', error);
     res.status(500).json({ error: 'Server Error' });
@@ -66,7 +66,7 @@ router.delete('/vehicles/:id', async (req, res) => {
 
   try {
     const result = await pool.query`DELETE FROM Vehicle WHERE ID = ${vehicleId}`;
-    res.json({ message: 'Vehicle deleted successfully' });
+    res.status(200).json({ message: 'Vehicle deleted successfully' });
   } catch (error) {
     console.error('Error deleting vehicle:', error);
     res.status(500).json({ error: 'Server Error' });
