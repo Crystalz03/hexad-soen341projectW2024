@@ -1,0 +1,32 @@
+Hexad Meeting Minutes
+
+Date: Friday, February 9th, 2024
+Time: 6h00 am - 6h30 pm (30 min)
+Location: Concordia University, Hall building 10th floor
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Sydney Campbell (40243309)
+Yaroslava (40242907)
+Rania Maoukout (40249281)
+Malak Sefrioui(40252907)
+
+Agenda:
+
+1. Story points, priority and risk Discussion
+
+
+Discussion points:
+
+    Story Points
+        To associate story points to each user story previously created the team went through one by one and had a vote for each story. 
+        The system goes from 0 to 5, 0 being "easy" and 5 being "hard". We give a first vote then dabate the final result based on our perspection
+        of the risks and priority of the task. The priority and risk level were then updated into the "plan for sprint 2" table.
+        Finally, the team redistributed the tasks in order for every memeber to have a similar amount of story point assigned.
+        The team decided to settle on a task distribution and leave open the possibility of moving assigne around if needed throughout sprint 2.
+
+
+Next step: 
+- Finish writing the user storie 
+- Create the issues for the subtasks on github 
