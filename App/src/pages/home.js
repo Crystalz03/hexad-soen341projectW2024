@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import "../../style/style.css";
+import "./../style/style.css";
 
 function Home() {
   return (

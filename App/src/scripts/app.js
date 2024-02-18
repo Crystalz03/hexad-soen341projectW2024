@@ -1,29 +1,29 @@
-
 import React from "react";
-import Home from "./pages/home";
+import Home from "./../pages/home";
+import "./../style/styles.css";
 
-//Displaying home page
+//Displaying home page (currently not displaying)
+
 function AnotherApp() {
   return <Home />;
 }
 
 export default AnotherApp;
 
-const express = require('express');
-const userRoutes = require('./routes/userRoutes');
-const swaggerUi = require('swagger-ui-express');
-const swaggerSpec = require('./swagger');
+const express = require("express");
+const userRoutes = require("./routes/userRoutes");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./swagger");
 
 const app = express();
 const port = 3000;
 
 // Serve Swagger UI
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Use your API routes
-app.use('../../api', userRoutes); 
+app.use("../../api", userRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-
