@@ -11,7 +11,6 @@ function Home() {
     </div>
   );
 }
-
 function Header() {
   return (
     <header className="header sticky all-caps">
@@ -138,5 +137,4 @@ function Navigation() {
 function Footer() {
   return <div className="footer">Footer</div>;
 }
-
 export default Home;
