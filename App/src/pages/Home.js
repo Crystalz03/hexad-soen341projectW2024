@@ -1,15 +1,15 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import Header from '../components/Header';
+import "../style/Home.css";
 
 function Home() {
   return (
-    <div>Home Page
-    <Link to="/SignUp">
-        <button>Sign Up</button>
-    </Link>
-    <Link to="/SignIn">
-        <button>Sign In</button>
-    </Link>
+    <div className="home">
+      <Header />
+      <Link to="/AdminDashboard">
+        <button>Admin page test</button>
+      </Link>
     </div>
     
   );
