@@ -1,3 +1,14 @@
+
+import React from "react";
+import Home from "./pages/home";
+
+//Displaying home page
+function AnotherApp() {
+  return <Home />;
+}
+
+export default AnotherApp;
+
 const express = require('express');
 const userRoutes = require('./routes/userRoutes');
 const swaggerUi = require('swagger-ui-express');
@@ -15,3 +26,4 @@ app.use('../../api', userRoutes);
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
