@@ -1,38 +1,12 @@
-# hexad-soen341projectW2024
+# HEXAD
 
+Hexad is a car rental website providing an intuitive user experience allowing for a smooth and quick car reservation process. The website will allows users to create an account and browse through our catalogue of rentals to select the one that fits their needs. For an easier selection process, the user will be able to select the closest branch to their desired area, and filter the catalogue accorting to the cars of their desired type available in their selected location. Each rental service can be customized by adding additionnal services. Once the user has checked out and returned the rental, they'll be able to provide feedback on the services used through our review system.
 
-<!-- Instructions for Downloading Node.js for Testing (Leave as a comment at the end of the file thx!) -->
-
-## Downloading Node.js for Testing with Jest
-
-Before running tests using Jest, ensure that you have Node.js installed on your machine. Follow the steps below to download and install Node.js:
-
-1. **Visit the Node.js Official Website:**
-   - Go to [Node.js official website](https://nodejs.org/).
-
-2. **Download the LTS Version:**
-   - Download the LTS (Long Term Support) version, which is recommended for most users.
-
-3. **Run the Installer:**
-   - Run the downloaded installer and follow the installation instructions.
-
-4. **Verify Installation:**
-   - After installation, open a terminal or command prompt and run the following commands to verify that Node.js and npm (Node Package Manager) are installed:
-     ```bash
-     node -v
-     npm -v
-     ```
-     These commands should display the versions of Node.js and npm, respectively.
-
-5. **Node.js is Ready:**
-   - Once you see the version numbers, Node.js is successfully installed and ready for use in your project.
-
-6. **Install Project Dependencies:**
-   - Navigate to the project's root directory in the terminal and run:
-     ```bash
-     npm install
-     ```
-     This command installs the project dependencies specified in the `package.json` file.
-
-
-Note: If you encounter any issues during installation, refer to the [Node.js documentation](https://nodejs.org/en/docs/) for troubleshooting or additional guidance.
+ 
+# Roles
+- Sydney Campbell - UI/UX Designer, QA
+- Christelle Charles - Team Lead, QA
+- Imen Khezzar - front-end developper, QA
+- Yaroslava Kost - back-end developper, QA
+- Rania Maoukout - back-end developper, QA
+- Malak Sefrioui - front-end developper, QA
