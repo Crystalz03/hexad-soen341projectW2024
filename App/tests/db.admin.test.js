@@ -35,6 +35,7 @@ describe('System Admin Routes', () => {
         name: 'John',
         lastName: 'Doe',
         email: 'John.Doe@email.com',
+        password: 'pswd123'
       });
 
     expect(response.status).toBe(201);
@@ -43,8 +44,18 @@ describe('System Admin Routes', () => {
         name: 'John',
         lastName: 'Doe',
         email: 'John.Doe@email.com',
+        password: 'pswd123'
     });
   });
+
+     // Test getting an admin's password by ID
+     it('should get a system admin password by ID', async () => {
+      const response = await request(app).get('/signIn/SA12345678');
+  
+      expect(response.status).toBe(200);
+      expect(response.body.password).toEqual('pswd123');
+  
+    });
 
   // Test getting all system admin
   it('should get all system admin', async () => {
@@ -63,6 +74,7 @@ describe('System Admin Routes', () => {
         Name: 'John',
         Last_Name: 'Doe',
         Email: 'John.Doe@email.com',
+        Password: 'pswd123'
     });
 });
   // Test getting a system admin by ID
@@ -75,6 +87,7 @@ describe('System Admin Routes', () => {
         Name: 'John',
         Last_Name: 'Doe',
         Email: 'John.Doe@email.com',
+        Password: 'pswd123'
     });
   });
 
@@ -86,6 +99,7 @@ describe('System Admin Routes', () => {
         name: 'Jane',
         lastName: 'Doe',
         email: 'John.Doe@email.com',
+        password: 'pswd123'
       });
 
     expect(response.status).toBe(200);
@@ -93,6 +107,7 @@ describe('System Admin Routes', () => {
         name: 'Jane',
         lastName: 'Doe',
         email: 'John.Doe@email.com',
+        password: 'pswd123'
     });
     
   });
