@@ -1,17 +1,20 @@
 import React from "react";
-import "../style/Header.css";
-import { Link } from "react-router-dom";
+import "../style/style.css";
 
 function Header() {
   return (
-    <div className="header">
-      <Link to="/SignUp">
-        <button>Sign Up</button>
-      </Link>
-      <Link to="/SignIn">
-        <button>Sign In</button>
-      </Link>
-    </div>
+    <header className="header sticky all-caps">
+      <div className="motto">Drive the experience, rent the journey</div>
+      <div className="company-header all-caps">
+        <div className="sun-logo"></div>
+        <div className="header-title"> hexad</div>
+        <div className="btn-1 ">
+          <button className="all-caps sign-in-btn btn-background-color">
+            sign in
+          </button>
+        </div>
+      </div>
+    </header>
   );
 }
 

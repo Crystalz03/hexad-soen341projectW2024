@@ -6,7 +6,7 @@ import SignIn from "./pages/SignIn";
 import Admin from "./pages/AdminDashboard";
 import Representative from "./pages/CustomerRepresentativeDashboard";
 
-function app() {
+function App() {
   return (
     <div className="app">
       <Router>
@@ -26,4 +26,4 @@ function app() {
   );
 }
 
-export default app;
+export default App;
