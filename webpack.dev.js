@@ -32,4 +32,9 @@ module.exports = {
         template: './App/src/index.html',
       }),
     ],
+    resolve: {
+      alias: {
+        './app': path.resolve(__dirname, './App/src/App.js'),
+      },
+    },
 };
