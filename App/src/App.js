@@ -1,4 +1,4 @@
-import React from "react";
+import React,  { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
@@ -7,6 +7,22 @@ import Admin from "./pages/AdminDashboard";
 import Representative from "./pages/CustomerRepresentativeDashboard";
 
 function App() {
+
+  const [apiResponse, setApiResponse] = useState("");
+
+  const callAPI = () => {
+    fetch("http://localhost:9000/testAPI")
+      .then(res => res.text())
+      .then(res => {console.log(res); 
+        setApiResponse(res
+        )})
+      .catch(error => console.error('Error fetching data:', error));
+  }
+
+  useEffect(() => {
+    callAPI();
+  }, []); // Empty dependency array means this effect runs once when the component mounts
+
   return (
     <div className="app">
       <Router>
