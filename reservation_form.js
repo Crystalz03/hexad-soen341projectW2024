@@ -1,13 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 
-
+//https://youtu.be/KX7ehE0QDJM
     
   
 
 function App() {
+
+    const express = require('express');
+    const sql = require('mssql');
+
+    const app = express();
+    const port = 3000;
+
+    const pool = new sql.ConnectionPool(dbConfig);
+
+    pool.connect()
+      .then(() => {
+        console.log('Connected to the database');
+      })
+      .catch((err) => {
+        console.error('Error connecting to the database:', err);
+      });
+
   const [reservation, setReservation] = useState({});
     const handleChange = (event) => {
         const name = event.target.name;
@@ -18,22 +33,9 @@ function App() {
         event.preventDefault();
         alert(reservation);
     }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
 
         <form onSubmit={handleSubmit}>
 
@@ -95,8 +97,6 @@ function App() {
         <input type='submit'></input>
     </form>
       </header>
-    </div>
   );
 }
 
-export default App;
