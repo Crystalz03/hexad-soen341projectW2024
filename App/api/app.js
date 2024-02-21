@@ -7,6 +7,9 @@ var cors = require("cors");
 
 var indexRouter = require('./routes');
 var customerRouter = require('./routes/customerRoutes');
+var csrRouter = require('./routes/csrRoutes');
+var adminRouter = require('./routes/adminRoutes');
+var vehicleRouter = require('./routes/vehicleRoutes');
 var testAPIRouter = require("./routes/testAPI");
 var app = express();
 
@@ -23,6 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/', customerRouter);
+app.use('/', csrRouter);
+app.use('/', adminRouter);
+app.use('/', vehicleRouter);
 app.use("/testAPI", testAPIRouter);
 
 

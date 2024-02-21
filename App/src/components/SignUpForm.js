@@ -4,11 +4,11 @@ import '../style/SignUpForm.css';
 function SignupForm () {
 
    const [formData, setFormData] = useState({
-      id: 'test',
+      id: '',
       name: '',
       lastName: '',
       location: '',
-      email: 'test2@example.com',
+      email: '',
       password: '',
     });
 
@@ -16,22 +16,18 @@ function SignupForm () {
 
   const callAPI = () => {
     fetch("http://localhost:9000/customers", {
-      method: 'POST', // Specify the HTTP method
+      method: 'POST', 
       headers: {
-        'Content-Type': 'application/json', // Specify the content type as JSON
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData), // Convert the formData object to JSON
+      body: JSON.stringify(formData), 
     })
       .then(res => res.json())
-      .then(data => {
-        console.log("API Response:", data); // Log the content of the JSON response
-        setApiResponse(data); // Update state with the JSON response
-      })
+      .then(data => { setApiResponse(data);})
       .catch(error => console.error(error));
-      console.log(FormData.toString());
     }
 
-   // const validateForm = () => {} // add you form validation logic here
+   // const validateForm = () => {} // add you form validation logic here use formData's values
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,6 +35,8 @@ function SignupForm () {
     //if (validateForm()) {
       callAPI();
     //}
+
+    // maybe load into another page
   };
 
   const handleChange = (e) => {
