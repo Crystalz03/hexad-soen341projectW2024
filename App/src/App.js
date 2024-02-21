@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import Admin from "./pages/AdminDashboard";
-import Representative from "./pages/CustomerRepresentativeDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
+import CustomerRepresentativeDashboard from "./pages/CustomerRepresentativeDashboard";
 
 function App() {
   return (
@@ -14,12 +14,8 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/SignIn" exact element={<SignIn />} />
-          <Route path="/AdminDashboard" exact element={<Admin />} />
-          <Route
-            path="/CustomerRepresentative"
-            exact
-            element={<Representative />}
-          />
+          <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
+          <Route path="/CustomerRepresentativeDashboard" exact element={<CustomerRepresentativeDashboard />} />
         </Routes>
       </Router>
     </div>

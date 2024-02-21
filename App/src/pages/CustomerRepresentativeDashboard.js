@@ -1,12 +1,17 @@
-import React from 'react';
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import CrSideMenu from "../components/CrSideMenu";
 
-function Representative() {
+function CustomerRepresentativeDashboard() {
   return (
-    <div>Customer Representative Dashboard
-   
+    <div>
+      Customer Representative Dashboard
+      <Header />
+      <CrSideMenu />
+      <Footer />
     </div>
-    
   );
 }
 
-export default Representative;
+export default CustomerRepresentativeDashboard;

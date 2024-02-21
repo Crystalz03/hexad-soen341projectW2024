@@ -25,7 +25,7 @@ function Main() {
         <aside className="nav sticky">
           <div className="company-name-nav all-caps">hexad</div>
           <ul className="nav-list-1">
-            <li className="nav-list-components-1">Sign In/Sign Up</li>
+            <li className="nav-list-components-1"><Link to="/SignIn">Sign In</Link>/<Link to="/SignUp">Sign Up</Link></li>
             <li className="nav-list-components-1">About Hexad</li>
             <li className="nav-list-components-1">Reserve</li>
             <li className="nav-list-components-1">View/Modify</li>
@@ -36,7 +36,12 @@ function Main() {
             <li className="nav-list-components-2">Locations</li>
             <li className="nav-list-components-2">Contact Us</li>
           </ul>
-          <div className="nav-divider"></div>
+          <div className="nav-divider">
+            <ul className='nav-list-3'>Just testing links
+              <li><Link to="/AdminDashboard">AD</Link></li>
+              <li><Link to="/CustomerRepresentativeDashboard">CRD</Link></li>
+            </ul>
+          </div>
         </aside>
         <div className="main-content">
           <div className="title-box">

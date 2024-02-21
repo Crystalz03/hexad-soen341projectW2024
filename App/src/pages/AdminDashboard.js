@@ -1,13 +1,17 @@
 import React from 'react';
-import SideMenu from '../components/SideMenu';
+import AdminSideMenu from '../components/AdminSideMenu';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 
-function Admin() {
+function AdminDashboard() {
   return (
     <div>Admin dashboard
-     
+     <Header />
+     <AdminSideMenu />
+     <Footer />
     </div>
     
   );
 }
 
-export default Admin;
+export default AdminDashboard;
