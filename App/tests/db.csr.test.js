@@ -1,11 +1,13 @@
 const request = require('supertest');
 const express = require('express');
 const csrRoutes = require('../api/routes/csrRoutes');
+const adminRoutes = require('../api/routes/adminRoutes');
 const pool = require('../database/db');
 
 const app = express();
 app.use(express.json());
 app.use(csrRoutes);
+app.use(adminRoutes);
 
 describe('CSR Routes', () => {
     beforeAll(async () => {
@@ -36,6 +38,7 @@ describe('CSR Routes', () => {
         lastName: 'Doe',
         branch: '0123456789',
         email: 'John.Doe@email.com',
+        password: 'pswd123'
       });
 
     expect(response.status).toBe(201);
@@ -45,8 +48,18 @@ describe('CSR Routes', () => {
         lastName: 'Doe',
         branch: '0123456789',
         email: 'John.Doe@email.com',
+        password: 'pswd123'
     });
   });
+
+       // Test getting an crs's password by ID
+       it('should get a csr password by ID', async () => {
+        const response = await request(app).get('/signIn/CSR1234567');
+    
+        expect(response.status).toBe(200);
+        expect(response.body.password).toEqual('pswd123');
+    
+      });
 
   // Test getting all csr
   it('should get all csr', async () => {
@@ -66,6 +79,7 @@ describe('CSR Routes', () => {
         Last_Name: 'Doe',
         Branch: '0123456789',
         Email: 'John.Doe@email.com',
+        Password: 'pswd123'
     });
 });
   // Test getting a csr by ID
@@ -79,6 +93,7 @@ describe('CSR Routes', () => {
         Last_Name: 'Doe',
         Branch: '0123456789',
         Email: 'John.Doe@email.com',
+        Password: 'pswd123'
     });
   });
 
@@ -91,6 +106,7 @@ describe('CSR Routes', () => {
         lastName: 'Doe',
         branch: '0123456789',
         email: 'John.Doe@email.com',
+        password: 'pswd123'
       });
 
     expect(response.status).toBe(200);
@@ -99,6 +115,7 @@ describe('CSR Routes', () => {
         lastName: 'Doe',
         branch: '0123456789',
         email: 'John.Doe@email.com',
+        password: 'pswd123'
     });
     
   });
