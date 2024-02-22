@@ -8,7 +8,7 @@ router.post('/vehicles', async (req, res) => {
   const { id, type, category, model, price } = req.body;
 
   try {
-    const result = await pool.request().query`INSERT INTO Vehicle (ID, Type, Category, Model, Price) VALUES (${id}, ${type}, ${category}, ${model}, ${price})`;
+    const result = await pool.query`INSERT INTO Vehicle (ID, Type, Category, Model, Price) VALUES (${id}, ${type}, ${category}, ${model}, ${price})`;
     res.status(201).json({ message: 'Vehicle created successfully', vehicle: req.body }); // e.g. Vehicle = response.body.vehicle -> Vehicle.name
   } catch (error) {
     console.error('Error creating vehicle:', error);
@@ -20,7 +20,7 @@ router.post('/vehicles', async (req, res) => {
 router.get('/vehicles', async (req, res) => {
   try {
     const result = await pool.query`SELECT * FROM Vehicle`;
-    res.status(200).json({vehicle : result.recordset[0]}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
+    res.status(200).json({vehicle : result.recordsets}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
   } catch (error) {
     console.error('Error retrieving vehicles:', error);
     res.status(500).json({ error: 'Server Error' });
