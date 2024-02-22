@@ -5,34 +5,69 @@ import ReactDOM from 'react-dom/client';
     
   
 
-function App() {
+function AddReservation() {
+  
+  const [formData, setFormData] = useState({
+    ID: '',
+    Vehicle_ID: '',
+    Customer_ID: '',
+    Pick_Up_Date: '',
+    Return_Date: '',
+    Extra_Equipment: '',
+    Additional_Services: '',
+    Paid: false,
+    Total: '',
+  });
 
-    const express = require('express');
-    const sql = require('mssql');
+  //ID, Vehicle_ID, Customer_ID, Pick_Up_Date, Return_Date, Extra_Equipment, Additional_Services, Paid, Total
 
-    const app = express();
-    const port = 3000;
+  /*router.get('/vehicles', async (req, res) => {
+  try {
+    const result = await pool.query`SELECT * FROM Vehicle`;
+    res.status(200).json({vehicle : result.recordsets}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
+  } catch (error) {
+    console.error('Error retrieving vehicles:', error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+  });*/ 
+  const [apiResponse, setApiResponse] = useState("");
 
-    const pool = new sql.ConnectionPool(dbConfig);
-
-    pool.connect()
-      .then(() => {
-        console.log('Connected to the database');
-      })
-      .catch((err) => {
-        console.error('Error connecting to the database:', err);
-      });
-
-  const [reservation, setReservation] = useState({});
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-       setReservation(values=>({...values, [name]: value}))
+  const callAPI = () => {
+    fetch("http://localhost:9000/Reservation", {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData), 
+    })
+      .then(res => res.json())
+      .then(data => { setApiResponse(data);})
+      .catch(error => console.error(error));
     }
-    const handleSubmit = (event)=>{
-        event.preventDefault();
-        alert(reservation);
+
+  const validateForm = () => {
+    return true; // add you form validation logic here use formData's values
+  } // add you form validation logic here use formData's values
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (validateForm()) {
+      callAPI();
     }
+
+    // maybe load into another page
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+    
 
   return (
       <header>
