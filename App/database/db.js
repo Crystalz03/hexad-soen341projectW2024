@@ -31,17 +31,22 @@ pool.connect()
     console.error('Error connecting to the database:', err);
   });
 
-  let server;
-
-  beforeAll(() => {
-    server = app.listen(port, () => {
+  
+const server = app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`);
     });
-  });
-  
-  afterAll((done) => {
-    server.close(done);
-  });
 
+
+// To close the server
+function closeServer() {
+  server.close(() => {
+    console.log('Server is closed');
+  });
+}
+
+// Example: Close the server after 5 seconds
+setTimeout(() => {
+  closeServer();
+}, 5000);
 
 module.exports = pool;

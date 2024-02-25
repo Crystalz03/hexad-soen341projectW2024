@@ -29,13 +29,13 @@ describe('Reservation Routes', () => {
     });
   // Test the creation of a new reservation
   it('should create a new reservation', async () => {
-    await pool.query`INSERT INTO Customers (ID, Name, Last_Name, Location, Email) VALUES ( 'C123456789' , 'john', 'doe', 'montreal', 'john.doe@email.com')`;
+    await pool.query`INSERT INTO Customers (ID, Name, Last_Name, Location, Email, Password) VALUES ( 'C012345678' , 'john', 'doe', 'montreal', 'temp@email.com','pswd123')`;
     const response = await request(app)
       .post('/reservations')
       .send({
         id: 'R123456789',
         vehicleID: 'V123456789',
-        customerID: 'C123456789',
+        customerID: 'C012345678',
         pickUpDate: date,
         returnDate: date,
         extraEquipment: '1,2',
@@ -48,7 +48,7 @@ describe('Reservation Routes', () => {
     expect(response.body.reservation).toEqual({
         id: 'R123456789',
         vehicleID: 'V123456789',
-        customerID: 'C123456789',
+        customerID: 'C012345678',
         pickUpDate: dateString,
         returnDate: dateString,
         extraEquipment: '1,2',
@@ -59,7 +59,7 @@ describe('Reservation Routes', () => {
 
   // Test getting all resevations by customer
   it('should get all reservation by customer', async () => {
-    const response = await request(app).get('/reservations/customer/C123456789');
+    const response = await request(app).get('/reservations/customer/C012345678');
 
     expect(response.status).toBe(200);
   });
@@ -72,7 +72,7 @@ describe('Reservation Routes', () => {
     expect(response.body.reservation).toEqual({
         ID: 'R123456789',
         Vehicle_ID: 'V123456789',
-        Customer_ID: 'C123456789',
+        Customer_ID: 'C012345678',
         Pick_Up_Date: dateString,
         Return_Date: dateString,
         Extra_Equipment: '1,2',
@@ -90,7 +90,7 @@ describe('Reservation Routes', () => {
       .send({
         id: 'R123456789',
         vehicleID: 'V000000000',
-        customerID: 'C123456789',
+        customerID: 'C012345678',
         pickUpDate: date,
         returnDate: date,
         extraEquipment: '1,2,3',
@@ -103,7 +103,7 @@ describe('Reservation Routes', () => {
     expect(response.body.reservation).toEqual({
         id: 'R123456789',
         vehicleID: 'V000000000',
-        customerID: 'C123456789',
+        customerID: 'C012345678',
         pickUpDate: dateString,
         returnDate: dateString,
         extraEquipment: '1,2,3',
@@ -119,6 +119,6 @@ describe('Reservation Routes', () => {
 
     expect(response.status).toBe(200);
     expect(response.body.message).toBe('Reservation deleted successfully');
-    await pool.query`DELETE FROM Customers WHERE ID = 'C123456789' `;
+    await pool.query`DELETE FROM Customers WHERE ID = 'C012345678' `;
   });
 });
