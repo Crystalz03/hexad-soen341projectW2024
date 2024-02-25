@@ -31,17 +31,10 @@ pool.connect()
     console.error('Error connecting to the database:', err);
   });
 
-  let server;
+const server = app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
 
-  beforeAll(() => {
-    server = app.listen(port, () => {
-      console.log(`Server is running on http://localhost:${port}`);
-    });
-  });
-  
-  afterAll((done) => {
-    server.close(done);
-  });
 
 
 module.exports = pool;

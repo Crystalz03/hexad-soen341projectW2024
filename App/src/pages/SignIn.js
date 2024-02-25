@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-
 function SignIn() {
+  //const []
   return (
     <div>
       <input type="text" placeholder="Username" required></input>
