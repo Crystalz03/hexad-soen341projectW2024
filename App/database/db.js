@@ -32,21 +32,4 @@ pool.connect()
   });
 
   
-const server = app.listen(port, () => {
-      console.log(`Server is running on http://localhost:${port}`);
-    });
-
-
-// To close the server
-function closeServer() {
-  server.close(() => {
-    console.log('Server is closed');
-  });
-}
-
-// Example: Close the server after 5 seconds
-setTimeout(() => {
-  closeServer();
-}, 5000);
-
 module.exports = pool;
