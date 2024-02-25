@@ -1,4 +1,9 @@
-import React from "react";
+import React from 'react';
+import {Link} from "react-router-dom";
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import SideMenu from '../components/SideMenu';
+
 
 import "./../style/style.css";
 
@@ -7,26 +12,12 @@ function Home() {
     <div>
       <Header />
       <Main />
+      <SideMenu />
       <Footer />
     </div>
   );
 }
-function Header() {
-  return (
-    <header className="header sticky all-caps">
-      <div className="motto">Drive the experience, rent the journey</div>
-      <div className="company-header all-caps">
-        <div className="sun-logo"></div>
-        <div className="header-title"> hexad</div>
-        <div className="btn-1 ">
-          <button className="all-caps sign-in-btn btn-background-color">
-            sign in
-          </button>
-        </div>
-      </div>
-    </header>
-  );
-}
+
 function Main() {
   return (
     <div className="main">
@@ -34,7 +25,7 @@ function Main() {
         <aside className="nav sticky">
           <div className="company-name-nav all-caps">hexad</div>
           <ul className="nav-list-1">
-            <li className="nav-list-components-1">Sign In/Sign Up</li>
+            <li className="nav-list-components-1"><Link to="/SignIn">Sign In</Link>/<Link to="/SignUp">Sign Up</Link></li>
             <li className="nav-list-components-1">About Hexad</li>
             <li className="nav-list-components-1">Reserve</li>
             <li className="nav-list-components-1">View/Modify</li>
@@ -45,7 +36,12 @@ function Main() {
             <li className="nav-list-components-2">Locations</li>
             <li className="nav-list-components-2">Contact Us</li>
           </ul>
-          <div className="nav-divider"></div>
+          <div className="nav-divider">
+            <ul className='nav-list-3'>Just testing links
+              <li><Link to="/AdminDashboard">AD</Link></li>
+              <li><Link to="/CustomerRepresentativeDashboard">CRD</Link></li>
+            </ul>
+          </div>
         </aside>
         <div className="main-content">
           <div className="title-box">
@@ -113,28 +109,5 @@ function Main() {
       </div>
     </div>
   );
-}
-function Navigation() {
-  return (
-    <aside className="nav">
-      <div className="company-name-nav all-caps">hexad</div>
-      <ul className="nav-list-1">
-        <li className="nav-list-components-1">Sign In/Sign Up</li>
-        <li className="nav-list-components-1">About Hexad</li>
-        <li className="nav-list-components-1">Reserve</li>
-        <li className="nav-list-components-1">View/Modify</li>
-      </ul>
-      <div className="nav-divider"></div>
-      <ul className="nav-list-2">
-        <li className="nav-list-components-2">Browse Vehicles</li>
-        <li className="nav-list-components-2">Locations</li>
-        <li className="nav-list-components-2">Contact Us</li>
-      </ul>
-      <div className="nav-divider"></div>
-    </aside>
-  );
-}
-function Footer() {
-  return <div className="footer">Footer</div>;
 }
 export default Home;

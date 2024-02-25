@@ -4,6 +4,10 @@ const sql = require('mssql');
 const app = express();
 const port = 3000;
 
+// // Serve the static files from the React app
+// app.use(express.static(path.join(__dirname, 'App/api')));
+// app.use(express.static(path.join(__dirname, 'App/database')));
+
 const dbConfig = {
   server: "database-2.croi8mqokugc.ca-central-1.rds.amazonaws.com",
   database: "Hexad",
@@ -27,10 +31,17 @@ pool.connect()
     console.error('Error connecting to the database:', err);
   });
 
-//const server = app.listen(port, () => {
-//  console.log(`Server is running on http://localhost:${port}`);
-//});
+  let server;
 
+  beforeAll(() => {
+    server = app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`);
+    });
+  });
+  
+  afterAll((done) => {
+    server.close(done);
+  });
 
 
 module.exports = pool;

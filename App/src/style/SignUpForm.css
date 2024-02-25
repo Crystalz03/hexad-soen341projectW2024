@@ -1,0 +1,36 @@
+.signUp {
+  display: grid;
+  place-items: center;
+  background-color: rgb(218, 218, 218);
+  border-radius: 10%;
+  padding-bottom: 15px;
+  width: 900px;
+  height: 900px;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.signUp h2,
+.signUp h6 {
+  margin: 0;
+}
+
+.form {
+  color: rgb(0, 0, 0);
+  display: grid;
+}
+
+.form input {
+  border-radius: 7px;
+  height: 27px;
+  border: none;
+}
+
+.form input:focus {
+  border: 1px solid darkgray;
+}
