@@ -5,16 +5,44 @@ const router = express.Router();
 
 // Create a new System Admin service representative
 router.post('/admin', async (req, res) => {
-  const { id, name, lastName, email} = req.body;
+  const { id, name, lastName, email, password} = req.body;
 
   try {
-    const result = await pool.query`INSERT INTO Admin (ID, Name, Last_Name, Email) VALUES (${id}, ${name}, ${lastName}, ${email})`;
+    const result = await pool.query`INSERT INTO Admin (ID, Name, Last_Name, Email, Password) VALUES (${id}, ${name}, ${lastName}, ${email}, ${password})`;
     res.status(201).json({ message: 'New system admin  created successfully', admin: req.body }); // e.g.Admin = response.body.amin -> Admin.name
   } catch (error) {
     console.error('Error creating a new system admin :', error);
     res.status(500).json({ error: 'Server Error' });
   }
 });
+
+//Get customer's password
+router.get('/signIn/:id', async (req, res) => {
+  const employeeID = req.params.id;
+
+const regex = new RegExp(/^SA/);
+let password;
+
+  try {
+    if (regex.test(employeeID)) {
+      const result = await pool.query`SELECT Password FROM Admin WHERE ID = ${employeeID}`;
+      password = result.recordsets[0][0]?.Password;;
+    } else {
+      const result = await pool.query`SELECT Password FROM CSR WHERE ID = ${employeeID}`;
+      password = result.recordsets[0][0]?.Password;;
+    }
+
+    if (!password) {
+      res.status(404).json({ error: 'Employee not found by ID' });
+    } else {
+      res.status(200).json({password : password}); // e.g. Password = response.body.password 
+    }
+  } catch (error) {
+    console.error('Error finding the employee by ID:', error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+});
+
 
 // Get all System Admins - for system admin 
 router.get('/admin', async (req, res) => {
@@ -36,7 +64,7 @@ router.get('/admin/email/:email', async (req, res) => {
     const admin = result.recordset[0];
 
     if (!admin) {
-      res.status(404).json({ error: 'System admin not found by Email' });
+      res.status(404).json({error: 'System admin not found by Email' });
     } else {
       res.status(200).json({admin : admin}); // e.g.Admin = response.body.admin -> Admin.Name
     }
@@ -46,7 +74,7 @@ router.get('/admin/email/:email', async (req, res) => {
   }
 });
 
-// Get a Sysstem Admin by id - for system admin
+// Get a System Admin by id - for system admin
 router.get('/admin/:id', async (req, res) => {
   const adminId = req.params.id;
 
@@ -68,10 +96,10 @@ router.get('/admin/:id', async (req, res) => {
 // Update a specific System admin by ID
 router.put('/admin/:id', async (req, res) => {
   const adminId = req.params.id;
-  const { name, lastName, email} = req.body;
+  const { name, lastName, email, password} = req.body;
 
   try {
-    const result = await pool.query`UPDATE Admin SET Name = ${name}, Last_Name = ${lastName}, Email = ${email} WHERE ID = ${adminId}`;
+    const result = await pool.query`UPDATE Admin SET Name = ${name}, Last_Name = ${lastName}, Email = ${email}, Password = ${password} WHERE ID = ${adminId}`;
     res.status(200).json({ message: 'System admin information updated successfully', admin: req.body }); // e.g.Admin = response.body.admin -> Admin.name
   } catch (error) {
     console.error('Error updating the Sysetm admin information:', error);

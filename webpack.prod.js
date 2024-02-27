@@ -49,4 +49,9 @@ module.exports = {
       filename: 'styles.css', 
     }),
   ],
+  resolve: {
+    alias: {
+      './app': path.resolve(__dirname, './App/src/App.js'),
+    },
+  },
 };

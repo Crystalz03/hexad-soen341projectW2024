@@ -36,6 +36,7 @@ describe('Customers Routes', () => {
         lastName: 'Doe',
         location: 'Montreal',
         email: 'John.Doe@email.com',
+        password: 'pswd123'
       });
 
     expect(response.status).toBe(201);
@@ -45,8 +46,18 @@ describe('Customers Routes', () => {
         lastName: 'Doe',
         location: 'Montreal',
         email: 'John.Doe@email.com',
+        password: 'pswd123'
     });
   });
+
+    // Test getting a customer's password by Email
+    it('should get a customer password by Email', async () => {
+      const response = await request(app).get('/customers/signIn/John.Doe@email.com');
+  
+      expect(response.status).toBe(200);
+      expect(response.body.password).toEqual('pswd123');
+  
+    });
 
   // Test getting all customers
   it('should get all customers', async () => {
@@ -67,6 +78,7 @@ describe('Customers Routes', () => {
         Location: 'Montreal',
         Email: 'John.Doe@email.com',
         Reservation_ID: null,
+        Password: 'pswd123'
     });
 
   });
@@ -83,6 +95,7 @@ describe('Customers Routes', () => {
         Location: 'Montreal',
         Email: 'John.Doe@email.com',
         Reservation_ID: null,
+        Password: 'pswd123'
     });
 
 
@@ -97,6 +110,7 @@ describe('Customers Routes', () => {
         lastName: 'Doe',
         location: 'Quebec',
         email: 'John.Doe@email.com',
+        password: 'pswd123'
       });
 
     expect(response.status).toBe(200);
@@ -105,6 +119,7 @@ describe('Customers Routes', () => {
         lastName: 'Doe',
         location: 'Quebec',
         email: 'John.Doe@email.com',
+        password: 'pswd123'
     });
     
   });

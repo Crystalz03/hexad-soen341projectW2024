@@ -5,10 +5,10 @@ const router = express.Router();
 
 // Create a new customer service representative
 router.post('/csr', async (req, res) => {
-  const { id, name, lastName, branch, email} = req.body;
+  const { id, name, lastName, branch, email, password} = req.body;
 
   try {
-    const result = await pool.query`INSERT INTO CSR (ID, Name, Last_Name, Branch, Email) VALUES (${id}, ${name}, ${lastName}, ${branch}, ${email})`;
+    const result = await pool.query`INSERT INTO CSR (ID, Name, Last_Name, Branch, Email, Password) VALUES (${id}, ${name}, ${lastName}, ${branch}, ${email}, ${password})`;
     res.status(201).json({ message: 'New customer service representative created successfully', csr: req.body }); // e.g.CSR = response.body.csr -> CSR.name
   } catch (error) {
     console.error('Error creating a new customer service representative:', error);
@@ -68,10 +68,10 @@ router.get('/csr/:id', async (req, res) => {
 // Update a specific csr by ID
 router.put('/csr/:id', async (req, res) => {
   const csrId = req.params.id;
-  const { name, lastName, branch, email} = req.body;
+  const { name, lastName, branch, email, password} = req.body;
 
   try {
-    const result = await pool.query`UPDATE CSR SET Name = ${name}, Last_Name = ${lastName}, Branch = ${branch}, Email = ${email} WHERE ID = ${csrId}`;
+    const result = await pool.query`UPDATE CSR SET Name = ${name}, Last_Name = ${lastName}, Branch = ${branch}, Email = ${email}, Password = ${password} WHERE ID = ${csrId}`;
     res.status(200).json({ message: 'Customer service representative information updated successfully', csr: req.body }); // e.g.CSR = response.body.csr -> CSR.name
   } catch (error) {
     console.error('Error updating the customer service representative information:', error);
