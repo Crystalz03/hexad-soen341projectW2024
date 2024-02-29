@@ -1,18 +1,20 @@
-const cancelReservation=require('CancelReservation.js');
+
+const cancelReservation=require('./CancelReservation');
+
 
 test('Should return true when when given a valid confirmation number to cancel a reservation',() => {
-const result=cancelReservation('MR123456789'); 
-expect(result).toBe(true);});
+const result=cancelReservation('M123456789'); 
+expect(result).toBe((valid));});
 
 test('Should return false when given an confirmation number that does not exist in the database to cancel a reservation',() => {
-const result=cancelReservation('AB123456789'); 
-expect(result).toBe(false);});
+const result=cancelReservation('A123456789'); 
+expect(result).toBe(invalid);});
 
 test('Should return false when it is an empty string',() => {
 const result=cancelReservation(''); 
-expect(result).toBe(false);});
+expect(result).toBe(invalid);});
 
 test('Should return false if special characters are given',() => {
   const result = cancelReservation('!@#$');
-  expect(result).toBe(false);
+  expect(result).toBe(invalid);
 });
