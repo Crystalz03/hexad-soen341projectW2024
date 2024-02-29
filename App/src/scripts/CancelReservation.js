@@ -66,6 +66,7 @@ async function cancelReservation(confNumber,STATUS)
     finally
     {sql.close();}
 
+module.exports=cancelReservation;
 
 }   
     
