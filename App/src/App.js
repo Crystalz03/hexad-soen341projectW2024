@@ -38,7 +38,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/Cancel" exact element={<Cancel/>} />
+          <Route path="/Cancel" exact element={<Cancel />} />
         </Routes>
       </Router>
     </div>
