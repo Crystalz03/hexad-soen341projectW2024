@@ -67,4 +67,21 @@ function SignupForm () { // change to  your component's name
 
 export default SignupForm;
 
-// Get methods... coming soon... hopefully...
+
+
+// http link to when the variable is set in the link
+// ex: http://localhost:9000/customers?id=${formData.id} for /customers/:id in the routes
+
+
+// for get methods
+
+const callAPIGet = () => {
+  fetch("http://localhost:9000/vehicles", {
+    method: 'GET', 
+  })
+    .then(data => data.json())
+    .then(data => {console.log(data.vehicle[0][0].ID); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
+      setApiResponse(data                              // data.vehicle[0] => array of vehicles -- data.vehicle[0][0] => 1st vehicle in the list -- data.vehicle[0][0].ID == ID 
+      )})
+    .catch(error => console.error(error));
+};
