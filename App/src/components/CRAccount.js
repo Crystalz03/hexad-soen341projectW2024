@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import "../style/SignUpForm.css";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-function SignupForm() {
-  // Function to generate a random alphanumeric string of specified length
+ function CRAccount() {
   function generateRandomString(length) {
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const characters = "0123456789";
     let result = "";
     for (let i = 0; i < length; i++) {
       result += characters.charAt(
@@ -15,29 +13,25 @@ function SignupForm() {
     }
     return result;
   }
-
-  // Function to generate a unique customer ID with the prefix 'CS'
-  function generateCustomerId() {
-    const prefix = "CS";
+  function generateRepId() {
+    const prefix = "CR";
     const uniqueId = generateRandomString(8); // Generate a random string of 8 characters
     return prefix + uniqueId;
   }
 
   const [formData, setFormData] = useState({
-    id: generateCustomerId(),
+    id: generateRepId(),
     name: "",
     lastName: "",
-    location: "",
+    branch: "",
     email: "",
     password: "",
   });
 
-  const [error, setError] = useState(""); // State to store error message
   const navigate = useNavigate();
-
   const callAPI = async () => {
     try {
-      const response = await fetch("http://localhost:9000/customers", {
+      const response = await fetch("http://localhost:9000/csr", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,12 +42,10 @@ function SignupForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          "This email is already associated with an account. Please sign in."
-        );
+        throw new Error("Please try again.");
       }
 
-      navigate("/");
+      navigate("/AdminDashboard");
     } catch (error) {
       setError(error.message);
       console.error(error);
@@ -72,13 +64,10 @@ function SignupForm() {
       [name]: value,
     }));
   };
-
   return (
     <form onSubmit={handleSubmit} action="Sign Up">
       <div className="form">
-        {error && <p className="error">{error}</p>}{" "}
-        {/* Display error message */}
-        <div className="split-input">
+        <div>
           <input
             type="text"
             id="name"
@@ -97,21 +86,18 @@ function SignupForm() {
           ></input>
         </div>
         <br />
+        <select id="branch">
+          <option value="option 1">Laval</option>
+          <option value="option 2">Montréal</option>
+          <option value="option 3">Airport</option>
+        </select>
+        <br />
         <input
           type="email"
           id="email"
           name="email"
           required={true}
           placeholder="E-mail"
-          onChange={handleChange}
-        ></input>
-        <br />
-        <input
-          type="text"
-          id="location"
-          name="location"
-          required={true}
-          placeholder="Location"
           onChange={handleChange}
         ></input>
         <br />
@@ -130,4 +116,4 @@ function SignupForm() {
   );
 }
 
-export default SignupForm;
+export default CRAccount;
