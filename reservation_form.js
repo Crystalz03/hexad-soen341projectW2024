@@ -1,36 +1,26 @@
-import { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
-
-//https://youtu.be/KX7ehE0QDJM
+import { useState } from 'react';
+import pool from "./App/database/db";
+import router from "./App/api/routes/vehicleRoutes";
     
   
 
 function AddReservation() {
   
   const [formData, setFormData] = useState({
-    ID: '',
-    Vehicle_ID: '',
+    id: '',
+    vehicleID: '',
     Customer_ID: '',
-    Pick_Up_Date: '',
-    Return_Date: '',
-    Extra_Equipment: '',
-    Additional_Services: '',
-    Paid: false,
-    Total: '',
+    pickUpDate: '',
+    returnDate: '',
+    extraEquipment: '',
+    additionalServices: '',
+    total: '',
   });
 
-  //ID, Vehicle_ID, Customer_ID, Pick_Up_Date, Return_Date, Extra_Equipment, Additional_Services, Paid, Total
-
-  /*router.get('/vehicles', async (req, res) => {
-  try {
-    const result = await pool.query`SELECT * FROM Vehicle`;
-    res.status(200).json({vehicle : result.recordsets}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
-  } catch (error) {
-    console.error('Error retrieving vehicles:', error);
-    res.status(500).json({ error: 'Server Error' });
-  }
-  });*/ 
   const [apiResponse, setApiResponse] = useState("");
+
+  //ID, Vehicle_ID, Customer_ID, Pick_Up_Date, Return_Date, Extra_Equipment, Additional_Services, Paid, Total
+//id, vehicleID, customerID, pickUpDate, returnDate, extraEquipment, additionalServices, total
 
   const callAPI = () => {
     fetch("http://localhost:9000/Reservation", {
@@ -46,8 +36,56 @@ function AddReservation() {
     }
 
   const validateForm = () => {
-    return true; // add you form validation logic here use formData's values
-  } // add you form validation logic here use formData's values
+
+    //finding the customer's account who made the reservation by email
+    router.get('/customers/email/:email', async (req, res) => {
+      const customerEmail = req.params.email;
+
+      try {
+        const result = await pool.query`SELECT * FROM Customers WHERE Email = ${formData.email}`;
+        const customer = result.recordset[0];
+
+        if (!customer) {
+          res.status(404).json({ error: 'Customer not found by Email' });
+          return false;
+        } else {
+          res.status(200).json({customer : customer}); // e.g.Customer = response.body.customer -> Customer.Name
+        }
+      } catch (error) {
+        console.error('Error finding the customer by Email:', error);
+        res.status(500).json({ error: 'Server Error' });
+        return false;
+      }
+    });
+
+    //checking the availability of the vehicle
+    router.get('/vehicles/:id', async (req, res) => {
+      const vehicleId = req.params.id;
+
+      try {
+        const result = await pool.query`SELECT * FROM Vehicle WHERE ID = ${vehicleId}`;
+        const vehicle = result.recordset[0];
+
+        if (!vehicle) {
+          res.status(404).json({ error: 'Vehicle not found' });
+          return false;
+        } else {
+          res.status(200).json({vehicle : vehicle}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
+          if(vehicle.Availability=="available"){
+            vehicle.Availability="not available";
+          }
+        }
+      } catch (error) {
+        console.error('Error retrieving vehicle:', error);
+        res.status(500).json({ error: 'Server Error' });
+        return false;
+      }
+    });
+
+
+
+    return true;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,71 +105,69 @@ function AddReservation() {
     }));
   };
 
-    
+  router.get('/vehicles', async (req, res) => {
+    try {
+      const carArray = await pool.query`SELECT * FROM Vehicles`;
+      res.status(200).json({vehicle : carArray.recordsets}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
+    } catch (error) {
+      console.error('Error retrieving vehicles:', error);
+      res.status(500).json({ error: 'Server Error' });
+      return false;
+    }
+  });
 
   return (
-      <header>
 
         <form onSubmit={handleSubmit}>
 
-        <label for='first_name'>First name:</label>
+        <label>Email:</label>
         <input 
-        name="first_name" 
-        value={reservation.first_name || ""} 
-        onChange={handleChange} 
-        type="text" 
-        placeholder='First name' 
-        id='first_name'/>
-
-        <label for='last_name'>Last name:</label>
-        <input 
-        name="last_name" 
-        value={reservation.last_name || ""} 
-        onChange={handleChange} 
-        type="text" 
-        placeholder='Last name' 
-        id='last_name'/>
-        <br/>
-
-        <label for='email'>Email:</label>
-        <input 
-        name="email" 
-        value={reservation.email || ""} 
+        name="email"
+        required={true}
+        value={formData.email || ""}
         onChange={handleChange} 
         type='text' 
         placeholder='Email Address' 
         id='email'/><br/>
 
 
-        <label for='start_reservation'>Beginning date of your reservation:</label>
+        <label>Pick-up date of your reservation:</label>
         <input 
-        name="start_reservation" 
-        value={reservation.start_reservation || ""} 
+        name="pickUpDate"
+        required={true}
+        value={formData.pickUpDate || ""}
         onChange={handleChange} 
         type='date' 
         placeholder='Beginning date of reservation' 
-        id='start_resveration'/><br/>
+        id='pickUpDate'/><br/>
 
-        <label for='end_reservation'>Ending date of your reservation:</label>
+        <label>Return date of your reservation:</label>
         <input 
-        name="end_reservation" 
-        value={reservation.end_reservation || ""} 
+        name="returnDate"
+        required={true}
+        value={formData.returnDate || ""}
         onChange={handleChange} 
         type='date' 
-        placeholder='Ending date of reservation' 
-        id='end_reservation'/><br/>
+        placeholder='Return date of reservation'
+        id='returnDate'/><br/>
+
+
         
-        <label for='type_car'>Choose your preferred type of car:</label><br/>
-          <select name='type_car' id='type_car' value={reservation.type_car||""} onChange={handleChange}>
-          <option value="all">All</option>
-          <option value="SUV">SUV</option>
-          <option value="Sedan">Sedan</option>
-          <option value="Semi-Truck">Semi-Truck</option>
-          <option value="Van">Van</option>
-          </select><br/>
+        <label>Choose your preferred type of car:</label><br/>
+          <select name='vehicleID' id='vehicleID' onChange={handleChange}>
+          <>
+          {carArray.map(function(car) {
+            return (
+                <option value={formData.vehicleID||car.id}>
+                  ${car.model}
+                </option>
+            )
+          })}
+        </>
+        </select><br/>
         <input type='submit'></input>
     </form>
-      </header>
   );
 }
+export default AddReservation;
 
