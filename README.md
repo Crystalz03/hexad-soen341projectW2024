@@ -27,12 +27,12 @@ Hexad is a car rental website providing an intuitive user experience allowing fo
 
 ## Run the local version of the website
  ```bash
- npm start
+npm start
  ```
 
 # Build Project for development
  ```bash
-    npm build:dev
+npm build:dev
 ```
 
 # Notes
