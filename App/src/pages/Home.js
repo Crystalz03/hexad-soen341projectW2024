@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./../style/style.css";
 import { NavLink } from "react-router-dom";
 
@@ -38,7 +37,7 @@ function Main() {
             <li className="nav-list-components-1">Sign In/Sign Up</li>
             <li className="nav-list-components-1">About Hexad</li>
             <li className="nav-list-components-1">Reserve</li>
-            <li className="nav-list-components-1"><NavLink to="./pages/Cancel.js">View/Cancel/Modify</NavLink></li>
+            <li className="nav-list-components-1"><Link to="/Cancel">View/Cancel/Modify</Link></li>
           </ul>
           <div className="nav-divider"></div>
           <ul className="nav-list-2">
