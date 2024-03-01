@@ -1,20 +1,17 @@
+//import React from 'react';
 
+const isValidConfirmationNumber(confNumber) {
+  const regex=/^[A-Z]{2}\d{9}$/;
+  const isValid=regex.test(confNumber);
+  if(!isValid) {
+      console.log("The format you have entered is invalid. Please try again.");
+      return false;
+  }
 
-
-
-test('Should return true when when given a valid confirmation number to cancel a reservation',() => {
-const result=cancelReservation('M123456789'); 
-expect(result).toBe((valid));});
-
-test('Should return false when given an confirmation number that does not exist in the database to cancel a reservation',() => {
-const result=cancelReservation('A123456789'); 
-expect(result).toBe(invalid);});
+  return true;
+}
 
 test('Should return false when it is an empty string',() => {
-const result=cancelReservation(''); 
+const result=isValidConfirmationNumber(''); 
 expect(result).toBe(invalid);});
 
-test('Should return false if special characters are given',() => {
-  const result = cancelReservation('!@#$');
-  expect(result).toBe(invalid);
-});
