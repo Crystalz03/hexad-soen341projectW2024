@@ -41,13 +41,13 @@ function SignInForm() {
       // Redirect user based on their role
       switch (data.role) {
         case "customer":
-          navigate("/home");
+          navigate("/");
           break;
         case "cr":
-          navigate("/crDashboard");
+          navigate("/CustomerRepresentativeDashboard");
           break;
         case "admin":
-          navigate("/adminDashboard");
+          navigate("/AdminDashboard");
           break;
         default:
           // Handle unknown roles or errors
