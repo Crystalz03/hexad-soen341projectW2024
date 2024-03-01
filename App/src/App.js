@@ -1,7 +1,7 @@
 import React,  { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import CancelPage from "./pages/CancelPage";
+import Cancel from "./pages/Cancel";
 
 function App() {
 
@@ -38,7 +38,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="" exact element={<CancelPage/>} />
+          <Route path="*" exact element={<Cancel/>} />
         </Routes>
       </Router>
     </div>

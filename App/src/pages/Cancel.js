@@ -1,8 +1,8 @@
 
 import React from 'react';
-import CancelReservationForm from '../CancelReservation';
+import CancelReservationForm from '../components/CancelReservation';
 
-function CancelPage() {
+function Cancel() {
   return (
     <div>
       <h2>Cancel Reservation</h2>
@@ -11,4 +11,4 @@ function CancelPage() {
   );
 }
 
-export default CancelPage;
+export default Cancel;
