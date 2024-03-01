@@ -10,3 +10,29 @@ Hexad is a car rental website providing an intuitive user experience allowing fo
 - Yaroslava Kost - back-end developper, QA
 - Rania Maoukout - back-end developper, QA
 - Malak Sefrioui - front-end developper, QA
+
+# Run Project Locally
+
+## Downloading Node.js
+
+1. **Visit the Node.js Official Website:**
+   - Go to [Node.js official website](https://nodejs.org/).
+
+2. **Install Project Dependencies:**
+   - Navigate to the project's root directory in the terminal and run:
+     ```bash
+     npm install
+     ```
+     This command installs the project dependencies specified in the `package.json` file.
+
+## Run the local version of the website
+ - npm start
+
+# Build Project for development
+    - npm build:dev 
+
+# Notes
+- No directly pushing to master branch - PRs should be created for new features, improvements and bugs.
+- Branches should follow the naming convention: "US-#.#_<Feature/Bug Name>"
+- Unit tests must pass
+- New unit tests must be added alongside features
