@@ -10,6 +10,7 @@ var customerRouter = require('./routes/customerRoutes');
 var csrRouter = require('./routes/csrRoutes');
 var adminRouter = require('./routes/adminRoutes');
 var vehicleRouter = require('./routes/vehicleRoutes');
+var reservationsRouter = require('./routes/reservationRoutes');
 var testAPIRouter = require("./routes/testAPI");
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/', customerRouter);
 app.use('/', csrRouter);
 app.use('/', adminRouter);
 app.use('/', vehicleRouter);
+app.use('/', reservationsRouter);
 app.use("/testAPI", testAPIRouter);
 
 

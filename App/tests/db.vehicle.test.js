@@ -35,6 +35,7 @@ describe('Vehicle Routes', () => {
         category: 'Compact',
         model: 'Civic',
         price: 25000.00,
+        availability: 'available'
       });
 
     expect(response.status).toBe(201);
@@ -45,6 +46,7 @@ describe('Vehicle Routes', () => {
       category: 'Compact',
       model: 'Civic',
       price: 25000.00,
+      availability: 'available'
     });
   });
 
@@ -66,6 +68,7 @@ describe('Vehicle Routes', () => {
       Category: 'Compact',
       Model: 'Civic',
       Price: 25000.00,
+      Availability: 'available'
 
     });
   });
@@ -79,6 +82,7 @@ describe('Vehicle Routes', () => {
         category: 'Midsize',
         model: 'Pilot',
         price: 35999.99,
+        availability: 'not available'
       });
 
     expect(response.status).toBe(200);
@@ -87,6 +91,7 @@ describe('Vehicle Routes', () => {
       category: 'Midsize',
       model: 'Pilot',
       price: 35999.99,
+      availability: 'not available'
     });
   });
 
