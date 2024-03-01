@@ -47,6 +47,8 @@ router.get('/customers', async (req, res) => {
   }
 });
 
+
+
 // Get a customer by email - for system admin
 router.get('/customers/email/:email', async (req, res) => {
   const customerEmail = req.params.email;
