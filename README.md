@@ -26,10 +26,14 @@ Hexad is a car rental website providing an intuitive user experience allowing fo
      This command installs the project dependencies specified in the `package.json` file.
 
 ## Run the local version of the website
- - npm start
+ ```bash
+ npm start
+ ```
 
 # Build Project for development
-    - npm build:dev 
+ ```bash
+    npm build:dev
+```
 
 # Notes
 - No directly pushing to master branch - PRs should be created for new features, improvements and bugs.
