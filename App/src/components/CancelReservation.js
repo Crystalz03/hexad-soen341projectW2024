@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 
 
+
 function isFormatValidConfirmationNumber(confNumber) {
     const regex=/^[A-Z]{1}\d{9}$/;
     const isValid=regex.test(confNumber);
