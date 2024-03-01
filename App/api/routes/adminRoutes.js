@@ -23,6 +23,8 @@ router.get('/signIn/:id', async (req, res) => {
 const regex = new RegExp(/^SA/);
 let password;
 
+  // add customer \regexp using email 
+
   try {
     if (regex.test(employeeID)) {
       const result = await pool.query`SELECT Password FROM Admin WHERE ID = ${employeeID}`;

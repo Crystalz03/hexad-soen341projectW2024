@@ -1,6 +1,10 @@
-import React,  { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
+import AdminDashboard from "./pages/AdminDashboard";
+import CreateCRAccount from "./pages/CreateCRAccount";
+import SignIn from "./pages/SignIn";
 import Cancel from "./pages/Cancel";
 
 function App() {
@@ -34,15 +38,14 @@ function App() {
 
 
   return (
-    <div className="app">
-      <Router>
+    <Router>
+      <div className="app">
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/Cancel" exact element={<Cancel />} />
+          <Route path="/Cancel" exact element={<Cancel/>} />
         </Routes>
-      </Router>
-    </div>
-    
+      </div>
+    </Router>
   );
 }
 
