@@ -1,47 +1,69 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
+function CancelReservationForm() {
 
-
-function isFormatValidConfirmationNumber(confNumber) {
+    const [confirmationNumber, setConfirmationNumber] = useState('');
+    const navigate = useNavigate();
+    
+    function isFormatValidConfirmationNumber(confirmationNumber) {
     const regex=/^[A-Z]{1}\d{9}$/;
-    const isValid=regex.test(confNumber);
+    const isValid=regex.test(confirmationNumber);
     if(!isValid) {
         console.log("The format you have entered is invalid. Please try again.");
         return false;
     }
     return true;
 
-}
+    }
 
 
-function CancelReservationForm() {
+    const callAPI = async () => {
+        try {
+          const response = await fetch(`http://localhost:9000/reservationRoute/${confirmationNumber}`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+    
+          });
+    
+          const data = await response.json();
+    
+          if (response.ok){
+            console.log('Reservation successfully canceled');
+           }
+           else {  console.error('Failed to cancel reservation:', response.statusText);}
+        
+        } catch (error) {
+          setError(error.message);
+          console.error(error);
+        }
+      };
+    
 
-    const [confirmationNumber, setConfirmationNumber] = useState('');
+    const handleSubmit = (e) => { 
+        e.preventDefault(); 
+          callAPI();
 
-    const handleSubmit = (e) => { // onSubmit it will make the make the API call 
-        e.preventDefault(); // prevent empty values. might need to remove it for some forms
-        //if (validateForm()) {
-        callAPI();
-        // add redirection to another pager
-        //}
-    };
-
-    const handleChange = (e) => {
+      };
+    
+      const handleChange = (e) => {
         setConfirmationNumber(e.target.value);
-    };
+      };
 
 return (
     <form  onSubmit={handleSubmit}  action="CancelR">
       <label> Confirmation Number:
       <input
             type="text"
-            value={confirmationNumber}
-            onChange={handleChange}
+            value={confirmationNumber} 
             placeholder="Enter Confirmation Number"
             required
-          />
+            onChange={handleChange}
+          ></input>
       </label>
         
         <button type="submit">Cancel</button>
