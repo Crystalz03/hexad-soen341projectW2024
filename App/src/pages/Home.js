@@ -1,6 +1,6 @@
 import React from "react";
-
 import "./../style/style.css";
+import {Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -37,7 +37,7 @@ function Main() {
             <li className="nav-list-components-1">Sign In/Sign Up</li>
             <li className="nav-list-components-1">About Hexad</li>
             <li className="nav-list-components-1">Reserve</li>
-            <li className="nav-list-components-1">View/Modify</li>
+            <li className="nav-list-components-1"><Link to="/Cancel">View/Cancel/Modify</Link></li>
           </ul>
           <div className="nav-divider"></div>
           <ul className="nav-list-2">
@@ -122,7 +122,7 @@ function Navigation() {
         <li className="nav-list-components-1">Sign In/Sign Up</li>
         <li className="nav-list-components-1">About Hexad</li>
         <li className="nav-list-components-1">Reserve</li>
-        <li className="nav-list-components-1">View/Modify</li>
+        <li className="nav-list-components-1">View/Cancel/Modify</li>
       </ul>
       <div className="nav-divider"></div>
       <ul className="nav-list-2">
