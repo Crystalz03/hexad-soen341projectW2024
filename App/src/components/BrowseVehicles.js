@@ -71,7 +71,7 @@ function Main({ vehicles, loading, error }) {
           </ul>
           <div className="nav-divider"></div>
         </aside>
-        <div className="main-browse-content">
+        <div className="main-content">
           <h2>Browse Vehicles</h2>
           <ul>
             {vehicles.map((vehicle) => (
