@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Header from "./Home";
-import Footer from "./Home";
+import Header from "./Header";
+import Footer from "./Footer";
 
 import "./../style/style.css";
 
@@ -82,6 +82,9 @@ function Main({ vehicles, loading, error }) {
                 <div>Model: {vehicle.Model}</div>
                 <div>Price: {vehicle.Price}</div>
                 <div>Availability: {vehicle.Availability}</div>
+                <div>
+                  <button>Reserve</button>
+                </div>
               </li>
             ))}
           </ul>
