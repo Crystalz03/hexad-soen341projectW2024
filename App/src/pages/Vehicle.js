@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import "./../style/style.css";
 
+
 const VehicleForm = () => {
     const [formData, setFormData] = useState({
       id: '',
@@ -16,9 +17,35 @@ const VehicleForm = () => {
       setFormData({ ...formData, [name]: value });
     };
   
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
       console.log('Submitted Data:', formData);
+      const callAPI = async () => {
+        try {
+          const response = await fetch("http://localhost:9000/csr", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          });
+    
+          const data = await response.json();
+    
+          if (!response.ok) {
+            throw new Error("Please try again.");
+          }
+    
+        } catch (error) {
+          setError(error.message);
+          console.error(error);
+        }
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        callAPI();
+      };
       setFormData({
         id: '',
         type: '',
@@ -26,6 +53,7 @@ const VehicleForm = () => {
         model: '',
         price: '',
       });
+      
     };
   
     return (
