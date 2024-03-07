@@ -6,6 +6,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
 import SignIn from "./pages/SignIn";
 
+
 function App() {
 
   const [apiResponse, setApiResponse] = useState("");
@@ -44,7 +45,6 @@ function App() {
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
-    
           <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} />
         </Routes>
       </div>

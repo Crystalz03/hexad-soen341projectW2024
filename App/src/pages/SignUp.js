@@ -9,7 +9,7 @@ function SignUp() {
       <div className="signUp">
         <h2>Create Account</h2>
         <h6>
-          Already have an account? Sing In
+          Already have an account? <Link to="/SignIn">Sing In</Link>
         </h6>
         <br />
         <SignupForm />
