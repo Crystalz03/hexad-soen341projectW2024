@@ -2,6 +2,9 @@ import React from "react";
 
 import "./../style/style.css";
 
+import {Link } from "react-router-dom";
+import VehicleForm from "../pages/Vehicle.js";
+
 function Home() {
   return (
     <div>
@@ -30,6 +33,7 @@ function Header() {
 function Main() {
   return (
     <div className="main">
+    
       <div className="general-structure">
         <aside className="nav sticky">
           <div className="company-name-nav all-caps">hexad</div>
@@ -44,6 +48,7 @@ function Main() {
             <li className="nav-list-components-2">Browse Vehicles</li>
             <li className="nav-list-components-2">Locations</li>
             <li className="nav-list-components-2">Contact Us</li>
+            <li className="nav-list-components-2"><Link to="/Vehicle.js" >Create New Vehicle</Link></li>
           </ul>
           <div className="nav-divider"></div>
         </aside>
