@@ -1,11 +1,11 @@
 import React from "react";
-//import "../style/ReservationForm.css";
-import AddReservation from "../components/reservation_form";
+import "../style/ReservationForm.css";
+import ReservationForm from "../components/ReservationForm";
 
 function Reserve() {
   return (
     <><div className="pageTitle">Start a reservation</div>
-    <div className="reservationForm"><AddReservation /></div></>
+    <div className="reservationForm"><ReservationForm /></div></>
         );
 }
 

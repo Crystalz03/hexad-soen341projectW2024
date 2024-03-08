@@ -14,7 +14,7 @@ function generateRandomString(length) {
   return result;
 }  
 
-function AddReservation() {
+function ReservationForm() {
   
   const [formData, setFormData] = useState({
     id: '',
@@ -181,5 +181,5 @@ function AddReservation() {
     </form>
   );
 }
-export default AddReservation;
+export default ReservationForm;
 
