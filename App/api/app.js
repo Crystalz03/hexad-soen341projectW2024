@@ -50,4 +50,12 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.get('/*', function(req, res) {
+  redirect.sendFile(path,join(__dirname, '../public/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
+
 module.exports = app;
