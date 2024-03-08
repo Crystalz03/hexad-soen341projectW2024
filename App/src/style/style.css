@@ -299,10 +299,13 @@
     height: 200px;
     margin-bottom: 100px;
   }
+  
+
   .footer {
     background-color: var(--secondary-text-color);
     height: var(--footer-height);
     position: sticky;
     bottom: 0;
     margin-left: 180px;
+
   }
