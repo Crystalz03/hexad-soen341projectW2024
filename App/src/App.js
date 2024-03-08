@@ -1,6 +1,7 @@
 import React,  { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import Reserve from "./pages/Reserve";
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" exact element={<Home />} />
+          <Route path="/Reserve" exact element={<Reserve />} />
         </Routes>
       </Router>
     </div>
