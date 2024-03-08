@@ -38,13 +38,17 @@ function Main() {
             <li className="nav-list-components-1">About Hexad</li>
             <li className="nav-list-components-1">Reserve</li>
             <li className="nav-list-components-1">
-              <Link to="/Cancel">View/Cancel/Modify</Link>
+              <Link to="/Cancel" className="link-style">
+                View/Cancel/Modify
+              </Link>
             </li>
           </ul>
           <div className="nav-divider"></div>
           <ul className="nav-list-2">
             <li className="nav-list-components-2">
-              <Link to="/Browse">Browse Vehicles</Link>
+              <Link to="/Browse" className="link-style">
+                Browse Vehicles
+              </Link>
             </li>
             <li className="nav-list-components-2">Locations</li>
             <li className="nav-list-components-2">Contact Us</li>

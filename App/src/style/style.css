@@ -117,6 +117,7 @@ header {
 .nav-list-components-2 {
   transition: color 0.3s;
 }
+
 .nav-list-components-1:hover,
 .nav-list-components-2:hover {
   color: var(--hover-button);
@@ -127,6 +128,10 @@ header {
   text-align: center;
   margin-top: 60px;
   margin-bottom: 30px;
+  transition: color 0.3s;
+}
+.company-name-nav:hover {
+  color: var(--hover-button);
 }
 
 .nav-list-1,
@@ -309,4 +314,8 @@ header {
   position: sticky;
   bottom: 0;
   margin-left: 180px;
+}
+.link-style {
+  text-decoration: none;
+  color: inherit;
 }
