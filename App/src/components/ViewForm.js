@@ -1,13 +1,14 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import './../style/Cancel.css';
+import './../style/View.css';
 
 
 
-function CancelReservationForm() {
+function ViewReservationForm() {
 
     const [confirmationNumber, setConfirmationNumber] = useState('');
+    const [reservationDetails, setReservationDetails] = useState(null);
     const [error, setError] = useState(null); 
     const navigate = useNavigate();
     
@@ -26,12 +27,12 @@ function CancelReservationForm() {
 
     const callAPI = async () => {
       if (!isFormatValidConfirmationNumber(confirmationNumber)) {
-        return; 
+        return;
     }
 
         try {
           const response = await fetch(`http://localhost:9000/reservationRoute/${confirmationNumber}`, {
-            method: "DELETE",
+            method: "VIEW",
             headers: {
               "Content-Type": "application/json",
             },
@@ -41,10 +42,10 @@ function CancelReservationForm() {
           const data = await response.json();
     
           if (response.ok){
-            console.log('Reservation successfully canceled');
+           //console.log('Reservation successfully canceled');
            }
            else { setError(response.statusText);
-             console.error('Failed to cancel reservation:', response.statusText);}
+             console.error('Failed to retrieve reservation:', response.statusText);}
         
         } catch (error) {
           setError(error.message);
@@ -52,16 +53,10 @@ function CancelReservationForm() {
         }
       };
     
-      
-    const handleCancel = () => {
-      const confirmed = window.confirm("Are you sure you want to cancel this reservation?");
-      if (confirmed) {
-          callAPI();
-      }};
 
     const handleSubmit = (e) => { 
         e.preventDefault(); 
-         handleCancel();
+          callAPI();
 
       };
     
@@ -70,7 +65,7 @@ function CancelReservationForm() {
       };
 
 return (
-    <form  onSubmit={handleSubmit}  action="CancelR">
+    <form  onSubmit={handleSubmit}  action="ViewR">
       <label> Confirmation Number:
       <input
             type="text"
@@ -81,9 +76,9 @@ return (
           ></input>
       </label>
         
-        <button type="submit">Cancel</button>
+        <button type="submit">View</button>
    
     </form>
   );
 }
-export default CancelReservationForm;
+export default ViewReservationForm;
