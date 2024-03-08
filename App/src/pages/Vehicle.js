@@ -7,7 +7,7 @@ import Footer from "./../components/Footer";
 const VehicleForm = () => {
 
   
- /* fetch("http://localhost:9000/vehicles", {
+ /*fetch("http://localhost:9000/vehicles", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -23,7 +23,7 @@ const VehicleForm = () => {
           .then(data => {
             console.log("API Response:", data); //!!FOR DEBUGGING ONLY remove the log when done 
           })
-          .catch(error => console.error(error));;*/
+          .catch(error => console.error(error));*/
 
           
     const [formData, setFormData] = useState({
@@ -32,7 +32,9 @@ const VehicleForm = () => {
       category: '',
       model: '',
       price: '',
+      availability: '',
     });
+
     const [apiResponse, setApiResponse] = useState(""); 
   
     const handleChange = (e) => {
@@ -55,13 +57,14 @@ const VehicleForm = () => {
           }).catch(error => console.error(error));
 
       callAPIGet();
-  
+      
       setFormData({
         id: '',
         type: '',
         category: '',
         model: '',
         price: '',
+        availability: '',
       });
       
     };
@@ -83,11 +86,30 @@ const VehicleForm = () => {
     };
 
     return (
-      <body>
+      <div>
         
-      <Header></Header>
-      
-      <form class="form-1" onSubmit={handleSubmit}>
+      <Header/>
+      <aside className="nav sticky">
+          <div className="company-name-nav all-caps">hexad</div>
+          <ul className="nav-list-1">
+            <li className="nav-list-components-1">Sign In/Sign Up</li>
+            <li className="nav-list-components-1">About Hexad</li>
+            <li className="nav-list-components-1">Reserve</li>
+            <li className="nav-list-components-1">View/Cancel/Modify
+            </li>
+          </ul>
+          <div className="nav-divider"></div>
+          <ul className="nav-list-2">
+            <li className="nav-list-components-2 current-page">
+              Browse Vehicles
+            </li>
+            <li className="nav-list-components-2">Locations</li>
+            <li className="nav-list-components-2">Contact Us</li>
+          </ul>
+          <div className="nav-divider"></div>
+        </aside>
+        <div className="main-content">
+           <form class="form-1" onSubmit={handleSubmit}>
       <h2 class="form-header">Create New Vehicle</h2>
         <label>
           ID:
@@ -148,15 +170,28 @@ const VehicleForm = () => {
           />
         </label>
         <br />
-  
+        <label>
+          Availibility:
+          <input
+            type="text"
+            name="availibility"
+            value={formData.availability}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
         <button class="button-1" role="button" type="submit">Submit</button>
       </form>
+
+        </div>
+     
       <div>
       <BrowseVehicles  />
     </div>
 
       <Footer></Footer>
-      </body>
+      </div>
     );
   };
 
