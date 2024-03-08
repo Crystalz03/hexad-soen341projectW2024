@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import "./../style/style.css";
-
+import Header from "./../components/Header";
+import Footer from "./../components/Footer";
     
 const VehicleForm = () => {
 
@@ -83,8 +84,10 @@ const VehicleForm = () => {
 
     return (
       <body>
-      <label >
-      <form onSubmit={handleSubmit}>
+        
+      <Header></Header>
+      
+      <form class="form-1" onSubmit={handleSubmit}>
       <h2 class="form-header">Create New Vehicle</h2>
         <label>
           ID:
@@ -152,7 +155,7 @@ const VehicleForm = () => {
       <BrowseVehicles  />
     </div>
 
-      </label>
+      <Footer></Footer>
       </body>
     );
   };
@@ -223,7 +226,7 @@ function Main({ vehicles }) {
                 <div>Model: {vehicle.model}</div>
                 <div>Price: {vehicle.price}</div>
                 <div>
-                  <button>Edit</button>
+                  <button class="button-1">Edit</button>
                 </div>
               </li>
             ))}
