@@ -52,14 +52,28 @@ describe('CSR Routes', () => {
     });
   });
 
-       // Test getting an crs's password by ID
-       it('should get a csr password by ID', async () => {
-        const response = await request(app).get('/signIn/CSR1234567');
-    
-        expect(response.status).toBe(200);
-        expect(response.body.password).toEqual('pswd123');
-    
-      });
+     // Test csr Login 
+     it('should test login states', async () => {
+
+      // successful
+      var response = await request(app).get('/signIn/CSR1234567/pswd123');
+  
+      expect(response.status).toBe(200);
+      expect(response.body.message).toEqual('Login successful');
+
+      // incorrect password
+      response = await request(app).get('/signIn/CSR1234567/pswd1234');
+  
+      expect(response.status).toBe(401);
+      expect(response.body.message).toEqual('Incorrect password');
+
+      // not found
+      response = await request(app).get('/signIn/CSR1234566/pswd123');
+  
+      expect(response.status).toBe(404);
+      expect(response.body.message).toEqual('User not found');
+  
+    });
 
   // Test getting all csr
   it('should get all csr', async () => {
