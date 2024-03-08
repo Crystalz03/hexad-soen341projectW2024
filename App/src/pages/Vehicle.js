@@ -49,24 +49,12 @@ const VehicleForm = () => {
             },
             body: JSON.stringify(formData),
           }).then(res => res.json()).then(data => {
-            console.log("API Response:", data); //!!FOR DEBUGGING ONLY remove the log when done
+            console.log("API Response:", data); 
             setApiResponse(data); // Update state with the JSON response
           }).catch(error => console.error(error));
 
-      fetch("http://localhost:9000/vehicles", {
-        method: 'GET', 
-      })
-        .then(data => data.json())
-        .then(data => {console.log(data.vehicle[0][0].ID); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
-          setApiResponse(data                              // data.vehicle[0] => array of vehicles -- data.vehicle[0][0] => 1st vehicle in the list -- data.vehicle[0][0].ID == ID 
-          )})
-        .catch(error => console.error(error));
-    
-     /* const handleSubmit = (e) => {
-        e.preventDefault();
-        callAPI();
-      };*/
-
+      callAPIGet();
+  
       setFormData({
         id: '',
         type: '',
@@ -94,8 +82,10 @@ const VehicleForm = () => {
     };
 
     return (
-      <label> Create New Vehicle
+      <body>
+      <label >
       <form onSubmit={handleSubmit}>
+      <h2 class="form-header">Create New Vehicle</h2>
         <label>
           ID:
           <input
@@ -156,14 +146,14 @@ const VehicleForm = () => {
         </label>
         <br />
   
-        <button type="submit">Submit</button>
+        <button class="button-1" role="button" type="submit">Submit</button>
       </form>
       <div>
       <BrowseVehicles  />
     </div>
 
       </label>
-      
+      </body>
     );
   };
 

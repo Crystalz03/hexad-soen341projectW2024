@@ -306,3 +306,58 @@
     bottom: 0;
     margin-left: 180px;
   }
+
+ 
+
+
+
+  form {
+    outline: #EA4C89;
+    margin: 0;
+    text-align: center;
+    display: inline-block;
+    margin: 10px 290px;
+    width: 362px;
+    padding: 25px;
+    border-radius: 8px;
+    background: #f1f1f1;
+    border: 1px solid #e5e5e5;
+    div {
+      position: relative;
+      margin: 0 0 1.5em;
+    }
+  }
+  label {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    margin: 0 0 .5em;
+    font-weight: bold;
+    color: #222;
+  }
+
+  .form-header {
+    text-align: center;
+    display: inline-block;
+  }
+
+.button-1 {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  margin: 0;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  transition: color 100ms;
+  vertical-align: baseline;
+  touch-action: manipulation;
+}
