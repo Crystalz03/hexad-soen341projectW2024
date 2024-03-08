@@ -44,6 +44,10 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/Reserve" exact element={<Reserve />} />
+          <Route path="/SignUp" exact element={<SignUp />} />
+          <Route path="/SignIn" exact element={<SignIn />} />
+          <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
+          <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} />
         </Routes>
       </div>
     </Router>
