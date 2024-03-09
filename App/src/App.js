@@ -5,6 +5,7 @@ import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
 import SignIn from "./pages/SignIn";
+import CRDashboard from "./pages/CRDashboard";
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
+          <Route path="/CRDashboard" exact element={<CRDashboard />} />
           <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} />
         </Routes>
       </div>

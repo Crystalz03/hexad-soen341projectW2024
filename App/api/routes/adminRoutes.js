@@ -23,8 +23,8 @@ router.get('/signIn/:user/:password', async (req, res) => {
   let id;
 
   const customerRegex = new RegExp(/@/);
-  const adminRegex = new RegExp(/^SA/);
-  const csrRegex = new RegExp(/^CSR/);
+  const adminRegex = new RegExp(/^A/);
+  const csrRegex = new RegExp(/^CR/);
   let password;
 
     try {
