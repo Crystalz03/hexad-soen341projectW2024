@@ -4,13 +4,12 @@ import "./../style/style.css";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
-import { Link } from "react-router-dom";
 
 function Home() {
   return (
     <div>
       <Header />
-      <SideMenu />
+
       <Main />
       <Footer />
     </div>
@@ -132,7 +131,5 @@ function Navigation() {
     </aside>
   );
 }
-function Footer() {
-  return <div className="footer">Footer</div>;
-}
+
 export default Home;
