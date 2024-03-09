@@ -38,13 +38,15 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "async_hooks": "^1.0.0",
     "axios": "^1.6.7",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "crypto-browserify": "^3.12.0",
     "express": "^4.18.2",
     "firebase-admin": "^12.0.0",
-    "jade": "^1.11.0",
+    "jade": "^1.9.2",
     "morgan": "^1.10.0",
     "msnodesqlv8": "^4.1.2",
     "mssql": "^10.0.2",

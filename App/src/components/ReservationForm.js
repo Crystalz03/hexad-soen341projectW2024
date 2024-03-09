@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import pool from "../../database/db";
-import router from "../../api/routes/vehicleRoutes";
     
 function generateRandomString(length) {
   const characters =
@@ -32,68 +30,51 @@ function ReservationForm() {
   //ID, Vehicle_ID, Customer_ID, Pick_Up_Date, Return_Date, Extra_Equipment, Additional_Services, Paid, Total
 //id, vehicleID, customerID, pickUpDate, returnDate, extraEquipment, additionalServices, total
 
-  const callAPI = () => {
-    fetch("http://localhost:9000/Reservation", {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData), 
-    })
-      .then(res => res.json())
-      .then(data => { setApiResponse(data);})
-      .catch(error => console.error(error));
+const [error, setError] = useState(""); // State to store error message
+  const navigate = useNavigate();
+
+  const callAPI = async () => {
+    try {
+      const response = await fetch("http://localhost:9000//reservations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          "A problem occured when creating the reservation. Please try again later."
+        );
+      }
+
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+      console.error(error);
     }
+  };
 
   const validateForm = () => {
-
+  try{
     //finding the customer's account who made the reservation by email
-    router.get('/customers/email/:email', async (req, res) => {
-      const customerEmail = req.params.email;
-
-      try {
-        const result = await pool.query`SELECT * FROM Customers WHERE Email = ${formData.email}`;
-        const customer = result.recordset[0];
-
-        if (!customer) {
-          res.status(404).json({ error: 'Customer not found by Email' });
-          return false;
-        } else {
-          res.status(200).json({customer : customer}); // e.g.Customer = response.body.customer -> Customer.Name
-        }
-      } catch (error) {
-        console.error('Error finding the customer by Email:', error);
-        res.status(500).json({ error: 'Server Error' });
-        return false;
-      }
-    });
+    const customer = request(app).get('/customers/email/'+formData.email);
 
     //checking the availability of the vehicle
-    router.get('/vehicles/:id', async (req, res) => {
-      const vehicleId = req.params.id;
-
-      try {
-        const result = await pool.query`SELECT * FROM Vehicle WHERE ID = ${vehicleId}`;
-        const vehicle = result.recordset[0];
-
-        if (!vehicle) {
-          res.status(404).json({ error: 'Vehicle not found' });
-          return false;
-        } else {
-          res.status(200).json({vehicle : vehicle}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
-          if(vehicle.Availability=="available"){
-            vehicle.Availability="not available";
-          }
-        }
-      } catch (error) {
-        console.error('Error retrieving vehicle:', error);
-        res.status(500).json({ error: 'Server Error' });
-        return false;
-      }
-    });
+    const vehicle = request(app).get('/vehicles/'+formData.vehicleID);
 
     //creating the reservation ID
     formData.id=generateRandomString(10);
+    }
+          
+    catch (error) {
+      setError(error.message);
+      console.error(error);
+      return false;
+    }
 
     //informing the client of the successful reservation made
     alert("Reservation has been made successfully!");
@@ -117,16 +98,9 @@ function ReservationForm() {
     }));
   };
 
-  router.get('/vehicles', async (req, res) => {
-    try {
-      const carArray = await pool.query`SELECT * FROM Vehicles`;
-      res.status(200).json({vehicle : carArray.recordsets}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
-    } catch (error) {
-      console.error('Error retrieving vehicles:', error);
-      res.status(500).json({ error: 'Server Error' });
-      return false;
-    }
-  });
+  //get all vehicles into an array
+  const carArray = request(app).get('/vehicles');
+
 
   return (
 
