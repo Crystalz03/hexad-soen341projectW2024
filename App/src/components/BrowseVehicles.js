@@ -84,31 +84,33 @@ function BrowseVehicles() {
                 <option value="Truck">Truck</option>
               </select>
             </div>
-            {loading ? (
-              <div>Loading...</div>
-            ) : error ? (
-              <div>Error: {error}</div>
-            ) : filteredVehicles.length === 0 ? (
-              <div>No vehicles match the selected filter.</div>
-            ) : (
-              <ul>
-                {filteredVehicles.map((vehicle) => (
-                  <li key={vehicle.ID}>
-                    <div>ID: {vehicle.ID}</div>
-                    <div>Type: {vehicle.Type}</div>
-                    <div>Category: {vehicle.Category}</div>
-                    <div>Model: {vehicle.Model}</div>
-                    <div>Price: {vehicle.Price}</div>
-                    <div>Availability: {vehicle.Availability}</div>
-                    <div>
-                      <button className="all-caps sign-in-btn btn-background-color">
-                        Reserve Vehicle
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <div className="vehicle-grid">
+              {loading ? (
+                <div>Loading...</div>
+              ) : error ? (
+                <div>Error: {error}</div>
+              ) : filteredVehicles.length === 0 ? (
+                <div>No vehicles match the selected filter.</div>
+              ) : (
+                <ul>
+                  {filteredVehicles.map((vehicle) => (
+                    <li key={vehicle.ID} className="vehicle-card">
+                      <div>ID: {vehicle.ID}</div>
+                      <div>Type: {vehicle.Type}</div>
+                      <div>Category: {vehicle.Category}</div>
+                      <div>Model: {vehicle.Model}</div>
+                      <div>Price: {vehicle.Price}</div>
+                      <div>Availability: {vehicle.Availability}</div>
+                      <div>
+                        <button className="all-caps sign-in-btn btn-background-color">
+                          Reserve Vehicle
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
       </div>

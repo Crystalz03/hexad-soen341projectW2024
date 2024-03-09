@@ -311,9 +311,10 @@ header {
 .footer {
   background-color: var(--secondary-text-color);
   height: var(--footer-height);
-  position: sticky;
+  position: fixed;
   bottom: 0;
   margin-left: 180px;
+  width: var(--header-width);
 }
 .link-style {
   text-decoration: none;

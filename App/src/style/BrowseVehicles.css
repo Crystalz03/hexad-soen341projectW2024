@@ -49,12 +49,13 @@
   --content-box-width: 960px;
   --content-box-height: 120px;
   --footer-height: 100px;
+
   /*Browse Vehicles Page*/
   .vehicle-grid {
     display: grid;
-    grid-template-columns: repeat(3, 5fr);
+    grid-template-columns: repeat(3, 3fr);
     gap: 20px;
-    max-height: calc(100vh - 100px);
+    max-height: calc(100vh - var(--footer-height));
     overflow-y: auto;
   }
 
