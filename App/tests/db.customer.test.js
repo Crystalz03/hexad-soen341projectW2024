@@ -1,11 +1,13 @@
 const request = require('supertest');
 const express = require('express');
 const customerRoutes = require('../api/routes/customerRoutes');
+const adminRoutes = require('../api/routes/adminRoutes');
 const pool = require('../database/db');
 
 const app = express();
 app.use(express.json());
 app.use(customerRoutes);
+app.use(adminRoutes);
 
 describe('Customers Routes', () => {
     beforeAll(async () => {
@@ -50,12 +52,26 @@ describe('Customers Routes', () => {
     });
   });
 
-    // Test getting a customer's password by Email
-    it('should get a customer password by Email', async () => {
-      const response = await request(app).get('/customers/signIn/John.Doe@email.com');
+     // Test customer Login 
+     it('should test login states', async () => {
+
+      // successful
+      var response = await request(app).get('/signIn/John.Doe@email.com/pswd123');
   
       expect(response.status).toBe(200);
-      expect(response.body.password).toEqual('pswd123');
+      expect(response.body.message).toEqual('Login successful');
+
+      // incorrect password
+      response = await request(app).get('/signIn/John.Doe@email.com/pswd1234');
+  
+      expect(response.status).toBe(401);
+      expect(response.body.message).toEqual('Incorrect password');
+
+      // not found
+      response = await request(app).get('/signIn/John.Doe@email.coms/pswd123');
+  
+      expect(response.status).toBe(404);
+      expect(response.body.message).toEqual('User not found');
   
     });
 
