@@ -1,5 +1,7 @@
+import React from 'react';
 import { useState } from 'react';
-    
+import { useNavigate } from "react-router-dom";
+
 function generateRandomString(length) {
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -17,7 +19,7 @@ function ReservationForm() {
   const [formData, setFormData] = useState({
     id: '',
     vehicleID: '',
-    Customer_ID: '',
+    customerID: '', // Adjusted from Customer_ID to customerID to match your formData object
     pickUpDate: '',
     returnDate: '',
     extraEquipment: '',
@@ -25,17 +27,12 @@ function ReservationForm() {
     total: '',
   });
 
-  const [apiResponse, setApiResponse] = useState("");
-
-  //ID, Vehicle_ID, Customer_ID, Pick_Up_Date, Return_Date, Extra_Equipment, Additional_Services, Paid, Total
-//id, vehicleID, customerID, pickUpDate, returnDate, extraEquipment, additionalServices, total
-
-const [error, setError] = useState(""); // State to store error message
+  const [error, setError] = useState(""); // State to store error message
   const navigate = useNavigate();
 
   const callAPI = async () => {
     try {
-      const response = await fetch("http://localhost:9000//reservations", {
+      const response = await fetch("http://localhost:9000/reservations", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,11 +40,9 @@ const [error, setError] = useState(""); // State to store error message
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-
       if (!response.ok) {
         throw new Error(
-          "A problem occured when creating the reservation. Please try again later."
+          "A problem occurred when creating the reservation. Please try again later."
         );
       }
 
@@ -58,36 +53,33 @@ const [error, setError] = useState(""); // State to store error message
     }
   };
 
-  const validateForm = () => {
-  try{
-    //finding the customer's account who made the reservation by email
-    const customer = request(app).get('/customers/email/'+formData.email);
+  const validateForm = async () => {
+    try {
+      // Example of making a GET request to check customer's account by email
+      const customerResponse = await fetch(`http://localhost:9000/customers/email/${formData.email}`);
+      const customerData = await customerResponse.json();
 
-    //checking the availability of the vehicle
-    const vehicle = request(app).get('/vehicles/'+formData.vehicleID);
+      // Example of making a GET request to check the availability of the vehicle
+      const vehicleResponse = await fetch(`http://localhost:9000/vehicles/${formData.vehicleID}`);
+      const vehicleData = await vehicleResponse.json();
 
-    //creating the reservation ID
-    formData.id=generateRandomString(10);
-    }
-          
-    catch (error) {
+      formData.id = generateRandomString(10);
+    } catch (error) {
       setError(error.message);
       console.error(error);
       return false;
     }
 
-    //informing the client of the successful reservation made
     alert("Reservation has been made successfully!");
     return true;
-  }
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (validateForm()) {
+    if (await validateForm()) {
       callAPI();
     }
-
   };
 
   const handleChange = (e) => {
@@ -98,16 +90,10 @@ const [error, setError] = useState(""); // State to store error message
     }));
   };
 
-  //get all vehicles into an array
-  const carArray = request(app).get('/vehicles');
-
-
   return (
-
-        <form onSubmit={handleSubmit}>
-
-        <label>Email:</label>
-        <input 
+    <form onSubmit={handleSubmit}>
+      <label>Email:</label>
+      <input 
         name="email"
         required={true}
         value={formData.email || ""}
@@ -116,9 +102,8 @@ const [error, setError] = useState(""); // State to store error message
         placeholder='Email Address' 
         id='email'/><br/>
 
-
-        <label>Pick-up date of your reservation:</label>
-        <input 
+      <label>Pick-up date of your reservation:</label>
+      <input 
         name="pickUpDate"
         required={true}
         value={formData.pickUpDate || ""}
@@ -127,8 +112,8 @@ const [error, setError] = useState(""); // State to store error message
         placeholder='Beginning date of reservation' 
         id='pickUpDate'/><br/>
 
-        <label>Return date of your reservation:</label>
-        <input 
+      <label>Return date of your reservation:</label>
+      <input 
         name="returnDate"
         required={true}
         value={formData.returnDate || ""}
@@ -137,23 +122,14 @@ const [error, setError] = useState(""); // State to store error message
         placeholder='Return date of reservation'
         id='returnDate'/><br/>
 
+      <label>Choose your preferred type of car:</label><br/>
+      <select name='vehicleID' id='vehicleID' onChange={handleChange}>
+        {/* Populate options from API data */}
+      </select><br/>
 
-        
-        <label>Choose your preferred type of car:</label><br/>
-          <select name='vehicleID' id='vehicleID' onChange={handleChange}>
-          <>
-          {carArray.map(function(car) {
-            return (
-                <option value={formData.vehicleID||car.id}>
-                  ${car.model}
-                </option>
-            )
-          })}
-        </>
-        </select><br/>
-        <input type='submit'></input>
+      <input type='submit'></input>
     </form>
   );
 }
-export default ReservationForm;
 
+export default ReservationForm;

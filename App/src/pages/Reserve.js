@@ -9,4 +9,4 @@ function Reserve() {
         );
 }
 
-export default SignUp;
+export default Reserve;
