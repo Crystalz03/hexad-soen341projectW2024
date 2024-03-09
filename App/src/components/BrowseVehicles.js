@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 import "./../style/style.css";
+import "./../style/BrowseVehicles.css";
 
 function BrowseVehicles() {
   const [vehicles, setVehicles] = useState([]);
