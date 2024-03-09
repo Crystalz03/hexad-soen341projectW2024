@@ -7,6 +7,8 @@ function SignInForm() {
     password: ""
   });
 
+  const [userID, setApiResponse] = useState("");
+
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -19,23 +21,18 @@ function SignInForm() {
   };
 
   const signIn = async() => {
-    try {
-    const response = await fetch("http://localhost:9000/signIn/${FormData.username}/${FormData.password}", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
+  const response = fetch(`http://localhost:9000/signIn/${formData.username}/${formData.password}`, {
+        method: 'GET',
+  })
+        .then(data => data.json())
+        .then(data => {console.log(data.id);
+        setApiResponse(data.id)})
+        .catch(error => console.log(error));
 
     
     if (response.ok) {
-        // Handle successful login
-        const data = await response.json();
-        console.log(data.message);
-
       // Redirect user based on their role
-      switch (data.role) {
+      switch (data.role) { // you might want to use regex lik i did in the adminRoutes.js
         case "customer":
           navigate("/");
           break;
@@ -61,11 +58,8 @@ function SignInForm() {
       console.error(error);
 
      }
-    } catch (error) {
-    console.error('Error during fetch:', error);
-    }
+   }
 
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
