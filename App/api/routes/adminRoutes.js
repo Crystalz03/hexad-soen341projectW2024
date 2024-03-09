@@ -48,10 +48,10 @@ router.get('/signIn/:user/:password', async (req, res) => {
           if (pswd === password) {
             // Passwords match
             if (customerRegex.test(user)){
-              const result2 = `SELECT ID FROM Customers WHERE Email = ${user}`;
-              id = result.recordsets[0][0]?.id;
+              const result2 = await pool.query`SELECT ID FROM Customers WHERE Email = ${user}`;
+              id = result2.recordsets[0][0]?.ID;
             }
-            res.status(200).json({ message: 'Login successful'}, {id: id });
+            res.status(200).json({ message: 'Login successful', id: id });
             
           } else {
             // Passwords do not match
