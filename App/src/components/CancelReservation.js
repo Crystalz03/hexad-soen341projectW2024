@@ -33,10 +33,8 @@ function CancelReservationForm() {
                     "Content-Type": "application/json"
                 },
             });
-            const data = await response.json();
             if (response.ok) {
                 console.log('Reservation successfully canceled');
-     
             } else {
                 setError('Failed to cancel reservation. Please try again later.');
                 console.error('Failed to cancel reservation:', response.statusText);
@@ -48,7 +46,7 @@ function CancelReservationForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit} action="CancelR">
+        <form onSubmit={handleSubmit}>
             <label> Confirmation Number:
                 <input
                     type="text"

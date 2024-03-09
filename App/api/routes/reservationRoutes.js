@@ -84,28 +84,24 @@ router.delete('/reservations/:id', async (req, res) => {
   const reservationId = req.params.id;
  
   try {
-      // Get Customer_ID 
+      // Fetch the customer ID associated with the reservation
       const customerResult = await pool.query`SELECT Customer_ID FROM Reservation WHERE ID = ${reservationId}`;
-      if (customerResult.recordset.length === 0) {
+      if (!customerResult.recordset || customerResult.recordset.length === 0) {
           return res.status(404).json({ error: 'Reservation not found' });
       }
       const customerId = customerResult.recordset[0].Customer_ID;
-  
+
       // Delete reservation
-      const result = await pool.query`DELETE FROM Reservation WHERE ID = ${reservationId}`;
-  
-      // Get existing Reservation_ID from Customer table using the Customer's ID
+      await pool.query`DELETE FROM Reservation WHERE ID = ${reservationId}`;
+
+      // Update Reservation_ID in Customer table
       const customerResult2 = await pool.query`SELECT Reservation_ID FROM Customers WHERE ID = ${customerId}`;
       const existingReservationID = customerResult2.recordset[0]?.Reservation_ID;
-  
-      // Remove the deleted reservation ID from Reservation_ID in Customer table
+
       const updatedReservationID = existingReservationID
           ? existingReservationID.split(',').filter(id => id !== reservationId).join(',')
           : '';
-  
-      // Update Reservation_ID in Customer table
-      await pool.query`UPDATE Customers SET Reservation_ID = ${updatedReservationID} WHERE ID = ${customerId}`;
-  
+
       res.status(200).json({ message: 'Reservation deleted successfully' });
   } catch (error) {
       console.error('Error deleting Reservation:', error);
@@ -113,7 +109,6 @@ router.delete('/reservations/:id', async (req, res) => {
   }
 });
 
-  
   
 
 module.exports = router;
