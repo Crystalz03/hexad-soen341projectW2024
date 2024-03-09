@@ -60,6 +60,7 @@ describe('CSR Routes', () => {
   
       expect(response.status).toBe(200);
       expect(response.body.message).toEqual('Login successful');
+      expect(response.body.id).toEqual(`CSR1234567`);
 
       // incorrect password
       response = await request(app).get('/signIn/CSR1234567/pswd1234');

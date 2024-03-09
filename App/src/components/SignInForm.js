@@ -6,6 +6,7 @@ function SignInForm() {
     username: "",
     password: ""
   });
+
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -17,11 +18,9 @@ function SignInForm() {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const signIn = async() => {
     try {
-      const response = await fetch("http://localhost:9000/signIn", {
+    const response = await fetch("http://localhost:9000/signIn/${FormData.username}/${FormData.password}", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -29,14 +28,11 @@ function SignInForm() {
         body: JSON.stringify(formData)
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to sign in");
-      }
-
-      const data = await response.json();
-
-      // Assuming backend sends a token or some indicator of successful sign-in
-      // You can handle this response according to your backend implementation
+    
+    if (response.ok) {
+        // Handle successful login
+        const data = await response.json();
+        console.log(data.message);
 
       // Redirect user based on their role
       switch (data.role) {
@@ -53,10 +49,27 @@ function SignInForm() {
           // Handle unknown roles or errors
           break;
       }
-    } catch (error) {
+
+    }  else if (response.notFound) {
       setError(error.message);
       console.error(error);
+        throw new Error(
+          "This user doesn't exhist."
+        );
+     } else {
+      setError(error.message);
+      console.error(error);
+
+     }
+    } catch (error) {
+    console.error('Error during fetch:', error);
     }
+
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    signIn();
   };
 
   return (

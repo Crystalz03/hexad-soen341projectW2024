@@ -20,6 +20,7 @@ router.post('/admin', async (req, res) => {
 router.get('/signIn/:user/:password', async (req, res) => {
   const user = req.params.user;
   const pswd = req.params.password;
+  let id;
 
   const customerRegex = new RegExp(/@/);
   const adminRegex = new RegExp(/^SA/);
@@ -30,9 +31,11 @@ router.get('/signIn/:user/:password', async (req, res) => {
       if (adminRegex.test(user)) {
         const result = await pool.query`SELECT Password FROM Admin WHERE ID = ${user}`;
         password = result.recordsets[0][0]?.Password;
+        id = user;
       } else if (csrRegex.test(user)) {
         const result = await pool.query`SELECT Password FROM CSR WHERE ID = ${user}`;
         password = result.recordsets[0][0]?.Password;
+        id = user;
       } else if (customerRegex.test(user)){
         const result = await pool.query`SELECT Password FROM Customers WHERE Email = ${user}`;
         password = result.recordsets[0][0]?.Password;
@@ -44,7 +47,12 @@ router.get('/signIn/:user/:password', async (req, res) => {
         // Check if the provided password matches the one from the database
           if (pswd === password) {
             // Passwords match
-            res.status(200).json({ message: 'Login successful' });
+            if (customerRegex.test(user)){
+              const result2 = `SELECT ID FROM Customers WHERE Email = ${user}`;
+              id = result.recordsets[0][0]?.id;
+            }
+            res.status(200).json({ message: 'Login successful'}, {id: id });
+            
           } else {
             // Passwords do not match
             res.status(401).json({ message: 'Incorrect password' });
