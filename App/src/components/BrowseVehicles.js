@@ -7,35 +7,44 @@ import "./../style/style.css";
 import "./../style/BrowseVehicles.css";
 
 function BrowseVehicles() {
-  const [vehicles, setVehicles] = useState([]);
+  const [apiResponse, setApiResponse] = useState(null); // Define apiResponse state
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("All");
 
-  useEffect(() => {
-    const fetchVehicles = async () => {
-      try {
-        const response = await fetch("http://localhost:9000/vehicles");
-        if (!response.ok) {
-          throw new Error("Failed to fetch vehicles");
-        }
-        const data = await response.json();
-        setVehicles(data.vehicle);
+  const callAPIGet = () => {
+    fetch("http://localhost:9000/vehicles", {
+      method: "GET",
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        const formattedVehicles = data.vehicle[0].map((vehicle) => ({
+          ID: vehicle.ID,
+          Type: vehicle.Type,
+          Category: vehicle.Category,
+          Model: vehicle.Model,
+          Price: `$${vehicle.Price}/day`,
+          Availability: vehicle.Availability,
+        }));
+
+        setApiResponse(formattedVehicles);
         setLoading(false);
-      } catch (error) {
-        console.error("Error fetching vehicles:", error);
+      })
+      .catch((error) => {
+        console.error(error);
         setError("Error fetching vehicles");
         setLoading(false);
-      }
-    };
+      });
+  };
 
-    fetchVehicles();
+  useEffect(() => {
+    callAPIGet();
   }, []);
 
   const filteredVehicles =
     filter === "All"
-      ? vehicles
-      : vehicles.filter((vehicle) => vehicle.Type === filter);
+      ? apiResponse
+      : apiResponse.filter((vehicle) => vehicle.Type === filter);
 
   return (
     <div>
