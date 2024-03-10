@@ -1,6 +1,6 @@
 import React from "react";
 import "../style/style.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function SideMenu() {
   return (
@@ -22,6 +22,12 @@ export default function SideMenu() {
             <li className="nav-list-components-2">Browse Vehicles</li>
             <li className="nav-list-components-2">Locations</li>
             <li className="nav-list-components-2">Contact Us</li>
+            <li className="nav-list-components-2">
+              <Link to="/DeleteReservationPage">Delete</Link>
+            </li>
+            <li className="nav-list-components-2">
+              <Link to="/MyAccountPage">My Account</Link>
+            </li>
           </ul>
           <div className="nav-divider"></div>
         </aside>

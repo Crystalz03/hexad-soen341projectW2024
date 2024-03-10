@@ -6,7 +6,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
 import SignIn from "./pages/SignIn";
 import CRDashboard from "./pages/CRDashboard";
-
+import DeleteReservationPage from "./pages/DeleteReservationPage";
+import MyAccountPage from "./pages/MyAccountPage";
 
 function App() {
 
@@ -48,6 +49,8 @@ function App() {
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
           <Route path="/CRDashboard" exact element={<CRDashboard />} />
           <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} />
+          <Route path="/DeleteReservationPage" exact element={<DeleteReservationPage />} />
+          <Route path="/MyAccountPage" exact element={<MyAccountPage />} />
         </Routes>
       </div>
     </Router>
