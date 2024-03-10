@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 function generateRandomString(length) {
@@ -32,6 +33,13 @@ function ReservationForm() {
 
   const [error, setError] = useState(""); // State to store error message
   const [carArray, setCarArray] = useState([]); // State to store car array
+  const [apiResponse, setApiResponse] = useState("");
+  const [apiResponse1, setApiResponse1] = useState({});
+  const [apiResponse2, setApiResponse2] = useState([]);  
+  const [apiResponse3, setApiResponse3] = useState("");
+  const [customer, setCustomer] = useState({});
+  const [car, setCar] = useState([]); // State to store car 
+
   const navigate = useNavigate();
 
   const callAPI = async () => {
@@ -50,6 +58,55 @@ function ReservationForm() {
         );
       }
 
+      const callAPI3 = () => {
+        fetch(`http://localhost:9000/customers/${email}/`, {
+          method: "GET",
+        })
+          .then((data) => data.json())
+          .then((data) => {
+            console.log(data.customer); //first customer in the list
+            setApiResponse3(
+               data.customer[0][0].id// data.vehicle[0] = array of vehicles  -- data.vehicle[0][0] = 1st vehicle in the list -- data.vehicle[0][0].ID == ID of the first vehicle
+              );
+          })
+          .catch((error) => console.error(error));
+      };
+
+      const callAPI2 = () => {
+        fetch("http://localhost:9000/vehicles", {
+          method: "GET",
+        })
+          .then((data) => data.json())
+          .then((data) => {
+            console.log(data.vehicle[0][0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
+            setApiResponse2(
+              data.vehicle[0] // data.vehicle[0] = array of vehicles  -- data.vehicle[0][0] = 1st vehicle in the list -- data.vehicle[0][0].ID == ID of the first vehicle
+              );
+          })
+          .catch((error) => console.error(error));
+      };
+
+      const callAPI1 = () => {
+        fetch("http://localhost:9000/vehicles/"+formData.vehicleID, {
+          method: "GET",
+        })
+          .then((data) => data.json())
+          .then((data) => {
+            console.log(data.vehicle[0][0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
+            setApiResponse1(
+              data.vehicle[0][0] // data.vehicle[0] = array of vehicles  -- data.vehicle[0][0] = 1st vehicle in the list -- data.vehicle[0][0].ID == ID of the first vehicle
+              );
+          })
+          .catch((error) => console.error(error));
+      };
+
+      useEffect(() => {
+        callAPI3();
+        callAPI2();
+        callAPI1();
+      }, []);
+
+
       navigate("/");
     } catch (error) {
       setError(error.message);
@@ -58,37 +115,29 @@ function ReservationForm() {
   };
 
   const validateForm = async () => {
-    try {
+    
       // get customer ID from email
       //const customerResponse = await fetch(`http://localhost:9000/customers/email/${formData.email}`);
-      const customerResponse = await fetch(`/customers/email/sudgyuwe@gmail.com`,{method: 'GET', headers: {'Content-Type': 'application/json'}});
-      const customerData = customerResponse.body.customer;
-      console.log(customerData);
-      /*if (!customerData) {
-        setError("Account not found");
-        alert("Account not found");
-        console.log(customerData);
-        return false;
-      }*/
-      formData.customerID = customerData.id;
+      formData.customerID = apiResponse3;
 
       // check if vehicle id is valid and if the vehicle is available
+      
+      
+      /*
       const vehicleResponse = await fetch(`/vehicles/${formData.vehicleID}`,{method: 'GET'});
-      const vehicleData = await vehicleResponse.json();
+      const vehicleData = await vehicleResponse.json();*/
       
-      
-      
-      if (!vehicleData) {
+      if (car===null) {
         setError("Vehicle not found");
         alert("Vehicle not found");
         return false;
       } else{
-      if (vehicleData.availability==0) {
+      if (car.availability==0) {
         alert("Vehicle not available! Please choose another vehicle.");
         return false;
       }
-      else if (vehicleData.availability==1) {
-        vehicleData.availability = false; 
+      else if (car.availability==1) {
+        car.availability = false; 
       }
 
       
@@ -99,7 +148,7 @@ function ReservationForm() {
       //calculating the total of reservation
       const reservationDays = (returnDate - pickUpDate) / (1000 * 60 * 60 *24);
       
-      formData.total=vehicleData.price*reservationDays;
+      formData.total=car.price*reservationDays;
 
       //adding additional services to the total
       if (formData.additionalServices === "accidentInsurance") {
@@ -122,15 +171,10 @@ function ReservationForm() {
         formData.total+= 0;
       }
 
-  
-    } catch (error) {
-      setError(error.message);
-      console.error(error);
-      return false;
-    }
-
     formData.paid = false;
-    console.log(customerData);
+    console.log("The customer ID is "+apiResponse3);
+    console.log("The array of vehicles is "+apiResponse2);
+    console.log("The reserved vehicle is "+apiResponse1);
     return true;
   };
 
@@ -157,7 +201,6 @@ function ReservationForm() {
       <input 
         name="email"
         required={true}
-        value={formData.email || ""}
         onChange={handleChange} 
         type='text' 
         placeholder='Email Address' 
