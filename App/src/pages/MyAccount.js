@@ -3,6 +3,7 @@ import SideMenu from "../components/SideMenu";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../style/style.css";
+import DisplayUserInfo from "../components/DisplayUserInfo";
 
 export default function MyAccount() {
   return (
@@ -25,7 +26,7 @@ function Main() {
             <div className="title-box">
               <div className="reservation-title">My Account</div>
             </div>
-            <div className="extra-content">Extra content</div>
+            <div className="extra-content">Extra content <DisplayUserInfo /></div>
           </div>
         </div>
       </div>
