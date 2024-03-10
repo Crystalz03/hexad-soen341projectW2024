@@ -24,6 +24,7 @@ function ReservationForm() {
     returnDate: '',
     extraEquipment: '',
     additionalServices: '',
+    paid: '',
     total: '',
   });
 
@@ -56,79 +57,49 @@ function ReservationForm() {
     }
   };
 
-  /*
-  CODE FOR DYNAMIC DROPDOWN
-
-  React.useEffect(() => {
-    const fetchVehicles = async () => {
-      try {
-        const vehiclesResponse = await fetch("http://localhost:9000/vehicles");
-        const vehiclesArray = await vehiclesResponse.json();
-        setCarArray(vehiclesArray);
-      } catch (error) {
-        setError(error.message);
-        console.error(error);
-      }
-    };
-    fetchVehicles();
-  }, []);
-  
-  let options = carArray.map((vehicle) => (
-    <option key={vehicle.id} value={vehicle.id}>
-      {vehicle.model}
-    </option>
-  ));*/
-
-
   const validateForm = async () => {
     try {
       // get customer ID from email
-      const customerResponse = await fetch(`http://localhost:9000/customers/email/${formData.email}`);
-      const customerData = await customerResponse.json();
+      //const customerResponse = await fetch(`http://localhost:9000/customers/email/${formData.email}`);
+      const customerResponse = await fetch(`/customers/email/sudgyuwe@gmail.com`,{method: 'GET', headers: {'Content-Type': 'application/json'}});
+      const customerData = customerResponse.body.customer;
+      console.log(customerData);
+      /*if (!customerData) {
+        setError("Account not found");
+        alert("Account not found");
+        console.log(customerData);
+        return false;
+      }*/
       formData.customerID = customerData.id;
 
       // check if vehicle id is valid and if the vehicle is available
-      const vehicleResponse = await fetch(`http://localhost:9000/vehicles/${formData.vehicleID}`);
+      const vehicleResponse = await fetch(`/vehicles/${formData.vehicleID}`,{method: 'GET'});
       const vehicleData = await vehicleResponse.json();
+      
+      
+      
       if (!vehicleData) {
         setError("Vehicle not found");
+        alert("Vehicle not found");
         return false;
       } else{
-      if (vehicleData.availability !== "available") {return false;}
-      else if (vehicleData.availability === "available") {vehicleData.availability = "unavailable"; }
+      if (vehicleData.availability==0) {
+        alert("Vehicle not available! Please choose another vehicle.");
+        return false;
+      }
+      else if (vehicleData.availability==1) {
+        vehicleData.availability = false; 
+      }
 
-      // update vehicle availability
-      const updateVehicle = async () => {
-        try {
-          const response = await fetch('http://localhost:9000/vehicles/'+formData.vehicleID, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(vehicleData),
-          });
-    
-          if (!response.ok) {
-            throw new Error(
-              "A problem occurred when creating the reservation. Please try again later."
-            );
-          }
-    
-          navigate("/");
-        } catch (error) {
-          setError(error.message);
-          console.error(error);
-        }
-      };
-      updateVehicle();
+      
     }
       //generating the reservation id
       formData.id = generateRandomString(10);
 
       //calculating the total of reservation
-      const reservationHours = (new Date(formData.returnDate) - new Date(formData.pickUpDate)) / (1000 * 60 * 60 );
+      const reservationDays = (returnDate - pickUpDate) / (1000 * 60 * 60 *24);
       
-      formData.total=vehicleData.price*reservationHours;
+      formData.total=vehicleData.price*reservationDays;
 
       //adding additional services to the total
       if (formData.additionalServices === "accidentInsurance") {
@@ -151,15 +122,15 @@ function ReservationForm() {
         formData.total+= 0;
       }
 
-      
-
+  
     } catch (error) {
       setError(error.message);
       console.error(error);
       return false;
     }
 
-    alert("Reservation has been made successfully!");
+    formData.paid = false;
+    console.log(customerData);
     return true;
   };
 
@@ -168,6 +139,7 @@ function ReservationForm() {
     
     if (await validateForm()) {
       callAPI();
+      alert("Reservation has been made successfully! Your reservation ID is: "+formData.id+" and the total cost is: "+formData.total+"$");
     }
   };
 
@@ -195,7 +167,7 @@ function ReservationForm() {
       <input 
         name="pickUpDate"
         required={true}
-        value={formData.pickUpDate || ""}
+        value={formData.pickUpDate ||""}
         onChange={handleChange} 
         type='date' 
         placeholder='Beginning date of reservation' 
@@ -222,7 +194,7 @@ function ReservationForm() {
         id='vehicleID'/><br/>
 
       <label>Extra equipment:</label><br/>
-            <select required={true}>
+            <select required={true} onChange={handleChange}>
               <option value={formData.extraEquipment||"none"}>None</option>
               <option value={formData.extraEquipment||"gps"}>GPS (Additional 80$)</option>
               <option value={formData.extraEquipment||"childSeat"}>Child Seat (Additional 120$)</option>
@@ -232,7 +204,7 @@ function ReservationForm() {
             <br/>
 
       <label>Additional Services:</label><br/>
-        <select required={true}>
+        <select required={true} onChange={handleChange}>
           <option value={formData.additionalServices||"none"}>None</option>
           <option value={formData.additionalServices||"accidentInsurance"} >Accident Insurance (Additional 100$)</option>
           <option value={formData.additionalServices||"roadsideAssistance"} >Roadside Assistance (Additional 50$)</option>
