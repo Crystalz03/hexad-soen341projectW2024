@@ -58,19 +58,19 @@ function ReservationForm() {
         );
       }
 
-      const callAPI3 = () => {
-        fetch(`http://localhost:9000/customers/${email}/`, {
-          method: "GET",
-        })
-          .then((data) => data.json())
-          .then((data) => {
-            console.log(data.customer); //first customer in the list
-            setApiResponse3(
-               data.customer[0][0].id// data.vehicle[0] = array of vehicles  -- data.vehicle[0][0] = 1st vehicle in the list -- data.vehicle[0][0].ID == ID of the first vehicle
-              );
-          })
-          .catch((error) => console.error(error));
-      };
+      // const verifyCustomer = async () => {
+      //   fetch(`http://localhost:9000/customers/email/${email}`, {
+      //     method: "GET",
+      //   })
+      //     .then((data) => data.json())
+      //     .then((data) => {
+      //       console.log(data.customer); //first customer in the list
+      //       setApiResponse3(
+      //          data.customer[0][0].id// data.vehicle[0] = array of vehicles  -- data.vehicle[0][0] = 1st vehicle in the list -- data.vehicle[0][0].ID == ID of the first vehicle
+      //         );
+      //     })
+      //     .catch((error) => console.error(error));
+      // };
 
       const callAPI2 = () => {
         fetch("http://localhost:9000/vehicles", {
@@ -80,7 +80,7 @@ function ReservationForm() {
           .then((data) => {
             console.log(data.vehicle[0][0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
             setApiResponse2(
-              data.vehicle[0] // data.vehicle[0] = array of vehicles  -- data.vehicle[0][0] = 1st vehicle in the list -- data.vehicle[0][0].ID == ID of the first vehicle
+              [...apiResponse2, data.vehicle[0]] // data.vehicle[0] = array of vehicles  -- data.vehicle[0][0] = 1st vehicle in the list -- data.vehicle[0][0].ID == ID of the first vehicle
               );
           })
           .catch((error) => console.error(error));
@@ -101,9 +101,9 @@ function ReservationForm() {
       };
 
       useEffect(() => {
-        callAPI3();
-        callAPI2();
-        callAPI1();
+        verifyCustomer();
+        // callAPI2();
+        // callAPI1();
       }, []);
 
 
@@ -180,6 +180,8 @@ function ReservationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    verifyCustomer();
+  
     
     if (await validateForm()) {
       callAPI();
