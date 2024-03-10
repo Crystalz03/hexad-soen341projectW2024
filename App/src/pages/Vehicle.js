@@ -23,23 +23,34 @@ const VehicleForm = () => {
           .then(data => {
             console.log("API Response:", data); //!!FOR DEBUGGING ONLY remove the log when done 
           })
-          .catch(error => console.error(error));*/
+          .catch(error => console.error(error));*/                                                                                                                                                                                                            
 
           
     const [formData, setFormData] = useState({
-      id: '',
-      type: '',
-      category: '',
-      model: '',
-      price: '',
-      availability: '',
+      id: '0000000000',
+      type: 'type',
+      category: 'category',
+      model: 'model',
+      price: 0,
+      availability: '1',
     });
 
-    const [apiResponse, setApiResponse] = useState(""); 
-  
+    const [apiResponse, setApiResponse] = useState(''); 
+  const [vehicles, setVehicles] = useState([]);
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData({ ...formData, [name]: value });
+      
+
+      
+  fetch("http://localhost:9000/vehicles", {
+        method: 'GET', 
+      })
+        .then(data => data.json())
+        .then(data => {console.log(data.vehicle[0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
+        setVehicles(data.vehicle[0]);})
+        .catch(error => console.error(error));
+
     };
   
     const CallAPISet =  (e) => {
@@ -56,15 +67,15 @@ const VehicleForm = () => {
             setApiResponse(data); // Update state with the JSON response
           }).catch(error => console.error(error));
 
-      callAPIGet();
+      //callAPIGet();
       
       setFormData({
-        id: '',
-        type: '',
-        category: '',
-        model: '',
-        price: '',
-        availability: '',
+        id: '0000000000',
+        type: 'type',
+        category: 'category',
+        model: 'model',
+        price: 0,
+        availability: '1',
       });
       
     };
@@ -79,7 +90,7 @@ const VehicleForm = () => {
         method: 'GET', 
       })
         .then(data => data.json())
-        .then(data => {console.log(data.vehicle[0][0].ID); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
+        .then(data => {console.log(data.vehicle[0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
           setApiResponse(data                              // data.vehicle[0] => array of vehicles -- data.vehicle[0][0] => 1st vehicle in the list -- data.vehicle[0][0].ID == ID 
           )})
         .catch(error => console.error(error));
@@ -109,8 +120,8 @@ const VehicleForm = () => {
           <div className="nav-divider"></div>
         </aside>
         <div className="main-content">
-           <form class="form-1" onSubmit={handleSubmit}>
-      <h2 class="form-header">Create New Vehicle</h2>
+           <form className="form-1" onSubmit={handleSubmit}>
+      <h2 className="form-header">Create New Vehicle</h2>
         <label>
           ID:
           <input
@@ -174,20 +185,20 @@ const VehicleForm = () => {
           Availibility:
           <input
             type="text"
-            name="availibility"
+            name="availability"
             value={formData.availability}
             onChange={handleChange}
             required
           />
         </label>
         <br />
-        <button class="button-1" role="button" type="submit">Submit</button>
+        <button className="button-1" role="button" type="submit">Submit</button>
       </form>
 
         </div>
      
-      <div>
-      <BrowseVehicles  />
+        <div>
+      <Main vehicles={vehicles} />
     </div>
 
       <Footer></Footer>
@@ -195,19 +206,19 @@ const VehicleForm = () => {
     );
   };
 
-function MyForm() {
-  return (
-    <form>
-      <label>Enter your name:
-        <input type="text" />
-      </label>
-    </form>
-  )
-}
+
 function BrowseVehicles() {
   const [vehicles, setVehicles] = useState([]);
+  fetch("http://localhost:9000/vehicles", {
+        method: 'GET', 
+      })
+        .then(data => data.json())
+        .then(data => {console.log(data.vehicle[0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
+        setVehicles(data.vehicle[0]);})
+        .catch(error => console.error(error));
 
-  useEffect(() => {
+
+ /* useEffect(() => {
     const callAPIGet = async () => {
       const response = await fetch("http://localhost:9000/vehicles", {
         method: 'GET', 
@@ -236,7 +247,7 @@ function BrowseVehicles() {
     };
 
     fetchVehicles();
-  }, []);
+  }, []);*/
 
   return (
     <div>
@@ -261,7 +272,7 @@ function Main({ vehicles }) {
                 <div>Model: {vehicle.model}</div>
                 <div>Price: {vehicle.price}</div>
                 <div>
-                  <button class="button-1">Edit</button>
+                  <button className="button-1">Edit</button>
                 </div>
               </li>
             ))}
