@@ -33,12 +33,6 @@ function ReservationForm() {
 
   const [error, setError] = useState(""); // State to store error message
   const [carArray, setCarArray] = useState([]); // State to store car array
-  const [apiResponse, setApiResponse] = useState("");
-  const [apiResponse1, setApiResponse1] = useState({});
-  const [apiResponse2, setApiResponse2] = useState([]);  
-  const [apiResponse3, setApiResponse3] = useState("");
-  const [customer, setCustomer] = useState({});
-  const [car, setCar] = useState([]); // State to store car 
 
   const navigate = useNavigate();
 
@@ -72,6 +66,7 @@ function ReservationForm() {
       //     .catch((error) => console.error(error));
       // };
 
+      /*
       const callAPI2 = () => {
         fetch("http://localhost:9000/vehicles", {
           method: "GET",
@@ -79,15 +74,48 @@ function ReservationForm() {
           .then((data) => data.json())
           .then((data) => {
             console.log(data.vehicle[0][0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
-            setApiResponse2(
-              [...apiResponse2, data.vehicle[0]] // data.vehicle[0] = array of vehicles  -- data.vehicle[0][0] = 1st vehicle in the list -- data.vehicle[0][0].ID == ID of the first vehicle
+            setCarArray(
+              data.vehicle[0] // data.vehicle[0] = array of vehicles  -- data.vehicle[0][0] = 1st vehicle in the list -- data.vehicle[0][0].ID == ID of the first vehicle
               );
           })
           .catch((error) => console.error(error));
       };
+      */
+      useEffect(() => {
+        callAPI2();
+      }, []);
+        const callAPI2 = async () => {
+            console.log("1");
+            const response = await fetch("http://localhost:9000/vehicles", {
+              method: "GET",
+            });
+      
+            if (!response.ok) {
+            console.log("2");
+              throw new Error("Failed to fetch vehicles.");
+            }
+            
+            console.log("3");
+            const data = await response.json();
+            console.log(data.vehicle); // Check the structure of data for debugging
+      
+            //response.body.vehicle
+            // Assuming data.vehicle is an array of vehicles, adjust accordingly
+            if (data.vehicle[0].length > 0) {
+              console.log("4");
+              setCarArray(data.vehicle);
+            } else {
+              
+            console.log("5");
+              throw new Error("No vehicles found.");
+            }
+        };
+      
 
+
+/*
       const callAPI1 = () => {
-        fetch("http://localhost:9000/vehicles/"+formData.vehicleID, {
+        fetch(`http://localhost:9000/vehicles/${formData.vehicleID}`, {
           method: "GET",
         })
           .then((data) => data.json())
@@ -98,13 +126,8 @@ function ReservationForm() {
               );
           })
           .catch((error) => console.error(error));
-      };
+      };*/
 
-      useEffect(() => {
-        verifyCustomer();
-        // callAPI2();
-        // callAPI1();
-      }, []);
 
 
       navigate("/");
@@ -118,14 +141,14 @@ function ReservationForm() {
     
       // get customer ID from email
       //const customerResponse = await fetch(`http://localhost:9000/customers/email/${formData.email}`);
-      formData.customerID = apiResponse3;
+      //formData.customerID = apiResponse3;
 
       // check if vehicle id is valid and if the vehicle is available
       
       
       /*
       const vehicleResponse = await fetch(`/vehicles/${formData.vehicleID}`,{method: 'GET'});
-      const vehicleData = await vehicleResponse.json();*/
+      const vehicleData = await vehicleResponse.json();
       
       if (car===null) {
         setError("Vehicle not found");
@@ -141,14 +164,14 @@ function ReservationForm() {
       }
 
       
-    }
+    }*/
       //generating the reservation id
       formData.id = generateRandomString(10);
 
       //calculating the total of reservation
       const reservationDays = (returnDate - pickUpDate) / (1000 * 60 * 60 *24);
       
-      formData.total=car.price*reservationDays;
+      //formData.total=car.price*reservationDays;
 
       //adding additional services to the total
       if (formData.additionalServices === "accidentInsurance") {
@@ -172,19 +195,15 @@ function ReservationForm() {
       }
 
     formData.paid = false;
-    console.log("The customer ID is "+apiResponse3);
-    console.log("The array of vehicles is "+apiResponse2);
-    console.log("The reserved vehicle is "+apiResponse1);
     return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    verifyCustomer();
   
     
     if (await validateForm()) {
-      callAPI();
+      console.log(carArray[0]);
       alert("Reservation has been made successfully! Your reservation ID is: "+formData.id+" and the total cost is: "+formData.total+"$");
     }
   };
