@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Reserve from "./pages/Reserve";
-import testReserve from "./pages/testReserve";
 import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
@@ -48,7 +47,6 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/Reserve" exact element={<Reserve />} />
-          <Route path="/testReserve" exact element={<testReserve />} />
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
