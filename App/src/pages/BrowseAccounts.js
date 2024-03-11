@@ -1,6 +1,6 @@
 import React from "react";
 
-import BrowseAccountsComponent from "../components/BrowseAccountsComponent";
+import BrowseAccountsComponent from "../components/BrowseCustomerAccounts";
 
 import "./../style/style.css";
 import Header from '../components/Header';
