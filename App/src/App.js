@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import Vehicle from "./pages/Vehicle";
+
 import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
@@ -45,12 +47,7 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/Cancel" exact element={<Cancel />} />
-          <Route path="/Browse" exact element={<Browse />} />
-          <Route path="/SignUp" exact element={<SignUp />} />
-          <Route path="/SignIn" exact element={<SignIn />} />
-          <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
-          <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} />
+          <Route path="/Vehicle" exact element={<Vehicle />} />
         </Routes>
       </div>
     </Router>
