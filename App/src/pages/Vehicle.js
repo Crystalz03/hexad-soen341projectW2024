@@ -4,7 +4,7 @@ import "./../style/style.css";
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
     
-const VehicleForm = () => {
+function VehicleForm() {
 
   
  /*fetch("http://localhost:9000/vehicles", {
@@ -25,7 +25,22 @@ const VehicleForm = () => {
           })
           .catch(error => console.error(error));*/                                                                                                                                                                                                            
 
-          
+    
+    const [vehicles, setVehicles] = useState([]);      
+
+    const getVehicles = () => {
+      fetch("http://localhost:9000/vehicles", {
+        method: 'GET', 
+      })
+        .then(data => data.json())
+        .then(data => {console.log(data.vehicle[0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
+        setVehicles(data.vehicle[0]);})
+        .catch(error => console.error(error));
+    }
+    
+    
+
+
     const [formData, setFormData] = useState({
       id: '0000000000',
       type: 'type',
@@ -36,21 +51,11 @@ const VehicleForm = () => {
     });
 
     const [apiResponse, setApiResponse] = useState(''); 
-  const [vehicles, setVehicles] = useState([]);
+
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData({ ...formData, [name]: value });
-      
-
-      
-  fetch("http://localhost:9000/vehicles", {
-        method: 'GET', 
-      })
-        .then(data => data.json())
-        .then(data => {console.log(data.vehicle[0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
-        setVehicles(data.vehicle[0]);})
-        .catch(error => console.error(error));
-
+    
     };
   
     const CallAPISet =  (e) => {
@@ -67,8 +72,6 @@ const VehicleForm = () => {
             setApiResponse(data); // Update state with the JSON response
           }).catch(error => console.error(error));
 
-      //callAPIGet();
-      
       setFormData({
         id: '0000000000',
         type: 'type',
@@ -78,6 +81,7 @@ const VehicleForm = () => {
         availability: '1',
       });
       
+      getVehicles();
     };
 
     const handleSubmit = (e) => {
@@ -85,16 +89,38 @@ const VehicleForm = () => {
       CallAPISet();
     }
 
-    const callAPIGet = () => {
-      fetch("http://localhost:9000/vehicles", {
-        method: 'GET', 
-      })
-        .then(data => data.json())
-        .then(data => {console.log(data.vehicle[0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
-          setApiResponse(data                              // data.vehicle[0] => array of vehicles -- data.vehicle[0][0] => 1st vehicle in the list -- data.vehicle[0][0].ID == ID 
-          )})
-        .catch(error => console.error(error));
+    //Alternative way of using POST, still causing errors
+    /*const [error, setError] = useState("")
+    const callAPI = async () => {
+      try {
+
+
+        const response = await fetch("http://localhost:9000/vehicles", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+        console.log(JSON.stringify(formData));
+  
+        if (!response.ok) {
+          throw new Error(
+            "This email is already associated with an account. Please sign in."
+          );
+        }
+  
+        navigate("/");
+      } catch (error) {
+        setError(error.message);
+        console.error(error);
+      }
     };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    callAPI();
+  }; */
 
     return (
       <div>
@@ -206,7 +232,7 @@ const VehicleForm = () => {
     );
   };
 
-
+//For testing to see if vehicles are added correctly
 function BrowseVehicles() {
   const [vehicles, setVehicles] = useState([]);
   fetch("http://localhost:9000/vehicles", {

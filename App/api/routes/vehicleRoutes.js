@@ -5,10 +5,10 @@ const router = express.Router();
 
 // Create a new vehicle
 router.post('/vehicles', async (req, res) => {
-  const { id, type, category, model, price } = req.body;
-
+  const { id, type, category, model, price, availability } = req.body;
+  
   try {
-    const result = await pool.query`INSERT INTO Vehicle (ID, Type, Category, Model, Price) VALUES (${id}, ${type}, ${category}, ${model}, ${price})`;
+    const result = await pool.query`INSERT INTO Vehicle (ID, Type, Category, Model, Price, Availability) VALUES (${id}, ${type}, ${category}, ${model}, ${price}, ${availability})`;
     res.status(201).json({ message: 'Vehicle created successfully', vehicle: req.body }); // e.g. Vehicle = response.body.vehicle -> Vehicle.name
   } catch (error) {
     console.error('Error creating vehicle:', error);
@@ -49,10 +49,10 @@ router.get('/vehicles/:id', async (req, res) => {
 // Update a specific vehicle by ID
 router.put('/vehicles/:id', async (req, res) => {
   const vehicleId = req.params.id;
-  const { type, category, model, price } = req.body;
+  const { type, category, model, price, availability } = req.body;
 
   try {
-    const result = await pool.query`UPDATE Vehicle SET Type = ${type}, Category = ${category}, Model = ${model}, Price = ${price} WHERE ID = ${vehicleId}`;
+    const result = await pool.query`UPDATE Vehicle SET Type = ${type}, Category = ${category}, Model = ${model}, Price = ${price}, Availability = ${availability} WHERE ID = ${vehicleId}`;
     res.status(200).json({ message: 'Vehicle updated successfully',  vehicle: req.body }); // e.g. Vehicle = response.body.vehicle -> Vehicle.name
   } catch (error) {
     console.error('Error updating vehicle:', error);
