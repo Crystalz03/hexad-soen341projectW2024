@@ -12,7 +12,7 @@ function DisplayUserInfo() {
     Last_Name: "",
     Reservation_ID: "",
     Location: "",
-    Email: "email test",
+    Email: "",
     Password: "",
   });
 
@@ -25,26 +25,6 @@ function DisplayUserInfo() {
       [name]: value,
     }));
   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const response = await fetchUserInfo();
-//       if (response.ok) {
-//         const data = await response.json();
-//         console.log(data.customer.ID);
-//         setUserInfo(data.customer);
-//         setError("");
-//       } else {
-//         setError("An error occurred during sign-in.");
-//         setUserInfo(null);
-//       }
-//     } catch (error) {
-//       console.error("Error during fetch:", error);
-//       setError("An error occurred during sign-in.");
-//       setUserInfo(null);
-//     }
-//   };
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,6 +80,73 @@ const handleSubmit = async (e) => {
     return response;
   };
 
+  const handleDeleteUser = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetchUserInfo();
+      if (response.ok) {
+        const data = await response.json();
+        
+        if (formData.username.includes("@")) {
+          try {
+            const response = await fetch(`http://localhost:9000/customers/${userInfo.ID}`, {
+              method: 'DELETE',
+            });
+            if (response.ok) {
+              // Successful deletion
+              console.log("Customer deleted successfully");
+            } else {
+              setError("Error deleting user");
+            }
+          } catch (error) {
+            console.error("Error deleting user:", error);
+            setError("Error deleting user");
+          }
+          
+        } else if (formData.username.startsWith("CR")) {
+          try {
+            const response = await fetch(`http://localhost:9000/csr/${userInfo.ID}`, {
+              method: 'DELETE',
+            });
+            if (response.ok) {
+              // Successful deletion
+              console.log("CSR deleted successfully");
+            } else {
+              setError("Error deleting user");
+            }
+          } catch (error) {
+            console.error("Error deleting user:", error);
+            setError("Error deleting user");
+          }
+        } else if (formData.username.startsWith("A")) {
+          try {
+            const response = await fetch(`http://localhost:9000/admin/${userInfo.ID}`, {
+              method: 'DELETE',
+            });
+            if (response.ok) {
+              // Successful deletion
+              console.log("Admin deleted successfully");
+            } else {
+              setError("Error deleting user");
+            }
+          } catch (error) {
+            console.error("Error deleting user:", error);
+            setError("Error deleting user");
+          }
+        }
+        
+        setError("");
+      } else {
+        setError("An error occurred during sign-in.");
+        setUserInfo(null);
+      }
+    } catch (error) {
+      console.error("Error during fetch:", error);
+      setError("An error occurred during sign-in.");
+      setUserInfo(null);
+    }
+  };
+
   useEffect(() => {
     console.log(userInfo);
   }, [userInfo]); // Run this effect whenever `userInfo` changes
@@ -132,6 +179,7 @@ const handleSubmit = async (e) => {
             <p>Reservation ID: {userInfo.Reservation_ID}</p>
             <p>Location: {userInfo.Location}</p>
             {/* Render other properties as needed */}
+            <button onClick={handleDeleteUser}>Delete User</button>
           </div>
         )}
       </div>
