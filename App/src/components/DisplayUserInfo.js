@@ -26,7 +26,7 @@ function DisplayUserInfo() {
     }));
   };
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetchUserInfo();
@@ -86,56 +86,25 @@ const handleSubmit = async (e) => {
       const response = await fetchUserInfo();
       if (response.ok) {
         const data = await response.json();
-        
-        if (formData.username.includes("@")) {
-          try {
-            const response = await fetch(`http://localhost:9000/customers/${userInfo.ID}`, {
-              method: 'DELETE',
-            });
-            if (response.ok) {
-              // Successful deletion
-              console.log("Customer deleted successfully");
-            } else {
-              setError("Error deleting user");
-            }
-          } catch (error) {
-            console.error("Error deleting user:", error);
-            setError("Error deleting user");
-          }
-          
-        } else if (formData.username.startsWith("CR")) {
-          try {
-            const response = await fetch(`http://localhost:9000/csr/${userInfo.ID}`, {
-              method: 'DELETE',
-            });
-            if (response.ok) {
-              // Successful deletion
-              console.log("CSR deleted successfully");
-            } else {
-              setError("Error deleting user");
-            }
-          } catch (error) {
-            console.error("Error deleting user:", error);
-            setError("Error deleting user");
-          }
-        } else if (formData.username.startsWith("A")) {
-          try {
-            const response = await fetch(`http://localhost:9000/admin/${userInfo.ID}`, {
-              method: 'DELETE',
-            });
-            if (response.ok) {
-              // Successful deletion
-              console.log("Admin deleted successfully");
-            } else {
-              setError("Error deleting user");
-            }
-          } catch (error) {
-            console.error("Error deleting user:", error);
-            setError("Error deleting user");
-          }
-        }
-        
-        setError("");
+        // Code for deleting user...
+      } else {
+        setError("An error occurred during sign-in.");
+        setUserInfo(null);
+      }
+    } catch (error) {
+      console.error("Error during fetch:", error);
+      setError("An error occurred during sign-in.");
+      setUserInfo(null);
+    }
+  };
+
+  const handleUpdateUser = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetchUserInfo();
+      if (response.ok) {
+        const data = await response.json();
+        // Code for updating user...
       } else {
         setError("An error occurred during sign-in.");
         setUserInfo(null);
@@ -183,6 +152,52 @@ const handleSubmit = async (e) => {
           </div>
         )}
       </div>
+
+      {/* Form for updating user information */}
+      <h2>Update User Information</h2>
+      <form onSubmit={handleUpdateUser}>
+        <div>
+          <label>Name:</label>
+          <input
+            type="text"
+            name="Name"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Last Name:</label>
+          <input
+            type="text"
+            name="Last_Name"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Location:</label>
+          <input
+            type="text"
+            name="Location"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            name="Email"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            name="Password"
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">Update</button>
+      </form>
     </div>
   );
 }
