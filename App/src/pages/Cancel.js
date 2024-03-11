@@ -1,5 +1,5 @@
 import React from 'react';
-import CancelReservationForm from '../components/CancelReservation';
+import CancelReservation from '../components/CancelReservation';
 import './../style/Cancel.css';
 
 function Cancel() {
@@ -7,7 +7,7 @@ function Cancel() {
 <div className="main-content">
   <div className="cancel-container">
     <h2 className="reservation-title">Cancel Reservation</h2>
-      <div className="cancel-form"><CancelReservationForm/></div>
+      <div className="cancel-form"><CancelReservation/></div>
   </div>
 </div>
   );

@@ -1,20 +1,19 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './../style/View.css';
 
 
 
-function ViewReservationForm() {
+function ViewReservation() {
 
-    const [confirmationNumber, setConfirmationNumber] = useState('');
+    const [reservationId, setReservationId] = useState('');
     const [reservationDetails, setReservationDetails] = useState(null);
     const [error, setError] = useState(null); 
     const navigate = useNavigate();
     
-    function isFormatValidConfirmationNumber(confirmationNumber) {
+    function isFormatValidReservationId(reservationId) {
     const regex=/^[A-Z]{1}\d{9}$/;
-    const isValid=regex.test(confirmationNumber);
+    const isValid=regex.test(reservationId);
     if(!isValid) {
         setError("The format you have entered is invalid. Please try again.");
         return false;
@@ -26,12 +25,12 @@ function ViewReservationForm() {
 
 
     const callAPI = async () => {
-      if (!isFormatValidConfirmationNumber(confirmationNumber)) {
+      if (!isFormatValidReservationId(reservationId)) {
         return;
     }
 
         try {
-          const response = await fetch(`http://localhost:9000/reservationRoute/${confirmationNumber}`, {
+          const response = await fetch(`http://localhost:9000/reservationRoute/${reservationId}`, {
             method: "VIEW",
             headers: {
               "Content-Type": "application/json",
@@ -61,16 +60,16 @@ function ViewReservationForm() {
       };
     
       const handleChange = (e) => {
-        setConfirmationNumber(e.target.value);
+        setReservationId(e.target.value);
       };
 
 return (
     <form  onSubmit={handleSubmit}  action="ViewR">
-      <label> Confirmation Number:
+      <label> Reservation ID:
       <input
             type="text"
-            value={confirmationNumber} 
-            placeholder="Enter Confirmation Number"
+            value={reservationId} 
+            placeholder="Enter Reservation ID"
             required
             onChange={handleChange}
           ></input>
@@ -81,4 +80,4 @@ return (
     </form>
   );
 }
-export default ViewReservationForm;
+export default ViewReservation;
