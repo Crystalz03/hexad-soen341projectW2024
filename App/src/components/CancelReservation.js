@@ -32,8 +32,8 @@ function CancelReservation() {
             });
             if (response.ok) {
                 console.log('Reservation successfully canceled');
-                // Redirect to confirmation page or display success message
-                navigate('/confirmation'); // Redirect to confirmation page
+               
+                navigate('/'); //
             } else {
                 setError('Failed to cancel reservation. Please try again later.');
                 console.error('Failed to cancel reservation:', response.statusText);

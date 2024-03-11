@@ -1,5 +1,5 @@
 import React from 'react';
-import ViewReservation from '../components/ViewReservationjs';
+import ViewReservation from '../components/ViewReservation';
 import './../style/View.css';
 
 function View() {
