@@ -7,6 +7,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './App/dist'),
     filename: 'App.js',
+    publicPath: '/',
+
   },
   module: {
     rules: [
@@ -26,6 +28,9 @@ module.exports = {
           },
         },
       ],
+    },
+    devServer: {
+      historyApiFallback: true,
     },
     plugins: [
       new HtmlWebpackPlugin({
