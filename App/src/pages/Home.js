@@ -3,7 +3,8 @@ import React from "react";
 import "./../style/style.css";
 import { Link } from "react-router-dom";
 import BrowseAccounts from './BrowseAccounts';
-
+import SideMenu
+ from "../components/SideMenu";
 function Home() {
   return (
     <div>
@@ -46,7 +47,7 @@ function Main() {
             <li className="nav-list-components-2">Browse Vehicles</li>
             <li className="nav-list-components-2">Locations</li>
             <li className="nav-list-components-2">Contact Us</li>
-            <li className="nav-list-components-2"><Link to="/BrowseAccounts">View account</Link></li>
+            <li className="nav-list-components-2"><Link to={"/BrowseAccounts"}>View accounts</Link></li>
           </ul>
           <div className="nav-divider"></div>
         </aside>
@@ -140,4 +141,4 @@ function Navigation() {
 function Footer() {
   return <div className="footer">Footer</div>;
 }
-export default BrowseAccounts;
+export default Home;

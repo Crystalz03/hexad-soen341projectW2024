@@ -308,8 +308,19 @@
   }
 
   .customer-card-scroll-container {
-    max-height: 400px; /* Adjust the maximum height as needed */
-    overflow-y: auto;
+    overflow-y:visible;
+  }
+
+  .customer-accounts{
+    overflow-y: scroll;
+  }
+  .title-accounts{
+    color: var(--second-white);
+    font-weight: var(--bold);
+    font-style: italic;
+    font-size: var(--xxl-size);
+    margin-left: 200px;
+    margin-bottom: 10px;
   }
   
   .customer-card-container {
@@ -329,6 +340,7 @@
     
     color: var(--secondary-text-color);
     width: var(--main-content-width);
+    margin-left: 200px;
   }
 
   .accounts-title {
