@@ -9,6 +9,7 @@ import CreateCRAccount from "./pages/CreateCRAccount";
 import SignIn from "./pages/SignIn";
 import Cancel from "./pages/Cancel";
 import Browse from "./pages/Browse";
+import AdminInventory from "./pages/AdminInventory";
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");

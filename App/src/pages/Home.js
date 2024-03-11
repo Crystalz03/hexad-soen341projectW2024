@@ -8,9 +8,7 @@ import SideMenu from "../components/SideMenu"; //Removed this temporarily, becau
 function Home() {
   return (
     <div>
-      <SideMenu />
       <Header />
-
       <Main />
       <Footer />
     </div>
@@ -20,7 +18,6 @@ function Home() {
 function Main() {
   return (
     <div className="main">
-    
       <div className="general-structure">
         <aside className="nav sticky">
           <div className="company-name-nav all-caps">hexad</div>
