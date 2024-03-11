@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import "../style/SignUpForm.css";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import AdminAccount from "../components/AdminAccount";
 
-function SignupForm() {
-  // Function to generate a random alphanumeric string of specified length
+export default function CreateAdminAccount() {
   function generateRandomString(length) {
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const characters = "0123456789";
     let result = "";
     for (let i = 0; i < length; i++) {
       result += characters.charAt(
@@ -15,29 +14,24 @@ function SignupForm() {
     }
     return result;
   }
-
-  // Function to generate a unique customer ID with the prefix 'CS'
-  function generateCustomerId() {
-    const prefix = "CS";
-    const uniqueId = generateRandomString(8); // Generate a random string of 8 characters
+  function generateRepId() {
+    const prefix = "A";
+    const uniqueId = generateRandomString(9); // Generate a random string of 8 characters
     return prefix + uniqueId;
   }
 
   const [formData, setFormData] = useState({
-    id: generateCustomerId(),
+    id: generateRepId(),
     name: "",
     lastName: "",
-    location: "",
     email: "",
     password: "",
   });
 
-  const [error, setError] = useState(""); // State to store error message
   const navigate = useNavigate();
-
   const callAPI = async () => {
     try {
-      const response = await fetch("http://localhost:9000/customers", {
+      const response = await fetch("http://localhost:9000/admin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,12 +42,10 @@ function SignupForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          "This email is already associated with an account. Please sign in."
-        );
+        throw new Error("Please try again.");
       }
-      alert("Account Successfully Created!");
-      navigate("/");
+      alert("Admin Account Successfully Added!");
+      navigate("/AdminDashboard");
     } catch (error) {
       setError(error.message);
       console.error(error);
@@ -72,13 +64,10 @@ function SignupForm() {
       [name]: value,
     }));
   };
-
   return (
     <form onSubmit={handleSubmit} action="Sign Up">
       <div className="form">
-        {error && <p className="error">{error}</p>}{" "}
-        {/* Display error message */}
-        <div className="split-input">
+        <div>
           <input
             type="text"
             id="name"
@@ -107,15 +96,6 @@ function SignupForm() {
         ></input>
         <br />
         <input
-          type="text"
-          id="location"
-          name="location"
-          required={true}
-          placeholder="Location"
-          onChange={handleChange}
-        ></input>
-        <br />
-        <input
           type="password"
           id="password"
           name="password"
@@ -129,5 +109,3 @@ function SignupForm() {
     </form>
   );
 }
-
-export default SignupForm;
