@@ -306,3 +306,34 @@
     bottom: 0;
     margin-left: 180px;
   }
+
+  .customer-card-scroll-container {
+    max-height: 400px; /* Adjust the maximum height as needed */
+    overflow-y: auto;
+  }
+  
+  .customer-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .customer-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    /* Additional styling for each customer card */
+  }
+
+
+  .account-content {
+    
+    color: var(--secondary-text-color);
+    width: var(--main-content-width);
+  }
+
+  .accounts-title {
+    color: var(--second-white);
+    font-weight: var(--bold);
+    font-style: italic;
+    font-size: var(--xl-size);
+  }

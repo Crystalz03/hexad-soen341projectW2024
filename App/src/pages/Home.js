@@ -1,6 +1,8 @@
 import React from "react";
 
 import "./../style/style.css";
+import { Link } from "react-router-dom";
+import BrowseAccounts from './BrowseAccounts';
 
 function Home() {
   return (
@@ -44,6 +46,7 @@ function Main() {
             <li className="nav-list-components-2">Browse Vehicles</li>
             <li className="nav-list-components-2">Locations</li>
             <li className="nav-list-components-2">Contact Us</li>
+            <li className="nav-list-components-2"><Link to="/BrowseAccounts">View account</Link></li>
           </ul>
           <div className="nav-divider"></div>
         </aside>
@@ -137,4 +140,4 @@ function Navigation() {
 function Footer() {
   return <div className="footer">Footer</div>;
 }
-export default Home;
+export default BrowseAccounts;
