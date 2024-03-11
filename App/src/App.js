@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Vehicle from "./pages/Vehicle";
-import MyAccount from "./pages/MyAccount";
+
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
@@ -42,7 +42,6 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/Vehicle" exact element={<Vehicle />} />
-          <Route path="/MyAccount" exact element={<MyAccount />} />
         </Routes>
       </Router>
     </div>

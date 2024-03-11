@@ -20,7 +20,8 @@ export default function SideMenu() {
               <li className="nav-list-components-2">Browse Vehicles</li>
               <li className="nav-list-components-2">Locations</li>
               <li className="nav-list-components-2">Contact Us</li>
-              <li className="nav-list-components-2"><Link to="/MyAccount">My Account</Link></li>
+              <li className="nav-list-components-2">My Account</li>
+              <li className="nav-list-components-2"><Link to="/Vehicle">Add a vehicle</Link></li>
             </ul>
             <div className="nav-divider"></div>
           </aside>
