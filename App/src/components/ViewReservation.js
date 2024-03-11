@@ -6,6 +6,7 @@ function ViewReservation() {
     const [reservationId, setReservationId] = useState('');
     const [reservationDetails, setReservationDetails] = useState(
         {
+
             id:"", 
             vehicleID:"", 
             customerID:" ", 
@@ -45,7 +46,7 @@ function ViewReservation() {
             if (response.ok){
                 const data = await response.json();
                 setReservationDetails(data.reservation);
-                console.log(data);
+                //console.log(data.reservation);
             } else {
                 setError(response.statusText);
                 console.error('Failed to retrieve reservation:', response.statusText);
