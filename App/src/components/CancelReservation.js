@@ -7,8 +7,8 @@ function CancelReservation() {
     const navigate = useNavigate();
 
     const isFormatValidReservationId = (reservationId) => {
-        const regex = /^[A-Z]{1}\d{9}$/;
-        return regex.test(reservationId);
+        // const regex = /^[A-Z]{1}\d{9}$/;
+        // return regex.test(reservationId);
     }
 
     const handleChange = (e) => {
