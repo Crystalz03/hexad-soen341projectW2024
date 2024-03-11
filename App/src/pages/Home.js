@@ -2,8 +2,11 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SideMenu from "../components/SideMenu";
-
+import { Link } from "react-router-dom";
 import "./../style/style.css";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import SideMenu from "../components/SideMenu"; 
 
 function Home() {
   return (
@@ -15,6 +18,7 @@ function Home() {
     </div>
   );
 }
+
 function Main() {
   return (
     <div className="main">
@@ -86,5 +90,6 @@ function Main() {
     </div>
   );
 }
+
 
 export default Home;
