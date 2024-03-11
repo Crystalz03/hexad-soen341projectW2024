@@ -4,8 +4,19 @@ import './../style/View.css';
 
 function ViewReservation() {
     const [reservationId, setReservationId] = useState('');
-    const [reservationDetails, setReservationDetails] = useState(null);
-    const [error, setError] = useState(null); 
+    const [reservationDetails, setReservationDetails] = useState(
+        {
+            id:"", 
+            vehicleID:"", 
+            customerID:" ", 
+            pickUpDate:" ", 
+            returnDate:" ", 
+            extraEquipment:" ", 
+            additionalServices: " ", 
+            total:" ",
+        }
+    );
+    const [error, setError] = useState(""); 
     const navigate = useNavigate();
     
     function isFormatValidReservationId(reservationId) {
@@ -34,7 +45,7 @@ function ViewReservation() {
             if (response.ok){
                 const data = await response.json();
                 setReservationDetails(data.reservation);
-                console.log(data.reservation);
+                console.log(data);
             } else {
                 setError(response.statusText);
                 console.error('Failed to retrieve reservation:', response.statusText);
