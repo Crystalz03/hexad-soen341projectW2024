@@ -318,7 +318,7 @@ import React from 'react';
 import SideMenu from '../components/SideMenu';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import VehicleForm from '../components/VehicleForm';
+import VehicleForm from '../components/VehicleForm2';
 
 export default function Vehicle() {
   return (
