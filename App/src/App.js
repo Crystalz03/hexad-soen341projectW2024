@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import View from "./pages/View";
 import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
@@ -43,6 +44,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/Cancel" exact element={<Cancel/>} />
+          <Route path="/View" exact element={<View />} /> 
         </Routes>
       </div>
     </Router>
