@@ -1,30 +1,32 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-function CancelReservation() {
-    const [reservationId, setReservationId] = useState('');
+function CancelReservationForm() {
+    const [confirmationNumber, setConfirmationNumber] = useState('');
     const [error, setError] = useState(null); 
     const navigate = useNavigate();
-
-    const isFormatValidReservationId = (reservationId) => {
+    
+    const isFormatValidConfirmationNumber = (confirmationNumber) => {
         const regex = /^[A-Z]{1}\d{9}$/;
-        return regex.test(reservationId);
+        const isValid = regex.test(confirmationNumber);
+        if (!isValid) {
+            setError("The format you have entered is invalid. Please try again.");
+            return false;
+        }
+        return true;
     }
 
     const handleChange = (e) => {
         setReservationId(e.target.value);
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const reservationIdTrimmed = reservationId.trim(); // Trim the reservation ID
-
-        if (!isFormatValidReservationId(reservationIdTrimmed)) {
-            setError("Invalid reservation ID format");
+    const handleSubmit = async (e) => { 
+        e.preventDefault(); 
+        if (!isFormatValidConfirmationNumber(confirmationNumber)) {
             return;
         }
         try {
-            const response = await fetch(`http://localhost:9000/reservations/${reservationIdTrimmed}`, {
+            const response = await fetch(`http://localhost:9000/reservations/${confirmationNumber}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"
@@ -32,15 +34,13 @@ function CancelReservation() {
             });
             if (response.ok) {
                 console.log('Reservation successfully canceled');
-                // Redirect to confirmation page or display success message
-                navigate('/confirmation'); // Redirect to confirmation page
             } else {
-                setError('Failed to cancel reservation. Please try again later.');
-                console.error('Failed to cancel reservation:', response.statusText);
+                setError('Failed to delete reservation. Please try again later.');
+                console.error('Failed to delete reservation:', response.statusText);
             }
         } catch (error) {
-            setError('An error occurred while cancelling the reservation. Please try again later.');
-            console.error('Error cancelling reservation:', error);
+            setError('An error occurred while deleting the reservation. Please try again later.');
+            console.error('Error deleting reservation:', error);
         }
     };
 
@@ -56,9 +56,9 @@ function CancelReservation() {
                 />
             </label>
             {error && <p className="error">{error}</p>}
-            <button type="submit">Cancel</button>
+            <button type="submit">Delete Reservation</button>
         </form>
     );
 }
 
-export default CancelReservation;
+export default CancelReservationForm;
