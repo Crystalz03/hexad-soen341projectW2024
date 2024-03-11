@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import BrowseAdminAccounts from "./BrowseAdminAccounts.js";
 
 import "./../style/style.css";
 
 
 function BrowseAccountsComponent() {
-    const [apiResponse, setApiResponse] = useState(null); // Define apiResponse state
+    const [apiResponse, setApiResponse] = useState(null); 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
-    const [filter, setFilter] = useState("All");
   
-    const callAPIGet = () => {
+    const callAPIGetCustomers = () => {
       fetch("http://localhost:9000/customers", {
         method: "GET",
       })
@@ -29,6 +29,7 @@ function BrowseAccountsComponent() {
           }));
   
           setApiResponse(customersAccount);
+          console.log(apiResponse)
           setLoading(false);
         })
         .catch((error) => {
@@ -37,16 +38,21 @@ function BrowseAccountsComponent() {
           setLoading(false);
         });
     };
+
   
     useEffect(() => {
-      callAPIGet();
+      callAPIGetCustomers();
     }, []);
+
+ 
+
+    
   
     return (
         <div>
   <Header />
   <div >
-    <h2 >Customer Accounts</h2>
+    <h2 className="accounts-title">Customer Accounts</h2>
     <div>
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error}</div>}
@@ -72,6 +78,7 @@ function BrowseAccountsComponent() {
       )}
     </div>
   </div>
+  <BrowseAdminAccounts />
   <Footer />
 </div>
     );
