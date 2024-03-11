@@ -122,17 +122,6 @@ function VehicleForm() {
           />
         </label>
         <br />
-        <label>
-          Availibility:
-          <input
-            type="text"
-            name="availability"
-            value={formData.availability}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
         {error && <p className="error">{error}</p>}
         <button className="button-1" role="button" type="submit">Submit</button>
       </form>
