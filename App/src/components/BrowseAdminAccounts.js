@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
 
 import "./../style/style.css";
+import "./../style/accountsView.css";
 
 
 function BrowseAdminAccounts() {
@@ -26,12 +24,11 @@ function BrowseAdminAccounts() {
             }));
     
             setApiResponse(AdminAccount);
-            console.log(apiResponse);
             setLoading(false);
           })
           .catch((error) => {
             console.error(error);
-            setError("Error fetching accounts");
+            setError("Error fetching admin accounts");
             setLoading(false);
           });
       };
@@ -52,10 +49,10 @@ function BrowseAdminAccounts() {
         <div>No customers found.</div>
       )}
       {!loading && !error && apiResponse.length > 0 && (
-        <div className="customer-card-scroll-container">
-          <div className="customer-card-container">
+        <div className="account-card-scroll-container">
+          <div className="account-card-container">
             {apiResponse.map((admin) => (
-              <div key={admin.ID} className="customer-card">
+              <div key={admin.ID} className="account-card">
                 <div>ID: {admin.ID}</div>
                 <div>Name: {admin.Name}</div>
                 <div>Last Name: {admin.Last_Name}</div>

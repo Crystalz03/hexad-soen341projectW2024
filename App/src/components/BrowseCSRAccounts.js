@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./../style/style.css";
-
+import "./../style/accountsView.css";
 
 function BrowseAdminAccounts() {
     const [apiResponse, setApiResponse] = useState(null); 
@@ -48,10 +48,10 @@ function BrowseAdminAccounts() {
         <div>No customers found.</div>
       )}
       {!loading && !error && apiResponse.length > 0 && (
-        <div className="customer-card-scroll-container">
-          <div className="customer-card-container">
+        <div className="account-card-scroll-container">
+          <div className="account-card-container">
             {apiResponse.map((csr) => (
-              <div key={csr.ID} className="customer-card">
+              <div key={csr.ID} className="account-card">
                 <div>ID: {csr.ID}</div>
                 <div>Name: {csr.Name}</div>
                 <div>Last Name: {csr.Last_Name}</div>

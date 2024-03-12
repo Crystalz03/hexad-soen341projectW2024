@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Header from "./Header.js";
-import Footer from "./Footer.js";
-import BrowseAdminAccounts from "./BrowseAdminAccounts.js";
-import BrowseCSRAccount from "./BrowseCSRAccounts.js"
-
 import "./../style/style.css";
-
+import "./../style/accountsView.css";
 
 function BrowseAccountsComponent() {
     const [apiResponse, setApiResponse] = useState(null); 
@@ -51,7 +45,6 @@ function BrowseAccountsComponent() {
   
     return (
         <div>
-  <Header />
   <div >
     <h2 className="accounts-title">Customer Accounts</h2>
     <div>
@@ -61,10 +54,10 @@ function BrowseAccountsComponent() {
         <div>No customers found.</div>
       )}
       {!loading && !error && apiResponse.length > 0 && (
-        <div className="customer-card-scroll-container">
-          <div className="customer-card-container">
+        <div className="account-card-scroll-container">
+          <div className="account-card-container">
             {apiResponse.map((customer) => (
-              <div key={customer.ID} className="customer-card">
+              <div key={customer.ID} className="account-card">
                 <div>ID: {customer.ID}</div>
                 <div>Name: {customer.Name}</div>
                 <div>Last Name: {customer.Last_Name}</div>
@@ -79,9 +72,6 @@ function BrowseAccountsComponent() {
       )}
     </div>
   </div>
-  <BrowseAdminAccounts />
-  <BrowseCSRAccount />
-  <Footer />
 </div>
     );
   }
