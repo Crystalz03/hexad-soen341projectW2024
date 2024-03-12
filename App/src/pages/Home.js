@@ -11,7 +11,6 @@ import SideMenu from "../components/SideMenu";
 function Home() {
   return (
     <div>
-      <SideMenu />
       <Header />
       <Main />
       <Footer />
@@ -90,6 +89,5 @@ function Main() {
     </div>
   );
 }
-
 
 export default Home;
