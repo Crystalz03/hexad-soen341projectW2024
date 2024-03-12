@@ -7,12 +7,13 @@ import updateVehicle from '../components/UpdateVehicleForm';
 
 
 function UpdateVehicle() {
+    
   return (
     <div className="main">
       <div className="general-structure">
         <div className="main-content">
           <div className="title-box">
-            <div className="reservation-title">Create A New Vehicle</div>
+            <div className="reservation-title">Update an Existing Vehicle</div>
           </div>
           <div className="extra-content" style={{height:"400px"}}><updateVehicle /></div>
         </div>
@@ -21,4 +22,4 @@ function UpdateVehicle() {
   );
 }
 
-export default Main;
+export default UpdateVehicle;

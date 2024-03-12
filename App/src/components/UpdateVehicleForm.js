@@ -1,10 +1,6 @@
-import AdminInventoryVehicles from "./AdminInventoryVehicles";
-import vehicleID from "./AdminInventoryVehicles";
 import React, { useState } from 'react';
 
-const vehicleiD = vehicleID;
-
-function updateVehicle(vehicleiD) {
+function updateVehicle() {
 
 
     const [formData, setFormData] = useState({
@@ -52,31 +48,20 @@ function updateVehicle(vehicleiD) {
 
   const vehiclesArray= vehicles[0];
 
-  function verifyForm(vehicleiD) {
+  function verifyForm() {
+    
+
   let selectedVehicle=null;
     for (let i = 0; i < vehiclesArray.length; i++) {
-      if (vehiclesArray[i].ID === formData.vehicleID) {
+      if (vehiclesArray[i].ID === formData.id) {
         selectedVehicle=vehiclesArray[i];
         break;
       }
     }
-    console.log("reserved vehicle",reservedVehicle);
-    if (reservedVehicle === null) {
+    if (selectedVehicle === null) {
       alert("The vehicle you selected does not exist.");
       return false;
-    }else{
-        info.id=selectedVehicle.ID;
-        info.type=selectedVehicle.Type;
-        info.category=selectedVehicle.Category; 
-        info.model=selectedVehicle.Model;
-        info.price=selectedVehicle.Price;
-        info.availability=selectedVehicle.Availability;
-        }
-
-        if(formData.id ===""){
-            info.id=selectedVehicle.ID;
-        } else {info.id=formData.id;}
-
+    }
         if(formData.type ===""){
             info.type=selectedVehicle.Type;
         } else {info.type=formData.type;}
@@ -150,6 +135,7 @@ function updateVehicle(vehicleiD) {
               name="id"
               value={formData.id}
               onChange={handleChange}
+              required={true}
             />
             <label>Type:</label>
             <input

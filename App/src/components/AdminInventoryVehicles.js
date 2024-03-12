@@ -101,7 +101,7 @@ function AdminInventoryVehicles() {
                     </button>
                     <button
                       className="all-caps sign-in-btn btn-background-color reserve-btn"
-                      onClick={() => updateVehicle(vehicle.ID)}
+                      onClick={() => <Link to="/UpdateVehicle">Update Vehicle</Link>}
                     ></button>
                   </div>
                 </div>

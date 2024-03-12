@@ -46,7 +46,6 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/MyAccount" exact element={<MyAccount />} />
           <Route path="/Cancel" exact element={<Cancel />} />
           <Route path="/Browse" exact element={<Browse />} />
           <Route path="/SignUp" exact element={<SignUp />} />
