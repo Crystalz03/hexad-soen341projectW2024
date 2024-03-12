@@ -6,7 +6,7 @@ function DisplayUserInfo() {
     password: "",
   });
 
-  const [customerInfo, setCustomerInfo] = useState({
+  const [userInfo, setUserInfo] = useState({
     ID: "",
     Name: "",
     Last_Name: "",
@@ -16,21 +16,21 @@ function DisplayUserInfo() {
     Password: "",
   });
 
-  const [CRInfo, setCR] = useState({
-    ID: "",
-    Name: "",
-    Last_Name: "",
-    Branch: "",
-    Email: "",
-    Password: "",
-  });
-  const [adminInfo, setAdmin] = useState({
-    ID: "",
-    Name: "",
-    Last_Name: "",
-    Email: "",
-    Password: "",
-  });
+  // const [CRInfo, setCR] = useState({
+  //   ID: "",
+  //   Name: "",
+  //   Last_Name: "",
+  //   Branch: "",
+  //   Email: "",
+  //   Password: "",
+  // });
+  // const [adminInfo, setAdmin] = useState({
+  //   ID: "",
+  //   Name: "",
+  //   Last_Name: "",
+  //   Email: "",
+  //   Password: "",
+  // });
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
