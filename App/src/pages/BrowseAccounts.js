@@ -14,7 +14,6 @@ export default function BrowseAccounts() {
           <Header />
           <SideMenu/>
           <Main />
-          <Footer />
           </div>
       );
 }
