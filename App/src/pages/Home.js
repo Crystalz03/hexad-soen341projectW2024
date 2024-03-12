@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./../style/style.css";
+import BrowseAccounts from './BrowseAccounts';
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
@@ -41,6 +42,7 @@ function Main() {
             </li>
             <li className="nav-list-components-2">Locations</li>
             <li className="nav-list-components-2">Contact Us</li>
+            <li className="nav-list-components-2"><Link to={"/BrowseAccounts"}>View accounts</Link></li>
           </ul>
           <div className="nav-divider"></div>
         </aside>

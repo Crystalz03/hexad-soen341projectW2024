@@ -53,7 +53,7 @@ router.get("/vehicles/:id", async (req, res) => {
 // Update a specific vehicle by ID
 router.put("/vehicles/:id", async (req, res) => {
   const vehicleId = req.params.id;
-  const { type, category, model, price, availability } = req.body;
+  const { type, category, model, price } = req.body;
 
   try {
     const result =
