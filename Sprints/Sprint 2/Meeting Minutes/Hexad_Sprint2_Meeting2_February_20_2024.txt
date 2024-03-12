@@ -1,0 +1,30 @@
+Hexad Meeting Minutes
+
+Date: Tuesday, February 20th, 2024
+Time: 11h45 pm - 12h00 pm (30 min)
+Location: Concordia University, Hall building 10th floor
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Yaroslava (40242907)
+Rania Maoukout (40249281)
+Malak Sefrioui(40252907)
+Sydney Campbell (40243309)
+
+Agenda:
+
+1. Linking the backend to the frontend
+
+
+Discussion points:
+
+   Backend to frontend
+    All the routes for the crud operations for the database were written last week, however the backend did not work properly with the frontend.
+    The team discussed the issue and decided that using Cors as a middleware and writing a Api test to ensure that the connection is working
+    when starting the project should solve the issue. Once this is done, the team should be able to implement the backend to the frontend.
+
+Next step: 
+- Add the middleware
+- Test the middleware connection
+- Start implementting the http requests in the frontend
