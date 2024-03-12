@@ -1,30 +1,27 @@
-import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './../style/View.css';
 
 function ViewReservation() {
     const [reservationId, setReservationId] = useState('');
-    const [reservationDetails, setReservationDetails] = useState(
-        {
-
-            id:"", 
-            vehicleID:"", 
-            customerID:" ", 
-            pickUpDate:" ", 
-            returnDate:" ", 
-            extraEquipment:" ", 
-            additionalServices: " ", 
-            total:" ",
-        }
-    );
-    const [error, setError] = useState(""); 
+    const [reservationDetails, setReservationDetails] = useState({
+        id: '',
+        vehicleID: '',
+        customerID: '',
+        pickUpDate: '',
+        returnDate: '',
+        extraEquipment: '',
+        additionalServices: '',
+        total: '',
+    });
+    const [error, setError] = useState('');
     const navigate = useNavigate();
-    
+
     function isFormatValidReservationId(reservationId) {
-        const regex=/^[A-Z]{1}\d{9}$/;
-        const isValid=regex.test(reservationId);
-        if(!isValid) {
-            setError("The format you have entered is invalid. Please try again.");
+        const regex = /^[A-Z]{1}\d{9}$/;
+        const isValid = regex.test(reservationId);
+        if (!isValid) {
+            setError('The format you have entered is invalid. Please try again.');
             return false;
         }
         return true;
@@ -34,34 +31,33 @@ function ViewReservation() {
         if (!isFormatValidReservationId(reservationId)) {
             return;
         }
-        
+
         try {
             const response = await fetch(`http://localhost:9000/reservations/${reservationId}`, {
-                method: "GET",
+                method: 'GET',
                 headers: {
-                    "Content-Type": "application/json",
+                    'Content-Type': 'application/json',
                 },
             });
-            
-            if (response.ok){
+
+            if (response.ok) {
                 const data = await response.json();
                 setReservationDetails(data.reservation);
             } else {
                 setError(response.statusText);
                 console.error('Failed to retrieve reservation:', response.statusText);
             }
-            
         } catch (error) {
             setError(error.message);
             console.error(error);
         }
     };
 
-    const handleSubmit = (e) => { 
-        e.preventDefault(); 
+    const handleSubmit = (e) => {
+        e.preventDefault();
         callAPI();
     };
-    
+
     const handleChange = (e) => {
         setReservationId(e.target.value);
     };
@@ -69,10 +65,11 @@ function ViewReservation() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <label> Reservation ID:
+                <label>
+                    Reservation ID:
                     <input
                         type="text"
-                        value={reservationId} 
+                        value={reservationId}
                         placeholder="Enter Reservation ID"
                         required
                         onChange={handleChange}
