@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import updateVehicle from '../components/UpdateVehicleForm';
 
 
-function Main() {
+function UpdateVehicle() {
   return (
     <div className="main">
       <div className="general-structure">
