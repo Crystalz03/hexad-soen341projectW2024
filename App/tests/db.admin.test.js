@@ -56,6 +56,7 @@ describe('System Admin Routes', () => {
   
       expect(response.status).toBe(200);
       expect(response.body.message).toEqual('Login successful');
+      expect(response.body.id).toEqual('SA12345678');
 
       // incorrect password
       response = await request(app).get('/signIn/SA12345678/pswd1234');

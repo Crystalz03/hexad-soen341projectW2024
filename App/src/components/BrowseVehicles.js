@@ -74,6 +74,16 @@ function BrowseVehicles() {
               </li>
               <li className="nav-list-components-2">Locations</li>
               <li className="nav-list-components-2">Contact Us</li>
+              <li className="nav-list-components-2">
+                <Link to="/BrowseAccounts" className="link-style">
+                  View Accounts
+                </Link>
+              </li>
+              <li className="nav-list-components-2">
+                <Link to="/MyAccount" className="link-style">
+                  My Account
+                </Link>
+              </li>
             </ul>
             <div className="nav-divider"></div>
           </aside>

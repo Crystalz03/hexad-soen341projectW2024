@@ -60,6 +60,7 @@ describe('Customers Routes', () => {
   
       expect(response.status).toBe(200);
       expect(response.body.message).toEqual('Login successful');
+      expect(response.body.id).toEqual(`C123456789`);
 
       // incorrect password
       response = await request(app).get('/signIn/John.Doe@email.com/pswd1234');
