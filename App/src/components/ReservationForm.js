@@ -86,15 +86,10 @@ function ReservationForm(){
     fetchCustomers();
   }, []);
 
-  console.log(customers);
-
   
 
   const vehiclesArray= vehicles[0];
   const customersArray= customers[0];
-
-  console.log(vehiclesArray);
-  console.log(customersArray);
 
   
   const createReservation = async () => {
@@ -123,7 +118,6 @@ function ReservationForm(){
   
   function verifyForm() {
     let reservedVehicle=null;
-    console.log("TEST", formData);
     
     console.log("vehicle reserved",formData.vehicleID);
     for (let i = 0; i < vehiclesArray.length; i++) {
@@ -147,9 +141,7 @@ function ReservationForm(){
     reservation.vehicleID = reservedVehicle.ID;
     
     let customerAcc = null;
-    console.log("customer array",customersArray);
     for (let i = 0; i < customersArray.length; i++) {
-      console.log("customer in loop",customersArray[i].Email);
       if (customersArray[i].Email === formData.email) {
         customerAcc=customersArray[i];
         break;
@@ -200,22 +192,14 @@ function ReservationForm(){
     }
 
     reservation.paid = false;
-    console.log("reservation TEST",reservation);
 
 
     //reservation.id = result;
     reservation.id = generateReservationID();
-    console.log("reservation id",reservation.id);
 
 
     const ReservationDuration = (new Date(formData.returnDate) - new Date(formData.pickUpDate))/(1000*60*60*24);
-    console.log("duration",ReservationDuration);
-    console.log("price",reservedVehicle.Price);
-    console.log("id",reservation.id);
-    
-    console.log("id",reservation);
     reservation.total=reservedVehicle.Price*ReservationDuration;
-    console.log("reservation TEST",reservation);
 
     return true;
 
