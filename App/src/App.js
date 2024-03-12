@@ -3,15 +3,19 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import BrowseAccounts from "./pages/BrowseAccounts";
 import Vehicle from "./pages/Vehicle";
-
+import Browse from "./pages/Browse";
 import MyAccount from "./pages/MyAccount";
 import Reserve from "./pages/Reserve";
 import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
 import SignIn from "./pages/SignIn";
-import Cancel from "./pages/Cancel";
-import Browse from "./pages/Browse";
+import CRDashboard from "./pages/CRDashboard";
+import DeleteReservationPage from "./pages/DeleteReservationPage";
+import MyAccountPage from "./pages/MyAccountPage";
+import CreateAdminAccount from "./pages/CreateAdminAccount";
+import AddVehicle from "./pages/AddVehicle";
+
 import AdminInventory from "./pages/AdminInventory";
 
 
@@ -59,13 +63,19 @@ function App() {
 
           <Route path="/MyAccount" exact element={<MyAccount />} />
 
-          <Route path="/Cancel" exact element={<Cancel />} />
-          <Route path="/Browse" exact element={<Browse />} />
           <Route path="/Reserve" exact element={<Reserve />} />
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
+          <Route path="/CRDashboard" exact element={<CRDashboard />} />
           <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} />
+          <Route path="/DeleteReservationPage" exact element={<DeleteReservationPage />} />
+          <Route path="/MyAccountPage" exact element={<MyAccountPage />} />
+          <Route path="/CreateAdminAccount" exact element={<CreateAdminAccount/>} />
+          <Route path="/AddVehicle" exact element={<AddVehicle/>} />
+          <Route path="/Browse" exact element={<Browse/>} />
+
+          
 
         </Routes>
       </div>
