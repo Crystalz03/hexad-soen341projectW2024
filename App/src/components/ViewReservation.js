@@ -21,12 +21,12 @@ function ViewReservation() {
     const navigate = useNavigate();
     
     function isFormatValidReservationId(reservationId) {
-        // const regex=/^[A-Z]{1}\d{9}$/;
-        // const isValid=regex.test(reservationId);
-        // if(!isValid) {
-        //     setError("The format you have entered is invalid. Please try again.");
-        //     return false;
-        // }
+        const regex=/^[A-Z]{1}\d{9}$/;
+        const isValid=regex.test(reservationId);
+        if(!isValid) {
+            setError("The format you have entered is invalid. Please try again.");
+            return false;
+        }
         return true;
     }
 
@@ -46,7 +46,6 @@ function ViewReservation() {
             if (response.ok){
                 const data = await response.json();
                 setReservationDetails(data.reservation);
-                //console.log(data.reservation);
             } else {
                 setError(response.statusText);
                 console.error('Failed to retrieve reservation:', response.statusText);
