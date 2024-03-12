@@ -28,6 +28,9 @@ export default function SideMenu() {
             <li className="nav-list-components-2">
               <Link to="/MyAccountPage">My Account</Link>
             </li>
+            <li className="nav-list-components-2">
+            <Link to="/AddVehicle">Add a vehicle</Link>
+            </li>
           </ul>
           <div className="nav-divider"></div>
         </aside>
