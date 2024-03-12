@@ -23,9 +23,7 @@
     border: 1px solid #ccc;
     color: #ccc;
     padding: 10px;
-    /* Additional styling for each customer card */
   }
-
 
   .account-content {
     overflow-y: scroll;

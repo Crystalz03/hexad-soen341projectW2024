@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./../style/style.css";
-import BrowseAccounts from "./BrowseAccounts";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
@@ -89,6 +88,5 @@ function Main() {
     </div>
   );
 }
-
 
 export default Home;

@@ -1,6 +1,5 @@
 import React from "react";
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import SideMenu from "../components/SideMenu";
 import BrowseAccountsComponent from "../components/BrowseCustomerAccounts";
 import BrowseAdminAccounts from "../components/BrowseAdminAccounts";
@@ -14,7 +13,6 @@ export default function BrowseAccounts() {
           <Header />
           <SideMenu/>
           <Main />
-          <Footer />
           </div>
       );
 }
