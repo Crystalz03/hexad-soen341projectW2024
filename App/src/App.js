@@ -14,8 +14,7 @@ import DeleteReservationPage from "./pages/DeleteReservationPage";
 import MyAccountPage from "./pages/MyAccountPage";
 import CreateAdminAccount from "./pages/CreateAdminAccount";
 import AddVehicle from "./pages/AddVehicle";
-import ReservationDisplay from "./pages/ReservationDisplay";import Cancel from "./pages/Cancel";
-import Browse from "./pages/Browse";
+
 import AdminInventory from "./pages/AdminInventory";
 
 
@@ -74,7 +73,7 @@ function App() {
           <Route path="/MyAccountPage" exact element={<MyAccountPage />} />
           <Route path="/CreateAdminAccount" exact element={<CreateAdminAccount/>} />
           <Route path="/AddVehicle" exact element={<AddVehicle/>} />
-          <Route path="/ReservationDisplay" exact element={<ReservationDisplay/>} />
+          
 
         </Routes>
       </div>
