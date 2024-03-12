@@ -1,29 +1,42 @@
-import React,  { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import Vehicle from "./pages/Vehicle";
+
+import MyAccount from "./pages/MyAccount";
+import SignUp from "./pages/SignUp";
+import AdminDashboard from "./pages/AdminDashboard";
+import CreateCRAccount from "./pages/CreateCRAccount";
+import SignIn from "./pages/SignIn";
+import Cancel from "./pages/Cancel";
+import Browse from "./pages/Browse";
+import AdminInventory from "./pages/AdminInventory";
 
 function App() {
-
   const [apiResponse, setApiResponse] = useState("");
 
   const callAPI = () => {
     fetch("http://localhost:9000/testAPI")
-      .then(res => res.text())
-      .then(res => {console.log(res); 
-        setApiResponse(res
-        )})
-      .catch(error => console.error('Error fetching data:', error));
-  }
+      .then((res) => res.text())
+      .then((res) => {
+        console.log(res);
+        setApiResponse(res);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  };
 
   const callAPI2 = () => {
     fetch("http://localhost:9000/vehicles", {
-      method: 'GET', 
+      method: "GET",
     })
-      .then(data => data.json())
-      .then(data => {console.log(data.vehicle[0][0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
-        setApiResponse(data                              // data.vehicle[0] = array of vehicles  -- data.vehicle[0][0] = 1st vehicle in the list -- data.vehicle[0][0].ID == ID of the first vehicle
-        )})
-      .catch(error => console.error(error));
+      .then((data) => data.json())
+      .then((data) => {
+        console.log(data.vehicle[0][0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
+        setApiResponse(
+          data // data.vehicle[0] = array of vehicles  -- data.vehicle[0][0] = 1st vehicle in the list -- data.vehicle[0][0].ID == ID of the first vehicle
+        );
+      })
+      .catch((error) => console.error(error));
   };
 
   useEffect(() => {
@@ -31,15 +44,23 @@ function App() {
     callAPI2();
   }, []); // Empty dependency array means this effect runs once when the component mounts
 
-
   return (
-    <div className="app">
-      <Router>
+    <Router>
+      <div className="app">
         <Routes>
           <Route path="/" exact element={<Home />} />
+          <Route path="/Vehicle" exact element={<Vehicle />} />
+          <Route path="/AdminInventory" exact element={<AdminInventory />} />
+          <Route path="/MyAccount" exact element={<MyAccount />} />
+          <Route path="/Cancel" exact element={<Cancel />} />
+          <Route path="/Browse" exact element={<Browse />} />
+          <Route path="/SignUp" exact element={<SignUp />} />
+          <Route path="/SignIn" exact element={<SignIn />} />
+          <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
+          <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} />
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
