@@ -27,6 +27,7 @@ describe('Reservation Routes', () => {
         console.error('Error closing the database connection:', error);
       }
     });
+    
   // Test the creation of a new reservation
   it('should create a new reservation', async () => {
     await pool.query`INSERT INTO Customers (ID, Name, Last_Name, Location, Email, Password) VALUES ( 'C012345678' , 'john', 'doe', 'montreal', 'temp@email.com','pswd123')`;

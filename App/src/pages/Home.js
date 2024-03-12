@@ -1,24 +1,50 @@
 import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import SideMenu from "../components/SideMenu";
-
+import { Link } from "react-router-dom";
 import "./../style/style.css";
+import BrowseAccounts from './BrowseAccounts';
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import SideMenu from "../components/SideMenu";
 
 function Home() {
   return (
     <div>
-      <SideMenu />
       <Header />
       <Main />
       <Footer />
     </div>
   );
 }
+
 function Main() {
   return (
     <div className="main">
       <div className="general-structure">
+        <aside className="nav sticky">
+          <div className="company-name-nav all-caps">hexad</div>
+          <ul className="nav-list-1">
+            <li className="nav-list-components-1">Sign In/Sign Up</li>
+            <li className="nav-list-components-1">About Hexad</li>
+            <li className="nav-list-components-1">Reserve</li>
+            <li className="nav-list-components-1">
+              <Link to="/Cancel" className="link-style">
+                View/Cancel/Modify
+              </Link>
+            </li>
+          </ul>
+          <div className="nav-divider"></div>
+          <ul className="nav-list-2">
+            <li className="nav-list-components-2">
+              <Link to="/Browse" className="link-style">
+                Browse Vehicles
+              </Link>
+            </li>
+            <li className="nav-list-components-2">Locations</li>
+            <li className="nav-list-components-2">Contact Us</li>
+            <li className="nav-list-components-2"><Link to={"/BrowseAccounts"}>View accounts</Link></li>
+          </ul>
+          <div className="nav-divider"></div>
+        </aside>
         <div className="main-content">
           <div className="title-box">
             <div className="reservation-title">Start a Reservation</div>
@@ -84,6 +110,26 @@ function Main() {
         </div>
       </div>
     </div>
+  );
+}
+function Navigation() {
+  return (
+    <aside className="nav">
+      <div className="company-name-nav all-caps">hexad</div>
+      <ul className="nav-list-1">
+        <li className="nav-list-components-1">Sign In/Sign Up</li>
+        <li className="nav-list-components-1">About Hexad</li>
+        <li className="nav-list-components-1">Reserve</li>
+        <li className="nav-list-components-1">View/Cancel/Modify</li>
+      </ul>
+      <div className="nav-divider"></div>
+      <ul className="nav-list-2">
+        <li className="nav-list-components-2">Browse Vehicles</li>
+        <li className="nav-list-components-2">Locations</li>
+        <li className="nav-list-components-2">Contact Us</li>
+      </ul>
+      <div className="nav-divider"></div>
+    </aside>
   );
 }
 
