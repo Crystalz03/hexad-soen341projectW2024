@@ -1,0 +1,32 @@
+Hexad Meeting Minutes
+
+Date: Tuesday, March 5th, 2024
+Time: 11h45 pm - 12h15 pm (30 min)
+Location: Concordia University, Hall building 10th floor
+
+Attendees: 
+Imen Khezzar (40246836)
+Yaroslava (40242907)
+Rania Maoukout (40249281)
+Malak Sefrioui(40252907)
+Sydney Campbell (40243309)
+
+Agenda:
+
+    1. Plan for sprint 3
+    2. Current problems
+    3. Solutions to current problems
+
+Discussion points:
+    - Advancements included the cancel page as well as the sign up/sign in.
+    - Everyone is now up to date on how to incorporate the CRUD operations into their code.
+    - Problems occured, including the build error, which made it impossible to merge branches into the main. This was worked on and is now functional.
+    - Steps on how the team would conquer sprint 3 was discussed. Making sure all tasks were properly distributed.
+
+
+Next step:
+    - Finish and merge all branches to main.
+    - Submit sprint 2 by Monday night.
+
+
+
