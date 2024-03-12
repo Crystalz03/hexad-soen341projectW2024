@@ -1,0 +1,42 @@
+ .account-card-scroll-container {
+    overflow-y:visible;
+  }
+
+  .title-accounts{
+    color: var(--second-white);
+    font-weight: var(--bold);
+    font-style: italic;
+    font-size: var(--xxl-size);
+    margin-left: 200px;
+    margin-bottom: 10px;
+  }
+  
+  .account-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .account-card {
+    border: 1px solid #ccc;
+    color: #ccc;
+    padding: 10px;
+    /* Additional styling for each customer card */
+  }
+
+
+  .account-content {
+    overflow-y: scroll;
+    color: var(--secondary-text-color);
+    width: var(--main-content-width);
+    margin-left: 200px;
+  }
+
+  .accounts-title {
+    color: var(--second-white);
+    font-weight: var(--bold);
+    font-style: italic;
+    font-size: var(--xl-size);
+  }

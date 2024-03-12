@@ -7,7 +7,7 @@ import CreateCRAccount from "./pages/CreateCRAccount";
 import SignIn from "./pages/SignIn";
 import Cancel from "./pages/Cancel";
 import Browse from "./pages/Browse";
-import updateVehicle from "./pages/UpdateVehicle";
+import UpdateVehicle from "./pages/UpdateVehicle";
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
@@ -53,7 +53,7 @@ function App() {
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
           <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} />
-          <Route path="/UpdateVehicle" exact element={<updateVehicle />} />
+          <Route path="/UpdateVehicle" exact element={<UpdateVehicle />} />
         </Routes>
       </div>
     </Router>
