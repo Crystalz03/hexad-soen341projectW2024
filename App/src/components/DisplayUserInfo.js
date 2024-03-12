@@ -100,6 +100,7 @@ function DisplayUserInfo() {
     return response;
   };
 
+
   const handleDeleteUser = async (e) => {
     e.preventDefault();
     try {
@@ -312,7 +313,9 @@ function DisplayUserInfo() {
             <p>Reservation ID: {userInfo.Reservation_ID}</p>
             <p>Location: {userInfo.Location}</p>
             {/* Render other properties as needed */}
+
             <button onClick={handleDeleteUser}>Delete User</button>
+
           </div>
         )}
       </div>
