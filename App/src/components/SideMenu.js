@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 
 export default function SideMenu() {
   return (
+    
     <div className="main">
       <div className="general-structure">
         <aside className="nav sticky">
-          <div className="company-name-nav all-caps">hexad</div>
+           <div className="company-name-nav all-caps"><Link to="/">hexad</Link></div>
           <ul className="nav-list-1">
             <li className="nav-list-components-1">
               <Link to="/SignIn">Sign In</Link>/
@@ -16,6 +17,7 @@ export default function SideMenu() {
             <li className="nav-list-components-1">About Hexad</li>
             <li className="nav-list-components-1">Reserve</li>
             <li className="nav-list-components-1">View/Modify</li>
+            <li className="nav-list-components-2"><Link to="/BrowseAccounts">View Accounts</Link></li>
           </ul>
           <div className="nav-divider"></div>
           <ul className="nav-list-2">
@@ -24,6 +26,7 @@ export default function SideMenu() {
             </Link>
             <li className="nav-list-components-2">Locations</li>
             <li className="nav-list-components-2">Contact Us</li>
+            <li className="nav-list-components-2">My Account</li>
           </ul>
           <div className="nav-divider"></div>
         </aside>
@@ -31,3 +34,4 @@ export default function SideMenu() {
     </div>
   );
 }
+

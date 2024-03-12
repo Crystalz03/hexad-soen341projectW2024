@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import BrowseAccounts from "./pages/BrowseAccounts";
 import Vehicle from "./pages/Vehicle";
+
 
 import MyAccount from "./pages/MyAccount";
 import SignUp from "./pages/SignUp";
@@ -49,6 +51,7 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/" exact element={<Home />} />
+          <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} />
           <Route path="/Vehicle" exact element={<Vehicle />} />
           <Route path="/AdminInventory" exact element={<AdminInventory />} />
           <Route path="/MyAccount" exact element={<MyAccount />} />
