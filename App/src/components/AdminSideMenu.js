@@ -2,7 +2,7 @@ import React from "react";
 import "../style/style.css";
 import { Link } from "react-router-dom";
 
-function AdminSideMenu() {
+function AdminSideMenu2() {
   return (
 
 <div className="main">

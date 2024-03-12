@@ -1,23 +1,27 @@
-const express = require('express');
-const pool = require('../../database/db');
+const express = require("express");
+const pool = require("../../database/db");
 
 const router = express.Router();
 
 // Create a new System Admin service representative
-router.post('/admin', async (req, res) => {
-  const { id, name, lastName, email, password} = req.body;
+router.post("/admin", async (req, res) => {
+  const { id, name, lastName, email, password } = req.body;
 
   try {
-    const result = await pool.query`INSERT INTO Admin (ID, Name, Last_Name, Email, Password) VALUES (${id}, ${name}, ${lastName}, ${email}, ${password})`;
-    res.status(201).json({ message: 'New system admin  created successfully', admin: req.body }); // e.g.Admin = response.body.amin -> Admin.name
+    const result =
+      await pool.query`INSERT INTO Admin (ID, Name, Last_Name, Email, Password) VALUES (${id}, ${name}, ${lastName}, ${email}, ${password})`;
+    res.status(201).json({
+      message: "New system admin  created successfully",
+      admin: req.body,
+    }); // e.g.Admin = response.body.amin -> Admin.name
   } catch (error) {
-    console.error('Error creating a new system admin :', error);
-    res.status(500).json({ error: 'Server Error' });
+    console.error("Error creating a new system admin :", error);
+    res.status(500).json({ error: "Server Error" });
   }
 });
 
 //Sign in for all 3 users
-router.get('/signIn/:user/:password', async (req, res) => {
+router.get("/signIn/:user/:password", async (req, res) => {
   const user = req.params.user;
   const pswd = req.params.password;
   let id;
@@ -64,39 +68,39 @@ router.get('/signIn/:user/:password', async (req, res) => {
     }
 });
 
-
-// Get all System Admins - for system admin 
-router.get('/admin', async (req, res) => {
+// Get all System Admins - for system admin
+router.get("/admin", async (req, res) => {
   try {
     const result = await pool.query`SELECT * FROM Admin`;
-    res.status(200).json({admins : result.recordsets}); // e.g.Admins = response.body.admins -> Admins[#].Name
+    res.status(200).json({ admins: result.recordsets }); // e.g.Admins = response.body.admins -> Admins[#].Name
   } catch (error) {
-    console.error('Error finding the system admin:', error);
-    res.status(500).json({ error: 'Server Error' });
+    console.error("Error finding the system admin:", error);
+    res.status(500).json({ error: "Server Error" });
   }
 });
 
 // Get a System Admin by email - for system admin
-router.get('/admin/email/:email', async (req, res) => {
+router.get("/admin/email/:email", async (req, res) => {
   const adminEmail = req.params.email;
 
   try {
-    const result = await pool.query`SELECT * FROM Admin WHERE Email = ${adminEmail}`;
+    const result =
+      await pool.query`SELECT * FROM Admin WHERE Email = ${adminEmail}`;
     const admin = result.recordset[0];
 
     if (!admin) {
-      res.status(404).json({error: 'System admin not found by Email' });
+      res.status(404).json({ error: "System admin not found by Email" });
     } else {
-      res.status(200).json({admin : admin}); // e.g.Admin = response.body.admin -> Admin.Name
+      res.status(200).json({ admin: admin }); // e.g.Admin = response.body.admin -> Admin.Name
     }
   } catch (error) {
-    console.error('Error finding the System admin by Email:', error);
-    res.status(500).json({ error: 'Server Error' });
+    console.error("Error finding the System admin by Email:", error);
+    res.status(500).json({ error: "Server Error" });
   }
 });
 
 // Get a System Admin by id - for system admin
-router.get('/admin/:id', async (req, res) => {
+router.get("/admin/:id", async (req, res) => {
   const adminId = req.params.id;
 
   try {
@@ -104,40 +108,44 @@ router.get('/admin/:id', async (req, res) => {
     const admin = result.recordset[0];
 
     if (!admin) {
-      res.status(404).json({ error: 'System Admin not found by ID' });
+      res.status(404).json({ error: "System Admin not found by ID" });
     } else {
-      res.status(200).json({admin : admin}); // e.g.Admin = response.body.admin -> Admin.Name
+      res.status(200).json({ admin: admin }); // e.g.Admin = response.body.admin -> Admin.Name
     }
   } catch (error) {
-    console.error('Error finding the system admin by ID:', error);
-    res.status(500).json({ error: 'Server Error' });
+    console.error("Error finding the system admin by ID:", error);
+    res.status(500).json({ error: "Server Error" });
   }
 });
 
 // Update a specific System admin by ID
-router.put('/admin/:id', async (req, res) => {
+router.put("/admin/:id", async (req, res) => {
   const adminId = req.params.id;
-  const { name, lastName, email, password} = req.body;
+  const { name, lastName, email, password } = req.body;
 
   try {
-    const result = await pool.query`UPDATE Admin SET Name = ${name}, Last_Name = ${lastName}, Email = ${email}, Password = ${password} WHERE ID = ${adminId}`;
-    res.status(200).json({ message: 'System admin information updated successfully', admin: req.body }); // e.g.Admin = response.body.admin -> Admin.name
+    const result =
+      await pool.query`UPDATE Admin SET Name = ${name}, Last_Name = ${lastName}, Email = ${email}, Password = ${password} WHERE ID = ${adminId}`;
+    res.status(200).json({
+      message: "System admin information updated successfully",
+      admin: req.body,
+    }); // e.g.Admin = response.body.admin -> Admin.name
   } catch (error) {
-    console.error('Error updating the Sysetm admin information:', error);
-    res.status(500).json({ error: 'Server Error' });
+    console.error("Error updating the Sysetm admin information:", error);
+    res.status(500).json({ error: "Server Error" });
   }
 });
 
 // Delete a specific admin by ID
-router.delete('/admin/:id', async (req, res) => {
+router.delete("/admin/:id", async (req, res) => {
   const adminId = req.params.id;
 
   try {
     const result = await pool.query`DELETE FROM Admin WHERE ID = ${adminId}`;
-    res.status(200).json({ message: 'System admin removed successfully' });
+    res.status(200).json({ message: "System admin removed successfully" });
   } catch (error) {
-    console.error('Error removing the system admin:', error);
-    res.status(500).json({ error: 'Server Error' });
+    console.error("Error removing the system admin:", error);
+    res.status(500).json({ error: "Server Error" });
   }
 });
 
