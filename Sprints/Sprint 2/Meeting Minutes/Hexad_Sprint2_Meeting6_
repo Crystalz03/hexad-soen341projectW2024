@@ -1,0 +1,31 @@
+Hexad Meeting Minutes
+
+Date: Tuesday, February 27th, 2024
+Time: 1:00 pm - 1:15 pm (15 min)
+Location: Concordia University, Hall building 8th floor
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Sydney Campbell (40243309)
+Yaroslava (40242907)
+Rania Maoukout (40249281)
+Malak Sefrioui(40252907)
+
+Agenda:
+
+1. Progress and problems encountered Discussion
+
+
+Discussion points:
+
+    Progress
+      The reservation user story had been delayed due to some problems encountered when trying to connect to the database in user story 9 (creating an account).
+      Other user stories had nothing to report apart for still being worked on.
+
+    Problems encountered
+      Small explanations were given on how to run the website (entering npm install and npm start in the terminal results in the website being run locally).
+
+
+Next step: 
+- Finish the implementation of the user stories to merge into the main branch

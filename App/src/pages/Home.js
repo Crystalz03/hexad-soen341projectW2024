@@ -1,10 +1,11 @@
 import React from "react";
-
-import "./../style/style.css";
 import { Link } from "react-router-dom";
+import "./../style/style.css";
 import BrowseAccounts from './BrowseAccounts';
-import SideMenu
- from "../components/SideMenu";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import SideMenu from "../components/SideMenu";
+
 function Home() {
   return (
     <div>
@@ -14,22 +15,7 @@ function Home() {
     </div>
   );
 }
-function Header() {
-  return (
-    <header className="header sticky all-caps">
-      <div className="motto">Drive the experience, rent the journey</div>
-      <div className="company-header all-caps">
-        <div className="sun-logo"></div>
-        <div className="header-title"> hexad</div>
-        <div className="btn-1 ">
-          <button className="all-caps sign-in-btn btn-background-color">
-            sign in
-          </button>
-        </div>
-      </div>
-    </header>
-  );
-}
+
 function Main() {
   return (
     <div className="main">
@@ -40,11 +26,19 @@ function Main() {
             <li className="nav-list-components-1">Sign In/Sign Up</li>
             <li className="nav-list-components-1">About Hexad</li>
             <li className="nav-list-components-1">Reserve</li>
-            <li className="nav-list-components-1">View/Modify</li>
+            <li className="nav-list-components-1">
+              <Link to="/Cancel" className="link-style">
+                View/Cancel/Modify
+              </Link>
+            </li>
           </ul>
           <div className="nav-divider"></div>
           <ul className="nav-list-2">
-            <li className="nav-list-components-2">Browse Vehicles</li>
+            <li className="nav-list-components-2">
+              <Link to="/Browse" className="link-style">
+                Browse Vehicles
+              </Link>
+            </li>
             <li className="nav-list-components-2">Locations</li>
             <li className="nav-list-components-2">Contact Us</li>
             <li className="nav-list-components-2"><Link to={"/BrowseAccounts"}>View accounts</Link></li>
@@ -126,7 +120,7 @@ function Navigation() {
         <li className="nav-list-components-1">Sign In/Sign Up</li>
         <li className="nav-list-components-1">About Hexad</li>
         <li className="nav-list-components-1">Reserve</li>
-        <li className="nav-list-components-1">View/Modify</li>
+        <li className="nav-list-components-1">View/Cancel/Modify</li>
       </ul>
       <div className="nav-divider"></div>
       <ul className="nav-list-2">
@@ -138,7 +132,5 @@ function Navigation() {
     </aside>
   );
 }
-function Footer() {
-  return <div className="footer">Footer</div>;
-}
+
 export default Home;
