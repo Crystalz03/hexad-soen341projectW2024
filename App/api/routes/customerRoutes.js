@@ -16,25 +16,6 @@ router.post('/customers', async (req, res) => {
   }
 });
 
-//Get customer's password
-router.get('/customers/signIn/:email', async (req, res) => {
-  const customerEmail = req.params.email;
-
-  try {
-    const result = await pool.query`SELECT Password FROM Customers WHERE Email = ${customerEmail}`;
-    const password = result.recordsets[0][0]?.Password;;
-
-    if (!password) {
-      res.status(404).json({ error: 'Customer not found by Email' });
-    } else {
-      res.status(200).json({password : password}); // e.g. Password = response.body.password 
-    }
-  } catch (error) {
-    console.error('Error finding the customer by Email:', error);
-    res.status(500).json({ error: 'Server Error' });
-  }
-});
-
 
 // Get all customers - for system admin 
 router.get('/customers', async (req, res) => {
@@ -46,6 +27,8 @@ router.get('/customers', async (req, res) => {
     res.status(500).json({ error: 'Server Error' });
   }
 });
+
+
 
 // Get a customer by email - for system admin
 router.get('/customers/email/:email', async (req, res) => {

@@ -48,12 +48,26 @@ describe('System Admin Routes', () => {
     });
   });
 
-     // Test getting an admin's password by ID
-     it('should get a system admin password by ID', async () => {
-      const response = await request(app).get('/signIn/SA12345678');
+     // Test admin Login 
+     it('should test login states', async () => {
+
+      // successful
+      var response = await request(app).get('/signIn/SA12345678/pswd123');
   
       expect(response.status).toBe(200);
-      expect(response.body.password).toEqual('pswd123');
+      expect(response.body.message).toEqual('Login successful');
+
+      // incorrect password
+      response = await request(app).get('/signIn/SA12345678/pswd1234');
+  
+      expect(response.status).toBe(401);
+      expect(response.body.message).toEqual('Incorrect password');
+
+      // not found
+      response = await request(app).get('/signIn/SSA12345678/pswd123');
+  
+      expect(response.status).toBe(404);
+      expect(response.body.message).toEqual('User not found');
   
     });
 
