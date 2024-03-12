@@ -15,16 +15,13 @@ export default function SideMenu() {
             </li>
             <li className="nav-list-components-1">About Hexad</li>
             <li className="nav-list-components-1">Reserve</li>
-            <li className="nav-list-components-1"><Link to="/ReservationDisplay">View</Link>/Modify</li>
+            <li className="nav-list-components-1"><Link to="/ReservationDisplay">View</Link>/Modify/<Link to="/DeleteReservationPage">Delete</Link></li>
           </ul>
           <div className="nav-divider"></div>
           <ul className="nav-list-2">
             <li className="nav-list-components-2">Browse Vehicles</li>
             <li className="nav-list-components-2">Locations</li>
             <li className="nav-list-components-2">Contact Us</li>
-            <li className="nav-list-components-2">
-              <Link to="/DeleteReservationPage">Delete</Link>
-            </li>
             <li className="nav-list-components-2">
               <Link to="/MyAccountPage">My Account</Link>
             </li>
