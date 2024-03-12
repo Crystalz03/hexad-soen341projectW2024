@@ -1,6 +1,6 @@
 import React from "react";
 
-import BrowseVehicles from "../components/TestBrowseVehicles";
+import BrowseVehicles from "../components/BrowseVehicles";
 
 import "./../style/style.css";
 import "./../style/BrowseVehicles.css";

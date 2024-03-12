@@ -311,7 +311,7 @@ header {
 .footer {
   background-color: var(--secondary-text-color);
   height: var(--footer-height);
-  position: fixed;
+  position:fixed;
   bottom: 0;
   margin-left: 180px;
   width: var(--header-width);
@@ -320,3 +320,28 @@ header {
   text-decoration: none;
   color: inherit;
 }
+
+/*Browse Vehicles CSS*/
+.vehicle-grid {
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  max-height:calc(100vh - var(--footer-height));
+ overflow-y:auto;
+ }
+ .vehicle-list{
+   display:frid;
+   grid-template-columns:repeat(2, 1fr);
+   gap:20px;
+   list-style:none;
+ }
+ 
+ .vehicle-card {
+   border: 1px solid #ccc;
+   padding: 10px;
+   flex:1 0 30px;
+ 
+ }
+ .reserve-btn {
+   margin-top: 10px;
+ }
