@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import BrowseAccounts from "./pages/BrowseAccounts";
 import Vehicle from "./pages/Vehicle";
-
+import Browse from "./pages/Browse";
 import MyAccount from "./pages/MyAccount";
 import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -62,8 +62,6 @@ function App() {
 
           <Route path="/MyAccount" exact element={<MyAccount />} />
 
-          <Route path="/Cancel" exact element={<Cancel />} />
-          <Route path="/Browse" exact element={<Browse />} />
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
@@ -73,6 +71,8 @@ function App() {
           <Route path="/MyAccountPage" exact element={<MyAccountPage />} />
           <Route path="/CreateAdminAccount" exact element={<CreateAdminAccount/>} />
           <Route path="/AddVehicle" exact element={<AddVehicle/>} />
+          <Route path="/Browse" exact element={<Browse/>} />
+
           
 
         </Routes>
