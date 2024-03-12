@@ -94,7 +94,7 @@ function BrowseVehicles() {
               </select>
             </div>
             <div className="vehicle-grid">
-            {loading ? (
+              {loading ? (
                 <div>Loading...</div>
               ) : error ? (
                 <div>Error: {error}</div>
