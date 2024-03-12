@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-
-import MyAccount from "./pages/MyAccount";
 import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
 import SignIn from "./pages/SignIn";
 import Cancel from "./pages/Cancel";
 import Browse from "./pages/Browse";
-import UpdateVehicle from "./pages/UpdateVehicle";
+import updateVehicle from "./pages/UpdateVehicle";
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
@@ -55,7 +53,7 @@ function App() {
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
           <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} />
-          <Route path="/UpdateVehicle" exact element={<UpdateVehicle />} />
+          <Route path="/UpdateVehicle" exact element={<updateVehicle />} />
         </Routes>
       </div>
     </Router>

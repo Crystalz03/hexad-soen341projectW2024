@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./../style/style.css";
+import updateVehicle from "./UpdateVehicleForm";
 
 function AdminInventoryVehicles() {
   const [apiResponse, setApiResponse] = useState(null); // Define apiResponse state
@@ -98,6 +99,10 @@ function AdminInventoryVehicles() {
                     >
                       Delete Vehicle
                     </button>
+                    <button
+                      className="all-caps sign-in-btn btn-background-color reserve-btn"
+                      onClick={() => updateVehicle(vehicle.ID)}
+                    ></button>
                   </div>
                 </div>
               ))
