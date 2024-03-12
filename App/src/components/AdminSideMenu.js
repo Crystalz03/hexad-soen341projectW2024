@@ -16,7 +16,7 @@ function AdminSideMenu() {
       </li>
       <Link to="/CreateCRAccount"><li className="nav-list-components-1">Create CR Account</li></Link>
         <Link to="/CreateAdminAccount"><li className="nav-list-components-1">Create Admin Account</li></Link>
-        <li className="nav-list-components-1">View/Modify Inventory</li>
+        <Link to="/AdminInventoryVehicles"><li className="nav-list-components-1">View/Modify Inventory</li></Link>
         <li className="nav-list-components-1">Reservations</li>
     </ul>
     <div className="nav-divider"></div>
