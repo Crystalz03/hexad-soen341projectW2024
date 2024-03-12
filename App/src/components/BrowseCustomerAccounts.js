@@ -7,9 +7,9 @@ function BrowseAccountsComponent() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [emailFilter, setEmailFilter] = useState('');
-  const filteredAccounts =  apiResponse ? apiResponse.filter(
-    (customer) => customer.Email.includes(emailFilter)
-  ) : [];
+    const filteredAccounts =  apiResponse ? apiResponse.filter(
+         (customer) => customer.Email.includes(emailFilter)
+    ) : [];
   
     const callAPIGetCustomers = () => {
       fetch("http://localhost:9000/customers", {
@@ -42,10 +42,6 @@ function BrowseAccountsComponent() {
     useEffect(() => {
       callAPIGetCustomers();
     }, []);
-
- 
-
-    
   
     return (
       <div>
