@@ -10,6 +10,7 @@ function Home() {
   return (
     <div>
       <Header />
+<SideMenu />
       <Main />
       <Footer />
     </div>
@@ -25,7 +26,7 @@ function Main() {
           <ul className="nav-list-1">
             <li className="nav-list-components-1">Sign In/Sign Up</li>
             <li className="nav-list-components-1">About Hexad</li>
-            <li className="nav-list-components-1">Reserve</li>
+            <Link to="/Reserve" className="nav-list-components-1">Reserve</Link>
             <li className="nav-list-components-1">
               <Link to="/Cancel" className="link-style">
                 View/Cancel/Modify

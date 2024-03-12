@@ -26,6 +26,7 @@ export default function SideMenu() {
               </li>
               <li className="nav-list-components-1">About Hexad</li>
               <li className="nav-list-components-1">Reserve</li>
+            <li className="nav-list-components-1"><Link to="/Reserve">Reserve</Link></li>
               <li className="nav-list-components-1">View/Modify</li>
             </ul>
             <div className="nav-divider"></div>

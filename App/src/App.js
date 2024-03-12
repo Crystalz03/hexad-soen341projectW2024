@@ -5,6 +5,7 @@ import BrowseAccounts from "./pages/BrowseAccounts";
 import Vehicle from "./pages/Vehicle";
 
 import MyAccount from "./pages/MyAccount";
+import Reserve from "./pages/Reserve";
 import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
@@ -60,6 +61,7 @@ function App() {
 
           <Route path="/Cancel" exact element={<Cancel />} />
           <Route path="/Browse" exact element={<Browse />} />
+          <Route path="/Reserve" exact element={<Reserve />} />
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
