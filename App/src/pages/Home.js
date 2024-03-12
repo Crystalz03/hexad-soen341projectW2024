@@ -1,5 +1,13 @@
 import React from "react";
+
+
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import SideMenu from "../components/SideMenu";
+
+
 import { Link } from "react-router-dom";
+
 import "./../style/style.css";
 import BrowseAccounts from './BrowseAccounts';
 import Footer from "../components/Footer";

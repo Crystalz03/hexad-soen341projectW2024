@@ -80,6 +80,7 @@ const handleSubmit = async (e) => {
     return response;
   };
 
+
   const handleDeleteUser = async (e) => {
     e.preventDefault();
     try {
@@ -147,6 +148,7 @@ const handleSubmit = async (e) => {
     }
   };
 
+
   useEffect(() => {
     console.log(userInfo);
   }, [userInfo]); // Run this effect whenever `userInfo` changes
@@ -179,7 +181,9 @@ const handleSubmit = async (e) => {
             <p>Reservation ID: {userInfo.Reservation_ID}</p>
             <p>Location: {userInfo.Location}</p>
             {/* Render other properties as needed */}
+
             <button onClick={handleDeleteUser}>Delete User</button>
+
           </div>
         )}
       </div>

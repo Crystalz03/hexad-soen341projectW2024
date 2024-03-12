@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import BrowseAccounts from "./pages/BrowseAccounts";
 import Vehicle from "./pages/Vehicle";
 
-
 import MyAccount from "./pages/MyAccount";
 import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -13,6 +12,7 @@ import SignIn from "./pages/SignIn";
 import Cancel from "./pages/Cancel";
 import Browse from "./pages/Browse";
 import AdminInventory from "./pages/AdminInventory";
+
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
@@ -54,13 +54,17 @@ function App() {
           <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} />
           <Route path="/Vehicle" exact element={<Vehicle />} />
           <Route path="/AdminInventory" exact element={<AdminInventory />} />
+
+
           <Route path="/MyAccount" exact element={<MyAccount />} />
+
           <Route path="/Cancel" exact element={<Cancel />} />
           <Route path="/Browse" exact element={<Browse />} />
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
           <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} />
+
         </Routes>
       </div>
     </Router>
