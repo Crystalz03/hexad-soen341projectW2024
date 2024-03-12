@@ -98,6 +98,10 @@ function AdminInventoryVehicles() {
                     >
                       Delete Vehicle
                     </button>
+                    <button
+                      className="all-caps sign-in-btn btn-background-color reserve-btn"
+                      onClick={() => updateVehicle(vehicle.ID)}
+                    ></button>
                   </div>
                 </div>
               ))
