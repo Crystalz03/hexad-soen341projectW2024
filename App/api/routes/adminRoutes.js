@@ -16,31 +16,53 @@ router.post('/admin', async (req, res) => {
   }
 });
 
-//Get customer's password
-router.get('/signIn/:id', async (req, res) => {
-  const employeeID = req.params.id;
 
-const regex = new RegExp(/^SA/);
-let password;
+//Sign in for all 3 users
+router.get('/signIn/:user/:password', async (req, res) => {
+  const user = req.params.user;
+  const pswd = req.params.password;
+  let id;
 
-  try {
-    if (regex.test(employeeID)) {
-      const result = await pool.query`SELECT Password FROM Admin WHERE ID = ${employeeID}`;
-      password = result.recordsets[0][0]?.Password;;
-    } else {
-      const result = await pool.query`SELECT Password FROM CSR WHERE ID = ${employeeID}`;
-      password = result.recordsets[0][0]?.Password;;
+  const customerRegex = new RegExp(/@/);
+  const adminRegex = new RegExp(/^SA/);
+  const csrRegex = new RegExp(/^CSR/);
+  let password;
+
+    try {
+      if (adminRegex.test(user)) {
+        const result = await pool.query`SELECT Password FROM Admin WHERE ID = ${user}`;
+        password = result.recordsets[0][0]?.Password;
+        id = user;
+      } else if (csrRegex.test(user)) {
+        const result = await pool.query`SELECT Password FROM CSR WHERE ID = ${user}`;
+        password = result.recordsets[0][0]?.Password;
+        id = user;
+      } else if (customerRegex.test(user)){
+        const result = await pool.query`SELECT Password FROM Customers WHERE Email = ${user}`;
+        password = result.recordsets[0][0]?.Password;
+      }
+
+      if (!password) {
+        res.status(404).json({ message: 'User not found' });
+      } else {
+        // Check if the provided password matches the one from the database
+          if (pswd === password) {
+            // Passwords match
+            if (customerRegex.test(user)){
+              const result2 = await pool.query`SELECT ID FROM Customers WHERE Email = ${user}`;
+              id = result2.recordsets[0][0]?.ID;
+            }
+            res.status(200).json({ message: 'Login successful', id: id });
+            
+          } else {
+            // Passwords do not match
+            res.status(401).json({ message: 'Incorrect password' });
+          }
+      }
+    } catch (error) {
+      console.error('Error finding the user:', error);
+      res.status(500).json({ error: 'Server Error' });
     }
-
-    if (!password) {
-      res.status(404).json({ error: 'Employee not found by ID' });
-    } else {
-      res.status(200).json({password : password}); // e.g. Password = response.body.password 
-    }
-  } catch (error) {
-    console.error('Error finding the employee by ID:', error);
-    res.status(500).json({ error: 'Server Error' });
-  }
 });
 
 
