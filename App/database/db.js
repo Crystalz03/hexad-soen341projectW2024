@@ -9,9 +9,9 @@ const port = 3000;
 // app.use(express.static(path.join(__dirname, 'App/database')));
 
 const dbConfig = {
-  server: "database-2.croi8mqokugc.ca-central-1.rds.amazonaws.com",
-  database: "Hexad",
-  user: "admin",
+  server: "sql.bsite.net\\MSSQL2016",
+  database: "hexad_",
+  user: "hexad_",
   password: "hexad2024",
   port: 1433,
   options: {
