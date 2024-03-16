@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-
+import React, { useState } from "react";
 
 function VehicleForm() {
   const [formData, setFormData] = useState({
-    id: '',
-    type: '',
-    category: '',
-    model: '',
-    price: '',
-    availability:'1',
+    id: "",
+    type: "",
+    category: "",
+    model: "",
+    price: "",
+    availability: "1",
   });
 
   const [error, setError] = useState(null);
@@ -24,10 +23,10 @@ function VehicleForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:9000/vehicles', {
-        method: 'POST',
+      const response = await fetch("http://localhost:9000/vehicles", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -36,22 +35,24 @@ function VehicleForm() {
         console.log(data.message);
         // Optionally, you can reset the form after successful submission
         setFormData({
-          id: '',
-          type: '',
-          category: '',
-          model: '',
-          price: '',
-          availability:'1',
+          id: "",
+          type: "",
+          category: "",
+          model: "",
+          price: "",
+          availability: "1",
         });
-        setError('');
+        setError("");
         alert("Vehicle Added Successfully!");
       } else {
-        setError('Failed to create vehicle. Please try again later.');
-        console.error('Failed to create vehicle:', response.statusText);
+        setError("Failed to create vehicle. Please try again later.");
+        console.error("Failed to create vehicle:", response.statusText);
       }
     } catch (error) {
-      setError('An error occurred while creating the vehicle. Please try again later.');
-      console.error('Error creating vehicle:', error);
+      setError(
+        "An error occurred while creating the vehicle. Please try again later."
+      );
+      console.error("Error creating vehicle:", error);
     }
   };
 
@@ -99,6 +100,17 @@ function VehicleForm() {
           onChange={handleChange}
           required
         />
+        {/* <label>Availability:</label>
+        <select
+          name="availability"
+          value={formData.availability}
+          onChange={handleChange}
+          required
+        >
+          <option value="1">Available</option>
+          <option value="0">Not Available</option>
+        </select> */}
+
         <button type="submit">Submit</button>
       </form>
       {error && <p className="error">{error}</p>}

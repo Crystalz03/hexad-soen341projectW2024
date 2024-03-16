@@ -5,10 +5,10 @@ const router = express.Router();
 
 // Create a new vehicle
 router.post('/vehicles', async (req, res) => {
-  const { id, type, category, model, price } = req.body;
+  const { id, type, category, model, price, availability } = req.body;
 
   try {
-    const result = await pool.query`INSERT INTO Vehicle (ID, Type, Category, Model, Price) VALUES (${id}, ${type}, ${category}, ${model}, ${price})`;
+    const result = await pool.query`INSERT INTO Vehicle (ID, Type, Category, Model, Price, Availability) VALUES (${id}, ${type}, ${category}, ${model}, ${price}, ${availability})`;
     res.status(201).json({ message: 'Vehicle created successfully', vehicle: req.body }); // e.g. Vehicle = response.body.vehicle -> Vehicle.name
   } catch (error) {
     console.error('Error creating vehicle:', error);

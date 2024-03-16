@@ -31,9 +31,9 @@ function AdminSideMenu() {
             <Link to="/BrowseAccounts" className="link-style">
               <li className="nav-list-components-1">Browse Accounts</li>
             </Link>
-            <Link to="/Inventory" className="link-style">
-              <li className="nav-list-components-1">View/Modify Inventory</li>
-            </Link>
+            
+              <li className="nav-list-components-1"><Link to="/Inventory" className="link-style">View</Link>/<Link to="/Vehicle" className="link-style">Modify Inventory</Link></li>
+            
             <li className="nav-list-components-1">Reservations</li>
           </ul>
           <div className="nav-divider"></div>
