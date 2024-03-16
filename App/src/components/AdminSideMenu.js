@@ -31,9 +31,17 @@ function AdminSideMenu() {
             <Link to="/BrowseAccounts" className="link-style">
               <li className="nav-list-components-1">Browse Accounts</li>
             </Link>
-            
-              <li className="nav-list-components-1"><Link to="/Inventory" className="link-style">View</Link>/<Link to="/Vehicle" className="link-style">Modify Inventory</Link></li>
-            
+            <li className="nav-list-components-1">
+              <Link to="/Vehicle" className="link-style">
+                Add A New Vehicle
+              </Link>
+            </li>
+            <li className="nav-list-components-1">
+              <Link to="/Inventory" className="link-style">
+                View
+              </Link>
+              /Modify Inventory
+            </li>
             <li className="nav-list-components-1">Reservations</li>
           </ul>
           <div className="nav-divider"></div>
