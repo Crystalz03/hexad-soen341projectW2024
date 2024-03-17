@@ -54,7 +54,7 @@ function SignInForm() {
             navigate("/");
             break;
           case "cr":
-            navigate("/CustomerRepresentativeDashboard");
+            navigate("/CRDashboard");
             break;
           case "admin":
             navigate("/AdminDashboard");

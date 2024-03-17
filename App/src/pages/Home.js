@@ -9,7 +9,7 @@ function Home() {
   return (
     <div>
       <Header />
-      <SideMenu/>
+      <SideMenu />
       <Main />
       <Footer />
     </div>
@@ -20,7 +20,6 @@ function Main() {
   return (
     <div className="main">
       <div className="general-structure">
-        
         <div className="main-content">
           <div className="title-box">
             <div className="reservation-title">Start a Reservation</div>
