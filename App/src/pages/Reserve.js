@@ -28,7 +28,7 @@ function Main() {
               <img src="" alt="Car Image" className="car-image" />
             </div>
           </div>
-          <div className="reservation-box">
+          <div className="extra-content" style={{height:"300px"}}>
           <ReservationForm /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           </div>
         </div>

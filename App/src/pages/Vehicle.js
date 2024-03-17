@@ -315,16 +315,16 @@
 
 
 import React from 'react';
-import SideMenu from '../components/SideMenu';
+import AdminSideMenu from '../components/AdminSideMenu';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import VehicleForm from '../components/VehicleForm2';
+import VehicleForm from '../components/VehicleForm';
 
 export default function Vehicle() {
   return (
     <div>
       <Header />
-      <SideMenu />
+      <AdminSideMenu />
       <Main />
       <Footer />
       </div>
