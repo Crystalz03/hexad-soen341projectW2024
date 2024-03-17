@@ -14,11 +14,6 @@ export default function SideMenu() {
             </div>
             <ul className="nav-list-1">
               <li className="nav-list-components-1">
-                <Link to="/SignIn" className = "link-style">Sign In</Link>
-                
-              </li>
-              <li className="nav-list-components-1">
-               
                <Link to="/SignUp" className = "link-style">Sign Up</Link>
              </li>
               <li className="nav-list-components-1">About Hexad</li>
