@@ -16,7 +16,6 @@ router.post('/admin', async (req, res) => {
   }
 });
 
-
 //Sign in for all 3 users
 router.get('/signIn/:user/:password', async (req, res) => {
   const user = req.params.user;
@@ -24,8 +23,8 @@ router.get('/signIn/:user/:password', async (req, res) => {
   let id;
 
   const customerRegex = new RegExp(/@/);
-  const adminRegex = new RegExp(/^SA/);
-  const csrRegex = new RegExp(/^CSR/);
+  const adminRegex = new RegExp(/^A/);
+  const csrRegex = new RegExp(/^CR/);
   let password;
 
     try {
@@ -65,8 +64,7 @@ router.get('/signIn/:user/:password', async (req, res) => {
     }
 });
 
-
-// Get all System Admins - for system admin 
+// Get all System Admins - for system admin
 router.get('/admin', async (req, res) => {
   try {
     const result = await pool.query`SELECT * FROM Admin`;

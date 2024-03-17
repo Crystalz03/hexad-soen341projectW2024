@@ -4,10 +4,6 @@ const sql = require('mssql');
 const app = express();
 const port = 3000;
 
-// // Serve the static files from the React app
-// app.use(express.static(path.join(__dirname, 'App/api')));
-// app.use(express.static(path.join(__dirname, 'App/database')));
-
 const dbConfig = {
   server: "sql.bsite.net\\MSSQL2016",
   database: "hexad_",
