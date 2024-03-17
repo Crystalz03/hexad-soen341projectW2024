@@ -14,8 +14,8 @@ import DeleteReservationPage from "./pages/DeleteReservationPage";
 import MyAccountPage from "./pages/MyAccountPage";
 import CreateAdminAccount from "./pages/CreateAdminAccount";
 import View from "./pages/View";
-
 import AdminInventory from "./pages/AdminInventory";
+import Modify from "./pages/Modify";
 
 
 function App() {
@@ -63,6 +63,7 @@ function App() {
           <Route path="/CreateAdminAccount" exact element={<CreateAdminAccount/>} />
           <Route path="/Browse" exact element={<Browse/>} />
           <Route path="/View" exact element={<View/>} />
+          <Route path="/Modify" exact element={<Modify/>} />
         </Routes>
       </div>
     </Router>
