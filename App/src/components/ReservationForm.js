@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 function generateReservationID() {
@@ -23,23 +22,23 @@ function ReservationForm(){
     vehicleID: '',
     email: '',
     customerID: '', 
-    pickUpDate: '',
-    returnDate: '',
+    pickUpDate: new Date(),
+    returnDate: new Date(),
     extraEquipment: '',
     additionalServices: '',
     paid: '',
-    total: '',
+    total: 0,
   });
   const reservation= {
     id: '',
     vehicleID: '',
     customerID: '', 
-    pickUpDate: '',
-    returnDate: '',
+    pickUpDate: new Date(),
+    returnDate: new Date(),
     extraEquipment: '',
     additionalServices: '',
     paid: '',
-    total: '',
+    total: 0,
   };
 
   
@@ -86,12 +85,12 @@ function ReservationForm(){
     fetchCustomers();
   }, []);
 
-  
+
 
   const vehiclesArray= vehicles[0];
   const customersArray= customers[0];
 
-  
+
   const createReservation = async () => {
     try {
       console.log("creating reservation");
@@ -118,7 +117,7 @@ function ReservationForm(){
   
   function verifyForm() {
     let reservedVehicle=null;
-    
+        
     console.log("vehicle reserved",formData.vehicleID);
     for (let i = 0; i < vehiclesArray.length; i++) {
       console.log("vehicles in loop",vehiclesArray[i].ID);
@@ -131,18 +130,18 @@ function ReservationForm(){
     if (reservedVehicle === null) {
       alert("The vehicle you selected does not exist.");
       return false;
-    } else if(reservedVehicle.Availability === "0"){
+    } else if(reservedVehicle.Availability == "0"){
       alert("The vehicle you selected is unavailable.");
       return false;
-    }else if(reservedVehicle.Availability === "1"){
+    }else if(reservedVehicle.Availability == "1"){
       reservedVehicle.Availability = "0";
     }
 
     reservation.vehicleID = reservedVehicle.ID;
     
     let customerAcc = null;
-    for (let i = 0; i < customersArray.length; i++) {
-      if (customersArray[i].Email === formData.email) {
+        for (let i = 0; i < customersArray.length; i++) {
+            if (customersArray[i].Email === formData.email) {
         customerAcc=customersArray[i];
         break;
       }
@@ -172,35 +171,34 @@ function ReservationForm(){
 
     //adding additional services to the total
     if (formData.additionalServices === "accidentInsurance") {
-      formData.total+= 100;
+      reservation.total+= 100;
     }else if (formData.additionalServices === "roadsideAssistance") {
-      formData.total+= 50;
+      reservation.total+= 50;
     }else if (formData.additionalServices === "none") {
-      formData.total+= 0;
+      reservation.total+= 0;
     }
     //adding additional equipment to the total
     if (formData.extraEquipment === "gps") {
-      formData.total+= 80;
+      reservation.total+= 80;
     }else if (formData.extraEquipment === "childSeat") {
-      formData.total+= 120;
+      reservation.total+= 120;
     }else if (formData.extraEquipment === "trailer") {
-      formData.total+= 200;
+      reservation.total+= 200;
     }else if (formData.extraEquipment === "bikeRack") {
-      formData.total+= 175;
+      reservation.total+= 175;
     }else if (formData.extraEquipment === "none") {
-      formData.total+= 0;
+      reservation.total+= 0;
     }
 
     reservation.paid = false;
 
-
     //reservation.id = result;
     reservation.id = generateReservationID();
-
+    
 
     const ReservationDuration = (new Date(formData.returnDate) - new Date(formData.pickUpDate))/(1000*60*60*24);
-    reservation.total=reservedVehicle.Price*ReservationDuration;
-
+        reservation.total +=reservedVehicle.Price*ReservationDuration;
+    
     return true;
 
   }
@@ -215,7 +213,7 @@ function ReservationForm(){
       verifyForm()
       ) {
       createReservation();
-      console.log(reservation);
+
       
       console.log(reservation);
       alert("Reservation has been made successfully! Your reservation ID is: "+reservation.id+" and the total cost is: "+reservation.total+"$");
@@ -274,7 +272,7 @@ function ReservationForm(){
         id='vehicleID'/><br/>
 
       <label>Extra equipment:</label><br/>
-            <select  onChange={handleChange} name = "extraEquipment">
+            <select onChange={handleChange} name = "extraEquipment">
               <option value="">None</option>
               <option value="gps">GPS (Additional 80$)</option>
               <option value="childSeat">Child Seat (Additional 120$)</option>
@@ -284,7 +282,7 @@ function ReservationForm(){
             <br/>
 
       <label>Additional Services:</label><br/>
-        <select  onChange={handleChange} name ="additionalServices" >
+        <select onChange={handleChange} name ="additionalServices" >
           <option value="">None</option>
           <option value="accidentInsurance" >Accident Insurance (Additional 100$)</option>
           <option value="roadsideAssistance" >Roadside Assistance (Additional 50$)</option>
