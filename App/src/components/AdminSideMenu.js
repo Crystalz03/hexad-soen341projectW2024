@@ -13,15 +13,6 @@ function AdminSideMenu() {
             </Link>
           </div>
           <ul className="nav-list-1">
-            <li className="nav-list-components-1">
-              <Link to="/SignIn" className="link-style">
-                Sign In
-              </Link>
-              /
-              <Link to="/SignUp" className="link-style">
-                Sign Up
-              </Link>
-            </li>
             <Link to="/CreateCRAccount" className="link-style">
               <li className="nav-list-components-1">Create CR Account</li>
             </Link>
