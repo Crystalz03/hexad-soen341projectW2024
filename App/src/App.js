@@ -13,6 +13,7 @@ import CRDashboard from "./pages/CRDashboard";
 import DeleteReservationPage from "./pages/DeleteReservationPage";
 import MyAccountPage from "./pages/MyAccountPage";
 import CreateAdminAccount from "./pages/CreateAdminAccount";
+import Reviews from"./pages/Reviews";
 
 
 import AdminInventory from "./pages/AdminInventory";
@@ -62,6 +63,7 @@ function App() {
           <Route path="/MyAccountPage" exact element={<MyAccountPage />} />
           <Route path="/CreateAdminAccount" exact element={<CreateAdminAccount/>} />
           <Route path="/Browse" exact element={<Browse/>} />
+          <Route path="/Reviews" exact element={<Reviews/>} />
         </Routes>
       </div>
     </Router>

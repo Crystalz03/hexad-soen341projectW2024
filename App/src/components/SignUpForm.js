@@ -75,7 +75,7 @@ function SignupForm() {
 
   return (
     <form onSubmit={handleSubmit} action="Sign Up">
-      <div className="form">
+      <div>
         {error && <p className="error">{error}</p>}{" "}
         {/* Display error message */}
         <div className="split-input">
