@@ -2,6 +2,6 @@ import React from 'react';
 
 export default function ModifyReservation() {
   return (
-    <div>ModifyReservation</div>
+    <div>Modify Reservation</div>
   );
 }
