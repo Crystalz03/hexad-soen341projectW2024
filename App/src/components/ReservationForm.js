@@ -272,7 +272,7 @@ function ReservationForm(){
         id='vehicleID'/><br/>
 
       <label>Extra equipment:</label><br/>
-            <select required={true} onChange={handleChange} name = "extraEquipment">
+            <select onChange={handleChange} name = "extraEquipment">
               <option value="">None</option>
               <option value="gps">GPS (Additional 80$)</option>
               <option value="childSeat">Child Seat (Additional 120$)</option>
@@ -282,7 +282,7 @@ function ReservationForm(){
             <br/>
 
       <label>Additional Services:</label><br/>
-        <select required={true} onChange={handleChange} name ="additionalServices" >
+        <select onChange={handleChange} name ="additionalServices" >
           <option value="">None</option>
           <option value="accidentInsurance" >Accident Insurance (Additional 100$)</option>
           <option value="roadsideAssistance" >Roadside Assistance (Additional 50$)</option>
