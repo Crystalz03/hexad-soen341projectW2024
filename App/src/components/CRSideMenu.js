@@ -5,20 +5,26 @@ import { Link } from "react-router-dom";
 function CRSideMenu() {
   return (
     <div className="main">
-      <div className="general-structure">
-        <aside className="nav sticky">
-          <div className="company-name-nav all-caps">
-            <Link to="/CRDashboard" className="link-style">
-              hexad
+    <div className="general-structure">
+      <aside className="nav sticky">
+        <div className="company-name-nav all-caps">
+          <Link to="/AdminDashboard" className="link-style">
+            hexad
+          </Link>
+        </div>
+        <ul className="nav-list-1">
+          <li className="nav-list-components-1">
+            <Link to="/Inventory" className="link-style">
+              View
             </Link>
-          </div>
-          <ul className="nav-list-1">
-            <li className="nav-list-components-1">Reservations</li>
-          </ul>
-          <div className="nav-divider"></div>
-        </aside>
-      </div>
+          </li>
+          <li className="nav-list-components-1">Reservations</li>
+          <li className="nav-list-components-1"><Link to="/CheckOut" className="link-style">Check Out</Link></li>
+        </ul>
+        <div className="nav-divider"></div>
+      </aside>
     </div>
+  </div>
   );
 }
 
