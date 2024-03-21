@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const CheckoutForm = () => {
@@ -12,6 +12,7 @@ const CheckoutForm = () => {
   });
   const [totalPrice, setTotalPrice] = useState(0);
   const [error, setError] = useState("");
+  const [reservation, setReservation] = useState({});
 
   const damagePrices = {
     scratch: 50,
@@ -19,6 +20,16 @@ const CheckoutForm = () => {
     brokenMirror: 150,
     flatTire: 80,
   };
+
+  useEffect(() => {
+    if (reservationId !== "") {
+      getOriginalPrice();
+    }
+  }, [reservationId]);
+
+  useEffect(() => {
+    console.log(reservation); // Log the updated reservation state
+  }, [reservation]);
 
   const handleDamageChange = (damage) => {
     setDamages({
@@ -35,14 +46,11 @@ const CheckoutForm = () => {
       }
     }
     setTotalPrice(total);
+    updateTotalInDatabase(total);
   };
 
   const handleReservationIdChange = (event) => {
     setReservationId(event.target.value);
-  };
-
-  const handleOriginalPriceChange = (event) => {
-    setOriginalPrice(event.target.value);
   };
 
   function isFormatValidReservationId(reservationId) {
@@ -73,6 +81,7 @@ const CheckoutForm = () => {
 
       if (response.ok) {
         const data = await response.json();
+        setReservation(data.reservation);
         setOriginalPrice(data.reservation.Total);
       } else {
         setError("Failed to retrieve total amount");
@@ -81,6 +90,44 @@ const CheckoutForm = () => {
     } catch (error) {
       setError("Failed to retrieve reservation. Please try again later.");
       console.error("Failed to retrieve reservation:", error);
+    }
+  };
+
+  const updateTotalInDatabase = async (total) => {
+    try {
+      console.log(total);
+      const response = await fetch(
+        `http://localhost:9000/reservations/${reservationId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            vehicleID: reservation.Vehicle_ID,
+            customerID: reservation.Customer_ID,
+            pickUpDate: reservation.Pick_Up_Date,
+            returnDate: reservation.Return_Date,
+            extraEquipment: reservation.Extra_Equipment,
+            additionalServices: reservation.Additional_Services,
+            paid: reservation.Paid,
+            total: total,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        setError("Failed to update total in the database");
+        console.error(
+          "Failed to update total in the database",
+          response.statusText
+        );
+      }
+    } catch (error) {
+      setError(
+        "Failed to update total in the database. Please try again later."
+      );
+      console.error("Failed to update total in the database:", error);
     }
   };
 
@@ -100,11 +147,7 @@ const CheckoutForm = () => {
       <div>
         <label>
           Original Price:
-          <input
-            type="number"
-            value={originalPrice}
-            onChange={handleOriginalPriceChange}
-          />
+          <input type="number" value={originalPrice} readOnly />
         </label>
       </div>
       <div>
@@ -149,7 +192,7 @@ const CheckoutForm = () => {
       </div>
       <button onClick={calculateTotalPrice}>Calculate Total Price</button>
       <div>Total Price: ${totalPrice}</div>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+      {error && <div style={{ color: "red" }}>{error}</div>}
       <Link to="/Payment">
         <button>Check Out</button>
       </Link>
