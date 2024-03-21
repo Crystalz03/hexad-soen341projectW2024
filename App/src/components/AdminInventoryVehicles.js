@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./../style/style.css";
-import updateVehicle from "./UpdateVehicleForm";
+import { useNavigate } from "react-router-dom";
 
 function AdminInventoryVehicles() {
   const [apiResponse, setApiResponse] = useState(null); // Define apiResponse state
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("All");
+
+  const navigate = useNavigate();
 
   const callAPIGet = () => {
     fetch("http://localhost:9000/vehicles", {
@@ -85,6 +86,7 @@ function AdminInventoryVehicles() {
             apiResponse
               .filter((vehicle) => filter === "All" || vehicle.Type === filter)
               .map((vehicle) => (
+                setVehicleID(vehicle.ID),
                 <div key={vehicle.ID} className="vehicle-card">
                   <div>ID: {vehicle.ID}</div>
                   <div>Type: {vehicle.Type}</div>
@@ -101,7 +103,7 @@ function AdminInventoryVehicles() {
                     </button>
                     <button
                       className="all-caps sign-in-btn btn-background-color reserve-btn"
-                      onClick={() => updateVehicle(vehicle.ID)}
+                      onClick={() => {navigate('/UpdateVehicleForm', {state:{ vehicleID:vehicle.ID }});}}
                     >Update Vehicle</button>
                   </div>
                 </div>
