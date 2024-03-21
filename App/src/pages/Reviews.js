@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
 import ReviewForm from "../components/ReviewForm";
 
-function Home() {
+function SideBar() {
   return (
     <div>
       <Header />
@@ -31,4 +31,4 @@ function Main() {
   );
 }
 
-export default Home;
+export default SideBar;
