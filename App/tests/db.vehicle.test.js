@@ -7,6 +7,41 @@ const app = express();
 app.use(express.json());
 app.use(vehicleRoutes);
 
+const vehicle = {
+  id: 'V123456789',
+  make: 'Sedan',
+  category: 'Compact',
+  model: 'Civic',
+  price: 25000.00,
+  availability: 'available',
+  year: 2024,
+  plateNumber: 'AAA 000',
+  color: 'black'
+}
+
+const dbVehicle = {
+  ID: 'V123456789',
+  Make: 'Sedan',
+  Category: 'Compact',
+  Model: 'Civic',
+  Price: 25000.00,
+  Availability: 'available',
+  Year: 2024,
+  Plate_Number: 'AAA 000',
+  Color: 'black'
+}
+
+const updatedVehicle = {
+  make: 'SUV',
+  category: 'Midsize',
+  model: 'Pilot',
+  price: 35999.99,
+  availability: 'not available',
+  year: 2023,
+  plateNumber: '000 AAA',
+  color: 'blue'
+}
+
 describe('Vehicle Routes', () => {
     beforeAll(async () => {
       try {
@@ -29,25 +64,11 @@ describe('Vehicle Routes', () => {
   it('should create a new vehicle', async () => {
     const response = await request(app)
       .post('/vehicles')
-      .send({
-        id: 'V123456789',
-        type: 'Sedan',
-        category: 'Compact',
-        model: 'Civic',
-        price: 25000.00,
-        availability: 'available'
-      });
+      .send(vehicle);
 
     expect(response.status).toBe(201);
     expect(response.body.message).toBe('Vehicle created successfully');
-    expect(response.body.vehicle).toEqual({
-      id: 'V123456789',
-      type: 'Sedan',
-      category: 'Compact',
-      model: 'Civic',
-      price: 25000.00,
-      availability: 'available'
-    });
+    expect(response.body.vehicle).toEqual(vehicle);
   });
 
   // Test getting all vehicles
@@ -62,37 +83,18 @@ describe('Vehicle Routes', () => {
     const response = await request(app).get('/vehicles/V123456789');
 
     expect(response.status).toBe(200);
-    expect(response.body.vehicle).toEqual({
-      ID: 'V123456789',
-      Type: 'Sedan',
-      Category: 'Compact',
-      Model: 'Civic',
-      Price: 25000.00,
-      Availability: 'available'
-
-    });
+    expect(response.body.vehicle).toEqual(dbVehicle);
   });
 
   // Test updating a vehicle by ID
   it('should update a vehicle by ID', async () => {
     const response = await request(app)
       .put('/vehicles/V123456789')
-      .send({
-        type: 'SUV',
-        category: 'Midsize',
-        model: 'Pilot',
-        price: 35999.99,
-        availability: 'not available'
-      });
+      .send(updatedVehicle);
+
 
     expect(response.status).toBe(200);
-    expect(response.body.vehicle).toEqual({
-      type: 'SUV',
-      category: 'Midsize',
-      model: 'Pilot',
-      price: 35999.99,
-      availability: 'not available'
-    });
+    expect(response.body.vehicle).toEqual(updatedVehicle);
   });
 
   // Test deleting a vehicle by ID
