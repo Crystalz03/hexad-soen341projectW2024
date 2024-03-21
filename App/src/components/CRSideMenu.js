@@ -18,6 +18,7 @@ function CRSideMenu() {
               View
             </Link>
           </li>
+          <li className="nav-list-components-1"><Link to="/CreateACustomerAccount" className="link-style">New Customer</Link></li>
           <li className="nav-list-components-1">Reservations</li>
           <li className="nav-list-components-1"><Link to="/CheckOut" className="link-style">Check Out</Link></li>
         </ul>

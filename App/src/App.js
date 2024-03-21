@@ -18,6 +18,7 @@ import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
 import CheckOut from "./pages/CheckOut";
 import Payment from "./pages/Payment";
+import CRCreateAUserAccount from "./pages/CRCreateAUserAccount";
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
@@ -67,6 +68,7 @@ function App() {
           <Route path="/Modify" exact element={<Modify/>} />
           <Route path="/CheckOut" exact element={<CheckOut/>} />
           <Route path="/Payment" exact element={<Payment/>} />
+          <Route path="/CreateACustomerAccount" exact element={<CRCreateAUserAccount/>} />
         </Routes>
       </div>
     </Router>
