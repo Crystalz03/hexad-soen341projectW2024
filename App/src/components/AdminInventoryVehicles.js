@@ -86,7 +86,6 @@ function AdminInventoryVehicles() {
             apiResponse
               .filter((vehicle) => filter === "All" || vehicle.Type === filter)
               .map((vehicle) => (
-                setVehicleID(vehicle.ID),
                 <div key={vehicle.ID} className="vehicle-card">
                   <div>ID: {vehicle.ID}</div>
                   <div>Type: {vehicle.Type}</div>
@@ -103,7 +102,7 @@ function AdminInventoryVehicles() {
                     </button>
                     <button
                       className="all-caps sign-in-btn btn-background-color reserve-btn"
-                      onClick={() => {navigate('/UpdateVehicleForm', {state:{ vehicleID:vehicle.ID }});}}
+                      onClick={() => {navigate(`/UpdateVehicle/${vehicle.ID}`);}}
                     >Update Vehicle</button>
                   </div>
                 </div>

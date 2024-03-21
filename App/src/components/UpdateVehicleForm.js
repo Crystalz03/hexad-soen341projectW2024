@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {useLocation} from 'react-router-dom';
 
-function UpdateVehicleForm() {
+function UpdateVehicleForm(props) {
+
+  const {vehicleID} = props.vehicleID;
+
   const [formData, setFormData] = useState({
-    id: '',
+      id: '',
       type: '',
       category: '',
       model: '',
@@ -11,26 +13,32 @@ function UpdateVehicleForm() {
       availability:'',
     });
   const [error, setError] = useState("");
+  const [apiResponse, setApiResponse] = useState([{}]); // Define apiResponse state
+  
+
+
 
   useEffect(() => {
-    const fetchVehicles = async () => {
-      try {
-        const response = await fetch("http://localhost:9000/vehicles");
-        if (!response.ok) {
-          throw new Error("Failed to fetch vehicles");
-        }
-        const data = await response.json();
-        setVehicles(data.vehicle);
-      } catch (error) {
-        console.error("Error fetching vehicles:", error);
-        setError("Error fetching vehicles");
+      const callAPIGet = () => {
+        fetch(`http://localhost:9000/vehicles/${vehicleID}`, {
+          method: "GET",
+        })
+          .then((data) => data.json())
+          .then((data) => {
+            const formattedVehicles = data.vehicle[0][0];
+            setApiResponse(formattedVehicles);
+          })
+          .catch((error) => {
+            console.error(error);
+            setError("Error fetching vehicles");
+          });
+      };
+
+        callAPIGet();
       }
-    };
+      , []);
+      console.log(apiResponse);
 
-    fetchVehicles();
-  }, []);
-
-  const vehiclesArray = vehicles[0];
 
   const updateInfo = async () => {
     try {
@@ -56,10 +64,115 @@ function UpdateVehicleForm() {
   };
 
   function verifyForm() {
+    
+      const info={
+        id: '',
+        type: '',
+        category: '',
+        model: '',
+        price: '',
+        availability:'1',
+      };
+    
+    if (apiResponse === null) {
+      alert("The vehicle you selected does not exist.");
+      return false;
+    }
+        if(formData.id ===""){
+            info.id=apiResponse.ID;
+          } else {info.id=formData.id;}
+        if(formData.type ===""){
+            info.type=apiResponse.Type;
+        } else {info.type=formData.type;}
+
+        if(formData.category ===""){
+            info.category=apiResponse.Category;
+        } else {info.category=formData.category;}
+
+        if(formData.model ===""){
+            info.model=apiResponse.Model;
+        } else {info.model=formData.model;}
+
+        if(formData.price ===""){
+            info.price=apiResponse.Price;
+        } else {info.price=formData.price;}
+
+        if(formData.availability ===""){
+            info.availability=apiResponse.Availability;
+        } else {info.availability=formData.availability;}
+        
+        return true;
+}
+
+
+const handleChange = (e) => {
+  const { name, value } = e.target;
+  setFormData(prevState => ({
+    ...prevState,
+    [name]: value,
+  }));
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if(verifyForm()){
+      updateInfo();
   }
+};
+
 
   return(
-    <div>TEST</div>
+    
+    <div>
+    <h2>Update Existing Vehicle</h2>
+    <form onSubmit={handleSubmit} className="add-vehicle-form">
+      <label>ID:</label>
+      <input
+        type="text"
+        name="id"
+        value={formData.id}
+        onChange={handleChange}
+      />
+      <label>Type:</label>
+      <input
+        type="text"
+        name="type"
+        value={formData.type}
+        onChange={handleChange}
+      />
+      <label>Category:</label>
+      <input
+        type="text"
+        name="category"
+        value={formData.category}
+        onChange={handleChange}
+      />
+      <label>Model:</label>
+      <input
+        type="text"
+        name="model"
+        value={formData.model}
+        onChange={handleChange}
+      />
+      <label>Price:</label>
+      <input
+        type="number"
+        name="price"
+        value={formData.price}
+        onChange={handleChange}
+      />
+      <label>Availability:</label>
+      <input
+        type="text"
+        name="availability"
+        value={formData.availability}
+        onChange={handleChange}
+      />
+      <button type="submit">Submit</button>
+    </form>
+    {error && <p className="error">{error}</p>}
+  </div>
+
   );
 
 }

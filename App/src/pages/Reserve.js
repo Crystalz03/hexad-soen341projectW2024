@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
 import ReservationForm from "../components/ReservationForm";
 
-function Home() {
+function Reserve() {
   return (
     <div>
       <Header />
@@ -37,7 +37,7 @@ function Main() {
   );
 }
 
-export default Home;
+export default Reserve;
 
 
 /*

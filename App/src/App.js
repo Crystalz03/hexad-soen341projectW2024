@@ -14,7 +14,7 @@ import DeleteReservationPage from "./pages/DeleteReservationPage";
 import MyAccountPage from "./pages/MyAccountPage";
 import CreateAdminAccount from "./pages/CreateAdminAccount";
 import View from "./pages/View";
-import AdminInventory from "./pages/AdminInventory";
+import Inventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
 import UpdateVehicle from "./pages/UpdateVehicle";
 
@@ -51,7 +51,7 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} />
           <Route path="/Vehicle" exact element={<Vehicle />} />
-          <Route path="/Inventory" exact element={<AdminInventory />} />
+          <Route path="/Inventory" exact element={<Inventory />} />
           <Route path="/Reserve" exact element={<Reserve />} />
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/SignIn" exact element={<SignIn />} />
@@ -64,7 +64,7 @@ function App() {
           <Route path="/Browse" exact element={<Browse/>} />
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
-          <Route path="/UpdateVehicle" exact element={<UpdateVehicle />} />
+          <Route path="/UpdateVehicle/:vehicleID" exact element={<UpdateVehicle/>} />
         </Routes>
       </div>
     </Router>
