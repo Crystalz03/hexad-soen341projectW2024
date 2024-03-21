@@ -4,8 +4,9 @@ const router = express.Router();
 // Create a new customer
 router.post('/customers', async (req, res) => {
   const { id, name, lastName, location, email, password, address, contactNumber, licenseNumber} = req.body;
+  const creditCard = "N/A";
   try {
-    const result = await pool.query`INSERT INTO Customers (ID, Name, Last_Name, Location, Email, Password, Address, Contact_Number, License_Number) VALUES (${id}, ${name}, ${lastName}, ${location}, ${email}, ${password}, ${address}, ${contactNumber}, ${licenseNumber})`;
+    const result = await pool.query`INSERT INTO Customers (ID, Name, Last_Name, Location, Email, Password, Address, Contact_Number, License_Number, Credit_Card) VALUES (${id}, ${name}, ${lastName}, ${location}, ${email}, ${password}, ${address}, ${contactNumber}, ${licenseNumber}, ${creditCard});`;
     res.status(201).json({ message: 'New customer created successfully', customer: req.body }); // e.g.Customer = response.body.customer -> Customer.name
   } catch (error) {
     console.error('Error creating a new customer:', error);
@@ -79,9 +80,9 @@ router.get('/customers/:id', async (req, res) => {
 // Update a specific customer by ID
 router.put('/customers/:id', async (req, res) => {
   const customerId = req.params.id;
-  const { name, lastName, location, email, password, address, contactNumber, licenseNumber} = req.body;
+  const { name, lastName, location, email, password, address, contactNumber, licenseNumber, creditCard} = req.body;
   try {
-    const result = await pool.query`UPDATE Customers SET Name = ${name}, Last_Name = ${lastName}, Location = ${location}, Email = ${email}, Password = ${password}, Address = ${address}, Contact_Number = ${contactNumber}, License_Number = ${licenseNumber} WHERE ID = ${customerId}`;
+    const result = await pool.query`UPDATE Customers SET Name = ${name}, Last_Name = ${lastName}, Location = ${location}, Email = ${email}, Password = ${password}, Address = ${address}, Contact_Number = ${contactNumber}, License_Number = ${licenseNumber}, Credit_card = ${creditCard} WHERE ID = ${customerId}`;
     res.status(200).json({ message: 'Customer information updated successfully', customer: req.body }); // e.g.Customer = response.body.customer -> Customer.name
   } catch (error) {
     console.error('Error updating the customer information:', error);

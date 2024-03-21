@@ -16,7 +16,8 @@ const vehicle = {
   availability: 'available',
   year: 2024,
   plateNumber: 'AAA 000',
-  color: 'black'
+  color: 'black',
+  damages: 'N/A'
 }
 
 const dbVehicle = {
@@ -28,7 +29,8 @@ const dbVehicle = {
   Availability: 'available',
   Year: 2024,
   Plate_Number: 'AAA 000',
-  Color: 'black'
+  Color: 'black',
+  Damages: 'N/A'
 }
 
 const updatedVehicle = {
@@ -39,7 +41,8 @@ const updatedVehicle = {
   availability: 'not available',
   year: 2023,
   plateNumber: '000 AAA',
-  color: 'blue'
+  color: 'blue',
+  damages: 'scratches'
 }
 
 describe('Vehicle Routes', () => {

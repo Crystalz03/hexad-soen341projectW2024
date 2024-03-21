@@ -18,7 +18,7 @@ const customer = {
   password: 'pswd123',
   address: '1445 Blvd. De Maisonneuve Ouest',
   contactNumber: '438-000-0000',
-  licenseNumber: 'L0000-000000-00'
+  licenseNumber: 'L0000-000000-00',
 }
 
 const dbCustomer = {
@@ -31,7 +31,8 @@ const dbCustomer = {
   Address: '1445 Blvd. De Maisonneuve Ouest',
   Contact_Number: '438-000-0000',
   License_Number: 'L0000-000000-00',
-  Reservation_ID: null
+  Reservation_ID: null,
+  Credit_Card: 'N/A'
 }
 
 const updatedCustomer = {
@@ -42,7 +43,8 @@ const updatedCustomer = {
   password: 'pswd123',
   address: '1445 Blvd. De Maisonneuve Ouest',
   contactNumber: '438-111-1111',
-  licenseNumber: 'L1111-111111-11'
+  licenseNumber: 'L1111-111111-11',
+  creditCard: "0000 0000 0000 0000"
 }
 
 describe('Customers Routes', () => {
