@@ -17,7 +17,7 @@ import View from "./pages/View";
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
 import CheckOut from "./pages/CheckOut";
-import Payement from "./pages/Payement";
+import Payment from "./pages/Payment";
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
@@ -66,7 +66,7 @@ function App() {
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
           <Route path="/CheckOut" exact element={<CheckOut/>} />
-          <Route path="/Payement" exact element={<Payement/>} />
+          <Route path="/Payment" exact element={<Payment/>} />
         </Routes>
       </div>
     </Router>

@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
 import Footer from "../components/Footer";
 
-import PayementForm from "../components/PayementForm";
+import PaymentForm from "../components/PaymentForm";
 
 export default function Payement() {
   return (
@@ -25,7 +25,7 @@ function Main() {
             <div className="reservation-title">Check Out</div>
           </div>
           <div className="extra-content">
-            <PayementForm />
+            <PaymentForm />
           </div>
         </div>
       </div>
