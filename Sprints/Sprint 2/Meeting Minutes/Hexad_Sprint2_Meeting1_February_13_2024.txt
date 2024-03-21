@@ -12,10 +12,6 @@ Rania Maoukout (40249281)
 Malak Sefrioui(40252907)
 
 
-<<<<<<< documentation-sprint2
-
-=======
->>>>>>> main
 Agenda:
 
 1. Clarified check-in/check-out
