@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 function SignInForm() {
   const [formData, setFormData] = useState({
     username: "",
-    password: ""
+    password: "",
   });
+
+  const [userID, setApiResponse] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -13,50 +15,69 @@ function SignInForm() {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
+  };
+
+  const getUserRole = (userId) => {
+    if (userId.startsWith("CS")) {
+      return "customer";
+    } else if (userId.startsWith("CR")) {
+      return "cr";
+    } else if (userId.startsWith("A")) {
+      return "admin";
+    } else {
+      return "unknown";
+    }
+  };
+
+  const signIn = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:9000/signIn/${formData.username}/${formData.password}`,
+        {
+          method: "GET",
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data.id);
+        setApiResponse(data.id);
+
+        // Get user role based on ID
+        const role = getUserRole(data.id);
+
+        // Redirect user based on their role
+        switch (role) {
+          case "customer":
+            navigate("/");
+            break;
+          case "cr":
+            navigate("/CRDashboard");
+            break;
+          case "admin":
+            navigate("/AdminDashboard");
+            break;
+          default:
+            // Handle unknown roles or errors
+            break;
+        }
+      } else if (response.status === 404) {
+        const errorData = await response.json();
+        setError(errorData.message);
+      } else {
+        setError("An error occurred during sign-in.");
+      }
+    } catch (error) {
+      console.error("Error during fetch:", error);
+      setError("An error occurred during sign-in.");
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch("http://localhost:9000/signIn", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to sign in");
-      }
-
-      const data = await response.json();
-
-      // Assuming backend sends a token or some indicator of successful sign-in
-      // You can handle this response according to your backend implementation
-
-      // Redirect user based on their role
-      switch (data.role) {
-        case "customer":
-          navigate("/");
-          break;
-        case "cr":
-          navigate("/CustomerRepresentativeDashboard");
-          break;
-        case "admin":
-          navigate("/AdminDashboard");
-          break;
-        default:
-          // Handle unknown roles or errors
-          break;
-      }
-    } catch (error) {
-      setError(error.message);
-      console.error(error);
-    }
+    await signIn();
   };
 
   return (
@@ -66,11 +87,21 @@ function SignInForm() {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username (Email or ID):</label>
-          <input type="text" name="username" onChange={handleChange} />
+          <input
+            type="text"
+            id="name"
+            name="username"
+            onChange={handleChange}
+          />
         </div>
         <div>
           <label>Password:</label>
-          <input type="password" name="password" onChange={handleChange} />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            onChange={handleChange}
+          />
         </div>
         <button type="submit">Sign In</button>
       </form>

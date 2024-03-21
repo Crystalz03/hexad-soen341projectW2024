@@ -1,0 +1,24 @@
+Hexad Meeting Minutes
+
+Date: Saturday, March 9th, 2024
+Time: 15h00 pm - 17h00 pm (2 hour)
+Location: Online Video Call
+
+Attendees: 
+Imen Khezzar (40246836)
+Rania Maoukout (40249281)
+Malak Sefrioui(40252907)
+Sydney Campbell (40243309)
+
+Agenda:
+
+    1. Code
+    2. Help each other and answer questions
+
+Discussion points:
+    - Discussed access to the database and helped each other with different issues with personal branches
+
+
+Next step:
+    - Finish and merge all branches to main.
+    - Submit sprint 2 by Monday night.

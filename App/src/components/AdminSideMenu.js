@@ -2,44 +2,49 @@ import React from "react";
 import "../style/style.css";
 import { Link } from "react-router-dom";
 
-function AdminSideMenu2() {
-  return (
-    <aside className="nav sticky">
-      <div className="company-name-nav all-caps">hexad</div>
-      <ul className="nav-list-1">
-        <Link to="/CreateCRAccount"><li className="nav-list-components-1">Create CR Account</li></Link>
-        <Link to="/UpdateVehicle"><li className="nav-list-components-1">Update an existing vehicle</li></Link>
-        <li className="nav-list-components-1">View/Modify Inventory</li>
-        <li className="nav-list-components-1">Schedule</li>
-        <li className="nav-list-components-1">Reservations</li>
-      </ul>
-    </aside>
-  );
-}
 function AdminSideMenu() {
   return (
     <div className="main">
       <div className="general-structure">
         <aside className="nav sticky">
-          <div className="company-name-nav all-caps">hexad</div>
+          <div className="company-name-nav all-caps">
+            <Link to="/AdminDashboard" className="link-style">
+              hexad
+            </Link>
+          </div>
           <ul className="nav-list-1">
+            <Link to="/CreateCRAccount" className="link-style">
+              <li className="nav-list-components-1">Create CR Account</li>
+            </Link>
+            <Link to="/CreateAdminAccount" className="link-style">
+              <li className="nav-list-components-1">Create Admin Account</li>
+            </Link>
+            <Link to="/BrowseAccounts" className="link-style">
+              <li className="nav-list-components-1">Browse Accounts</li>
+            </Link>
             <li className="nav-list-components-1">
-              <Link to="/CreateCRAccount" className="link-style">
-                Create CR account
+              <Link to="/Vehicle" className="link-style">
+                Add A New Vehicle
               </Link>
-              /
             </li>
             <li className="nav-list-components-1">
-              <Link to="/AdminInventory" className="link-style">
-                View/Modify Inventory
+              <Link to="/UpdateVehicle" className="link-style">
+              Update an existing vehicle
               </Link>
             </li>
-            <li className="nav-list-components-1">Schedule</li>
+            <li className="nav-list-components-1">
+              <Link to="/Inventory" className="link-style">
+                View
+              </Link>
+              /Modify Inventory
+            </li>
             <li className="nav-list-components-1">Reservations</li>
           </ul>
+          <div className="nav-divider"></div>
         </aside>
       </div>
     </div>
   );
 }
+
 export default AdminSideMenu;

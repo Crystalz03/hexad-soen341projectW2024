@@ -1,36 +1,42 @@
 import React from "react";
 import "../style/style.css";
+
 import { Link } from "react-router-dom";
 
 export default function SideMenu() {
   return (
-    <div className="main">
-      <div className="general-structure">
-        <aside className="nav sticky">
-           <div className="company-name-nav all-caps"><Link to="/">hexad</Link></div>
-          <ul className="nav-list-1">
-            <li className="nav-list-components-1">
-              <Link to="/SignIn">Sign In</Link>/
-              <Link to="/SignUp">Sign Up</Link>
-            </li>
-            <li className="nav-list-components-1">About Hexad</li>
-            <li className="nav-list-components-1">Reserve</li>
-            <li className="nav-list-components-1">View/Modify</li>
-            <li className="nav-list-components-2"><Link to="/BrowseAccounts">View Accounts</Link></li>
-          </ul>
-          <div className="nav-divider"></div>
-          <ul className="nav-list-2">
-            <Link to="/Browse" className="link-style">
-              Browse Vehicles
-            </Link>
-            <li className="nav-list-components-2">Locations</li>
-            <li className="nav-list-components-2">Contact Us</li>
-              <li className="nav-list-components-2"><Link to="/MyAccount">My Account</Link></li>
-          </ul>
-          <div className="nav-divider"></div>
-        </aside>
+    <div>
+      <div className="main">
+        <div className="general-structure">
+          <aside className="nav sticky">
+            <div className="company-name-nav all-caps">
+              <Link to="/" className = "link-style">hexad</Link>
+            </div>
+            <ul className="nav-list-1">
+              <li className="nav-list-components-1">
+               <Link to="/SignUp" className = "link-style">Sign Up</Link>
+             </li>
+              <li className="nav-list-components-1">About Hexad</li>
+              <li className="nav-list-components-1"><Link to="/Reserve" className = "link-style">Reserve</Link></li>
+              <li className="nav-list-components-1"><Link to="/View" className="link-style">View</Link>/<Link to="Modify" className="link-style">Modify</Link>/<Link to="/DeleteReservationPage" className = "link-style">Delete</Link></li>
+            </ul>
+            <div className="nav-divider"></div>
+
+            <ul className="nav-list-2">
+              <Link to="/Browse" className="link-style">
+                Browse Vehicles
+              </Link>
+              <li className="nav-list-components-2">Locations</li>
+              <li className="nav-list-components-2">Contact Us</li>
+              <li className="nav-list-components-2">
+                <Link to="/MyAccountPage" className = "link-style">My Account</Link>
+              </li>
+            </ul>
+            <div className="nav-divider"></div>
+          </aside>
+        </div>
+
       </div>
     </div>
   );
 }
-

@@ -231,174 +231,166 @@ header {
   - Top-box -> Location
   - Bottom-Box -> pickup, return, check availability (all next to eachother)
   */
-  .reservation-label {
-    color: var(--primary-text-color);
-  }
-  .reservation-box {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .reservation-label {
-    color: var(--primary-text-color);
-    font-size: var(--s-size);
-  }
-  .top-box {
-    height: var(--top-box-height);
-  }
-  .top-box-input input {
-    border-style: none;
-    outline: none;
-    font-size: var(--m-size);
-    box-sizing: border-box;
-    height: var(--input-box-height);
-    width: var(--main-content-width);
-    background-color: var(--second-white);
-  }
-  .top-box-input input::placeholder {
-    color: var(--tertiary-text-color);
-    font-size: var(--m-size);
-  }
-  .bottom-box {
-    display: flex;
-    flex-direction: row;
-  
-    width: var(--main-content-width);
-    gap: 10px;
-    align-items: flex-start;
-  }
-  .bottom-input-boxes {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-  }
-  /*Input Boxes*/
-  .location-title {
-    font-size: var(--xs-size);
-    font-weight: var(--bold);
-    color: var(--secondary-text-color);
-  }
-  .pickup-box input,
-  .return-box input {
-    border-style: none;
-    outline: none;
-    font-size: var(--m-size);
-    box-sizing: border-box;
-    width: var(--pickup-return-box-width);
-  }
-  .pickup-box input::placeholder,
-  .return-box input::placeholder {
-    color: var(--tertiary-text-color);
-    font-size: var(--m-size);
-  }
-  .location-title {
-    font-size: var(--xs-size);
-    font-weight: var(--bold);
-    color: var(--second-white);
-  }
-  
-  /*Extra Content -> To adjust later*/
-  .extra-content {
-    background-color: var(--second-white);
-    color: var(--secondary-text-color);
-    width: var(--main-content-width);
-    height: 200px;
-    margin-bottom: 100px;
-  }
-  .footer {
-    background-color: var(--secondary-text-color);
-    height: var(--footer-height);
-    position: sticky;
-    bottom: 0;
-    margin-left: 180px;
-  }
+.reservation-label {
+  color: var(--primary-text-color);
+}
+.reservation-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.reservation-label {
+  color: var(--primary-text-color);
+  font-size: var(--s-size);
+}
+.top-box {
+  height: var(--top-box-height);
+}
+.top-box-input input {
+  border-style: none;
+  outline: none;
+  font-size: var(--m-size);
+  box-sizing: border-box;
+  height: var(--input-box-height);
+  width: var(--main-content-width);
+  background-color: var(--second-white);
+}
+.top-box-input input::placeholder {
+  color: var(--tertiary-text-color);
+  font-size: var(--m-size);
+}
+.bottom-box {
+  display: flex;
+  flex-direction: row;
 
+  width: var(--main-content-width);
+  gap: 10px;
+  align-items: flex-start;
+}
+.bottom-input-boxes {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+/*Input Boxes*/
+.location-title {
+  font-size: var(--xs-size);
+  font-weight: var(--bold);
+  color: var(--secondary-text-color);
+}
+.pickup-box input,
+.return-box input {
+  border-style: none;
+  outline: none;
+  font-size: var(--m-size);
+  box-sizing: border-box;
+  width: var(--pickup-return-box-width);
+}
+.pickup-box input::placeholder,
+.return-box input::placeholder {
+  color: var(--tertiary-text-color);
+  font-size: var(--m-size);
+}
+.location-title {
+  font-size: var(--xs-size);
+  font-weight: var(--bold);
+  color: var(--second-white);
+}
 
-  .account-card-scroll-container {
-    overflow-y:visible;
-  }
+/*Extra Content -> To adjust later*/
+.extra-content {
+  background-color: var(--second-white);
+  color: var(--secondary-text-color);
+  width: var(--main-content-width);
+  height: 200px;
+  margin-bottom: 100px;
+}
+.footer {
+  background-color: var(--secondary-text-color);
+  height: var(--footer-height);
+  position: sticky;
+  bottom: 0;
+  margin-left: 180px;
+}
 
-  .accounts{
-  }
-  .title-accounts{
-    color: var(--second-white);
-    font-weight: var(--bold);
-    font-style: italic;
-    font-size: var(--xxl-size);
-    margin-left: 200px;
-    margin-bottom: 10px;
-  }
-  
-  .account-card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .account-card {
-    border: 1px solid #ccc;
-    color: #ccc;
-    padding: 10px;
-    /* Additional styling for each customer card */
-  }
+.account-card-scroll-container {
+  overflow-y: visible;
+}
 
+.title-accounts {
+  color: var(--second-white);
+  font-weight: var(--bold);
+  font-style: italic;
+  font-size: var(--xxl-size);
+  margin-left: 200px;
+  margin-bottom: 10px;
+}
 
-  .account-content {
-    overflow-y: scroll;
-    color: var(--secondary-text-color);
-    width: var(--main-content-width);
-    margin-left: 200px;
-  }
+.account-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
-  .accounts-title {
-    color: var(--second-white);
-    font-weight: var(--bold);
-    font-style: italic;
-    font-size: var(--xl-size);
-  }
+.account-card {
+  border: 1px solid #ccc;
+  color: #ccc;
+  padding: 10px;
+  /* Additional styling for each customer card */
+}
 
- 
+.account-content {
+  overflow-y: scroll;
+  color: var(--secondary-text-color);
+  width: var(--main-content-width);
+  margin-left: 200px;
+}
 
+.accounts-title {
+  color: var(--second-white);
+  font-weight: var(--bold);
+  font-style: italic;
+  font-size: var(--xl-size);
+}
 
-
-  .form-1 {
-    outline: #EA4C89;
-    text-align: center;
-    display: inline-block;
-    margin: 50px 100px;
-    width: 362px;
-    padding: 25px;
-    border-radius: 8px;
-    background: #f1f1f1;
-    border: 1px solid #e5e5e5;
-    div {
-      position: relative;
-      margin: 0 0 1.5em;
-    }
-  }
-  label {
-    display: inline-block;
-    width: 100%;
+.form-1 {
+  outline: #ea4c89;
+  text-align: center;
+  display: inline-block;
+  margin: 50px 100px;
+  width: 362px;
+  padding: 25px;
+  border-radius: 8px;
+  background: #f1f1f1;
+  border: 1px solid #e5e5e5;
+  div {
     position: relative;
-    margin: 0 0 .5em;
-    font-weight: bold;
-    color: #222;
+    margin: 0 0 1.5em;
   }
+}
+label {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  margin: 0 0 0.5em;
+  font-weight: bold;
+  color: #222;
+}
 
-  .form-header {
-    text-align: center;
-    color: #222;
-    margin-bottom: 15px;
-  }
+.form-header {
+  text-align: center;
+  color: #222;
+  margin-bottom: 15px;
+}
 
 .button-1 {
-  background-color: #EA4C89;
+  background-color: #ea4c89;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
@@ -494,7 +486,7 @@ header {
 .footer {
   background-color: var(--secondary-text-color);
   height: var(--footer-height);
-  position:fixed;
+  position: fixed;
   bottom: 0;
   margin-left: 180px;
   width: var(--header-width);
@@ -506,26 +498,24 @@ header {
 
 /*Browse Vehicles CSS*/
 .vehicle-grid {
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-  max-height:calc(100vh - var(--footer-height));
- overflow-y:auto;
- }
- .vehicle-list{
-   display:frid;
-   grid-template-columns:repeat(2, 1fr);
-   gap:20px;
-   list-style:none;
- }
- 
- .vehicle-card {
-   border: 1px solid #ccc;
-   padding: 10px;
-   flex:1 0 30px;
- 
- }
- .reserve-btn {
-   margin-top: 10px;
- }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-height: calc(100vh - var(--footer-height));
+  overflow-y: auto;
+}
+.vehicle-list {
+  display: frid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  list-style: none;
+}
 
+.vehicle-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  flex: 1 0 30px;
+}
+.reserve-btn {
+  margin-top: 10px;
+}

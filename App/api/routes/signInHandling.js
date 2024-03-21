@@ -4,7 +4,7 @@ const pool = require('../../database/db');
 const router = express.Router();
 
 // Express route for handling user sign-in
-router.post('/signIn', async (req, res) => {
+router.post('/signin', async (req, res) => {
   const { username, password } = req.body;
 
   try {

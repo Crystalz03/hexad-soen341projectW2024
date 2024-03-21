@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import SideMenu from "./SideMenu";
 
 import "./../style/style.css";
 import "./../style/BrowseVehicles.css";
@@ -49,34 +50,9 @@ function BrowseVehicles() {
   return (
     <div>
       <Header />
+      <SideMenu />
       <div className="main">
         <div className="general-structure">
-          <aside className="nav sticky">
-            <Link to="/" className="link-style">
-              <div className="company-name-nav all-caps">hexad</div>
-            </Link>
-            <ul className="nav-list-1">
-              <li className="nav-list-components-1">Sign In/Sign Up</li>
-              <li className="nav-list-components-1">About Hexad</li>
-              <li className="nav-list-components-1">Reserve</li>
-              <li className="nav-list-components-1">
-                <Link to="/Cancel" className="link-style">
-                  View/Cancel/Modify
-                </Link>
-              </li>
-            </ul>
-            <div className="nav-divider"></div>
-            <ul className="nav-list-2">
-              <li className="nav-list-components-2 current-page">
-                <Link to="/" className="link-style">
-                  Browse Vehicles
-                </Link>
-              </li>
-              <li className="nav-list-components-2">Locations</li>
-              <li className="nav-list-components-2">Contact Us</li>
-            </ul>
-            <div className="nav-divider"></div>
-          </aside>
           <div className="main-content">
             <h2 className="reservation-title">Browse Vehicles</h2>
             <div>

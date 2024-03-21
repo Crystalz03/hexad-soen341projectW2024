@@ -52,7 +52,7 @@ function SignupForm() {
           "This email is already associated with an account. Please sign in."
         );
       }
-
+      alert("Account Successfully Created!");
       navigate("/");
     } catch (error) {
       setError(error.message);

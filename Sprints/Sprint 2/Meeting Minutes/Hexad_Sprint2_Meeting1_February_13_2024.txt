@@ -1,0 +1,35 @@
+Hexad Meeting Minutes
+
+Date: Tuesday, February 13, 2024
+Time: 11h45 pm - 12h15 pm (30 min)
+Location: Concordia University, Hall building 10th floor
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Yaroslava (40242907)
+Rania Maoukout (40249281)
+Malak Sefrioui(40252907)
+
+
+Agenda:
+
+1. Clarified check-in/check-out
+2. CRUD operations for users, vehicles and reservations
+
+
+Discussion points:
+
+   Check-in/check-out
+    The team discussed how to implment the backend for the check-in and the check-out. We decided to add another field in the 
+    database table for the reservation that tells if the customer paid for the reservation already. We also decided to the customer 
+    service representative will have acces to a check-in form and the payment process since those steps would technically be done
+    in person at the branch with the customer.
+
+   CRUD operations
+    The team agreed that the priority for this week is the creation in the CRUD operations for the user, the vehicles and the reservation.
+    Once this is done, the team will be able to start working on implementing the backend to the front end in their own tasks. This task
+    should be done by friday if possible.
+
+Next step: 
+- Write the Creation operations for friday
