@@ -16,6 +16,7 @@ import CreateAdminAccount from "./pages/CreateAdminAccount";
 import View from "./pages/View";
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
+import Branches from "./pages/Branches";
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
           <Route path="/Browse" exact element={<Browse/>} />
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
+          <Route path="/FindBranch" exact element={<Branches/>} />
         </Routes>
       </div>
     </Router>
