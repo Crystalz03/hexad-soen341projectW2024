@@ -42,22 +42,7 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/View">View</Link>
-            </li>
-            <li>
-              <Link to="/Modify">Modify</Link>
-            </li>
-            <li>
-              <Link to="/Cancel">Cancel</Link>
-            </li>
-          </ul>
-        </nav>
+      
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} />
