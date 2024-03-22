@@ -38,6 +38,7 @@ function Main() {
             <li className="nav-list-components-1">About Hexad</li>
             <li className="nav-list-components-1">Reserve</li>
             <li className="nav-list-components-1"><Link to="/View">View</Link></li>
+            <li className="nav-list-components-1"><Link to="/Modify">Modify</Link></li>
             <li className="nav-list-components-1"><Link to="/Cancel">Cancel</Link></li>
           </ul>
           <div className="nav-divider"></div>

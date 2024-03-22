@@ -1,6 +1,6 @@
 import React from 'react';
-import ModifyReservation from '../components/ModifyReservation'; 
-import './../style/View.css'; 
+import ModifyReservation from '../components/ModifyReservation';
+import './../style/View.css';
 
 function Modify() {
   return (
