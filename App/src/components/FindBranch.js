@@ -1,7 +1,51 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the Earth in kilometers
+    const dLat = (lat2 - lat1) * (Math.PI / 180);
+    const dLon = (lon2 - lon1) * (Math.PI / 180);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos((lat1 * Math.PI) / 180) *
+        Math.cos((lat2 * Math.PI) / 180) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // Distance in kilometers
+    return distance;
+  }
+
+  function findNearestBranch(userLatitude, userLongitude) {
+
+    const testBranches = [
+        { name: 'Montreal Branch', latitude: 45.5019, longitude: -73.5674 },
+        { name: 'Toronto Branch', latitude: 43.6532, longitude: -79.3832 },
+        { name: 'Vancouver Branch', latitude: 49.2827, longitude: -123.1207 },
+      ];
+
+    let nearestBranch = null;
+    let shortestDistance = Infinity;
+  
+    testBranches.forEach(branch => {
+      const distance = calculateDistance(
+        userLatitude,
+        userLongitude,
+        branch.latitude,
+        branch.longitude
+      );
+      if (distance < shortestDistance) {
+        shortestDistance = distance;
+        nearestBranch = branch;
+      }
+    });
+  
+    return nearestBranch;
+  }
+
 const BranchFinder = () => {
+
   const [postalCode, setPostalCode] = useState('');
   const [nearestBranch, setNearestBranch] = useState(null);
 
@@ -9,18 +53,16 @@ const BranchFinder = () => {
     setPostalCode(event.target.value);
   };
 
-  const findNearestBranch = async () => {
+  const findBranch = async () => {
     try {
       const response = await axios.get(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${postalCode}&key=AIzaSyDB1QSetyBSLxtSUqBXk8SyCBE2n3-CyCA`
       );
-      console.log('Response:', response);
+      
       const location = response.data.results[0].geometry.location;
-      console.log('Location:', location);
-      // Use the location to find the nearest branch
-      // You may need to make another request to your server or another API
-      // to get the nearest branch based on the location
-      setNearestBranch(location);
+
+      setNearestBranch(findNearestBranch(location.lat, location.lng));
+
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -34,15 +76,11 @@ const BranchFinder = () => {
         onChange={handlePostalCodeChange}
         placeholder="Enter your postal code"
       />
-      <button onClick={findNearestBranch}>Find Nearest Branch</button>
+      <button onClick={findBranch}>Find Nearest Branch</button>
       {nearestBranch && (
         <div>
           <h2>Nearest Branch</h2>
-          {/* add actual branch */}
-          <h2>Coordinates of postal code</h2>
-          <p>Name: {nearestBranch.lat}</p>
-          <p>Address: {nearestBranch.lng}</p>
-          {/* Add more details if needed */}
+          <p>Name: {nearestBranch.name}</p>
         </div>
       )}
     </div>
