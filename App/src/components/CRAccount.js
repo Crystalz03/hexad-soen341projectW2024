@@ -44,8 +44,8 @@ import { useState } from "react";
       if (!response.ok) {
         throw new Error("Please try again.");
       }
-
-      navigate("/AdminDashboard");
+      alert("CR Account Successfully Created!");
+      navigate("/CRDashboard");
     } catch (error) {
       setError(error.message);
       console.error(error);

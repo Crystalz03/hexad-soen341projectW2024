@@ -5,12 +5,13 @@ const router = express.Router();
 
 // Create a new reservation
 router.post('/reservations', async (req, res) => {
-    const { id, vehicleID, customerID, pickUpDate, returnDate, extraEquipment, additionalServices, total} = req.body;
+    const { id, vehicleID, customerID, pickUpDate, returnDate, extraEquipment, additionalServices, total, pickUpLocation, dropOffLocation} = req.body;
     const paid = 'false';
+    const mileageLimit = "N/A";
   
     try {
       // Insert new reservation
-      const result = await pool.query`INSERT INTO Reservation (ID, Vehicle_ID, Customer_ID, Pick_Up_Date, Return_Date, Extra_Equipment, Additional_Services, Paid, Total) VALUES (${id}, ${vehicleID}, ${customerID}, ${pickUpDate}, ${returnDate}, ${extraEquipment}, ${additionalServices}, ${paid}, ${total})`;
+      const result = await pool.query`INSERT INTO Reservation (ID, Vehicle_ID, Customer_ID, Pick_Up_Date, Return_Date, Extra_Equipment, Additional_Services, Paid, Total, Pick_Up_Location, Drop_Off_Location, Mileage_Limit) VALUES (${id}, ${vehicleID}, ${customerID}, ${pickUpDate}, ${returnDate}, ${extraEquipment}, ${additionalServices}, ${paid}, ${total}, ${pickUpLocation}, ${dropOffLocation}, ${mileageLimit})`;
   
       // Get existing Reservation_ID from Customer table
       const customerResult = await pool.query`SELECT Reservation_ID FROM Customers WHERE ID = ${customerID}`;
@@ -68,10 +69,10 @@ router.get('/reservations/:id', async (req, res) => {
 // Update a specific reservation by ID
 router.put('/reservations/:id', async (req, res) => {
   const reservationId = req.params.id;
-  const { vehicleID, customerID, pickUpDate, returnDate, extraEquipment, additionalServices, paid, total } = req.body;
+  const { vehicleID, customerID, pickUpDate, returnDate, extraEquipment, additionalServices, paid, total, pickUpLocation, dropOffLocation, mileageLimit } = req.body;
 
   try {
-    const result = await pool.query`UPDATE Reservation SET Vehicle_ID = ${vehicleID}, Customer_ID = ${customerID}, Pick_Up_Date = ${pickUpDate}, Return_Date = ${returnDate}, Extra_Equipment = ${extraEquipment}, Additional_Services = ${additionalServices}, Paid = ${paid}, Total = ${total} WHERE ID = ${reservationId}`;
+    const result = await pool.query`UPDATE Reservation SET Vehicle_ID = ${vehicleID}, Customer_ID = ${customerID}, Pick_Up_Date = ${pickUpDate}, Return_Date = ${returnDate}, Extra_Equipment = ${extraEquipment}, Additional_Services = ${additionalServices}, Paid = ${paid}, Total = ${total}, Pick_Up_Location = ${pickUpLocation}, Drop_Off_Location = ${dropOffLocation}, Mileage_Limit = ${mileageLimit} WHERE ID = ${reservationId}`;
     res.status(200).json({ message: 'Reservation updated successfully',  reservation: req.body }); // e.g. Reservation = response.body.reservation -> Reservation.name
   } catch (error) {
     console.error('Error updating reservation:', error);

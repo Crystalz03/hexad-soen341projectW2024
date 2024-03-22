@@ -33,7 +33,7 @@ describe('CSR Routes', () => {
     const response = await request(app)
       .post('/csr')
       .send({
-        id: 'CSR1234567',
+        id: 'CR01234567',
         name: 'John',
         lastName: 'Doe',
         branch: '0123456789',
@@ -43,7 +43,7 @@ describe('CSR Routes', () => {
 
     expect(response.status).toBe(201);
     expect(response.body.csr).toEqual({
-        id: 'CSR1234567',
+        id: 'CR01234567',
         name: 'John',
         lastName: 'Doe',
         branch: '0123456789',
@@ -56,19 +56,20 @@ describe('CSR Routes', () => {
      it('should test login states', async () => {
 
       // successful
-      var response = await request(app).get('/signIn/CSR1234567/pswd123');
+      var response = await request(app).get('/signIn/CR01234567/pswd123');
   
       expect(response.status).toBe(200);
       expect(response.body.message).toEqual('Login successful');
+      expect(response.body.id).toEqual(`CR01234567`);
 
       // incorrect password
-      response = await request(app).get('/signIn/CSR1234567/pswd1234');
+      response = await request(app).get('/signIn/CR01234567/pswd1234');
   
       expect(response.status).toBe(401);
       expect(response.body.message).toEqual('Incorrect password');
 
       // not found
-      response = await request(app).get('/signIn/CSR1234566/pswd123');
+      response = await request(app).get('/signIn/CR01234566/pswd123');
   
       expect(response.status).toBe(404);
       expect(response.body.message).toEqual('User not found');
@@ -88,7 +89,7 @@ describe('CSR Routes', () => {
 
     expect(response.status).toBe(200);
     expect(response.body.csr).toEqual({
-        ID: 'CSR1234567',
+        ID: 'CR01234567',
         Name: 'John',
         Last_Name: 'Doe',
         Branch: '0123456789',
@@ -98,11 +99,11 @@ describe('CSR Routes', () => {
 });
   // Test getting a csr by ID
   it('should get a csr by ID', async () => {
-    const response = await request(app).get('/csr/CSR1234567');
+    const response = await request(app).get('/csr/CR01234567');
 
     expect(response.status).toBe(200);
     expect(response.body.csr).toEqual({
-        ID: 'CSR1234567',
+        ID: 'CR01234567',
         Name: 'John',
         Last_Name: 'Doe',
         Branch: '0123456789',
@@ -114,7 +115,7 @@ describe('CSR Routes', () => {
   // Test updating a csr by ID
   it('should update a csr by ID', async () => {
     const response = await request(app)
-      .put('/csr/CSR1234567')
+      .put('/csr/CR01234567')
       .send({
         name: 'Jane',
         lastName: 'Doe',
@@ -136,7 +137,7 @@ describe('CSR Routes', () => {
 
   // Test deleting a csr by ID
   it('should delete a csr by ID', async () => {
-    const response = await request(app).delete('/csr/CSR1234567');
+    const response = await request(app).delete('/csr/CR01234567');
 
     expect(response.status).toBe(200);
     expect(response.body.message).toBe('Customer service representative removed successfully');

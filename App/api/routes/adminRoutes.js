@@ -20,19 +20,22 @@ router.post('/admin', async (req, res) => {
 router.get('/signIn/:user/:password', async (req, res) => {
   const user = req.params.user;
   const pswd = req.params.password;
+  let id;
 
   const customerRegex = new RegExp(/@/);
-  const adminRegex = new RegExp(/^SA/);
-  const csrRegex = new RegExp(/^CSR/);
+  const adminRegex = new RegExp(/^A/);
+  const csrRegex = new RegExp(/^CR/);
   let password;
 
     try {
       if (adminRegex.test(user)) {
         const result = await pool.query`SELECT Password FROM Admin WHERE ID = ${user}`;
         password = result.recordsets[0][0]?.Password;
+        id = user;
       } else if (csrRegex.test(user)) {
         const result = await pool.query`SELECT Password FROM CSR WHERE ID = ${user}`;
         password = result.recordsets[0][0]?.Password;
+        id = user;
       } else if (customerRegex.test(user)){
         const result = await pool.query`SELECT Password FROM Customers WHERE Email = ${user}`;
         password = result.recordsets[0][0]?.Password;
@@ -44,7 +47,12 @@ router.get('/signIn/:user/:password', async (req, res) => {
         // Check if the provided password matches the one from the database
           if (pswd === password) {
             // Passwords match
-            res.status(200).json({ message: 'Login successful' });
+            if (customerRegex.test(user)){
+              const result2 = await pool.query`SELECT ID FROM Customers WHERE Email = ${user}`;
+              id = result2.recordsets[0][0]?.ID;
+            }
+            res.status(200).json({ message: 'Login successful', id: id });
+            
           } else {
             // Passwords do not match
             res.status(401).json({ message: 'Incorrect password' });
@@ -56,8 +64,7 @@ router.get('/signIn/:user/:password', async (req, res) => {
     }
 });
 
-
-// Get all System Admins - for system admin 
+// Get all System Admins - for system admin
 router.get('/admin', async (req, res) => {
   try {
     const result = await pool.query`SELECT * FROM Admin`;
