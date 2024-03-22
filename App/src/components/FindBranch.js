@@ -17,6 +17,9 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
     return distance;
   }
 
+  function getBranches(){
+    
+  }
   function findNearestBranch(userLatitude, userLongitude) {
 
     const testBranches = [
@@ -46,10 +49,34 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 
 const BranchFinder = () => {
 
+    const [apiResponse, setApiResponse] = useState(null); 
+    
+    const callAPIGetBranches = () => {
+        fetch("http://localhost:9000/Branch", {
+          method: "GET",
+        })
+          .then((data) => data.json())
+          .then((data) => {
+            const branches = data.branches[0].map((branch) => ({
+              Name: branch.BranchName,
+              lat: branch.LatitudeCoord,
+              lng: branch.LongitudeCoord,
+            }));
+    
+            console.log(branches)
+            setApiResponse(branches);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      };
+  
+
   const [postalCode, setPostalCode] = useState('');
   const [nearestBranch, setNearestBranch] = useState(null);
 
   const handlePostalCodeChange = (event) => {
+    callAPIGetBranches();
     setPostalCode(event.target.value);
   };
 
