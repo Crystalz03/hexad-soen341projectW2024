@@ -21,7 +21,7 @@ function SignInForm() {
     }
     dispatch(signIn(userCredentials)).then((result)=>{
       if(result.payload){
-        setEmail('');
+        setUsername('');
         setPassword('');
         navigate('/');
       }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 export function getUser() {
   let user = localStorage.getItem("user");
   if (user) {
@@ -9,25 +8,58 @@ export function getUser() {
     user = null;
   }
   return user;
-};
-
-function DisplayUserInfo() {
-  
-
-  const [user, setUser] = useState(getUser());
-
-  return <div>
-    {user?(
-      <>
-      <h1> Hello, {user.name} {user.lastName} </h1>
-      </>
-    ):(
-      <>
-      <h1>Not signed in</h1>
-      </>
-    )}
-  </div>;
 }
+
+export function getUserRole(id){
+  let role;
+  if (id.startsWith('SA')) {
+    role = 'admin';
+  } else if (id.startsWith('CR')) {
+    role = 'customer_representative';
+  } else if (id.startsWith('CS')) {
+    role = 'customer';
+  } else {
+    throw new Error('Invalid username');
+  }
+  return role;
+}
+
+export function DisplayUserInfo() {
+  const [user, setUser] = useState(getUser());
+  const [userType, setUserType] = useState("");
+
+  const handleSignOut = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+  }
+
+  // Set userType when user changes
+  useEffect(() => {
+    if (user) {
+      setUserType(getUserRole(user.id)); // Use user.id directly
+    }
+  }, [user]);
+
+  return (
+    <div>
+      {user ? (
+        <>
+          <h1>
+            Hello, {user.message === "Sign-in successful" ? user.id : "Unknown"}
+          </h1>
+          <h2>{user.message}</h2>
+          <p>User Type: {userType}</p>
+          <button onClick={handleSignOut}>Sign Out</button>
+        </>
+      ) : (
+        <h1>Not signed in</h1>
+      )}
+    </div>
+  );
+}
+
+export default DisplayUserInfo;
+
 
 //   const [formData, setFormData] = useState({
 //     username: "",
@@ -411,4 +443,5 @@ function DisplayUserInfo() {
 //   );
 // }
 
-export default DisplayUserInfo;
+
+
