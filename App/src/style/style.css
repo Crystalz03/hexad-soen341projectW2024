@@ -212,6 +212,13 @@ header {
   padding: 0 50px;
 }
 
+.check-in-title {
+  color: var(--primary-text-color);
+  font-weight: var(--bold);
+  font-style: italic;
+  font-size: var(--xxl-size);
+}
+
 /* Reservation Title*/
 .title-box {
   height: var(--title-box-height);

@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@react-native-picker/picker": "^2.6.1",
+    "@react-pdf/renderer": "^3.4.0",
     "axios": "^1.6.7",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
@@ -52,6 +53,7 @@
     "msnodesqlv8": "^4.1.2",
     "mssql": "^10.0.2",
     "mysql": "^2.18.1",
+    "pdf-lib": "^1.17.1",
     "react": "^18.2.0",
     "react-router-dom": "^6.22.1",
     "sequelize": "^6.37.0",
