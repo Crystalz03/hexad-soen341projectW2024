@@ -7,7 +7,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
 import SignIn from "./pages/SignIn";
 import Cancel from "./pages/Cancel";
-import Modify from "./pages/Modify"; // Import the Modify component
+import Modify from "./pages/Modify"; 
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
@@ -45,7 +45,7 @@ function App() {
               <Link to="/View">View</Link>
             </li>
             <li>
-              <Link to="/Modify">Modify</Link> {/* Link to the Modify page */}
+              <Link to="/Modify">Modify</Link>
             </li>
             <li>
               <Link to="/Cancel">Cancel</Link>
@@ -56,7 +56,7 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/Cancel" exact element={<Cancel />} />
           <Route path="/View" exact element={<View />} />
-          <Route path="/Modify" exact element={<Modify />} /> {/* Route for the Modify page */}
+          <Route path="/Modify" exact element={<Modify />} /> 
         </Routes>
       </div>
     </Router>
