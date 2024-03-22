@@ -52,12 +52,7 @@ function App() {
             </li>
           </ul>
         </nav>
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/Cancel" exact element={<Cancel />} />
-          <Route path="/View" exact element={<View />} />
-          <Route path="/Modify" exact element={<Modify />} /> 
-        </Routes>
+      
       </div>
     </Router>
   );
