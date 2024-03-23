@@ -25,7 +25,7 @@ function Main() {
             <div className="reservation-title">Check Out</div>
           </div>
           <div className="extra-content">
-            <PaymentForm />
+          <PaymentForm/>
           </div>
         </div>
       </div>
