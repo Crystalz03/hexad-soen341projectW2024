@@ -19,7 +19,7 @@ function UpdateVehicle() {
             <div className="title-box">
               <div className="reservation-title">Update an Existing Vehicle</div>
             </div>
-            <div>{vehicleID}</div>
+            <div className="extra-content" style={{ height: "400px" }}><UpdateVehicleForm vehicleID={vehicleID} /></div>
           </div>
         </div>
       </div>

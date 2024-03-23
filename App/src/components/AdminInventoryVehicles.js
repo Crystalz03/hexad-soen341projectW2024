@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./../style/style.css";
 
 function AdminInventoryVehicles() {
@@ -101,7 +101,7 @@ function AdminInventoryVehicles() {
                     </button>
                     <button
                       className="all-caps sign-in-btn btn-background-color reserve-btn"
-                      onClick={() => alert("hurray")/*navigate(`/UpdateVehicle/${vehicle.ID}`)*/}
+                      onClick={() => navigate(`/UpdateVehicle/${vehicle.ID}`)}
                     >Update Vehicle</button>
                   </div>
                 </div>
