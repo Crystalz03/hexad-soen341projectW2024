@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./../style/style.css";
 
 function AdminInventoryVehicles() {
+  const navigate = useNavigate();
   const [apiResponse, setApiResponse] = useState(null); // Define apiResponse state
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -100,7 +101,7 @@ function AdminInventoryVehicles() {
                     </button>
                     <button
                       className="all-caps sign-in-btn btn-background-color reserve-btn"
-                      onClick={() => updateVehicle(vehicle.ID)}
+                      onClick={() => alert("hurray")/*navigate(`/UpdateVehicle/${vehicle.ID}`)*/}
                     >Update Vehicle</button>
                   </div>
                 </div>
