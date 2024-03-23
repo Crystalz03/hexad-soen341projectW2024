@@ -14,7 +14,11 @@ function ViewReservation() {
         Additional_Services:"",
         Paid:"",
         Total:"",
+        Pick_Up_Location:"",
+        Drop_Off_Location:"", 
     });
+
+   
     const [error, setError] = useState('');
     const [isButtonClicked, setIsButtonClicked] = useState(false); // Track whether the button is clicked or not
     const navigate = useNavigate();
@@ -92,6 +96,8 @@ function ViewReservation() {
                     <p>Extra Equipment: {reservationDetails?.Extra_Equipment}</p>
                     <p>Additional Services: {reservationDetails?.Additional_Services}</p>
                     <p>Total: {reservationDetails?.Total}</p>
+                    <p>Pick Up Location: {reservationDetails?.Pick_Up_Location}</p> 
+                    <p>Drop Off Location: {reservationDetails?.Drop_Off_Location}</p>
                 </div>
             )}
         </div>

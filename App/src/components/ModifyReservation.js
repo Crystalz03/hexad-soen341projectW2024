@@ -8,6 +8,10 @@ function ModifyReservation() {
     const [newVehicleId, setNewVehicleId] = useState('');
     const [newPickUpDate, setNewPickUpDate] = useState('');
     const [newReturnDate, setNewReturnDate] = useState('');
+    const [newExtraEquipment, setNewExtraEquipment] = useState('');
+    const [newAdditionalServices, setNewAdditionalServices] = useState('');
+    const [newPickUpLocation, setNewPickUpLocation] = useState('');
+    const [newDropOffLocation, setNewDropOffLocation] = useState('');
     const [error, setError] = useState('');
     const [isButtonClicked, setIsButtonClicked] = useState(false);
     const navigate = useNavigate();
