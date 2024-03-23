@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../style/style.css";
 import { useNavigate } from "react-router-dom";
 import DisplayUserInfo from "./DisplayUserInfo";
+import jsPDF from"jspdf";
 
 function CheckInForm() {
     let reservationID = "";
@@ -70,6 +71,7 @@ function CheckInForm() {
             };
             setCustomer(mappedCustomer);
             console.log(data)
+            generateAgreement(mappedCustomer);
         } catch (error) {
             setError("Error getting the customer's Information");
             console.error(error);
@@ -77,6 +79,40 @@ function CheckInForm() {
             setLoading(false); // Set loading back to false when fetching is complete
         }
     };
+
+
+// Generate invoice
+const generateAgreement = (mappedCustomer) => {
+
+    // Create a new jsPDF instance
+    let doc = new jsPDF("p", "pt");
+  
+    // Add invoice header
+    doc.setFontSize(24);
+    doc.text("Rental Agreement", 40, 60);
+    doc.setFontSize(10);
+    doc.text(`Rental Agreement Number:${mappedReservation.id}`, 40, 90);
+    doc.text("Date: " + new Date().toDateString(), 40, 110);
+    doc.text(`Customer Name: ${mappedCustomer.name}`, 40, 130);
+    doc.text(`Customer Address: ${mappedCustomer.addrress}`, 40, 150);
+  
+    // Add items section
+    doc.setFontSize(14);
+    doc.text("Items:", 40, 200);
+    doc.line(40, 210, 550, 210);
+  
+    // Add item details
+    doc.setFontSize(12);
+    let yOffset = 240;
+    let total = 0;
+  
+    // Save the generated PDF as "invoice.pdf"
+    doc.save("RentalAgreement.pdf");
+  
+    // Reset error state
+    setError(false);
+  };
+  
 
 
     const handleReservationSubmit = (e) => {

@@ -7,7 +7,7 @@ import { PDFViewer } from '@react-pdf/renderer';
 const App = () => {
   return (
     <div>
-      <PDFViewer style={{ width: '100%', height: '500px' }}>
+      <PDFViewer style={{ width: '100%', height: '800px' }}>
         <MyPDF />
       </PDFViewer>
     </div>
