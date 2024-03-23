@@ -1,14 +1,8 @@
-import React, { useState } from "react";
+import React from 'react';
+import SignInForm from '../components/SignInForm';
 
-function SignIn() {
-  //const []
+export default function SignIn() {
   return (
-    <div>
-      <input type="text" placeholder="Username" required></input>
-      <input type="password" placeholder="Password" required></input>
-      <button type="submit">Sign In</button>
-    </div>
+    <div><SignInForm /></div>
   );
 }
-
-export default SignIn;

@@ -31,7 +31,7 @@ describe('System Admin Routes', () => {
     const response = await request(app)
       .post('/admin')
       .send({
-        id: 'SA12345678',
+        id: 'A012345678',
         name: 'John',
         lastName: 'Doe',
         email: 'John.Doe@email.com',
@@ -40,7 +40,7 @@ describe('System Admin Routes', () => {
 
     expect(response.status).toBe(201);
     expect(response.body.admin).toEqual({
-        id: 'SA12345678',
+        id: 'A012345678',
         name: 'John',
         lastName: 'Doe',
         email: 'John.Doe@email.com',
@@ -48,12 +48,27 @@ describe('System Admin Routes', () => {
     });
   });
 
-     // Test getting an admin's password by ID
-     it('should get a system admin password by ID', async () => {
-      const response = await request(app).get('/signIn/SA12345678');
+     // Test admin Login 
+     it('should test login states', async () => {
+
+      // successful
+      var response = await request(app).get('/signIn/A012345678/pswd123');
   
       expect(response.status).toBe(200);
-      expect(response.body.password).toEqual('pswd123');
+      expect(response.body.message).toEqual('Login successful');
+      expect(response.body.id).toEqual('A012345678');
+
+      // incorrect password
+      response = await request(app).get('/signIn/A012345678/pswd1234');
+  
+      expect(response.status).toBe(401);
+      expect(response.body.message).toEqual('Incorrect password');
+
+      // not found
+      response = await request(app).get('/signIn/SSA12345678/pswd123');
+  
+      expect(response.status).toBe(404);
+      expect(response.body.message).toEqual('User not found');
   
     });
 
@@ -70,7 +85,7 @@ describe('System Admin Routes', () => {
 
     expect(response.status).toBe(200);
     expect(response.body.admin).toEqual({
-        ID: 'SA12345678',
+        ID: 'A012345678',
         Name: 'John',
         Last_Name: 'Doe',
         Email: 'John.Doe@email.com',
@@ -79,11 +94,11 @@ describe('System Admin Routes', () => {
 });
   // Test getting a system admin by ID
   it('should get a system admin by ID', async () => {
-    const response = await request(app).get('/admin/SA12345678');
+    const response = await request(app).get('/admin/A012345678');
 
     expect(response.status).toBe(200);
     expect(response.body.admin).toEqual({
-        ID: 'SA12345678',
+        ID: 'A012345678',
         Name: 'John',
         Last_Name: 'Doe',
         Email: 'John.Doe@email.com',
@@ -94,7 +109,7 @@ describe('System Admin Routes', () => {
   // Test updating a system admin by ID
   it('should update a system admin by ID', async () => {
     const response = await request(app)
-      .put('/admin/SA12345678')
+      .put('/admin/A012345678')
       .send({
         name: 'Jane',
         lastName: 'Doe',
@@ -114,7 +129,7 @@ describe('System Admin Routes', () => {
 
   // Test deleting a system admin by ID
   it('should delete a system admin by ID', async () => {
-    const response = await request(app).delete('/admin/SA12345678');
+    const response = await request(app).delete('/admin/A012345678');
 
     expect(response.status).toBe(200);
     expect(response.body.message).toBe('System admin removed successfully');
