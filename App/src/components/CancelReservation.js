@@ -1,74 +1,64 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-
-function CancelReservationForm() {
-
-    const [confirmationNumber, setConfirmationNumber] = useState('');
+function CancelReservation() {
+    const [reservationId, setReservationId] = useState('');
+    const [error, setError] = useState(null); 
     const navigate = useNavigate();
-    
-    function isFormatValidConfirmationNumber(confirmationNumber) {
-    const regex=/^[A-Z]{1}\d{9}$/;
-    const isValid=regex.test(confirmationNumber);
-    if(!isValid) {
-        console.log("The format you have entered is invalid. Please try again.");
-        return false;
-    }
-    return true;
 
+    const isFormatValidReservationId = (reservationId) => {
+        // const regex = /^[A-Z]{1}\d{9}$/;
+        // return regex.test(reservationId);
     }
 
+    const handleChange = (e) => {
+        setReservationId(e.target.value);
+    };
 
-    const callAPI = async () => {
-        try {
-          const response = await fetch(`http://localhost:9000/reservationRoute/${confirmationNumber}`, {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-    
-          });
-    
-          const data = await response.json();
-    
-          if (response.ok){
-            console.log('Reservation successfully canceled');
-           }
-           else {  console.error('Failed to cancel reservation:', response.statusText);}
-        
-        } catch (error) {
-          setError(error.message);
-          console.error(error);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const reservationIdTrimmed = reservationId.trim(); // Trim the reservation ID
+
+        if (!isFormatValidReservationId(reservationIdTrimmed)) {
+            setError("Invalid reservation ID format");
+            return;
         }
-      };
-    
+        try {
+            const response = await fetch(`http://localhost:9000/reservations/${reservationIdTrimmed}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            });
+            if (response.ok) {
+                console.log('Reservation successfully canceled');
+               
+                navigate('/'); //
+            } else {
+                setError('Failed to cancel reservation. Please try again later.');
+                console.error('Failed to cancel reservation:', response.statusText);
+            }
+        } catch (error) {
+            setError('An error occurred while cancelling the reservation. Please try again later.');
+            console.error('Error cancelling reservation:', error);
+        }
+    };
 
-    const handleSubmit = (e) => { 
-        e.preventDefault(); 
-          callAPI();
-
-      };
-    
-      const handleChange = (e) => {
-        setConfirmationNumber(e.target.value);
-      };
-
-return (
-    <form  onSubmit={handleSubmit}  action="CancelR">
-      <label> Confirmation Number:
-      <input
-            type="text"
-            value={confirmationNumber} 
-            placeholder="Enter Confirmation Number"
-            required
-            onChange={handleChange}
-          ></input>
-      </label>
-        
-        <button type="submit">Cancel</button>
-   
-    </form>
-  );
+    return (
+        <form onSubmit={handleSubmit}>
+            <label> Reservation ID:
+                <input
+                    type="text"
+                    value={reservationId} 
+                    placeholder="Enter Reservation ID"
+                    required
+                    onChange={handleChange}
+                />
+            </label>
+            {error && <p className="error">{error}</p>}
+            <button type="submit">Cancel</button>
+        </form>
+    );
 }
-export default CancelReservationForm;
+
+export default CancelReservation;

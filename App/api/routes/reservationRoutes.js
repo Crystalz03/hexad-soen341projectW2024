@@ -19,7 +19,7 @@ router.post('/reservations', async (req, res) => {
   
       // Update Reservation_ID in Customer table by appending the new reservation ID
       const newReservationID = existingReservationID ? `${existingReservationID},${id}` : id;
-      await pool.query`UPDATE Customers SET Reservation_ID = ${newReservationID} WHERE ID = ${customerID}`;
+      await pool.query`UPDATE Customers SET Reservation_ID = ${npmnewReservationID} WHERE ID = ${customerID}`;
   
       res.status(201).json({ message: 'Reservation created successfully', reservation: req.body });
     } catch (error) {
