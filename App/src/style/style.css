@@ -226,6 +226,13 @@ header {
   font-style: italic;
   font-size: var(--xxl-size);
 }
+.view-title {
+  text-align: center;
+  color: var( --primary-text-color);
+  font-weight: var(--bold);
+  font-style: italic;
+  font-size: var(--xxl-size);
+}
 /*Reservation-Box 
   - First line: All fields are required
   - Top-box -> Location

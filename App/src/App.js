@@ -14,11 +14,9 @@ import CRDashboard from "./pages/CRDashboard";
 import DeleteReservationPage from "./pages/DeleteReservationPage";
 import MyAccountPage from "./pages/MyAccountPage";
 import CreateAdminAccount from "./pages/CreateAdminAccount";
-import View from "./pages/View";
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
-import Cancel from "./pages/Cancel";
-import Modify from "./pages/Modify"; 
+import Cancel from "./pages/Cancel"; 
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
