@@ -4,7 +4,7 @@ const pool = require('../../database/db');
 const router = express.Router();
 
 // Create a new branch
-router.post('/branch', async (req, res) => {
+router.post('/branches', async (req, res) => {
     const { BranchName, LatitudeCoord, LongitudeCoord } = req.body;
   
     try {
@@ -17,7 +17,7 @@ router.post('/branch', async (req, res) => {
   });
   
   // Get all branch
-  router.get('/branch', async (req, res) => {
+  router.get('/branches', async (req, res) => {
     try {
       const result = await pool.query`SELECT * FROM Branch`;
       res.status(200).json({branch : result.recordsets}); 
@@ -26,5 +26,15 @@ router.post('/branch', async (req, res) => {
       res.status(500).json({ error: 'Server Error' });
     }
   });
+
+ 
+router.put('/branches', async (req, res) => {
+  
+});
+
+
+router.delete('/branches', async (req, res) => {
+  
+});
 
   module.exports = router;

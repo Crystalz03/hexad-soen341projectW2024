@@ -32,7 +32,7 @@ app.use('/', csrRouter);
 app.use('/', adminRouter);
 app.use('/', vehicleRouter);
 app.use('/', reservationsRouter);
-app.use('/',branchRouter);
+app.use('/', branchRouter);
 app.use("/testAPI", testAPIRouter);
 
 

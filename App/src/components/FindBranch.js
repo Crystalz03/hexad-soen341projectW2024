@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import Map from './map';
 
 function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Radius of the Earth in kilometers
@@ -44,6 +44,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
       }
     });
   
+    console.log(nearestBranch);
     return nearestBranch;
   }
 
@@ -52,28 +53,31 @@ const BranchFinder = () => {
     const [apiResponse, setApiResponse] = useState(null); 
     
     const callAPIGetBranches = () => {
-        fetch("http://localhost:9000/Branch", {
+        fetch("http://localhost:9000/branches", {
           method: "GET",
         })
           .then((data) => data.json())
           .then((data) => {
-            const branches = data.branches[0].map((branch) => ({
+            const branches = data.branche.map((branch) => ({
               Name: branch.BranchName,
               lat: branch.LatitudeCoord,
               lng: branch.LongitudeCoord,
             }));
-    
-            console.log(branches)
+  
             setApiResponse(branches);
           })
           .catch((error) => {
-            console.error(error);
+            console.log(error);
           });
       };
   
 
   const [postalCode, setPostalCode] = useState('');
-  const [nearestBranch, setNearestBranch] = useState(null);
+  const [nearestBranch, setNearestBranch] = useState({
+    Name: "",
+    latitude: 0.0,
+    longitude: 0.0
+  });
 
   const handlePostalCodeChange = (event) => {
     callAPIGetBranches();
@@ -89,12 +93,12 @@ const BranchFinder = () => {
       const location = response.data.results[0].geometry.location;
 
       setNearestBranch(findNearestBranch(location.lat, location.lng));
-
     } catch (error) {
       console.error('Error fetching data:', error);
     }
+   
   };
-
+ console.log(nearestBranch);
   return (
     <div>
       <input
@@ -110,6 +114,8 @@ const BranchFinder = () => {
           <p>Name: {nearestBranch.name}</p>
         </div>
       )}
+      <Map latitude={parseFloat(nearestBranch.latitude)} longitude={parseFloat(nearestBranch.longitude)} />
+    
     </div>
   );
 };
