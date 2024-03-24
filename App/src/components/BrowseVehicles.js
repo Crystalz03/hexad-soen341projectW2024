@@ -21,7 +21,7 @@ function BrowseVehicles() {
       .then((data) => {
         const formattedVehicles = data.vehicle[0].map((vehicle) => ({
           ID: vehicle.ID,
-          Type: vehicle.Type,
+          Make: vehicle.Make,
           Category: vehicle.Category,
           Model: vehicle.Model,
           Price: `$${vehicle.Price}/day`,
@@ -45,7 +45,7 @@ function BrowseVehicles() {
   const filteredVehicles =
     filter === "All"
       ? apiResponse
-      : apiResponse.filter((vehicle) => vehicle.Type === filter);
+      : apiResponse.filter((vehicle) => vehicle.Make === filter);
 
   return (
     <div>
@@ -80,7 +80,7 @@ function BrowseVehicles() {
                 filteredVehicles.map((vehicle) => (
                   <div key={vehicle.ID} className="vehicle-card">
                     <div>ID: {vehicle.ID}</div>
-                    <div>Type: {vehicle.Type}</div>
+                    <div>Make: {vehicle.Make}</div>
                     <div>Category: {vehicle.Category}</div>
                     <div>Model: {vehicle.Model}</div>
                     <div>Price: {vehicle.Price}</div>
