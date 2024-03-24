@@ -3,7 +3,8 @@ import { useLocation } from 'react-router-dom';
 
 const PaymentForm = () => {
   const location = useLocation(); // to access location state
-  const totalPrice = location.state?.totalPrice || 'N/A'; 
+  const totalPrice = parseFloat(location.state?.totalPrice) || 0; //Making sure totalPrice is always a number
+ 
 
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
@@ -12,6 +13,11 @@ const PaymentForm = () => {
 
   const handlePaymentSubmit = async (event) => {
     event.preventDefault();
+    
+    if (totalPrice <= 0) {
+      setError('Total price must be greater than $0 to proceed with payment.');
+      return;
+    }
 
     // Validate credit card number
     const cardNumberRegex = /^[0-9]{16}$/;
@@ -36,12 +42,16 @@ const PaymentForm = () => {
 
     // If all validations pass, proceed with payment submission
     try {
-      // Implement payment submission logic here
-      setError('Payment successful!');
-      // Dummy success logic
+     
+      setTimeout(() => {
+        setError(''); // Clear any existing errors
+        
+        alert("Payment successful! $500 was returned to the customer's credit card.");
+        
+      }, 1000); // Simulate a request/response delay
     } catch (error) {
       setError('Payment failed. Please try again.');
-      console.error('Payment failed:', error);
+      console.error('Payment processing error:', error);
     }
   };
 
