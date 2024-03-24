@@ -52,7 +52,7 @@ function App() {
           <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} />
           <Route path="/Vehicle" exact element={<Vehicle />} />
           <Route path="/Inventory" exact element={<AdminInventory />} />
-          <Route path="/Reserve" exact element={<Reserve />} />
+          <Route path="/Reserve/:vehicleID" exact element={<Reserve />} />
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />

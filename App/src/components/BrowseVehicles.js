@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import SideMenu from "./SideMenu";
@@ -21,11 +21,12 @@ function BrowseVehicles() {
       .then((data) => {
         const formattedVehicles = data.vehicle[0].map((vehicle) => ({
           ID: vehicle.ID,
-          Type: vehicle.Type,
+          Make: vehicle.Make,
           Category: vehicle.Category,
           Model: vehicle.Model,
           Price: `$${vehicle.Price}/day`,
           Availability: vehicle.Availability,
+          
         }));
 
         setApiResponse(formattedVehicles);
@@ -80,13 +81,14 @@ function BrowseVehicles() {
                 filteredVehicles.map((vehicle) => (
                   <div key={vehicle.ID} className="vehicle-card">
                     <div>ID: {vehicle.ID}</div>
-                    <div>Type: {vehicle.Type}</div>
+                    <div>Make: {vehicle.Make}</div>
                     <div>Category: {vehicle.Category}</div>
                     <div>Model: {vehicle.Model}</div>
                     <div>Price: {vehicle.Price}</div>
                     <div>Availability: {vehicle.Availability}</div>
                     <div>
-                      <button className="all-caps sign-in-btn btn-background-color reserve-btn">
+                      <button className="all-caps sign-in-btn btn-background-color reserve-btn" 
+                      onClick={()=>{navigate(`/Reserve/${vehicle.ID}`);} }>
                         Reserve Vehicle
                       </button>
                     </div>
