@@ -16,6 +16,7 @@ import CreateAdminAccount from "./pages/CreateAdminAccount";
 import View from "./pages/View";
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
+import UpdateUserInfoPage from "./pages/UpdateUserInfoPage";
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
           <Route path="/Browse" exact element={<Browse/>} />
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
+          <Route path="/UpdateUserInfo" exact element={<UpdateUserInfoPage />} />
         </Routes>
       </div>
     </Router>
