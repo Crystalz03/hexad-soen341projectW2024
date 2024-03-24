@@ -5,6 +5,7 @@ import BrowseAccounts from "./pages/BrowseAccounts";
 import Vehicle from "./pages/Vehicle";
 import Browse from "./pages/Browse";
 import Reserve from "./pages/Reserve";
+import View from "./pages/View";
 import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
@@ -13,10 +14,9 @@ import CRDashboard from "./pages/CRDashboard";
 import DeleteReservationPage from "./pages/DeleteReservationPage";
 import MyAccountPage from "./pages/MyAccountPage";
 import CreateAdminAccount from "./pages/CreateAdminAccount";
-import View from "./pages/View";
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
-
+import Cancel from "./pages/Cancel"; 
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
@@ -60,6 +60,9 @@ function App() {
           <Route path="/Browse" exact element={<Browse/>} />
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
+          <Route path="/Cancel" exact element={<Cancel />} />
+          <Route path="/View" exact element={<View />} />
+          <Route path="/Modify" exact element={<Modify />} /> 
         </Routes>
       </div>
     </Router>

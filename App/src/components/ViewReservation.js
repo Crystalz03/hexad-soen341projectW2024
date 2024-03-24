@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './../style/View.css';
 
@@ -96,8 +96,6 @@ function ViewReservation() {
                     <p>Extra Equipment: {reservationDetails?.Extra_Equipment}</p>
                     <p>Additional Services: {reservationDetails?.Additional_Services}</p>
                     <p>Total: {reservationDetails?.Total}</p>
-                    <p>Pick Up Location: {reservationDetails?.Pick_Up_Location}</p> 
-                    <p>Drop Off Location: {reservationDetails?.Drop_Off_Location}</p>
                 </div>
             )}
         </div>
