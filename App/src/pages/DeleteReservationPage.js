@@ -4,21 +4,6 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
 import './../style/Cancel.css';
-
-
-// export default function DeleteReservationPage() {
-//   return (
-    
-//     <div className="main-content">
-//       <div className="cancel-container">
-//         <h2 className="reservation-title">Delete Reservation</h2>
-//           <div className="cancel-form"><DeleteReservation/></div>
-//       </div>
-//     </div>
-//       );
-//     }
-
-
  
     
     function DeleteTheReservation() {
