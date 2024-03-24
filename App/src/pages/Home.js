@@ -28,7 +28,7 @@ function Main() {
             <li className="nav-list-components-1">Reserve</li>
             <li className="nav-list-components-1"><Link to="/View">View</Link></li>
             <li className="nav-list-components-1"><Link to="/Modify">Modify</Link></li>
-            <li className="nav-list-components-1"><Link to="/Cancel">Cancel</Link></li>
+            <li className="nav-list-components-1"><Link to="/DeleteReservationPage">Delete</Link></li>
           </ul>
           <div className="nav-divider"></div>
           <ul className="nav-list-2">
