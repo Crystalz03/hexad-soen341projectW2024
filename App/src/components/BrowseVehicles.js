@@ -21,7 +21,7 @@ function BrowseVehicles() {
       .then((data) => {
         const formattedVehicles = data.vehicle[0].map((vehicle) => ({
           ID: vehicle.ID,
-          Type: vehicle.Type,
+          Make: vehicle.Make,
           Category: vehicle.Category,
           Model: vehicle.Model,
           Price: `$${vehicle.Price}/day`,
@@ -56,7 +56,7 @@ function BrowseVehicles() {
           <div className="main-content">
             <h2 className="reservation-title">Browse Vehicles</h2>
             <div>
-              <label htmlFor="typeFilter">Filter by Type:</label>
+              <label htmlFor="typeFilter">Filter by Make:</label>
               <select
                 id="typeFilter"
                 value={filter}
@@ -80,7 +80,7 @@ function BrowseVehicles() {
                 filteredVehicles.map((vehicle) => (
                   <div key={vehicle.ID} className="vehicle-card">
                     <div>ID: {vehicle.ID}</div>
-                    <div>Type: {vehicle.Type}</div>
+                    <div>Type: {vehicle.Make}</div>
                     <div>Category: {vehicle.Category}</div>
                     <div>Model: {vehicle.Model}</div>
                     <div>Price: {vehicle.Price}</div>
