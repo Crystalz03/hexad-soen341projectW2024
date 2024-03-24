@@ -11,6 +11,7 @@ var csrRouter = require('./routes/csrRoutes');
 var adminRouter = require('./routes/adminRoutes');
 var vehicleRouter = require('./routes/vehicleRoutes');
 var reservationsRouter = require('./routes/reservationRoutes');
+var branchRouter = require('./routes/branchRoutes');
 var testAPIRouter = require("./routes/testAPI");
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/', csrRouter);
 app.use('/', adminRouter);
 app.use('/', vehicleRouter);
 app.use('/', reservationsRouter);
+app.use('/',branchRouter);
 app.use("/testAPI", testAPIRouter);
 
 
