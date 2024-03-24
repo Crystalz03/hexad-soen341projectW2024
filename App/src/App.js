@@ -16,7 +16,7 @@ import MyAccountPage from "./pages/MyAccountPage";
 import CreateAdminAccount from "./pages/CreateAdminAccount";
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
-import Cancel from "./pages/Cancel"; 
+
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
@@ -60,9 +60,7 @@ function App() {
           <Route path="/Browse" exact element={<Browse/>} />
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
-          <Route path="/Cancel" exact element={<Cancel />} />
-          <Route path="/View" exact element={<View />} />
-          <Route path="/Modify" exact element={<Modify />} /> 
+
         </Routes>
       </div>
     </Router>
