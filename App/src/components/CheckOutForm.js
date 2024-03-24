@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 
 const CheckoutForm = () => {
   const [reservationId, setReservationId] = useState("");
@@ -13,6 +14,8 @@ const CheckoutForm = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [error, setError] = useState("");
   const [reservation, setReservation] = useState({});
+
+  const navigate = useNavigate(); //new
 
   const damagePrices = {
     scratch: 50,
@@ -131,6 +134,11 @@ const CheckoutForm = () => {
     }
   };
 
+  const handleCheckout = () => {
+    // Navigate to Payment page with totalPrice in state
+    navigate('/Payment', { state: { totalPrice } });
+  };
+
   return (
     <div>
       <h2>Checkout Form</h2>
@@ -193,9 +201,9 @@ const CheckoutForm = () => {
       <button onClick={calculateTotalPrice}>Calculate Total Price</button>
       <div>Total Price: ${totalPrice}</div>
       {error && <div style={{ color: "red" }}>{error}</div>}
-      <Link to="/Payment">
-        <button>Check Out</button>
-      </Link>
+  
+      <button onClick={handleCheckout}>Check Out</button>  {/* Modified*/}
+      
     </div>
   );
 };
