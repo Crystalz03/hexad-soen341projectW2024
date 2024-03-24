@@ -16,6 +16,8 @@ function ViewReservation() {
         Total:"",
         Pick_Up_Location:"",
         Drop_Off_Location:"", 
+        mileageLimit: "",
+
     });
 
    
@@ -95,7 +97,12 @@ function ViewReservation() {
                     <p>Return Date: {reservationDetails?.Return_Date}</p>
                     <p>Extra Equipment: {reservationDetails?.Extra_Equipment}</p>
                     <p>Additional Services: {reservationDetails?.Additional_Services}</p>
+                    <p>Pick-Up Location: {reservationDetails?.Pick_Up_Location}</p>
+                    <p>Drop-Off Location: {reservationDetails?. Drop_Off_Location}</p>
+                    <p>Mileage Limit: {reservationDetails?.mileageLimit}</p>
                     <p>Total: {reservationDetails?.Total}</p>
+
+
                 </div>
             )}
         </div>

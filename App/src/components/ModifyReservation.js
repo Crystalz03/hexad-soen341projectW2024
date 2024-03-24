@@ -21,6 +21,10 @@ function ModifyReservation() {
         setNewVehicleId('');
         setNewPickUpDate('');
         setNewReturnDate('');
+        setNewExtraEquipment('');
+        setNewAdditionalServices('');
+        setNewPickUpLocation('');
+        setNewDropOffLocation('');
         setIsButtonClicked(false);
         setError('');
     }, [reservationId]);
@@ -59,9 +63,13 @@ function ModifyReservation() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    vehicleID: newVehicleId   || reservationDetails.Vehicle_ID,
+                    vehicleID: newVehicleId || reservationDetails.Vehicle_ID,
                     pickUpDate: newPickUpDate || reservationDetails.Pick_Up_Date,
                     returnDate: newReturnDate || reservationDetails.Return_Date,
+                    extraEquipment: newExtraEquipment || reservationDetails.Extra_Equipment,
+                    additionalServices: newAdditionalServices || reservationDetails.Additional_Services,
+                    pickUpLocation: newPickUpLocation || reservationDetails.Pick_Up_Location,
+                    dropOffLocation: newDropOffLocation || reservationDetails.Drop_Off_Location,
                 }),
             });
 
@@ -104,6 +112,10 @@ function ModifyReservation() {
                     <p>Vehicle ID: {reservationDetails.Vehicle_ID}</p>
                     <p>Pick Up Date: {reservationDetails.Pick_Up_Date}</p>
                     <p>Return Date: {reservationDetails.Return_Date}</p>
+                    <p>Extra Equipment: {reservationDetails.Extra_Equipment}</p>
+                    <p>Additional Services: {reservationDetails.Additional_Services}</p>
+                    <p>Pick-Up Location: {reservationDetails.Pick_Up_Location}</p>
+                    <p>Drop-Off Location: {reservationDetails.Drop_Off_Location}</p>
                     <form onSubmit={handleUpdate}>
                         <label>
                             New Vehicle ID:
@@ -113,7 +125,7 @@ function ModifyReservation() {
                                 placeholder="Enter New Vehicle ID"
                                 onChange={(e) => setNewVehicleId(e.target.value)}
                             />
-                        </label>
+                        </label><br/>
                         <label>
                             New Pick Up Date:
                             <input
@@ -121,13 +133,50 @@ function ModifyReservation() {
                                 value={newPickUpDate}
                                 onChange={(e) => setNewPickUpDate(e.target.value)}
                             />
-                        </label>
+                        </label><br/>
                         <label>
                             New Return Date:
                             <input
                                 type="date"
                                 value={newReturnDate}
                                 onChange={(e) => setNewReturnDate(e.target.value)}
+                            />
+                        </label><br/>
+                        <label>
+                            New Extra Equipment:
+                            <input
+                                type="text"
+                                value={newExtraEquipment}
+                                placeholder="Enter New Extra Equipment"
+                                onChange={(e) => setNewExtraEquipment(e.target.value)}
+                            />
+                        </label><br/>
+                        <label>
+                            New Additional Services:
+                            <input
+                                type="text"
+                                value={newAdditionalServices}
+                                placeholder="Enter New Additional Services"
+                                onChange={(e) => setNewAdditionalServices(e.target.value)}
+                            />
+                        </label><br/>
+                        <label>
+                            New Pick-Up Location:
+                            <input
+                                type="text"
+                                value={newPickUpLocation}
+                                placeholder="Enter New Pick-Up Location"
+                                onChange={(e) => setNewPickUpLocation(e.target.value)}
+                            />
+                        </label><br/>
+                     
+                        <label>
+                            New Drop-Off Location:
+                            <input
+                                type="text"
+                                value={newDropOffLocation}
+                                placeholder="Enter New Drop-Off Location"
+                                onChange={(e) => setNewDropOffLocation(e.target.value)}
                             />
                         </label>
                         <button type="submit">Update</button>
