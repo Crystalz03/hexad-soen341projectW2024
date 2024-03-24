@@ -5,10 +5,10 @@ const router = express.Router();
 
 // Create a new branch
 router.post('/branches', async (req, res) => {
-    const { BranchName, LatitudeCoord, LongitudeCoord } = req.body;
+    const { BranchName, LatitudeCoord, LongitudeCoord, ID, Adress } = req.body;
   
     try {
-      const result = await pool.query`INSERT INTO Branch (BranchName, LatitudeCoord, Longitude) VALUES (${BranchName}, ${LatitudeCoord}, ${LongitudeCoord})`;
+      const result = await pool.query`INSERT INTO Branch (BranchName, LatitudeCoord, Longitude) VALUES (${BranchName}, ${LatitudeCoord}, ${LongitudeCoord}, ${ID}, ${Adress})`;
       res.status(201).json({ message: 'Branch created successfully', branch: req.body }); 
     } catch (error) {
       console.error('Error creating branch:', error);
@@ -27,14 +27,51 @@ router.post('/branches', async (req, res) => {
     }
   });
 
- 
-router.put('/branches', async (req, res) => {
-  
+// Get a branch by ID
+router.get('/branches/:id', async (req, res) => {
+  const branchID = req.params.id;
+
+  try {
+    const result = await pool.query`SELECT * FROM Branch WHERE ID = ${vehicleId}`;
+    const branch = result.recordset[0];
+
+    if (!branch) {
+      res.status(404).json({ error: 'Branch not found' });
+    } else {
+      res.status(200).json({branch : branch}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
+    }
+  } catch (error) {
+    console.error('Error retrieving branch:', error);
+    res.status(500).json({ error: 'Server Error' });
+  }
 });
 
+// Update a specific branch by ID
+router.put('/branches/:id', async (req, res) => {
+  const branchId = req.params.id;
+  const { BranchName, LatitudeCoord, LongitudeCoord, ID, Adress } = req.body;
 
-router.delete('/branches', async (req, res) => {
-  
+  try {
+    const result = await pool.query`UPDATE Branch SET BranchName = ${BranchName}, LatitudeCoord = ${LatitudeCoord}, LongitudeCoord = ${LongitudeCoord}, ID = ${branchId}, Adress = ${Adress}`;
+    res.status(200).json({ message: 'Branch updated successfully',  vehicle: req.body }); // e.g. Vehicle = response.body.vehicle -> Vehicle.name
+  } catch (error) {
+    console.error('Error updating Branch:', error);
+    res.status(500).json({ error: 'Server Error' });
+  }
 });
+
+// Delete a specific branch by ID
+router.delete('/branches/:id', async (req, res) => {
+  const branchId = req.params.id;
+
+  try {
+    const result = await pool.query`DELETE FROM Branch WHERE ID = ${branchId}`;
+    res.status(200).json({ message: 'Branch deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting branch:', error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+});
+
 
   module.exports = router;
