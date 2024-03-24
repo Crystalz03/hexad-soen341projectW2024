@@ -82,7 +82,8 @@ function UpdateCustomer({ customer, onSubmit }) {
             <h2>Confirm Customer Information</h2>
             {error && <p className="error">{error}</p>}
             <form onSubmit={handleSubmit}>
-                <div>
+                <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+                <div style={{ flex: 1, marginRight: '10px' }}>
                     <label>Name:</label>
                     <input
                         type="text"
@@ -91,7 +92,7 @@ function UpdateCustomer({ customer, onSubmit }) {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div style={{ flex: 1 }}>
                     <label>Last Name:</label>
                     <input
                         type="text"
@@ -100,14 +101,6 @@ function UpdateCustomer({ customer, onSubmit }) {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <label>Location:</label>
-                    <input
-                        type="text"
-                        name="location"
-                        value={updatedCustomer.location || ""}
-                        onChange={handleChange}
-                    />
                 </div>
                 <div>
                     <label>Email:</label>
@@ -145,7 +138,8 @@ function UpdateCustomer({ customer, onSubmit }) {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+                    <div style={{ flex: 1, marginRight: '10px' }}>
                     <label>Credit Card:</label>
                     <input
                         type="text"
@@ -153,12 +147,15 @@ function UpdateCustomer({ customer, onSubmit }) {
                         value={updatedCustomer.creditCard || ""}
                         onChange={handleChange}
                     />
+                    </div>
+                    <div style={{ flex: 1 }}>
                     <label>CVV:</label>
                     <input
                         type="text"
                         name="cvv"
                         onChange={handleChange}
                     />
+                    </div>
                 </div>
                 <button type="submit">Confirm</button>
             </form>

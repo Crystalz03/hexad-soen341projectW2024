@@ -250,7 +250,7 @@ The Renter acknowledges receiving and reviewing a copy of the vehicle's insuranc
     }
 
     return (
-        <div class="checkIn-forms">
+        <div className="check-in-forms">
             <form onSubmit={handleReservationSubmit} action="Get Reservation">
                 <div>
                     {error && <p className="error">{error}</p>}
