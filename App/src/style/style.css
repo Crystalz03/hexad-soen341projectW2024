@@ -386,6 +386,26 @@ label {
   color: #222;
 }
 
+/* .checkIn-forms {
+  text-align: left;
+  color: var(--primary-text-color);
+  display: inline-block;
+  margin: 0px 0px;
+  width: 550px;
+  /* padding: 25px; */
+  /* border-radius: 8px; */
+  /* border: 1px solid #e5e5e5; #f0a5c2; */
+  /* div {
+    position: relative;
+    margin: 0 0 1.5em;
+  } */
+  /* label {
+    color: white;
+    font-style: italic;
+  
+  } */
+ */
+
 .form-header {
   text-align: center;
   color: #222;

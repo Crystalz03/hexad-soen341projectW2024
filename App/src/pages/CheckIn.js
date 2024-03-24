@@ -23,7 +23,7 @@ function Main() {
         <div className="main-content" >
             <div className="check-in-title">Customer Check-in</div>
             <div style={{height:"300px"}}>
-            <CheckInForm /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <CheckInForm />
             </div>
         </div>
       </div>

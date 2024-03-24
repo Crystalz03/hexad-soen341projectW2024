@@ -250,11 +250,12 @@ The Renter acknowledges receiving and reviewing a copy of the vehicle's insuranc
     }
 
     return (
-        <div>
+        <div class="checkIn-forms">
             <form onSubmit={handleReservationSubmit} action="Get Reservation">
                 <div>
                     {error && <p className="error">{error}</p>}
                     <div className="split-input">
+                        <label>Reservation</label>
                         <input
                             type="text"
                             name="reservationID"
