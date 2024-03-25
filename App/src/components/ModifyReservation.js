@@ -64,18 +64,49 @@ function ModifyReservation() {
                 },
                 body: JSON.stringify({
                     vehicleID: newVehicleId || reservationDetails.Vehicle_ID,
+                    customerID: reservationDetails.Customer_ID,
                     pickUpDate: newPickUpDate || reservationDetails.Pick_Up_Date,
                     returnDate: newReturnDate || reservationDetails.Return_Date,
                     extraEquipment: newExtraEquipment || reservationDetails.Extra_Equipment,
                     additionalServices: newAdditionalServices || reservationDetails.Additional_Services,
+                    paid: reservationDetails.Paid,
+                    total: reservationDetails.Total,
                     pickUpLocation: newPickUpLocation || reservationDetails.Pick_Up_Location,
                     dropOffLocation: newDropOffLocation || reservationDetails.Drop_Off_Location,
+                    mileageLimit: reservationDetails.Mileage_Limit
                 }),
             });
+            const oldVehicleResponse = await fetch(`http://localhost:9000/vehicles/${reservationDetails.Vehicle_ID}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
 
-            if (response.ok) {
+            if (oldVehicleResponse.ok) {
+                const oldVehicleData = await oldVehicleResponse.json();
+                oldVehicleData.availability = '0';
+                oldVehicleData.make = oldVehicleData.make;
+                oldVehicleData.category = oldVehicleData.category;
+                oldVehicleData.model = oldVehicleData.model;
+                oldVehicleData.price = oldVehicleData.price;
+                oldVehicleData.year = oldVehicleData.year;
+                oldVehicleData.plateNumber = oldVehicleData.plateNumber;
+                oldVehicleData.color = oldVehicleData.color;
+                oldVehicleData.damages = oldVehicleData.damages;
+
+                const updateOldVehicleResponse = await fetch(`http://localhost:9000/vehicles/${reservationDetails.Vehicle_ID}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(oldVehicleData),
+                });
+
+               
+                if (updateOldVehicleResponse.ok) {
                 setIsButtonClicked(true);
-                setError('');
+                setError('');}
             } else {
                 setError('Failed to update reservation');
             }
