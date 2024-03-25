@@ -26,7 +26,8 @@ export default function SideMenu() {
               <Link to="/Browse" className="link-style">
                 Browse Vehicles
               </Link>
-              <li className="nav-list-components-2">Locations</li>
+              <li className="nav-list-components-2">
+                <Link to="/Branches" className = "link-style">Find a Branch</Link></li>
               <li className="nav-list-components-2">Contact Us</li>
               <li className="nav-list-components-2">
                 <Link to="/MyAccountPage" className = "link-style">My Account</Link>

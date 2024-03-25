@@ -65,7 +65,7 @@ function App() {
           <Route path="/Browse" exact element={<Browse/>} />
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
-          <Route path="/FindBranch" exact element={<Branches/>} />
+          <Route path="/Branches" exact element={<Branches/>} />
         </Routes>
       </div>
     </Router>
