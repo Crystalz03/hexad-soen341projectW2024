@@ -13,7 +13,10 @@ function CRSideMenu() {
             </Link>
           </div>
           <ul className="nav-list-1">
-            <li className="nav-list-components-1">Reservations</li>
+          <li className="nav-list-components-1">
+           <Link to="/Reserve" className="link-style">Reservations</Link></li>
+            <li className="nav-list-components-1">
+              <Link to="/CheckIn" className="link-style">Check-in</Link></li>
           </ul>
           <div className="nav-divider"></div>
         </aside>
