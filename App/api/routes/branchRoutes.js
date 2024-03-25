@@ -5,10 +5,10 @@ const router = express.Router();
 
 // Create a new branch
 router.post('/branches', async (req, res) => {
-    const { BranchName, LatitudeCoord, LongitudeCoord, ID, Adress } = req.body;
+    const { BranchName, LatitudeCoord, LongitudeCoord, ID, Address } = req.body;
   
     try {
-      const result = await pool.query`INSERT INTO Branch (BranchName, LatitudeCoord, Longitude) VALUES (${BranchName}, ${LatitudeCoord}, ${LongitudeCoord}, ${ID}, ${Adress})`;
+      const result = await pool.query`INSERT INTO Branch (BranchName, LatitudeCoord, LongitudeCoord, ID, Adress) VALUES (${BranchName}, ${LatitudeCoord}, ${LongitudeCoord}, ${ID}, ${Address})`;
       res.status(201).json({ message: 'Branch created successfully', branch: req.body }); 
     } catch (error) {
       console.error('Error creating branch:', error);
@@ -32,13 +32,13 @@ router.get('/branches/:id', async (req, res) => {
   const branchID = req.params.id;
 
   try {
-    const result = await pool.query`SELECT * FROM Branch WHERE ID = ${vehicleId}`;
+    const result = await pool.query`SELECT * FROM Branch WHERE ID = ${branchID}`;
     const branch = result.recordset[0];
 
     if (!branch) {
       res.status(404).json({ error: 'Branch not found' });
     } else {
-      res.status(200).json({branch : branch}); // e.g. Vehicle = response.body.vehicle -> Vehicle.Name
+      res.status(200).json({branch : branch}); 
     }
   } catch (error) {
     console.error('Error retrieving branch:', error);
@@ -49,10 +49,10 @@ router.get('/branches/:id', async (req, res) => {
 // Update a specific branch by ID
 router.put('/branches/:id', async (req, res) => {
   const branchId = req.params.id;
-  const { BranchName, LatitudeCoord, LongitudeCoord, ID, Adress } = req.body;
+  const { BranchName, LatitudeCoord, LongitudeCoord, ID, Address } = req.body;
 
   try {
-    const result = await pool.query`UPDATE Branch SET BranchName = ${BranchName}, LatitudeCoord = ${LatitudeCoord}, LongitudeCoord = ${LongitudeCoord}, ID = ${branchId}, Adress = ${Adress}`;
+    const result = await pool.query`UPDATE Branch SET BranchName = ${BranchName}, LatitudeCoord = ${LatitudeCoord}, LongitudeCoord = ${LongitudeCoord}, ID = ${branchId}, Adress = ${Address}`;
     res.status(200).json({ message: 'Branch updated successfully',  vehicle: req.body }); // e.g. Vehicle = response.body.vehicle -> Vehicle.name
   } catch (error) {
     console.error('Error updating Branch:', error);

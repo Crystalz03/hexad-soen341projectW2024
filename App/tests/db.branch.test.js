@@ -7,29 +7,14 @@ const app = express();
 app.use(express.json());
 app.use(branchRoutes);
 
-const branch = {
-   BranchName: 'Montreal Branch', 
-   LatitudeCoord: 45.5019, 
-   LongitudeCoord: -73.5674, 
+const testBranch = {
+   BranchName: 'Test Branch', 
+   LatitudeCoord: 45, 
+   LongitudeCoord: -73, 
    ID: 0,
-   Adress: "Montreal"
+   Address: 'Test Address'
 }
-
-const dbBranch = {
-  BranchName: 'Montreal Branch', 
-   LatitudeCoord: 45.5019, 
-   LongitudeCoord: -73.5674, 
-   ID: 1                   ,
-   Adress: "Montreal, QC"
-}
-
-const updatedBranch = {
-  BranchName: 'Montreal Branch', 
-   LatitudeCoord: 45.5019, 
-   LongitudeCoord: -73.5674, 
-   ID: 1234567890,
-   Adress: "Montreal, QC"
-}
+let branchId;
 
 describe('Branch Routes', () => {
     beforeAll(async () => {
@@ -49,15 +34,17 @@ describe('Branch Routes', () => {
         console.error('Error closing the database connection:', error);
       }
     });
+
   // Test the creation of a new Branch
   it('should create a new branch', async () => {
     const response = await request(app)
       .post('/branches')
-      .send(branch);
+      .send(testBranch);
 
     expect(response.status).toBe(201);
     expect(response.body.message).toBe('Branch created successfully');
-    expect(response.body.branch).toEqual(branch);
+    expect(response.body.branch).toEqual(testBranch);
+    branchId = response.body.branch.id;
   });
 
   // Test getting all branches
@@ -69,19 +56,21 @@ describe('Branch Routes', () => {
 
   // Test getting a branch by ID
   it('should get a branch by ID', async () => {
-    const response = await request(app).get('/branches/1                   ');
+    const response = await request(app).get(`/branches/${branchId}`);
 
     expect(response.status).toBe(200);
-    expect(response.body.branch).toEqual(dbBranch);
   });
 
 
   // Test updating a branch by ID
   it('should update a branch by ID', async () => {
+    const updatedBranch = {
+      ...testBranch,
+      BranchName: 'Updated Test Branch', 
+   }
     const response = await request(app)
-      .put('/branches/1                   ')
+      .put(`/branches/${branchId}`)
       .send(updatedBranch);
-
 
     expect(response.status).toBe(200);
     expect(response.body.branch).toEqual(updatedBranch);
@@ -89,7 +78,7 @@ describe('Branch Routes', () => {
 
   // Test deleting a branch by ID
   it('should delete a branch by ID', async () => {
-    const response = await request(app).delete('/branches/1                   ');
+    const response = await request(app).delete(`/branches/${branchId}`);
 
     expect(response.status).toBe(200);
     expect(response.body.message).toBe('Branch deleted successfully');
