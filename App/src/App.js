@@ -17,7 +17,7 @@ import View from "./pages/View";
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
 import UpdateUserInfoPage from "./pages/UpdateUserInfoPage";
-
+import CheckIn from "./pages/CheckIn";
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
@@ -65,6 +65,7 @@ function App() {
           <Route path="/Browse" exact element={<Browse/>} />
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
+          <Route path="/CheckIn" exact element={<CheckIn/>} />
           <Route path="/UpdateUserInfo" exact element={<UpdateUserInfoPage />} />
         </Routes>
       </div>

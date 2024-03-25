@@ -21,7 +21,7 @@ function Main() {
       <div className="general-structure">
         <div className="main-content">
           <div className="title-box">
-            <div className="reservation-title">My Account</div>
+            <div className="check-in-title">My Account</div>
             <div className="car-image">
               <img src="" alt="Car Image" className="car-image" />
             </div>

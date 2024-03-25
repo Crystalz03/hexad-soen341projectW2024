@@ -27,7 +27,7 @@ function Main() {
                 <img src="" alt="Car Image" className="car-image" />
               </div>
             </div>
-            <div className="extra-content" style={{height:"300px"}}>
+            <div className="extra-content" style={{height:"300px", overflow:"scroll"}}>
             <UpdateUserInfo /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </div>
           </div>
