@@ -76,43 +76,43 @@ function ModifyReservation() {
                     mileageLimit: reservationDetails.Mileage_Limit
                 }),
             });
-            const oldVehicleResponse = await fetch(`http://localhost:9000/vehicles/${reservationDetails.Vehicle_ID}`, {
-                method: 'GET',
+           if (response.ok) {
+
+            const oldVehicleId = reservationDetails.Vehicle_ID;
+            const newVehicleIdToUpdate = newVehicleId || reservationDetails.Vehicle_ID;
+           
+            await updateVehicleAvailability(oldVehicleId, 0);
+            if (newVehicleIdToUpdate !== oldVehicleId) 
+            {
+                await updateVehicleAvailability(newVehicleIdToUpdate, 1);
+            }
+            setIsButtonClicked(true);
+            setError('');}
+             else {
+                setError('Failed to update reservation');
+            }
+        } 
+        catch (error) {
+            setError('Failed to update reservation');
+            console.error('Failed to update reservation:', error);
+        }
+    };
+
+    const updateVehicleAvailability = async (vehicleId, availability) => {
+        try {
+            const response = await fetch(`http://localhost:9000/vehicles/${vehicleId}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({ availability }),
             });
-
-            if (oldVehicleResponse.ok) {
-                const oldVehicleData = await oldVehicleResponse.json();
-                oldVehicleData.availability = '0';
-                oldVehicleData.make = oldVehicleData.make;
-                oldVehicleData.category = oldVehicleData.category;
-                oldVehicleData.model = oldVehicleData.model;
-                oldVehicleData.price = oldVehicleData.price;
-                oldVehicleData.year = oldVehicleData.year;
-                oldVehicleData.plateNumber = oldVehicleData.plateNumber;
-                oldVehicleData.color = oldVehicleData.color;
-                oldVehicleData.damages = oldVehicleData.damages;
-
-                const updateOldVehicleResponse = await fetch(`http://localhost:9000/vehicles/${reservationDetails.Vehicle_ID}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(oldVehicleData),
-                });
-
-               
-                if (updateOldVehicleResponse.ok) {
-                setIsButtonClicked(true);
-                setError('');}
-            } else {
-                setError('Failed to update reservation');
+    
+            if (!response.ok) {
+                console.error(`Failed to update vehicle availability for vehicle ID ${vehicleId}`);
             }
         } catch (error) {
-            setError('Failed to update reservation');
-            console.error('Failed to update reservation:', error);
+            console.error(`Failed to update vehicle availability for vehicle ID ${vehicleId}:`, error);
         }
     };
 
