@@ -14,12 +14,15 @@ function CRSideMenu() {
         </div>
         <ul className="nav-list-1">
           <li className="nav-list-components-1">
+           <Link to="/Reserve" className="link-style">Reservations</Link></li>
+          <li className="nav-list-components-1">
             <Link to="/Inventory" className="link-style">
               View
             </Link>
           </li>
           <li className="nav-list-components-1"><Link to="/CreateACustomerAccount" className="link-style">New Customer</Link></li>
-          <li className="nav-list-components-1">Reservations</li>
+          <li className="nav-list-components-1">
+              <Link to="/CheckIn" className="link-style">Check-in</Link></li>
           <li className="nav-list-components-1"><Link to="/CheckOut" className="link-style">Check Out</Link></li>
         </ul>
         <div className="nav-divider"></div>
