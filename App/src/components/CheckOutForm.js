@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
   const [reservationId, setReservationId] = useState("");
+  const [vehicleID, setVehicleID] = useState("");
   const [originalPrice, setOriginalPrice] = useState(0);
   const [damages, setDamages] = useState({
     scratch: false,
@@ -12,6 +13,7 @@ const CheckoutForm = () => {
     flatTire: false,
   });
   const [totalPrice, setTotalPrice] = useState(0);
+  const [initialDamages, setInitialDamages]= useState([]);
   const [error, setError] = useState("");
   const [reservation, setReservation] = useState({});
 
@@ -34,6 +36,16 @@ const CheckoutForm = () => {
     console.log(reservation); // Log the updated reservation state
   }, [reservation]);
 
+  useEffect(() => {
+    if (vehicleID !== "") {
+      getInitialDamages(vehicleID);
+    }
+  }, [vehicleID]);
+
+  useEffect(() => {
+    console.log(vehicleID); // Log the updated reservation state
+  }, [vehicleID]);
+  
   const handleDamageChange = (damage) => {
     setDamages({
       ...damages,
@@ -44,14 +56,13 @@ const CheckoutForm = () => {
   const calculateTotalPrice = () => {
     let total = originalPrice;
     for (const damage in damages) {
-      if (damages[damage]) {
+      if (damages[damage] && !initialDamages.includes(damage)) {
         total += damagePrices[damage];
       }
     }
     setTotalPrice(total);
-    updateTotalInDatabase(total);
   };
-
+  
   const handleReservationIdChange = (event) => {
     setReservationId(event.target.value);
   };
@@ -86,6 +97,7 @@ const CheckoutForm = () => {
         const data = await response.json();
         setReservation(data.reservation);
         setOriginalPrice(data.reservation.Total);
+        setVehicleID(data.reservation.Vehicle_ID);
       } else {
         setError("Failed to retrieve total amount");
         console.error("Failed to retrieve total amount", response.statusText);
@@ -96,47 +108,44 @@ const CheckoutForm = () => {
     }
   };
 
-  const updateTotalInDatabase = async (total) => {
+  const getInitialDamages = async (vehicleID) => {
     try {
-      console.log(total);
       const response = await fetch(
-        `http://localhost:9000/reservations/${reservationId}`,
+        `http://localhost:9000/vehicles/${vehicleID}`,
         {
-          method: "PUT",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            vehicleID: reservation.Vehicle_ID,
-            customerID: reservation.Customer_ID,
-            pickUpDate: reservation.Pick_Up_Date,
-            returnDate: reservation.Return_Date,
-            extraEquipment: reservation.Extra_Equipment,
-            additionalServices: reservation.Additional_Services,
-            paid: reservation.Paid,
-            total: total,
-          }),
         }
       );
-
-      if (!response.ok) {
-        setError("Failed to update total in the database");
-        console.error(
-          "Failed to update total in the database",
-          response.statusText
-        );
+  
+      if (response.ok) {
+        const data = await response.json();
+        
+        if (data && data.vehicle.Damages) { // Check if data and data.damages exist
+          console.log(data.vehicle.Damages);
+          const damagesArray = data.vehicle.Damages.split(" ");
+          setInitialDamages(damagesArray);
+        } else {
+          setInitialDamages([]);
+          console.log("There are no vehicle damages");
+        }
+      } else {
+        setError("Failed to retrieve original damages.");
+        console.error("Failed to retrieve initial damages:", response.statusText);
       }
     } catch (error) {
-      setError(
-        "Failed to update total in the database. Please try again later."
-      );
-      console.error("Failed to update total in the database:", error);
+      setError("Failed to retrieve original damages. Please try again later.");
+      console.error("Failed to retrieve initial damages:", error);
     }
   };
+  
+  
 
   const handleCheckout = () => {
     // Navigate to Payment page with totalPrice in state
-    navigate('/Payment', { state: { totalPrice } });
+    navigate("/Payment", { state: { totalPrice } });
   };
 
   return (
@@ -201,9 +210,7 @@ const CheckoutForm = () => {
       <button onClick={calculateTotalPrice}>Calculate Total Price</button>
       <div>Total Price: ${totalPrice}</div>
       {error && <div style={{ color: "red" }}>{error}</div>}
-  
-      <button onClick={handleCheckout}>Check Out</button>  {/* Modified*/}
-      
+      <button onClick={handleCheckout}>Check Out</button> {/* Modified*/}
     </div>
   );
 };
