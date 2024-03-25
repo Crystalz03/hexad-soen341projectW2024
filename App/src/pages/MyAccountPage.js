@@ -20,9 +20,14 @@ function Main() {
     <div className="main">
       <div className="general-structure">
         <div className="main-content">
-          <div className="check-in-title">My Account</div>
-          <div className="extra-content" style={{ height: "550px" }}>
-            <DisplayUserInfo />
+          <div className="title-box">
+            <div className="check-in-title">My Account</div>
+            <div className="car-image">
+              <img src="" alt="Car Image" className="car-image" />
+            </div>
+          </div>
+          <div className="extra-content" style={{height:"300px"}}>
+          <DisplayUserInfo /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           </div>
         </div>
       </div>
