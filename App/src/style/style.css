@@ -210,7 +210,7 @@ header {
   gap: 20px;
   width: var(--main-content-width);
   padding: 0 50px;
-  max-height: calc(100vh - 230px); /* Adjust as needed, subtracting header and footer heights */
+  max-height: calc(100vh - 230px); 
   overflow-y: auto;
 }
 
@@ -411,14 +411,30 @@ label {
   label {
     color: white;
     font-style: italic;
-  
   }
 
 }
- .check-in-form-container {
-  max-height: 100vh; /* Adjust height as needed */
-  overflow-y: auto; /* Enable vertical scrolling */
+
+.sign-in-form {
+  text-align: center;
+  color: var(--primary-text-color);
+  padding: 75px; 
+  border-radius: 50px;
+  border: 2px solid #e5e5e5; /* #f0a5c2; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  div {
+    position: relative;
+    margin: 1.5em 0 1.5em;
+  }
+  label {
+    color: white;
+  }
+
 }
+
 
 .form-header {
   text-align: center;
