@@ -135,7 +135,7 @@ const generateAgreement = (customer, vehicle, reservation) => {
     doc.text("Car Rental Agreement", 72, 60);
     doc.setFontSize(11);
     doc.text(`Rental Agreement Number: ${reservation.id}`, 72, 90);
-    doc.text(`This Rental Agreement ("Agreement") is entered into between Hexad, located at [Address],  hereinafter referred to as the "Rental Company," and the individual or entity identified below, hereinafter referred to as the "Renter":
+    doc.text(`This Rental Agreement ("Agreement") is entered into between Hexad, located at Montreal,QC.,  hereinafter referred to as the "Rental Company," and the individual or entity identified below, hereinafter referred to as the "Renter":
     `, 72, 110,{lineHeightFactor: 1.35 ,maxWidth: 451});
 
     doc.text("1. Renter's Information:", 72, 170)
