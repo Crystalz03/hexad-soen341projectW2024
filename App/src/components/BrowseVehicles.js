@@ -46,7 +46,7 @@ function BrowseVehicles() {
   const filteredVehicles =
     filter === "All"
       ? apiResponse
-      : apiResponse.filter((vehicle) => vehicle.Type === filter);
+      : apiResponse.filter((vehicle) => vehicle.Make === filter);
 
   return (
     <div>

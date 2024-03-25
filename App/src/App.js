@@ -16,6 +16,8 @@ import CreateAdminAccount from "./pages/CreateAdminAccount";
 import View from "./pages/View";
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
+import ConfirmBooking from "./pages/ConfirmBooking";
+import ConfirmPayment from "./pages/ConfirmPayment";
 
 
 function App() {
@@ -64,6 +66,8 @@ function App() {
           <Route path="/Browse" exact element={<Browse/>} />
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
+          <Route path="/ConfirmBooking/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment" exact element={<ConfirmBooking/>} />
+          <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} />
         </Routes>
       </div>
     </Router>
