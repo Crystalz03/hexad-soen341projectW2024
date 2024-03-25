@@ -54,7 +54,8 @@ function BrowseVehicles() {
       <div className="main">
         <div className="general-structure">
           <div className="main-content">
-            <h2 className="reservation-title">Browse Vehicles</h2>
+          <div className="title-box">
+            <div className="reservation-title">Browse Vehicles</div>
             <div>
               <label htmlFor="typeFilter">Filter by Make:</label>
               <select
@@ -68,6 +69,7 @@ function BrowseVehicles() {
                 <option value="Van">Van</option>
                 <option value="Truck">Truck</option>
               </select>
+            </div>
             </div>
             <div className="vehicle-grid">
               {loading ? (
@@ -95,6 +97,7 @@ function BrowseVehicles() {
               )}
             </div>
           </div>
+        
         </div>
       </div>
       <Footer />
