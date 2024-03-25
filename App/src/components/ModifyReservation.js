@@ -78,14 +78,14 @@ function ModifyReservation() {
             });
            if (response.ok) {
 
-            // const oldVehicleId = reservationDetails.Vehicle_ID;
-            // const newVehicleIdToUpdate = newVehicleId || reservationDetails.Vehicle_ID;
+            const oldVehicleId = reservationDetails.Vehicle_ID;
+            const newVehicleIdToUpdate = newVehicleId || reservationDetails.Vehicle_ID;
            
-            // await updateVehicleAvailability(oldVehicleId, 0);
-            // if (newVehicleIdToUpdate !== oldVehicleId) 
-            // {
-            //     await updateVehicleAvailability(newVehicleIdToUpdate, 1);
-            // }
+            await updateVehicleAvailability(oldVehicleId, 0);
+            if (newVehicleIdToUpdate !== oldVehicleId) 
+            {
+                await updateVehicleAvailability(newVehicleIdToUpdate, 1);
+            }
             setIsButtonClicked(true);
             setError('');}
              else {
@@ -98,23 +98,23 @@ function ModifyReservation() {
         }
     };
 
-    // const updateVehicleAvailability = async (vehicleId, availability) => {
-    //     try {
-    //         const response = await fetch(`http://localhost:9000/vehicles/${vehicleId}`, {
-    //             method: 'PUT',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({ availability }),
-    //         });
+    const updateVehicleAvailability = async (vehicleId, availability) => {
+        try {
+            const response = await fetch(`http://localhost:9000/vehicles/${vehicleId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ availability }),
+            });
     
-    //         if (!response.ok) {
-    //             console.error(`Failed to update vehicle availability for vehicle ID ${vehicleId}`);
-    //         }
-    //     } catch (error) {
-    //         console.error(`Failed to update vehicle availability for vehicle ID ${vehicleId}:`, error);
-    //     }
-    // };
+            if (!response.ok) {
+                console.error(`Failed to update vehicle availability for vehicle ID ${vehicleId}`);
+            }
+        } catch (error) {
+            console.error(`Failed to update vehicle availability for vehicle ID ${vehicleId}:`, error);
+        }
+    };
 
     const handleChange = (e) => {
         setReservationId(e.target.value);
