@@ -49,11 +49,11 @@ router.get('/branches/:id', async (req, res) => {
 // Update a specific branch by ID
 router.put('/branches/:id', async (req, res) => {
   const branchId = req.params.id;
-  const { BranchName, LatitudeCoord, LongitudeCoord, ID, Address } = req.body;
+  const { BranchName, LatitudeCoord, LongitudeCoord, Address } = req.body;
 
   try {
-    const result = await pool.query`UPDATE Branch SET BranchName = ${BranchName}, LatitudeCoord = ${LatitudeCoord}, LongitudeCoord = ${LongitudeCoord}, ID = ${branchId}, Adress = ${Address}`;
-    res.status(200).json({ message: 'Branch updated successfully',  vehicle: req.body }); // e.g. Vehicle = response.body.vehicle -> Vehicle.name
+    const result = await pool.query`UPDATE Branch SET BranchName = ${BranchName}, LatitudeCoord = ${LatitudeCoord}, LongitudeCoord = ${LongitudeCoord}, Adress = ${Address} WHERE ID = ${branchId}`;
+    res.status(200).json({ message: 'Branch updated successfully',  branch: req.body }); 
   } catch (error) {
     console.error('Error updating Branch:', error);
     res.status(500).json({ error: 'Server Error' });

@@ -44,7 +44,7 @@ describe('Branch Routes', () => {
     expect(response.status).toBe(201);
     expect(response.body.message).toBe('Branch created successfully');
     expect(response.body.branch).toEqual(testBranch);
-    branchId = response.body.branch.id;
+    branchId = response.body.branch.ID;
   });
 
   // Test getting all branches
@@ -61,12 +61,13 @@ describe('Branch Routes', () => {
     expect(response.status).toBe(200);
   });
 
-
   // Test updating a branch by ID
   it('should update a branch by ID', async () => {
     const updatedBranch = {
-      ...testBranch,
       BranchName: 'Updated Test Branch', 
+      LatitudeCoord: 45, 
+      LongitudeCoord: -73,
+      Address: 'Test Address'
    }
     const response = await request(app)
       .put(`/branches/${branchId}`)
