@@ -57,7 +57,7 @@ function BrowseVehicles() {
           <div className="main-content">
             <h2 className="reservation-title">Browse Vehicles</h2>
             <div>
-              <label htmlFor="typeFilter">Filter by Type:</label>
+              <label htmlFor="typeFilter">Filter by Make:</label>
               <select
                 id="typeFilter"
                 value={filter}
