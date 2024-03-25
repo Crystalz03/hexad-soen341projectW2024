@@ -114,15 +114,31 @@ export default function UpdateUserInfo() {
       switch (userType) {
         case "customer":
           url = `http://localhost:9000/customers/${customerInfo.ID}`;
-          data = customerInfo;
+          data = {
+            name: customerInfo.Name,
+          lastName: customerInfo.Last_Name,
+          location: customerInfo.Location,
+          email: customerInfo.Email,
+          password: customerInfo.Password,
+          address: customerInfo.Address,
+          contactNumber: customerInfo.Contact_Number,
+          licenseNumber: customerInfo.License_Number,
+          creditCard: customerInfo.Credit_Card};
           break;
         case "customer_representative":
           url = `http://localhost:9000/csr/${csrInfo.ID}`;
-          data = csrInfo;
+          data ={ name: csrInfo.Name,
+            lastName: csrInfo.Last_Name,
+            branch: csrInfo.Branch,
+            email: csrInfo.Email,
+            password: csrInfo.Password,};
           break;
         case "admin":
           url = `http://localhost:9000/admin/${adminInfo.ID}`;
-          data = adminInfo;
+          data = {  name: adminInfo.Name,
+            lastName: adminInfo.Last_Name,
+            email: adminInfo.Email,
+            password: adminInfo.Password,};
           break;
         default:
           throw new Error("Invalid user type");
@@ -147,135 +163,7 @@ export default function UpdateUserInfo() {
     }
   };
 
-  const fetchUserInfo = async () => {
-    let response;
-    if (userType === "customer") {
-      // If email
-      response = await fetch(
-        `http://localhost:9000/customers/email/${customerInfo.Email}`
-      );
-    } else if (userType === "customer_representative") {
-      // If CR ID
-      response = await fetch(`http://localhost:9000/csr/${csrInfo.ID}`);
-    } else if (userType === "admin") {
-      // If A ID
-      response = await fetch(`http://localhost:9000/admin/${adminInfo.ID}`);
-    } else {
-      setError("Invalid user type");
-      return;
-    }
-    return response;
-  };
-
-  const handleUpdateUser = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetchUserInfo();
-      if (response.ok) {
-        const data = await response.json();
-
-        if (data) {
-          if (data.username.includes("@")) {
-            try {
-              const response = await fetch(
-                `http://localhost:9000/customers/${customerInfo.ID}`,
-                {
-                  method: "PUT",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    name: customerInfo.Name,
-                    lastName: customerInfo.Last_Name,
-                    location: customerInfo.Location,
-                    email: customerInfo.Email,
-                    password: customerInfo.Password,
-                    Reservation_ID: customerInfo.Reservation_ID,
-                    Location: customerInfo.Location,
-                    Address: customerInfo.Address,
-                    Contact_Number: customerInfo.Contact_Number,
-                    License_Number: customerInfo.License_Number,
-                    Credit_Card: customerInfo.Credit_Card,
-                  }),
-                }
-              );
-              if (response.ok) {
-                // Successful update
-                alert("Customer information updated successfully");
-              } else {
-                setError("Error updating user information");
-              }
-            } catch (error) {
-              console.error("Error updating user information:", error);
-              setError("Error updating user information");
-            }
-          } else if (data.username.startsWith("CR")) {
-            try {
-              const response = await fetch(
-                `http://localhost:9000/csr/${csrInfo.ID}`,
-                {
-                  method: "PUT",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    name: csrInfo.Name,
-                    lastName: csrInfo.Last_Name,
-                    branch: csrInfo.Branch,
-                    email: csrInfo.Email,
-                    password: csrInfo.Password,
-                  }),
-                }
-              );
-              if (response.ok) {
-                // Successful update
-                alert("CSR information updated successfully");
-              } else {
-                setError("Error updating user information");
-              }
-            } catch (error) {
-              console.error("Error updating user information:", error);
-              setError("Error updating user information");
-            }
-          }
-        } else if (formData.username.startsWith("A")) {
-          try {
-            const response = await fetch(
-              `http://localhost:9000/admin/${adminInfo.ID}`,
-              {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  name: adminInfo.Name,
-                  lastName: adminInfo.Last_Name,
-                  email: adminInfo.Email,
-                  password: adminInfo.Password,
-                }),
-              }
-            );
-            if (response.ok) {
-              // Successful update
-              alert("Admin information updated successfully");
-            } else {
-              setError("Error updating user information");
-            }
-          } catch (error) {
-            console.error("Error updating user information:", error);
-            setError("Error updating user information");
-          }
-        }
-
-        setError("");
-      } else {
-        setError("An error occurred during sign-in.");
-      }
-    } catch (error) {
-      console.error("Error during fetch:", error);
-      setError("An error occurred during sign-in.");
-    }
-  };
+ 
 
   return (
     <div>
@@ -307,7 +195,7 @@ export default function UpdateUserInfo() {
             <label>Password:</label>
             <input
               type="password"
-              name="password"
+              name="Password"
               value={adminInfo.Password}
               onChange={handleChange}
             />
@@ -348,7 +236,7 @@ export default function UpdateUserInfo() {
             <label>Password:</label>
             <input
               type="password"
-              name="password"
+              name="Password"
               value={csrInfo.Password}
               onChange={handleChange}
             />
@@ -374,14 +262,14 @@ export default function UpdateUserInfo() {
             <label>Reservation ID:</label>
             <input
               type="text"
-              name="reservation_ID"
+              name="Reservation_ID"
               value={customerInfo.Reservation_ID}
               disabled
             />
             <label>Location:</label>
             <input
               type="text"
-              name="location"
+              name="Location"
               value={customerInfo.Location}
               onChange={handleChange}
             />
@@ -395,7 +283,7 @@ export default function UpdateUserInfo() {
             <label>Password:</label>
             <input
               type="password"
-              name="password"
+              name="Password"
               value={customerInfo.Password}
               onChange={handleChange}
             />
@@ -409,21 +297,21 @@ export default function UpdateUserInfo() {
             <label>Contact Number:</label>
             <input
               type="text"
-              name="contactNumber"
+              name="Contact_Number"
               value={customerInfo.Contact_Number}
               onChange={handleChange}
             />
             <label>License Number:</label>
             <input
               type="text"
-              name="licenseNumber"
+              name="License_Number"
               value={customerInfo.License_Number}
               onChange={handleChange}
             />
             <label>Credit Card:</label>
             <input
               type="text"
-              name="creditCard"
+              name="Credit_Card"
               value={customerInfo.Credit_Card}
               onChange={handleChange}
             />
