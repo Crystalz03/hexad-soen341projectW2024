@@ -10,7 +10,7 @@ const [nearestBranch, setNearestBranch] = useState({
     latitude: 0.0,
     longitude: 0.0
   });
-    
+ 
 useEffect(() => {
     const callAPIGetBranches = async () => {
       try {
@@ -96,6 +96,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
       const data = await response.json();
       const { lat, lng } = data.results[0].geometry.location;
       setNearestBranch(findNearestBranch(lat, lng));
+      setShowButtons(true);
 
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -106,25 +107,46 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return (
     <div className="main">
     <div className="general-structure">
-      <div className="main-content">
+      <div className="main-content" style={{ height: '500px', overflowY: 'auto' }}>
+      <div className="title-box">
+            <div className="reservation-title">Find Nearest Branch</div>
+      </div>
         <div>
+          <div className="top-box-input">
           <input
             type="text"
             value={postalCode}
             onChange={handlePostalCodeChange}
             placeholder="Enter your postal code"
           />
-          <button onClick={findBranch}>Find Nearest Branch</button>
+          </div>
+          
+          <button className="all-caps sign-in-btn btn-background-color reserve-btn check-availability-button" onClick={findBranch}>Find Nearest Branch</button>
           {nearestBranch && (
             <div>
-              <h2>Nearest Branch</h2>
+              
               <p>Name: {nearestBranch.Name}</p>
+            
             </div>
           )}
           <Map
             latitude={parseFloat(nearestBranch.latitude)}
             longitude={parseFloat(nearestBranch.longitude)}
           />
+            <button
+                      className="all-caps sign-in-btn btn-background-color reserve-btn"
+                     
+                    >
+                      Check-In
+                    </button>
+                    <button
+                      className="all-caps sign-in-btn btn-background-color reserve-btn"
+                     
+                    >Check-out</button>
+                    <button
+                      className="all-caps sign-in-btn btn-background-color reserve-btn"
+                     
+                    >Explore</button>
         </div>
       </div>
     </div>
