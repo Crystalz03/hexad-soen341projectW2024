@@ -104,24 +104,30 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   };
  
   return (
-     <div>
-      <input
-        type="text"
-        value={postalCode}
-        onChange={handlePostalCodeChange}
-        placeholder="Enter your postal code"
-      />
-      <button onClick={findBranch}>Find Nearest Branch</button>
-      {nearestBranch && (
+    <div className="main">
+    <div className="general-structure">
+      <div className="main-content">
         <div>
-          <h2>Nearest Branch</h2>
-          <p>Name: {nearestBranch.Name}</p>
+          <input
+            type="text"
+            value={postalCode}
+            onChange={handlePostalCodeChange}
+            placeholder="Enter your postal code"
+          />
+          <button onClick={findBranch}>Find Nearest Branch</button>
+          {nearestBranch && (
+            <div>
+              <h2>Nearest Branch</h2>
+              <p>Name: {nearestBranch.Name}</p>
+            </div>
+          )}
+          <Map
+            latitude={parseFloat(nearestBranch.latitude)}
+            longitude={parseFloat(nearestBranch.longitude)}
+          />
         </div>
-      )}
-      <Map
-        latitude={parseFloat(nearestBranch.latitude)}
-        longitude={parseFloat(nearestBranch.longitude)}
-      />
+      </div>
+    </div>
     </div>
   );
 };
