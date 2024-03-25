@@ -20,7 +20,7 @@ function Main() {
     <div className="main">
       <div className="general-structure">
         <div className="main-content">
-          <div className="reservation-title">My Account</div>
+          <div className="check-in-title">My Account</div>
           <div className="extra-content" style={{ height: "550px" }}>
             <DisplayUserInfo />
           </div>

@@ -17,6 +17,7 @@ import View from "./pages/View";
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
 import Branches from "./pages/Branches";
+import CheckIn from "./pages/CheckIn";
 
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
           <Route path="/Branches" exact element={<Branches/>} />
+          <Route path="/CheckIn" exact element={<CheckIn/>} />
         </Routes>
       </div>
     </Router>
