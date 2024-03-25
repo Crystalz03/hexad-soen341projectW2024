@@ -11,6 +11,7 @@ export default function MyAccountPage() {
       <Header />
       <SideMenu />
       <Main />
+      <Footer/>
     </div>
   );
 }
@@ -18,14 +19,19 @@ export default function MyAccountPage() {
 function Main() {
   return (
     <div className="main">
-      <div className="general-structure">
-        <div className="main-content">
+    <div className="general-structure">
+      <div className="main-content">
+        <div className="title-box">
           <div className="reservation-title">My Account</div>
-          <div className="extra-content" style={{ height: "550px" }}>
-            <DisplayUserInfo />
+          <div className="car-image">
+            <img src="" alt="Car Image" className="car-image" />
           </div>
+        </div>
+        <div className="extra-content" style={{height:"700px", overflow:"scroll"}}>
+        <DisplayUserInfo /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         </div>
       </div>
     </div>
+  </div>
   );
 }

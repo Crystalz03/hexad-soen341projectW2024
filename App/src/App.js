@@ -16,9 +16,12 @@ import CreateAdminAccount from "./pages/CreateAdminAccount";
 import View from "./pages/View";
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
-import CheckOut from "./pages/CheckOut";
+import Branches from "./pages/Branches";
+import UpdateUserInfoPage from "./pages/UpdateUserInfoPage";
+import CheckIn from "./pages/CheckIn";import CheckOut from "./pages/CheckOut";
 import Payment from "./pages/Payment";
 import CRCreateAUserAccount from "./pages/CRCreateAUserAccount";
+
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
@@ -66,6 +69,9 @@ function App() {
           <Route path="/Browse" exact element={<Browse/>} />
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
+          <Route path="/Branches" exact element={<Branches/>} />
+          <Route path="/CheckIn" exact element={<CheckIn/>} />
+          <Route path="/UpdateUserInfo" exact element={<UpdateUserInfoPage />} />
           <Route path="/CheckOut" exact element={<CheckOut/>} />
           <Route path="/Payment" exact element={<Payment/>} />
           <Route path="/CreateACustomerAccount" exact element={<CRCreateAUserAccount/>} />

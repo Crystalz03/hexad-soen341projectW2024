@@ -24,7 +24,7 @@ router.post('/signin', async (req, res) => {
 
     // Verify credentials
     if (user && user.password === password) {
-      res.status(200).json({ message: 'Sign-in successful', userType });
+      res.status(200).json({ message: 'Sign-in successful', userType, userID: user.id });
     } else {
       throw new Error('Invalid username or password');
     }
