@@ -19,6 +19,8 @@ import Modify from "./pages/Modify";
 import Branches from "./pages/Branches";
 import UpdateUserInfoPage from "./pages/UpdateUserInfoPage";
 import CheckIn from "./pages/CheckIn";
+import ConfirmBooking from "./pages/ConfirmBooking";
+import ConfirmPayment from "./pages/ConfirmPayment";
 
 
 function App() {
@@ -51,7 +53,7 @@ function App() {
           <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} />
           <Route path="/Vehicle" exact element={<Vehicle />} />
           <Route path="/Inventory" exact element={<AdminInventory />} />
-          <Route path="/Reserve" exact element={<Reserve />} />
+          <Route path="/Reserve/:vehicleID" exact element={<Reserve />} />
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
@@ -66,6 +68,8 @@ function App() {
           <Route path="/Branches" exact element={<Branches/>} />
           <Route path="/CheckIn" exact element={<CheckIn/>} />
           <Route path="/UpdateUserInfo" exact element={<UpdateUserInfoPage />} />
+          <Route path="/ConfirmBooking/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment" exact element={<ConfirmBooking/>} />
+          <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} />
         </Routes>
       </div>
     </Router>
