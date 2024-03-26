@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./../style/style.css";
-import { useNavigate } from "react-router-dom";
 
 function AdminInventoryVehicles() {
   const navigate = useNavigate();
@@ -10,7 +9,6 @@ function AdminInventoryVehicles() {
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("All");
 
-  const navigate = useNavigate();
 
   const callAPIGet = () => {
     fetch("http://localhost:9000/vehicles", {
