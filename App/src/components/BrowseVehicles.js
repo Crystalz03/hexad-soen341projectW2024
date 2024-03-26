@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
-import Footer from "./Footer";
 import SideMenu from "./SideMenu";
 
 import "./../style/style.css";
@@ -56,7 +55,9 @@ function BrowseVehicles() {
       <div className="main">
         <div className="general-structure">
           <div className="main-content">
+          <div className="title-box">
             <h2 className="reservation-title">Browse Vehicles</h2>
+            </div>
             <div>
               <label htmlFor="typeFilter">Filter by Make:</label>
               <select
@@ -100,7 +101,6 @@ function BrowseVehicles() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

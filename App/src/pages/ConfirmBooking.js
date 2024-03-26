@@ -28,9 +28,6 @@ function ConfirmBooking(){
         <div className="main-content">
           <div className="title-box">
             <div className="reservation-title">Start a Reservation</div>
-            <div className="car-image">
-              <img src="" alt="Car Image" className="car-image" />
-            </div>
           </div>
           <div className="extra-content" style={{height:"300px"}}>
           <ConfirmBookingComp formData={formData}/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
