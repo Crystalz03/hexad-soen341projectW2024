@@ -1,180 +1,212 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 function UpdateVehicleForm(props) {
-
-  const {vehicleID} = props.vehicleID;
-
-  const [formData, setFormData] = useState({
-      id: '',
-      type: '',
-      category: '',
-      model: '',
-      price: '',
-      availability:'',
-    });
-  const [error, setError] = useState("");
-  const [apiResponse, setApiResponse] = useState([{}]); // Define apiResponse state
-  
-
-
-
-  useEffect(() => {
-      const callAPIGet = () => {
-        fetch(`http://localhost:9000/vehicles/${vehicleID}`, {
-          method: "GET",
-        })
-          .then((data) => data.json())
-          .then((data) => {
-            const formattedVehicles = data.vehicle[0][0];
-            setApiResponse(formattedVehicles);
-          })
-          .catch((error) => {
-            console.error(error);
-            setError("Error fetching vehicles");
-          });
-      };
-
-        callAPIGet();
-      }
-      , []);
-      console.log(apiResponse);
-
-
-  const updateInfo = async () => {
-    try {
-      console.log("updating vehicle info...");
-      const response = await fetch(`http://localhost:9000/vehicless/${vehicleID}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(info),
-      });
-
-      if (!response.ok) {
-        throw new Error(
-          "A problem occurred when creating the reservation. Please try again later."
-        );
-      }
-      //navigate("/");
-    } catch (error) {
-      setError(error.message);
-      console.error(error);
-    }
-  };
-
-  function verifyForm() {
-    
-      const info={
-        id: '',
-        type: '',
+    const vehicleID = props.vehicleID;
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        make: '',
         category: '',
         model: '',
         price: '',
-        availability:'1',
-      };
+        availability:'',
+        year: '',
+        plateNumber: '',
+        color: '',
+        damages: '',
+      });
+    const [error, setError] = useState("");
+    const [vehicles, setVehicles] = useState({});
+    const info={
+      Make: '',
+      Category: '',
+      Model: '',
+      Price: '',
+      Availability:'',
+      Year: '',
+      PlateNumber: '',
+      Color: '',
+      Damages: '',
+    };
+    //make, category, model, price, availability, year, plateNumber, color, damages
+  
+    useEffect(() => {
+        const fetchVehicles = async () => {
+          try {
+            const response = await fetch(`http://localhost:9000/vehicles/${vehicleID}`);
+            if (!response.ok) {
+              throw new Error("Failed to fetch vehicles");
+            }
+            const data = await response.json();
+            setVehicles(data.vehicle);
+          } catch (error) {
+            console.error("Error fetching vehicles:", error);
+            setError("Error fetching vehicles");
+          }
+        };
     
-    if (apiResponse === null) {
-      alert("The vehicle you selected does not exist.");
-      return false;
-    }
-        if(formData.id ===""){
-            info.id=apiResponse.ID;
-          } else {info.id=formData.id;}
-        if(formData.type ===""){
-            info.type=apiResponse.Type;
-        } else {info.type=formData.type;}
-
-        if(formData.category ===""){
-            info.category=apiResponse.Category;
-        } else {info.category=formData.category;}
-
-        if(formData.model ===""){
-            info.model=apiResponse.Model;
-        } else {info.model=formData.model;}
-
-        if(formData.price ===""){
-            info.price=apiResponse.Price;
-        } else {info.price=formData.price;}
-
-        if(formData.availability ===""){
-            info.availability=apiResponse.Availability;
-        } else {info.availability=formData.availability;}
-        
-        return true;
-}
-
-
-const handleChange = (e) => {
-  const { name, value } = e.target;
-  setFormData(prevState => ({
-    ...prevState,
-    [name]: value,
-  }));
-};
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if(verifyForm()){
-      updateInfo();
+        fetchVehicles();
+      }, []);
+      
+    
+    console.log("vehicles",vehicles);
+    console.log("vehicleMake",vehicles.Make);
+  
+    const updateInfo = async () => {
+      try {
+        console.log("updating vehicle info...");
+        const response = await fetch(`http://localhost:9000/vehicles/${vehicleID}`, {
+          method: "PUT",
+          headers: {
+            "Content-make": "application/json",
+          },
+          body: JSON.stringify(info),
+        });
+  
+        if (!response.ok) {
+          throw new Error(
+            "A problem occurred when updating the vehicle. Please try again later."
+          );
+        }
+        alert("Vehicle updated successfully");
+        console.log("Vehicle updated ", info);
+        navigate("/AdminInventory");
+      } catch (error) {
+        setError(error.message);
+        console.error(error);
+      }
+    };
+  
+    function verifyForm() {
+      
+          if(formData.make ===""){
+              info.Make=vehicles.Make;
+          } else {info.Make=formData.make;}
+  
+          if(formData.category ===""){
+              info.Category=vehicles.Category;
+          } else {info.Category=formData.category;}
+  
+          if(formData.model ===""){
+              info.Model=vehicles.Model;
+          } else {info.Model=formData.model;}
+          if(formData.price ===""){
+              info.Price=vehicles.Price;
+          } else if (formData.price<0){
+              alert("Price cannot be negative");
+              return false;
+          }else {info.Price=formData.price;}
+          if(formData.availability ===""){
+              info.Availability=vehicles.Availability;
+          } else {info.Availability=formData.availability;}
+          if(formData.year ===""){
+              info.Year=vehicles.Year;
+          } else {info.Year=formData.year;}
+          if(formData.plateNumber ===""){
+              info.PlateNumber=vehicles.Plate_Number;
+          } else {info.PlateNumber=formData.plateNumber;}
+          if(formData.color ===""){
+              info.Color=vehicles.Color;
+          } else {info.Color=formData.color;}
+          if(formData.damages ===""){
+              info.Damages=vehicles.Damages;
+          } else {info.Damages=formData.damages;}
+          console.log("info",info);
+          
+          return true;
   }
-};
-
-
-  return(
-    
-    <div>
-    <h2>Update Existing Vehicle</h2>
-    <form onSubmit={handleSubmit} className="add-vehicle-form">
-      <label>ID:</label>
-      <input
-        type="text"
-        name="id"
-        value={formData.id}
-        onChange={handleChange}
-      />
-      <label>Type:</label>
-      <input
-        type="text"
-        name="type"
-        value={formData.type}
-        onChange={handleChange}
-      />
-      <label>Category:</label>
-      <input
-        type="text"
-        name="category"
-        value={formData.category}
-        onChange={handleChange}
-      />
-      <label>Model:</label>
-      <input
-        type="text"
-        name="model"
-        value={formData.model}
-        onChange={handleChange}
-      />
-      <label>Price:</label>
-      <input
-        type="number"
-        name="price"
-        value={formData.price}
-        onChange={handleChange}
-      />
-      <label>Availability:</label>
-      <input
-        type="text"
-        name="availability"
-        value={formData.availability}
-        onChange={handleChange}
-      />
-      <button type="submit">Submit</button>
-    </form>
-    {error && <p className="error">{error}</p>}
-  </div>
-
-  );
-
-}
+  
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if(verifyForm()){
+        updateInfo();
+    }
+  };
+  
+    return(
+      
+      <div>
+      <h2>Update Existing Vehicle</h2>
+      <form onSubmit={handleSubmit} className="add-vehicle-form">
+        <label>Make:</label>
+        <input
+          make="text"
+          name="make"
+          value={formData.make}
+          onChange={handleChange}
+        />
+        <label>Category:</label>
+        <input
+          make="text"
+          name="category"
+          value={formData.category}
+          onChange={handleChange}
+        />
+        <label>Model:</label>
+        <input
+          make="text"
+          name="model"
+          value={formData.model}
+          onChange={handleChange}
+        />
+        <label>Price:</label>
+        <input
+          make="number"
+          name="price"
+          value={formData.price}
+          onChange={handleChange}
+        />
+        <label>Availability:</label>
+        <input
+          make="text"
+          name="availability"
+          value={formData.availability}
+          onChange={handleChange}
+        />
+        <label>Year:</label>
+        <input
+          make="number"
+          name="year"
+          value={formData.year}
+          onChange={handleChange}
+        />
+        <label>Plate Number:</label>
+        <input
+          make="text"
+          name="plateNumber"
+          value={formData.plateNumber}
+          onChange={handleChange}
+        />
+        <label>Color:</label>
+        <input
+          make="text"
+          name="color"
+          value={formData.color}
+          onChange={handleChange}
+        />
+        <label>Damages:</label>
+        <input
+          make="text"
+          name="damages"
+          value={formData.damages}
+          onChange={handleChange}
+        />
+        <button make="submit">Submit</button>
+      </form>
+    </div>
+  
+    );
+  
+  }
+  
 
 export default UpdateVehicleForm;
