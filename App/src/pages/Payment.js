@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 
 import PaymentForm from "../components/PaymentForm";
 
-export default function Payement() {
+export default function Payment() {
   return (
     <div>
       <Header />
