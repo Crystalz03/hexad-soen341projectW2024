@@ -54,7 +54,7 @@ const PaymentForm = () => {
 
       // If payment is successful, update paid status in the backend
       const response = await fetch(
-        `http://localhost:9000/reservations/${reservationId}`,
+        `http://localhost:9000/reservations/pay/${reservationId}`,
         {
           method: "PUT",
           headers: {
