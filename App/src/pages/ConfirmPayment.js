@@ -42,3 +42,5 @@ function ConfirmPayment(){
         </div>
     );
 }
+
+export default ConfirmPayment;

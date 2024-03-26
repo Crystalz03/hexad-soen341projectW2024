@@ -17,7 +17,9 @@ function ReservationForm(props){
     branch: '',
   });
   const [vehicle, setVehicle] = useState({});
-  const [customer, setCustomer] = useState({});
+  const [customers, setCustomers] = useState({});
+  const [error, setError] = useState("");
+  const [customerID, setCustomerID] = useState("");
 
   
   useEffect(() => {
@@ -34,24 +36,37 @@ function ReservationForm(props){
         }
     };
     fetchVehicle();
-    const fetchCustomer = async () => {
-        try {
-            const response = await fetch(`http://localhost:9000/customers/${formData.email}`);
-            if (!response.ok) {
-                throw new Error("Failed to fetch customer");
-            }
-            const data = await response.json();
-            setCustomer(data.customer);
-        } catch (error) {
-            console.error("Error fetching customer:", error);
-        }
-    };
-    fetchCustomer();
+    
 }
 , []);
 
+    
+  useEffect(() => {
+    const fetchCustomers = async () => {
+      try {
+        const response = await fetch("http://localhost:9000/customers");
+        if (!response.ok) {
+          throw new Error("Failed to fetch customers");
+        }
+        const data = await response.json();
+        setCustomers(data.customers[0]);
+      } catch (error) {
+        console.error("Error fetching customers:", error);
+        setError("Error fetching customers");
+      }
+    };
 
-    function verifyInput(formData){
+    fetchCustomers();
+  }, []);
+
+    console.log(vehicle);
+    console.log(customers);
+
+    function verifyInput(){
+
+    const customer = customers.find((customer) => customer.Email === formData.email);
+    setCustomerID (customer.ID);
+
     if (formData.pickUpDate > formData.returnDate) {
         alert("The return date must be after the pick-up date.");
         return false;
@@ -75,6 +90,25 @@ function ReservationForm(props){
         return true;
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (
+          verifyInput()
+          ) {
+            if(formData.extraEquipment == ""){
+              formData.extraEquipment = "none";}
+            if(formData.additionalServices == ""){
+              formData.additionalServices = "none";}
+            if(formData.pickUpLocation == ""){
+              formData.pickUpLocation = "MontrealBranch";}
+            if(formData.dropOffLocation == ""){
+              formData.dropOffLocation = "MontrealBranch";}
+            console.log(formData);
+            navigate(`/ConfirmBooking/${vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}`);
+    
+        }
+      };
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -86,7 +120,7 @@ function ReservationForm(props){
 
   return (
     <div>
-        <form>
+        <form onSubmit={handleSubmit}>
             <label>Email:</label>
             <input 
                 name="email"
@@ -133,8 +167,8 @@ function ReservationForm(props){
             <br/>
 
             <label>Extra equipment:</label><br/>
-                <select onChange={handleChange} name = "extraEquipment">
-                <option value="">None</option>
+                <select required={true} onChange={handleChange} name = "extraEquipment">
+                <option value="none">None</option>
                 <option value="gps">GPS (Additional 80$)</option>
                 <option value="childSeat">Child Seat (Additional 120$)</option>
                 <option value="trailer">Trailer (Additional 200$)</option>
@@ -143,20 +177,35 @@ function ReservationForm(props){
             <br/>
 
             <label>Additional Services:</label><br/>
-                <select onChange={handleChange} name ="additionalServices" >
-                <option value="">None</option>
+                <select required={true} onChange={handleChange} name ="additionalServices" >
+                <option value="none">None</option>
                 <option value="accidentInsurance" >Accident Insurance (Additional 100$)</option>
                 <option value="roadsideAssistance" >Roadside Assistance (Additional 50$)</option>
                 </select>
             <br/>
 
 
-                <button onClick={()=>{if(verifyInput(formData)){
-                    navigate(`/ConfirmBooking/${vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}`)}}}>Continue</button>
+                <button type='submit'>Continue</button>
+                    
                 <button onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
         </form>
     </div>
     );
 }
 
-export default ReservationForm;
+export default ReservationForm;/*
+    useEffect(() => {
+    const fetchCustomer = async () => {
+        try {
+            const response = await fetch(`http://localhost:9000/customers/${formData.email}`);
+            if (!response.ok) {
+                throw new Error("Failed to fetch customer");
+            }
+            const data = await response.json();
+            setCustomer(data.customer);
+        } catch (error) {
+            console.error("Error fetching customer:", error);
+        }
+    };
+    fetchCustomer();}, []);*/
+//navigate(`/ConfirmBooking/${vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}`)}}}>Continue</button>

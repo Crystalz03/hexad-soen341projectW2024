@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import SideMenu from "./SideMenu";
@@ -12,6 +12,7 @@ function BrowseVehicles() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("All");
+  const navigate = useNavigate();
 
   const callAPIGet = () => {
     fetch("http://localhost:9000/vehicles", {

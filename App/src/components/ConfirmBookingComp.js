@@ -1,10 +1,76 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 
 function ConfirmBookingComp(props){
-    const formData = props.formData;
     const navigate = useNavigate();
-    const total=0;
+    const [vehicle, setVehicle] = useState({});
+    let total=0;
+    const formData = {
+      vehicleID: props.formData.vehicleID,
+      email: props.formData.email,
+      pickUpDate: props.formData.pickUpDate,
+      returnDate: props.formData.returnDate,
+      pickUpLocation: props.formData.pickUpLocation,
+      dropOffLocation: props.formData.dropOffLocation,
+      additionalServices: props.formData.additionalServices,
+      extraEquipment: props.formData.extraEquipment,
+  };
+    const [customer, setCustomer] = useState({
+      ID: "",
+      Name: "",
+      Last_Name: "",
+      Reservation_ID: "",
+      Location: "",
+      Email: "",
+      Password: "",
+      Address: "",
+      Contact_Number: "",
+      License_Number: "",
+      Credit_Card: "",
+    });
+    const [error, setError] = useState("");
+
+    console.log(formData, formData.email);
+    console.log("testtt ", `http://localhost:9000/customers/email/${formData.email}` );
+
+    
+  useEffect(() => {
+    const fetchVehicle = async () => {
+        try {
+            const response = await fetch(`http://localhost:9000/vehicles/${formData.vehicleID}`);
+            if (!response.ok) {
+                throw new Error("Failed to fetch vehicle");
+            }
+            const data = await response.json();
+            setVehicle(data.vehicle);
+        } catch (error) {
+            console.error("Error fetching vehicle:", error);
+        }
+    };
+    fetchVehicle();
+      
+  }
+  , []);
+   
+  useEffect(() => {
+    const fetchCustomer = async () => {
+      try {
+        const response = await fetch(`http://localhost:9000/customers/email/${formData.email}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch customers");
+        }
+        const data = await response.json();
+        setCustomer(data.customer);
+      } catch (error) {
+        console.error("Error fetching customers:", error);
+        setError("Error fetching customers");
+      }
+    };
+
+    fetchCustomer();
+  }, []);
+
+  console.log(customer);
     
     if (formData.additionalServices === "accidentInsurance") {
         total+= 100;
@@ -40,7 +106,7 @@ function ConfirmBookingComp(props){
             <h2>Customer Information</h2>
             <p>Name: {customer.Name}</p>
             <p>Email: {customer.Email}</p>
-            <p>Phone: {customer.Phone}</p>
+            <p>Phone: {customer.Contact_Number}</p>
             <h2>Reservation Information</h2>
             <p>Pick Up Date: {formData.pickUpDate}</p>
             <p>Return Date: {formData.returnDate}</p>
@@ -49,7 +115,7 @@ function ConfirmBookingComp(props){
             <p>Additional Services: {formData.additionalServices}</p>
             <p>Extra Equipment: {formData.extraEquipment}</p>
             <p>Total : {vehicle.Price} $ x {ReservationDuration} = {total} $ </p>
-            <button onClick={()=>{navigate(`/ConfirmPayment/${vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}/${total}`)}}>Confirm</button>
+            <button onClick={()=>{navigate(`/ConfirmPayment/${formData.vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}/${total}`)}}>Confirm</button>
             <button onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
         </div>
     );

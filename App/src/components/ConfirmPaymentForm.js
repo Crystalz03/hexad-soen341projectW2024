@@ -1,22 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import nodemailer from 'nodemailer';
+//import emailjs from '@emailjs/browser';
+
+function generateReservationID() {
+    const prefix = 'R';
+    const randomDigits = Math.floor(Math.random() * 1000000000); // Generate 9 random digits
+    const reservationID = prefix + randomDigits.toString().padStart(9, '0'); // Ensure 9 digits with leading zeros if necessary
+    return reservationID;
+  }//1111222233334444
 
 function ConfirmPaymentForm(props){
-    const formData = props.formData;
+    const formData = {
+    vehicleID: props.formData.vehicleID,
+    email: props.formData.email,
+    pickUpDate: props.formData.pickUpDate,
+    returnDate: props.formData.returnDate,
+    pickUpLocation: props.formData.pickUpLocation,
+    dropOffLocation: props.formData.dropOffLocation,
+    additionalServices: props.formData.additionalServices,
+    extraEquipment: props.formData.extraEquipment,
+    total: props.formData.total,
+    };//{ id, vehicleID, customerID, pickUpDate, returnDate, extraEquipment, additionalServices, total, pickUpLocation, dropOffLocation}
+    const reservationID = generateReservationID();
+    const reservation = {
+        id: "",
+        vehicleID: "",
+        customerID: "",
+        pickUpDate: "",
+        returnDate: "",
+        pickUpLocation: "",
+        dropOffLocation: "",
+        additionalServices: "",
+        extraEquipment: "",
+        total: "",
+    };
     const [customer, setCustomer] = useState({});
     const [vehicle, setVehicle] = useState({});
-
+    const [customerID, setCustomerID] = useState("");
     const [input, setInput] = useState({
         cardNumber: "",
         expiryDate: "",
         cvv: "",
     });
-    const reservationID = generateReservationID();
+
+    
 
     useEffect(() => {
         const fetchVehicle = async () => {
             try {
-                const response = await fetch(`http://localhost:9000/vehicles/${vehicleID}`);
+                const response = await fetch(`http://localhost:9000/vehicles/${formData.vehicleID}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch vehicle");
                 }
@@ -29,7 +60,7 @@ function ConfirmPaymentForm(props){
         fetchVehicle();
         const fetchCustomer = async () => {
             try {
-                const response = await fetch(`http://localhost:9000/customers/${formData.email}`);
+                const response = await fetch(`http://localhost:9000/customers/email/${formData.email}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch customer");
                 }
@@ -40,17 +71,28 @@ function ConfirmPaymentForm(props){
             }
         };
         fetchCustomer();
+        setCustomerID(customer.ID);
     }
     , []);
 
     const updateCustomer = async () => {
         try {
-            const response = await fetch(`http://localhost:9000/customers/${formData.email}`, {
+            const response = await fetch(`http://localhost:9000/customers/${customer.ID}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(customer),
+                body: JSON.stringify({
+                    name : customer.Name, 
+                    lastName : customer.Last_Name, 
+                    location : customer.Location, 
+                    email : customer.Email, 
+                    password: customer.Password, 
+                    address : customer.Address, 
+                    contactNumber : customer.Contact_Number, 
+                    licenseNumber : customer.License_Number, 
+                    creditCard : input.cardNumber
+                }),
             });
             if (!response.ok) {
                 throw new Error("Failed to update customer");
@@ -67,7 +109,17 @@ function ConfirmPaymentForm(props){
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(vehicle),
+                body: JSON.stringify({
+                    make:Vehicle.Make, 
+                    category:vehicle.Category, 
+                    model:vehicle.Model, 
+                    price:vehicle.Price, 
+                    availability:vehicle.Availability, 
+                    year:vehicle.Year, 
+                    plateNumber:vehicle.Plate_Number, 
+                    color:vehicle.Color, 
+                    damages:vehicle.Damages
+                }),
             });
             if (!response.ok) {
                 throw new Error("Failed to update vehicle");
@@ -79,20 +131,6 @@ function ConfirmPaymentForm(props){
 
 
     const createReservation = async () => {
-        const reservation = {
-            ID: reservationID,
-            Vehicle_ID: vehicle.ID,
-            Customer_ID: customer.ID,
-            Pick_Up_Date: formData.pickUpDate,
-            Return_Date: formData.returnDate,
-            Pick_Up_Location: formData.pickUpLocation,
-            Drop_Off_Location: formData.dropOffLocation,
-            Additional_Services: formData.additionalServices,
-            Extra_Equipment: formData.extraEquipment,
-            Total: formData.total,
-            Paid: false,
-            Mileage_Limit: null,
-        };
         try {
             const response = await fetch("http://localhost:9000/reservations", {
                 method: "POST",
@@ -108,14 +146,6 @@ function ConfirmPaymentForm(props){
             console.error("Error creating reservation:", error);
         }
     };
-
-
-        function generateReservationID() {
-            const prefix = 'R';
-            const randomDigits = Math.floor(Math.random() * 1000000000); // Generate 9 random digits
-            const reservationID = prefix + randomDigits.toString().padStart(9, '0'); // Ensure 9 digits with leading zeros if necessary
-            return reservationID;
-          }
 
         function verifyPayment(){
         if(input.cardNumber.length !== 16){
@@ -147,7 +177,7 @@ function ConfirmPaymentForm(props){
         }
         return true;
     }
-
+/*
     const sendEmail = async () => {
         const transporter = nodemailer.createTransport({
           host: 'smtp.example.com',
@@ -171,7 +201,7 @@ function ConfirmPaymentForm(props){
         } catch (error) {
           console.error('Error sending email:', error);
         }
-      };
+      };*/
     
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -184,20 +214,54 @@ function ConfirmPaymentForm(props){
     const handleSubmit = (e) => {
         e.preventDefault();
         if(verifyPayment()){
-            customer.Reservation_ID = reservationID;
+            //{ id, vehicleID, customerID, pickUpDate, returnDate, extraEquipment, additionalServices, total, pickUpLocation, dropOffLocation}
+            reservation.id = reservationID;
+            reservation.vehicleID = vehicle.ID;
+            reservation.customerID = customer.ID;
+            reservation.pickUpDate = formData.pickUpDate;
+            reservation.returnDate = formData.returnDate;
+            reservation.pickUpLocation = formData.pickUpLocation;
+            reservation.dropOffLocation = formData.dropOffLocation;
+            reservation.additionalServices = formData.additionalServices;
+            reservation.extraEquipment = formData.extraEquipment;
+            reservation.total = formData.total;
+
+            var templateParams = {
+                name: formData.email,
+                id: reservationID,
+                make: vehicle.Make,
+                model: vehicle.Model,
+                upDate: formData.pickUpDate,
+                returnDate: formData.returnDate,
+                upLocation: formData.pickUpLocation,
+                offLocation: formData.dropOffLocation,
+                add: formData.additionalServices,
+                extra: formData.extraEquipment,
+                total: formData.total,
+              };
+
+            customer.Reservation_ID += ","+reservationID;
             vehicle.Availability = "0";
+            console.log(reservation);
             updateCustomer();
-            updateVehicle();
+            //updateVehicle();
             createReservation();
-            sendEmail();
+            /*emailjs.send('service_lw7vdor', 'template_k1l5dc8', templateParams, '-R6mvprDiAiDiBZp4').then(
+            (response) => {
+              console.log('SUCCESS!', response.status, response.text);
+            })
+            .catch((error) => {
+              console.log('FAILED...', error);
+            });*/
             alert("Payment Saved Successfully! Your reservation ID is: "+reservationID+" and the total cost is: "+formData.total+"$. An email has been sent to you with the reservation details.");
 
         }
     }
 
     return (
+        
         <div>
-            <form onSubmit={handleSubmit()}>
+            <form onSubmit={handleSubmit}>
                 <label>Card Number:</label>
                 <input 
                     name="cardNumber"
