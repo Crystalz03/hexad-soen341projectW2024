@@ -1,24 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./../style/style.css";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
-import ReservationForm from "../components/ReservationForm";
+import ReservationForm from "../components/NewREservationForm";
 
-function Home() {
+function Reserve() {
+  const params = useParams();
+  const vehicleID = params.vehicleID;
+
   return (
     <div>
       <Header />
       <SideMenu />
-      <Main />
-      <Footer />
-    </div>
-  );
-}
-
-function Main() {
-  return (
     <div className="main">
       <div className="general-structure">
         <div className="main-content">
@@ -29,15 +24,17 @@ function Main() {
             </div>
           </div>
           <div className="extra-content" style={{height:"300px"}}>
-          <ReservationForm /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          <ReservationForm vehicleID={vehicleID}/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           </div>
         </div>
       </div>
     </div>
+      <Footer />
+    </div>
   );
 }
 
-export default Home;
+export default Reserve;
 
 
 /*

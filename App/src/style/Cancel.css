@@ -1,0 +1,48 @@
+.cancel-form {
+    background-color: var(--second-white);
+    color: var(--secondary-text-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .cancel-form h2 {
+    font-size: var(--xl-size);
+    font-weight: var(--bold);
+    margin-bottom: 20px;
+ 
+  }
+  .reservation-title {
+    font-size: var(--xl-size);
+    font-weight: var(--bold);
+    margin-bottom: 20px;
+    margin-top: 30%;
+    text-align: center; /* Add this line to center the text */
+    color: #f75990;
+  }
+  .cancel-form label {
+    color: #f75990; /* Set the color for the label */
+  }
+  .cancel-form input {
+    margin-right: 10px; /* Add space between the input field and button */
+    margin-left: 10px; 
+}
+
+
+  .cancel-form button {
+    background-color: #f75990;
+    color: var(--white-background-color);
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: var(--m-size);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-right: 10px;
+  } 
+  .cancel-form button:hover {
+    background-color: #e93171;
+}

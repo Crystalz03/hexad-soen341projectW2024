@@ -30,6 +30,10 @@ function SignupForm() {
     location: "",
     email: "",
     password: "",
+    address:"",
+    contactNumber:"",
+    licenseNumber:"",
+    creditCard:"",
   });
 
   const [error, setError] = useState(""); // State to store error message
@@ -121,6 +125,24 @@ function SignupForm() {
           name="password"
           required={true}
           placeholder="Password"
+          onChange={handleChange}
+        ></input>
+        <br />
+        <input
+          type="text"
+          id="address"
+          name="address"
+          required={true}
+          placeholder="Address"
+          onChange={handleChange}
+        ></input>
+        <br />
+        <input
+          type="text"
+          id="licenseNumber"
+          name="licenseNumber"
+          required={true}
+          placeholder="License Number"
           onChange={handleChange}
         ></input>
         <br />
