@@ -29,9 +29,8 @@ function AdminSideMenu() {
             </li>
             <li className="nav-list-components-1">
               <Link to="/Inventory" className="link-style">
-                View
+                View/Modify Inventory
               </Link>
-              /Modify Inventory
             </li>
             <li className="nav-list-components-1">Reservations</li>
           </ul>

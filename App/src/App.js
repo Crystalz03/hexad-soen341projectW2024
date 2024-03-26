@@ -21,6 +21,7 @@ import UpdateUserInfoPage from "./pages/UpdateUserInfoPage";
 import CheckIn from "./pages/CheckIn";
 import ConfirmBooking from "./pages/ConfirmBooking";
 import ConfirmPayment from "./pages/ConfirmPayment";
+import UpdateVehicle from "./pages/UpdateVehicle";
 
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
           <Route path="/UpdateUserInfo" exact element={<UpdateUserInfoPage />} />
           <Route path="/ConfirmBooking/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment" exact element={<ConfirmBooking/>} />
           <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} />
+          <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} />
         </Routes>
       </div>
     </Router>
