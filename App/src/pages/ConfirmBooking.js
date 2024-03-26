@@ -26,16 +26,12 @@ function ConfirmBooking(){
     <div className="main">
       <div className="general-structure">
         <div className="main-content">
-          <div className="title-box">
-            <div className="reservation-title">Start a Reservation</div>
-          </div>
-          <div className="extra-content" style={{height:"300px"}}>
+          <div className="extra-content" style={{height:"560px", width:"400px" , padding:"20px"}}>
           <ConfirmBookingComp formData={formData}/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           </div>
         </div>
       </div>
     </div>
-        <Footer/>
         </div>
     );
 }

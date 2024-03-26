@@ -28,17 +28,13 @@ function ConfirmPayment(){
         <div className="main-content">
           <div className="title-box">
             <div className="reservation-title">Start a Reservation</div>
-            <div className="car-image">
-              <img src="" alt="Car Image" className="car-image" />
-            </div>
           </div>
-          <div className="extra-content" style={{height:"300px"}}>
+          <div className="extra-content" style={{height:"300px", width:"200px", padding:"20px"}}>
           <ConfirmPaymentForm formData={formData}/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           </div>
         </div>
       </div>
     </div>
-        <Footer/>
         </div>
     );
 }

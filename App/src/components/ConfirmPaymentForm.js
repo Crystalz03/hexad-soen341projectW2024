@@ -262,7 +262,7 @@ function ConfirmPaymentForm(props){
         
         <div>
             <form onSubmit={handleSubmit}>
-                <label>Card Number:</label>
+                <label className="reservation-title" style={{marginTop:"20px", color: "black"}}>Card Number:</label>
                 <input 
                     name="cardNumber"
                     required={true}
@@ -271,7 +271,7 @@ function ConfirmPaymentForm(props){
                     onChange={handleChange}
                     placeholder='Card Number' 
                     id='cardNumber'/><br/>
-                <label>Expiry Date:</label>
+                <label className="reservation-title" style={{marginTop:"5px", color: "black"}}>Expiry Date:</label>
                 <input 
                     name="expiryDate"
                     required={true}
@@ -280,7 +280,7 @@ function ConfirmPaymentForm(props){
                     onChange={handleChange}
                     placeholder='MM/YY' 
                     id='expiryDate'/><br/>
-                <label>CVV:</label>
+                <label className="reservation-title" style={{marginTop:"5px", color: "black"}}>CVV:</label>
                 <input 
                     name="cvv"
                     required={true}
@@ -288,9 +288,9 @@ function ConfirmPaymentForm(props){
                     value= {input.cvv}
                     onChange={handleChange}
                     placeholder='CVV' 
-                    id='cvv'/><br/>
+                    id='cvv'/><br/><br/>
 
-                <button type="submit">Confirm Payment</button>
+                <button type="submit" style={{display: "block", margin: "auto", backgroundColor :"#d6ffef"}}>Confirm Payment</button>
             </form>
         </div>
     );

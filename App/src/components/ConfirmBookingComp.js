@@ -97,28 +97,30 @@ function ConfirmBookingComp(props){
 
     return(
         <div>
-            <h1>Confirm Booking</h1>
-            <h2>Vehicle Information</h2>
+            <div className="reservation-title" style={{marginTop:"10px", fontSize: "40px"}}>Confirm Booking</div>
+            <div className="reservation-title" style={{marginTop:"5px", color: "black"}}>Vehicle Information</div>
             <p>Make: {vehicle.Make}</p>
             <p>Model: {vehicle.Model}</p>
             <p>Category: {vehicle.Category}</p>
             <p>Price: {vehicle.Price}</p>
-            <h2>Customer Information</h2>
+            <div className="reservation-title" style={{marginTop:"5px", color: "black"}}>Customer Information</div>
             <p>Name: {customer.Name}</p>
             <p>Email: {customer.Email}</p>
             <p>Phone: {customer.Contact_Number}</p>
-            <h2>Reservation Information</h2>
+            <div className="reservation-title" style={{marginTop:"5px", color: "black"}}>Reservation Information</div>
             <p>Pick Up Date: {formData.pickUpDate}</p>
             <p>Return Date: {formData.returnDate}</p>
             <p>Pick Up Location: {formData.pickUpLocation}</p>
             <p>Drop Off Location: {formData.dropOffLocation}</p>
             <p>Additional Services: {formData.additionalServices}</p>
             <p>Extra Equipment: {formData.extraEquipment}</p>
-            <p>Total : {vehicle.Price} $ x {ReservationDuration} = {total} $ </p>
-            <button onClick={()=>{navigate(`/ConfirmPayment/${formData.vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}/${total}`)}}>Confirm</button>
-            <button onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
+            <p>Total : {vehicle.Price} $ x {ReservationDuration} = {total} $ </p><br/>
+            <button style={{display: "block", margin: "auto", backgroundColor :"#d6ffef"}} onClick={()=>{navigate(`/ConfirmPayment/${formData.vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}/${total}`)}}>Confirm</button><br/>
+            <button style={{display: "block", margin: "auto", backgroundColor:"#ffb0b9"}} onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
         </div>
     );
-}
+}/*
+  display: block;
+  margin: auto;*/
 
 export default ConfirmBookingComp;
