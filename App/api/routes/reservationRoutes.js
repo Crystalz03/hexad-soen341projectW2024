@@ -80,6 +80,20 @@ router.put('/reservations/:id', async (req, res) => {
   }
 });
 
+// Update a specific reservation payment by ID
+router.put('/reservations/pay/:id', async (req, res) => {
+  const reservationId = req.params.id;
+  const { paid } = req.body;
+
+  try {
+    const result = await pool.query`UPDATE Reservation SET Paid = ${paid} WHERE ID = ${reservationId}`;
+    res.status(200).json({ message: 'Payment updated successfully',  reservation: req.body }); // e.g. Reservation = response.body.reservation -> Reservation.name
+  } catch (error) {
+    console.error('Error updating payment:', error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+});
+
 // Delete a specific reservation by ID
 router.delete('/reservations/:id', async (req, res) => {
     const reservationId = req.params.id;

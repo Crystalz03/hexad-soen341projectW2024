@@ -183,6 +183,23 @@ describe('Reservation Routes', () => {
     });
   });
 
+
+    // Test updating a reservation by ID
+    it('should update a reservation by ID', async () => {
+      const response = await request(app)
+        .put('/reservations/pay/R123456789')
+        .send({
+          paid: 'true',
+        });
+  
+      expect(response.status).toBe(200);
+      expect(response.body.reservation).toEqual({
+          paid: 'true',
+      });
+  
+  
+    });
+
   // Test deleting a reservation by ID
   it('should delete a reservation by ID', async () => {
     const response = await request(app).delete('/reservations/R123456789');
