@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import BrowseAccounts from "./pages/BrowseAccounts";
 import Vehicle from "./pages/Vehicle";
 import Browse from "./pages/Browse";
 import Reserve from "./pages/Reserve";
+import View from "./pages/View";
 import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
@@ -13,14 +14,18 @@ import CRDashboard from "./pages/CRDashboard";
 import DeleteReservationPage from "./pages/DeleteReservationPage";
 import MyAccountPage from "./pages/MyAccountPage";
 import CreateAdminAccount from "./pages/CreateAdminAccount";
-import View from "./pages/View";
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
 import Branches from "./pages/Branches";
 import UpdateUserInfoPage from "./pages/UpdateUserInfoPage";
-import CheckIn from "./pages/CheckIn";import CheckOut from "./pages/CheckOut";
+import CheckIn from "./pages/CheckIn";
+import CheckOut from "./pages/CheckOut";
 import Payment from "./pages/Payment";
 import CRCreateAUserAccount from "./pages/CRCreateAUserAccount";
+import ConfirmBooking from "./pages/ConfirmBooking";
+import ConfirmPayment from "./pages/ConfirmPayment";
+import UpdateVehicle from "./pages/UpdateVehicle";
+
 
 
 function App() {
@@ -28,9 +33,7 @@ function App() {
   const callAPI = () => {
     fetch("http://localhost:9000/testAPI")
       .then(res => res.text())
-      .then(res => {console.log(res); 
-        setApiResponse(res
-        )})
+      .then(res => setApiResponse(res))
       .catch(error => console.error('Error fetching data:', error));
   }
   const callAPI2 = () => {
@@ -38,26 +41,24 @@ function App() {
       method: 'GET', 
     })
       .then(data => data.json())
-      .then(data => {console.log(data.vehicle[0][0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
-        setApiResponse(data                              // data.vehicle[0] = array of vehicles  -- data.vehicle[0][0] = 1st vehicle in the list -- data.vehicle[0][0].ID == ID of the first vehicle
-        )})
+      .then(data => setApiResponse(data))
       .catch(error => console.error(error));
   };
   useEffect(() => {
     callAPI();
     callAPI2();
-  }, []); // Empty dependency array means this effect runs once when the component mounts
-
+  }, []);
 
   return (
     <Router>
       <div className="app">
+      
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} />
           <Route path="/Vehicle" exact element={<Vehicle />} />
           <Route path="/Inventory" exact element={<AdminInventory />} />
-          <Route path="/Reserve" exact element={<Reserve />} />
+          <Route path="/Reserve/:vehicleID" exact element={<Reserve />} />
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
@@ -75,6 +76,9 @@ function App() {
           <Route path="/CheckOut" exact element={<CheckOut/>} />
           <Route path="/Payment" exact element={<Payment/>} />
           <Route path="/CreateACustomerAccount" exact element={<CRCreateAUserAccount/>} />
+          <Route path="/ConfirmBooking/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment" exact element={<ConfirmBooking/>} />
+          <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} />
+          <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} />
         </Routes>
       </div>
     </Router>
