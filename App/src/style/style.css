@@ -66,15 +66,15 @@ body {
   padding: 0;
   font-family: "Cons";
   letter-spacing: 1px;
-  max-width: 100%;
-  overflow: hidden;
+  overflow: auto;
 }
 header {
+  width: 100%;
+  padding: 10px 20px;
   color: var(--primary-text-color);
   background-color: var(--primary-backgound-color);
   display: flex;
   height: var(--header-height);
-  width: var(--header-width);
   padding: 10px;
   align-items: center;
   top: 0;
@@ -98,7 +98,7 @@ header {
   width: var(--header-width);
 }
 .nav {
-  max-width: 180px;
+  width: var(--nav-width);
   height: 100vh;
 }
 .main .nav {
@@ -210,6 +210,15 @@ header {
   gap: 20px;
   width: var(--main-content-width);
   padding: 0 50px;
+  max-height: calc(100vh - 230px); 
+  overflow-y: auto;
+}
+
+.check-in-title {
+  color: var(--primary-text-color);
+  font-weight: var(--bold);
+  font-style: italic;
+  font-size: var(--xxl-size);
 }
 
 /* Reservation Title*/
@@ -226,14 +235,19 @@ header {
   font-style: italic;
   font-size: var(--xxl-size);
 }
+.view-title {
+  text-align: center;
+  color: var( --primary-text-color);
+  font-weight: var(--bold);
+  font-style: italic;
+  font-size: var(--xxl-size);
+}
 /*Reservation-Box 
   - First line: All fields are required
   - Top-box -> Location
   - Bottom-Box -> pickup, return, check availability (all next to eachother)
   */
-.reservation-label {
-  color: var(--primary-text-color);
-}
+
 .reservation-box {
   display: flex;
   flex-direction: column;
@@ -291,11 +305,6 @@ header {
   color: var(--tertiary-text-color);
   font-size: var(--m-size);
 }
-.location-title {
-  font-size: var(--xs-size);
-  font-weight: var(--bold);
-  color: var(--second-white);
-}
 
 /*Extra Content -> To adjust later*/
 .extra-content {
@@ -307,10 +316,17 @@ header {
 }
 .footer {
   background-color: var(--secondary-text-color);
+  color: var(--white-background-color);
   height: var(--footer-height);
-  position: sticky;
+  position: fixed;
   bottom: 0;
-  margin-left: 180px;
+  left: 0;
+  width: 100%;
+  padding: 20px; /* Add padding for better spacing */
+  box-sizing: border-box; /* Include padding in width calculation */
+  display: flex;
+  justify-content: space-between; /* Spread items evenly across */
+  align-items: center; /* Vertically center items */
 }
 
 .account-card-scroll-container {
@@ -379,6 +395,47 @@ label {
   color: #222;
 }
 
+.check-in-forms {
+  text-align: left;
+  color: var(--primary-text-color);
+  display: inline-block;
+  margin: 0px 0px;
+  width: 550px;
+  padding: 25px; 
+  border-radius: 8px;
+  border: 1px solid #e5e5e5; /* #f0a5c2; */
+  div {
+    position: relative;
+    margin: 0 0 1.5em;
+  }
+  label {
+    color: white;
+    font-style: italic;
+  }
+
+}
+
+.sign-in-form {
+  text-align: center;
+  color: var(--primary-text-color);
+  padding: 75px; 
+  border-radius: 50px;
+  border: 2px solid #e5e5e5; /* #f0a5c2; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  div {
+    position: relative;
+    margin: 1.5em 0 1.5em;
+  }
+  label {
+    color: white;
+  }
+
+}
+
+
 .form-header {
   text-align: center;
   color: #222;
@@ -443,66 +500,7 @@ label {
    position: absolute;
 }
 
-.reservation-label {
-  color: var(--primary-text-color);
-}
-.reservation-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.reservation-label {
-  color: var(--primary-text-color);
-  font-size: var(--s-size);
-}
-.top-box {
-  height: var(--top-box-height);
-}
-.top-box-input input {
-  border-style: none;
-  outline: none;
-  font-size: var(--m-size);
-  box-sizing: border-box;
-  height: var(--input-box-height);
-  width: var(--main-content-width);
-  background-color: var(--second-white);
-}
-.top-box-input input::placeholder {
-  color: var(--tertiary-text-color);
-  font-size: var(--m-size);
-}
-.bottom-box {
-  display: flex;
-  flex-direction: row;
 
-  width: var(--main-content-width);
-  gap: 10px;
-  align-items: flex-start;
-}
-.bottom-input-boxes {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-/*Input Boxes*/
-.location-title {
-  font-size: var(--xs-size);
-  font-weight: var(--bold);
-  color: var(--secondary-text-color);
-}
-.pickup-box input,
-.return-box input {
-  border-style: none;
-  outline: none;
-  font-size: var(--m-size);
-  box-sizing: border-box;
-  width: var(--pickup-return-box-width);
-}
-.pickup-box input::placeholder,
-.return-box input::placeholder {
-  color: var(--tertiary-text-color);
-  font-size: var(--m-size);
-}
 .location-title {
   font-size: var(--xs-size);
   font-weight: var(--bold);
@@ -512,22 +510,7 @@ label {
   color: var(--current-page);
 }
 
-/*Extra Content -> To adjust later*/
-.extra-content {
-  background-color: var(--second-white);
-  color: var(--secondary-text-color);
-  width: var(--main-content-width);
-  height: 200px;
-  margin-bottom: 100px;
-}
-.footer {
-  background-color: var(--secondary-text-color);
-  height: var(--footer-height);
-  position: fixed;
-  bottom: 0;
-  margin-left: 180px;
-  width: var(--header-width);
-}
+
 .link-style {
   text-decoration: none;
   color: inherit;
@@ -539,7 +522,7 @@ label {
   flex-wrap: wrap;
   gap: 20px;
   max-height: calc(100vh - var(--footer-height));
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 .vehicle-list {
   display: frid;

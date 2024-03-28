@@ -16,6 +16,7 @@ export default function SideMenu() {
                <Link to="/SignUp" className = "link-style">Sign Up</Link>
               <li className="nav-list-components-1">About Hexad</li>
               <li className="nav-list-components-1"><Link to="/Reserve" className = "link-style">Reserve</Link></li>
+              <li className="nav-list-components-1"><Link to="/View" className="link-style">View</Link>/<Link to="/Modify" className="link-style">Modify</Link>/<Link to="/DeleteReservationPage" className = "link-style">Delete</Link></li>
             </ul>
             <div className="nav-divider"></div>
 
@@ -23,7 +24,8 @@ export default function SideMenu() {
               <Link to="/Browse" className="link-style">
                 Browse Vehicles
               </Link>
-              <li className="nav-list-components-2">Locations</li>
+              <li className="nav-list-components-2">
+                <Link to="/Branches" className = "link-style">Find a Branch</Link></li>
               <li className="nav-list-components-2">Contact Us</li>
               <li className="nav-list-components-2">
                 <Link to="/MyAccountPage" className = "link-style">My Account</Link>

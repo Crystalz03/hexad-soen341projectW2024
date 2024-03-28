@@ -9,6 +9,62 @@ app.use(reservationRoutes);
 const date = new Date();
 const dateString = date.toJSON();
 
+const reservation =  {
+  id: 'R123456789',
+  vehicleID: 'V123456789',
+  customerID: 'C012345678',
+  pickUpDate: date,
+  returnDate: date,
+  extraEquipment: '1,2',
+  additionalServices: '1',
+  total: 25000.00,
+  pickUpLocation: 'montreal',
+}
+
+const returnedReservation = {
+  id: 'R123456789',
+  vehicleID: 'V123456789',
+  customerID: 'C012345678',
+  pickUpDate: dateString,
+  returnDate: dateString,
+  extraEquipment: '1,2',
+  additionalServices: '1',
+  paid: false,
+  total: 25000.00,
+  mileageLimit: 'N/A',
+  pickUpLocation: 'montreal',
+
+}
+
+const dbReservation = {
+  ID: 'R123456789',
+  Vehicle_ID: 'V123456789',
+  Customer_ID: 'C012345678',
+  Pick_Up_Date: date,
+  Return_Date: date,
+  Extra_Equipment: '1,2',
+  Additional_Services: '1',
+  Paid: 'false',
+  Total: 25000.00,
+  Pick_Up_Location: 'montreal',
+  Mileage_Limit: 'N/A'
+}
+
+
+const updtaedReservation = {
+  id: 'R123456789',
+  vehicleID: 'V123456789',
+  customerID: 'C012345678',
+  pickUpDate: date,
+  returnDate: date,
+  extraEquipment: '1,2',
+  additionalServices: '1',
+  total: 25000.00,
+  pickUpLocation: 'laval',
+  Mileage_Limit: '150 Km'
+}
+
+
 describe('Reservation Routes', () => {
     beforeAll(async () => {
       try {
@@ -41,7 +97,9 @@ describe('Reservation Routes', () => {
         returnDate: date,
         extraEquipment: '1,2',
         additionalServices: '1',
-        total: 25000.00
+        total: 25000.00,
+        pickUpLocation: 'montreal',
+        dropOffLocation: 'laval'
       });
 
     expect(response.status).toBe(201);
@@ -54,7 +112,9 @@ describe('Reservation Routes', () => {
         returnDate: dateString,
         extraEquipment: '1,2',
         additionalServices: '1',
-        total: 25000.00
+        total: 25000.00,
+        pickUpLocation: 'montreal',
+        dropOffLocation: 'laval'
     });
   });
 
@@ -79,7 +139,10 @@ describe('Reservation Routes', () => {
         Extra_Equipment: '1,2',
         Additional_Services: '1',
         Paid: 'false',
-        Total: 25000.00
+        Total: 25000.00,
+        Pick_Up_Location: 'montreal',
+        Drop_Off_Location: 'laval',
+        Mileage_Limit: 'N/A'
 
     });
   });
@@ -96,8 +159,11 @@ describe('Reservation Routes', () => {
         returnDate: date,
         extraEquipment: '1,2,3',
         additionalEquipment: '',
-        paid: 'false',
-        total: 25999.00
+        paid: 'true',
+        total: 25999.00,
+        pickUpLocation: 'laval',
+        dropOffLocation: 'montreal',
+        mileageLimit: '150 Km'
       });
 
     expect(response.status).toBe(200);
@@ -109,10 +175,30 @@ describe('Reservation Routes', () => {
         returnDate: dateString,
         extraEquipment: '1,2,3',
         additionalEquipment: '',
-        paid: 'false',
-        total: 25999.00
+        paid: 'true',
+        total: 25999.00,
+        pickUpLocation: 'laval',
+        dropOffLocation: 'montreal',
+        mileageLimit: '150 Km'
     });
   });
+
+
+    // Test updating a reservation by ID
+    it('should update a reservation by ID', async () => {
+      const response = await request(app)
+        .put('/reservations/pay/R123456789')
+        .send({
+          paid: 'true',
+        });
+  
+      expect(response.status).toBe(200);
+      expect(response.body.reservation).toEqual({
+          paid: 'true',
+      });
+  
+  
+    });
 
   // Test deleting a reservation by ID
   it('should delete a reservation by ID', async () => {

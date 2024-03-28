@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "./Header";
-import Footer from "./Footer";
 import SideMenu from "./SideMenu";
 
 import "./../style/style.css";
@@ -12,6 +11,7 @@ function BrowseVehicles() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("All");
+  const navigate = useNavigate();
 
   const callAPIGet = () => {
     fetch("http://localhost:9000/vehicles", {
@@ -21,11 +21,12 @@ function BrowseVehicles() {
       .then((data) => {
         const formattedVehicles = data.vehicle[0].map((vehicle) => ({
           ID: vehicle.ID,
-          Type: vehicle.Type,
+          Make: vehicle.Make,
           Category: vehicle.Category,
           Model: vehicle.Model,
           Price: `$${vehicle.Price}/day`,
           Availability: vehicle.Availability,
+          
         }));
 
         setApiResponse(formattedVehicles);
@@ -45,7 +46,7 @@ function BrowseVehicles() {
   const filteredVehicles =
     filter === "All"
       ? apiResponse
-      : apiResponse.filter((vehicle) => vehicle.Type === filter);
+      : apiResponse.filter((vehicle) => vehicle.Make === filter);
 
   return (
     <div>
@@ -54,9 +55,10 @@ function BrowseVehicles() {
       <div className="main">
         <div className="general-structure">
           <div className="main-content">
-            <h2 className="reservation-title">Browse Vehicles</h2>
+          <div className="title-box">
+            <div className="reservation-title">Browse Vehicles</div>
             <div>
-              <label htmlFor="typeFilter">Filter by Type:</label>
+              <label htmlFor="typeFilter">Filter by Make:</label>
               <select
                 id="typeFilter"
                 value={filter}
@@ -69,6 +71,7 @@ function BrowseVehicles() {
                 <option value="Truck">Truck</option>
               </select>
             </div>
+            </div>
             <div className="vehicle-grid">
               {loading ? (
                 <div>Loading...</div>
@@ -80,13 +83,14 @@ function BrowseVehicles() {
                 filteredVehicles.map((vehicle) => (
                   <div key={vehicle.ID} className="vehicle-card">
                     <div>ID: {vehicle.ID}</div>
-                    <div>Type: {vehicle.Type}</div>
+                    <div>Make: {vehicle.Make}</div>
                     <div>Category: {vehicle.Category}</div>
                     <div>Model: {vehicle.Model}</div>
                     <div>Price: {vehicle.Price}</div>
                     <div>Availability: {vehicle.Availability}</div>
                     <div>
-                      <button className="all-caps sign-in-btn btn-background-color reserve-btn">
+                      <button className="all-caps sign-in-btn btn-background-color reserve-btn" 
+                      onClick={()=>{navigate(`/Reserve/${vehicle.ID}`);} }>
                         Reserve Vehicle
                       </button>
                     </div>
@@ -95,9 +99,9 @@ function BrowseVehicles() {
               )}
             </div>
           </div>
+        
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

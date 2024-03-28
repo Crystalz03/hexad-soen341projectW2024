@@ -29,11 +29,11 @@ function AdminSideMenu() {
             </li>
             <li className="nav-list-components-1">
               <Link to="/Inventory" className="link-style">
-                View
+                View/Modify Inventory
               </Link>
-              /Modify Inventory
             </li>
             <li className="nav-list-components-1">Reservations</li>
+            <li className="nav-list-components-1"><Link to="/CheckOut" className="link-style">Check Out</Link></li>
           </ul>
           <div className="nav-divider"></div>
         </aside>
