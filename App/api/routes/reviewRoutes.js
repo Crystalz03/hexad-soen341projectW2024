@@ -19,4 +19,28 @@ router.post("/review", async (req, res) => {
   }
 });
 
+//get reviews
+router.get("/review", async (req,res) =>{
+  try{
+    const results = await pool.query`SELECT * FROM Review`;
+    res.status(200).json({review: results.recordsets});
+  }catch (error){
+    console.error("Error finding review:",error);
+    res.status(500).json({error:'Server Error'});
+  }
+});
+
+// get average rating
+router.get("/average-rating", async (req, res) => {
+  try {
+    const result = await pool.query`SELECT AVG(CAST(Rating AS FLOAT)) AS averageRating FROM Review`;
+    const averageRating = result.recordset[0].averageRating;
+    res.status(200).json({ averageRating });
+  } catch (error) {
+    console.error("Error calculating average rating:", error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+});
+
+
 module.exports = router;

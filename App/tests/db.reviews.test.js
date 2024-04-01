@@ -28,14 +28,11 @@ describe("System Admin Routes", () => {
 
   // Test addition of a new review
   it("should save the review", async () => {
-    const response = await request(app)
-    .post("/review")
-    .send({
+    const response = await request(app).post("/review").send({
       name: "John",
       email: "johndoe@email.com",
       rating: 4,
       review: "Very nice cars!",
-    
     });
     expect(response.status).toBe(201);
     expect(response.body.review).toEqual({
@@ -44,5 +41,18 @@ describe("System Admin Routes", () => {
       rating: 4,
       review: "Very nice cars!",
     });
+  });
+
+  //test getting all reviews
+  it("should get all reviews", async () => {
+    const response = await request(app).get("/review");
+    expect(response.status).toBe(200);
+  });
+
+  // Test getting average rating
+  it("should calculate average rating", async () => {
+    const response = await request(app).get("/average-rating");
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty("averageRating");
   });
 });
