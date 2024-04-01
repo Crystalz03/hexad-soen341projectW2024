@@ -3,14 +3,15 @@ import DeleteReservation from '../components/DeleteReservation';
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
+import Navbar from "../components/NavBar";
 import './../style/Cancel.css';
  
     
     function DeleteTheReservation() {
       return (
         <div>
-          <Header />
-          <SideMenu />
+          <Navbar />
+          
           <Main />
           <Footer />
         </div>

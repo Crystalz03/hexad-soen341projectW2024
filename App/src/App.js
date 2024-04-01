@@ -6,10 +6,8 @@ import Vehicle from "./pages/Vehicle";
 import Browse from "./pages/Browse";
 import Reserve from "./pages/Reserve";
 import View from "./pages/View";
-import SignUp from "./pages/SignUp";
 import AdminDashboard from "./pages/AdminDashboard";
 import CreateCRAccount from "./pages/CreateCRAccount";
-import SignIn from "./pages/SignIn";
 import CRDashboard from "./pages/CRDashboard";
 import DeleteReservationPage from "./pages/DeleteReservationPage";
 import MyAccountPage from "./pages/MyAccountPage";
@@ -59,8 +57,6 @@ function App() {
           <Route path="/Vehicle" exact element={<Vehicle />} />
           <Route path="/Inventory" exact element={<AdminInventory />} />
           <Route path="/Reserve/:vehicleID" exact element={<Reserve />} />
-          <Route path="/SignUp" exact element={<SignUp />} />
-          <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
           <Route path="/CRDashboard" exact element={<CRDashboard />} />
           <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} />

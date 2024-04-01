@@ -4,7 +4,8 @@ import "./../style/style.css";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
-import ReservationForm from "../components/NewREservationForm";
+import ReservationForm from "../components/NewReservationForm";
+import Navbar from "../components/NavBar";
 
 function Reserve() {
   const params = useParams();
@@ -12,8 +13,7 @@ function Reserve() {
 
   return (
     <div>
-      <Header />
-      <SideMenu />
+      <Navbar />
     <div className="main">
       <div className="general-structure">
         <div className="main-content">

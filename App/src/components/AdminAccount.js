@@ -5,6 +5,10 @@ import { useState } from "react";
 import AdminAccount from "../components/AdminAccount";
 
 export default function CreateAdminAccount() {
+
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   function generateRandomString(length) {
     const characters = "0123456789";
     let result = "";
@@ -45,10 +49,10 @@ export default function CreateAdminAccount() {
       if (!response.ok) {
         throw new Error("Please try again.");
       }
-      alert("Admin Account Successfully Added!");
+      setSuccessMessage("Admin Account Successfully Added!");
       navigate("/AdminDashboard");
     } catch (error) {
-      setError(error.message);
+      setErrorMessage(error.message);
       console.error(error);
     }
   };
@@ -106,7 +110,19 @@ export default function CreateAdminAccount() {
         ></input>
         <br />
         <button type="submit">Sign Up</button>
+        {successMessage && (
+          <div className="alert alert-success" role="alert">
+            {successMessage}
+          </div>
+        )}
+        
+        {errorMessage && (
+          <div className="alert alert-danger" role="alert">
+            {errorMessage}
+          </div>
+        )}
       </div>
     </form>
+    
   );
 }

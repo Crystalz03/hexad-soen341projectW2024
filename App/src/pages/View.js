@@ -6,12 +6,12 @@ import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
 import './../style/View.css';
 import './../style/style.css';
+import Navbar from '../components/NavBar';
 
 function ViewTheReservation() {
   return (
     <div>
-      <Header />
-      <SideMenu />
+      <Navbar />
       <Main />
       <Footer />
     </div>

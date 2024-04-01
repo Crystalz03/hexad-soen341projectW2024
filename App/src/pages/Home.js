@@ -4,13 +4,15 @@ import "./../style/style.css";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideMenu from "../components/SideMenu";
+import Navbar from "../components/NavBar";
+
 
 
 function Home() {
   return (
     <div>
-      <Header />
-      <SideMenu />
+      
+      <Navbar />
       <Main />
       <Footer />
     </div>
@@ -23,7 +25,7 @@ function Main() {
       <div className="general-structure">
         <div className="main-content">
           <div className="title-box">
-            <div className="reservation-title">Start a Reservation</div>
+            <div className="reservation-title">Start a Reservation or View/ Modify/ Cancel Reservation</div>
             <div className="car-image">
               <img src="" alt="Car Image" className="car-image" />
             </div>

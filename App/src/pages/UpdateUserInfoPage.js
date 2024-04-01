@@ -3,12 +3,12 @@ import UpdateUserInfo from '../components/UpdateUserInfo';
 import Header from '../components/Header';
 import SideMenu from '../components/SideMenu';
 import Footer from '../components/Footer';
+import Navbar from '../components/NavBar';
 
 export default function UpdateUserInfoPage() {
   return (
     <div>
-        <Header />
-        <SideMenu />
+        <Navbar/>
         <Footer />
         <Main />
     </div>

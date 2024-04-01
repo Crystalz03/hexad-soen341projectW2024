@@ -4,12 +4,12 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../style/style.css";
 import DisplayUserInfo from "../components/DisplayUserInfo";
+import Navbar from "../components/NavBar";
 
 export default function MyAccountPage() {
   return (
     <div>
-      <Header />
-      <SideMenu />
+      <Navbar />
       <Main />
       <Footer/>
     </div>

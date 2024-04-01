@@ -1,5 +1,5 @@
 import React from "react";
-
+import NavBar from "../components/NavBar";
 import BranchFinder from "../components/FindBranch";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -10,8 +10,8 @@ import "./../style/style.css";
 function Branches() {
   return (
     <div>
-      <Header/>
-      <SideMenu/>
+      <NavBar/>
+     
       <BranchFinder />
       <Footer/>
     </div>
