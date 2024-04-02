@@ -12,6 +12,9 @@ import CRDashboard from "./pages/CRDashboard";
 import DeleteReservationPage from "./pages/DeleteReservationPage";
 import MyAccountPage from "./pages/MyAccountPage";
 import CreateAdminAccount from "./pages/CreateAdminAccount";
+import Reviews from"./pages/Reviews";
+
+
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
 import Branches from "./pages/Branches";
@@ -34,17 +37,8 @@ function App() {
       .then(res => setApiResponse(res))
       .catch(error => console.error('Error fetching data:', error));
   }
-  const callAPI2 = () => {
-    fetch("http://localhost:9000/vehicles", {
-      method: 'GET', 
-    })
-      .then(data => data.json())
-      .then(data => setApiResponse(data))
-      .catch(error => console.error(error));
-  };
   useEffect(() => {
     callAPI();
-    callAPI2();
   }, []);
 
   return (
@@ -64,6 +58,7 @@ function App() {
           <Route path="/MyAccountPage" exact element={<MyAccountPage />} />
           <Route path="/CreateAdminAccount" exact element={<CreateAdminAccount/>} />
           <Route path="/Browse" exact element={<Browse/>} />
+          <Route path="/Reviews" exact element={<Reviews/>} />
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
           <Route path="/Branches" exact element={<Branches/>} />

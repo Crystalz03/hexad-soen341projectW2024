@@ -13,9 +13,7 @@ export default function SideMenu() {
               <Link to="/" className = "link-style">hexad</Link>
             </div>
             <ul className="nav-list-1">
-              <li className="nav-list-components-1">
                <Link to="/SignUp" className = "link-style">Sign Up</Link>
-             </li>
               <li className="nav-list-components-1">About Hexad</li>
               <li className="nav-list-components-1"><Link to="/Reserve" className = "link-style">Reserve</Link></li>
               <li className="nav-list-components-1"><Link to="/View" className="link-style">View</Link>/<Link to="/Modify" className="link-style">Modify</Link>/<Link to="/DeleteReservationPage" className = "link-style">Delete</Link></li>
@@ -34,6 +32,10 @@ export default function SideMenu() {
               </li>
             </ul>
             <div className="nav-divider"></div>
+
+            <ul className="nav-list-2">
+            <Link to="/Reviews" className = "link-style">Leave a Review</Link>
+            </ul>
           </aside>
         </div>
 
