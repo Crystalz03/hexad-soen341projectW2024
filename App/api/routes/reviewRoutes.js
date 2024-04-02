@@ -42,5 +42,18 @@ router.get("/average-rating", async (req, res) => {
   }
 });
 
+// delete review
+router.delete("/review/delete/:email", async (req, res) => {
+  const email = req.params.email;
+  try {
+    const result = await pool.query`DELETE FROM Review WHERE Email = ${email}`;
+    res.status(200).json({ message: 'Review deleted successfully' });
+  } catch (error) {
+    console.error('Error removing the review:', error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+}
+)
+
 
 module.exports = router;

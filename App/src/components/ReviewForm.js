@@ -10,6 +10,34 @@ const ReviewForm = () => {
     review: ''
   });
 
+  const [error, setError] = useState("");
+  const sendReview = async () => {
+    try {
+      const response = await fetch("http://localhost:9000/review", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      console.log(data);
+
+      if (!response.ok) {
+        throw new Error(
+          "Server error: review not sent. Please try again later."
+        );
+      }
+      alert("Thank you for the review!");
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+      console.error(error);
+    }
+  };
+
   const handleRatingChange = (value) => {
     setFormData({ ...formData, rating: value });
   };
@@ -18,6 +46,7 @@ const ReviewForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+    sendReview();
   };
 
   const handleChange = (e) => {

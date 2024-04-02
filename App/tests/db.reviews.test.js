@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(reviewRoutes);
 
-describe("System Admin Routes", () => {
+describe("Review Routes", () => {
   beforeAll(async () => {
     try {
       await pool.connect();
@@ -55,4 +55,12 @@ describe("System Admin Routes", () => {
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("averageRating");
   });
+
+    // Test deleting a review
+    it('should delete a review', async () => {
+      const response = await request(app).delete('/review/delete/johndoe@email.com');
+  
+      expect(response.status).toBe(200);
+      expect(response.body.message).toBe('Review deleted successfully');
+    });
 });
