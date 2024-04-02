@@ -1,0 +1,27 @@
+Hexad Meeting Minutes
+
+Date: Tuesday, March 26th, 2024
+Time: 11h45 pm - 12h15 pm (30 min)
+Location: Concordia University, Hall Building 10th floor (and online)
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Sydney Campbell (40243309)
+Yaroslava (40242907)
+
+
+Agenda:
+    1. Check-out
+
+
+Disscussion: 
+
+        Check-out
+            The team discussed an issue that arise when updating the payment field in the reservation.
+            We decided that the easiest way to fix the issue is to create a new route and test and used it instead.
+
+
+
+Next: 
+- Write the new payment update routes
