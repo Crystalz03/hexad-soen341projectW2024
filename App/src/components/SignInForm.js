@@ -1,48 +1,91 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {signIn} from "../Store/UserSlice";
+import { signIn } from "../Store/UserSlice";
 import { getUserRole } from "./DisplayUserInfo";
 import { Link } from "react-router-dom";
 
 function SignInForm() {
-  //states
-  const [username, setUsername]=useState('');
-  const [password, setPassword]=useState('');
+  // States
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [userType, setUserType] = useState("");
+  const [user, setUser] = useState(null); // State to store user details
 
-  //redux state
-  const {loading,error}= useSelector((state)=>state.user);
+  // Redux state
+  const { loading, error } = useSelector((state) => state.user);
 
-  const navigate=useNavigate();
-  const dispatch= useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleSignIn=(e)=>{
-    e.preventDefault();
-    let userCredentials={
-      username, password
+  // Fetch user details from localStorage on component mount
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
     }
-    dispatch(signIn(userCredentials)).then((result)=>{
-      if(result.payload){
-        setUsername('');
-        setPassword('');
-        navigate('/');
-      }
-    });
+  }, []);
 
-  }
-  return(<div>
-    <form onSubmit={handleSignIn}>
-      <label>Username</label>
-      <input type="text" required value={username} onChange={(e)=>setUsername(e.target.value)} />
-      <br/>
-      <label>Password</label>
-      <input type="password" required value={password} onChange={(e)=>setPassword(e.target.value)}/>
-      <br/>
-      <button type='submit'>{loading?'Loading...':'SignIn'}</button>
-    {error&&(<div>{error}</div>)}
-    </form>
-  </div>);
+  // Set user type when user details change
+  useEffect(() => {
+    if (user) {
+      setUserType(getUserRole(user.id)); // Use user.id directly
+    }
+  }, [user]);
+
+
+const handleSignIn = (e) => {
+  e.preventDefault();
+  let userCredentials = {
+    username,
+    password,
+  };
+
+  dispatch(signIn(userCredentials)).then((result) => {
+    if (result.payload) {
+      setUsername("");
+      setPassword("");
+      // Fetch user details from localStorage after successful sign-in
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        const user = JSON.parse(storedUser);
+        const userType = getUserRole(user.id);
+        if (userType === "customer") {
+          navigate("/");
+        } else if (userType === "customer_representative") {
+          navigate("/CRDashboard");
+        } else if (userType === "admin") {
+          navigate("/AdminDashboard");
+        }
+      }
+    }
+  });
+};
+
+  return (
+    <div>
+      <form onSubmit={handleSignIn}>
+        <label>Username</label>
+        <input
+          type="text"
+          required
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <br />
+        <label>Password</label>
+        <input
+          type="password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <br />
+        <button type="submit">{loading ? "Loading..." : "SignIn"}</button>
+        {error && <div>{error}</div>}
+      </form>
+    </div>
+  );
 }
 
 export default SignInForm;
-

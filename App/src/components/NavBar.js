@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
 import SignInPopover from "../components/SignInPopover";
 import { useSelector } from "react-redux";
 import { getUser, getUserRole } from "./DisplayUserInfo";
 import { Link, useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 
 function Navbar() {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const [isDropdownOpenAccount, setIsDropdownOpenAccount] = useState(false);
   const [isDropdownOpenBrowse, setIsDropdownOpenBrowse] = useState(false);
   const [user, setUser] = useState(getUser());
-  const [userType, setUserType]=useState('');
+  const [userType, setUserType] = useState('');
   const [signedIn, setSignedIn] = useState(false);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = localStorage.getItem("user");
@@ -34,7 +33,6 @@ function Navbar() {
     localStorage.removeItem("user");
     setUser(null);
     navigate("/");
-
   };
 
   const handleMouseEnterAccount = () => {
@@ -127,8 +125,14 @@ function Navbar() {
               <div
                 className={`dropdown-menu ${isDropdownOpenAccount ? 'show' : ''}`}
               >
-                {/* Dropdown content */}
-                <Link to="/MyAccountPage" style={{textDecoration:"none"}}><a className="dropdown-item">My Account</a></Link>
+                <Link to="/MyAccountPage" style={{ textDecoration: "none" }}>
+                  <a className="dropdown-item">My Account</a>
+                </Link>
+                {userType === 'admin' && (
+                  <Link to="/AdminDashboard" style={{ textDecoration: "none" }}>
+                    <a className="dropdown-item">Admin Page</a>
+                  </Link>
+                )}
                 <a className="dropdown-item" onClick={handleSignOut}>Sign Out</a>
               </div>
             </div>
