@@ -18,8 +18,6 @@ function Home() {
 
 function Main() {
   return (
-    <div className="main">
-      <div className="general-structure">
         <div className="main-content">
           <div className="title-box">
             <div className="reservation-title">Start a Reservation</div>
@@ -80,8 +78,6 @@ function Main() {
           </div>
           <div className="extra-content">Extra content</div>
         </div>
-      </div>
-    </div>
   );
 }
 

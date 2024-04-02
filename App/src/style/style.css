@@ -211,7 +211,7 @@ header {
   width: var(--main-content-width);
   padding: 0 50px;
   max-height: calc(100vh - 230px); 
-  overflow-y: auto;
+
 }
 
 .check-in-title {
@@ -329,9 +329,7 @@ header {
   align-items: center; /* Vertically center items */
 }
 
-.account-card-scroll-container {
-  overflow-y: visible;
-}
+
 
 .title-accounts {
   color: var(--second-white);
@@ -358,7 +356,6 @@ header {
 }
 
 .account-content {
-  overflow-y: scroll;
   color: var(--secondary-text-color);
   width: var(--main-content-width);
   margin-left: 200px;
@@ -370,6 +367,18 @@ header {
   font-style: italic;
   font-size: var(--xl-size);
 }
+
+.reservation-id {
+  max-width: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reservation-id.expanded {
+  white-space: normal;
+}
+
 
 .form-1 {
   outline: #ea4c89;
@@ -524,7 +533,7 @@ label {
   flex-wrap: wrap;
   gap: 20px;
   max-height: calc(100vh - var(--footer-height));
-  overflow-y: scroll;
+  
 }
 .vehicle-list {
   display: frid;
