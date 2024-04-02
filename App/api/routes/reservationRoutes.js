@@ -80,7 +80,7 @@ router.put('/reservations/:id', async (req, res) => {
   }
 });
 
-// Update a specific reservation by ID
+// Update a specific reservation payment by ID
 router.put('/reservations/pay/:id', async (req, res) => {
   const reservationId = req.params.id;
   const { paid } = req.body;

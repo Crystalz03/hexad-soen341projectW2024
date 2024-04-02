@@ -1,0 +1,43 @@
+Hexad Meeting Minutes
+
+Date: Tuesday, February 13, 2024
+Time: 11h45 pm - 12h pm (15 min)
+Location: Concordia University, Hall building 10th floor
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Yaroslava (40242907)
+Sydney Campbell (40243309)
+
+
+Agenda:
+
+1. Database modifications 
+2. Acceptance Tests
+3. Deadlines for sprint 3
+
+
+Discussion points:
+
+    Database modifications
+        According to the instrcutions for sprint 3, some of the current databse tables have to be modified.
+        The team established the "rules" to follow when adding new fields in the tables:
+            1. Add the new fields
+            2. Modify the tests int App/test: add the new fields in the mock JSON objects
+            2. Modify the routes in App/api/routes to reflect those changes
+        The same steps should be followed when creating the new table for the customer reviews.
+
+    Acceptance Tests
+        The team decided that the acceptance tests will be writtent by those in charge of the respective User Story.
+
+    Deadline for sprint 3
+        In order to have a better implementations of the new feature, the team decided that friday March 22nd , is the due Date
+        for all database implementations and Sunday March 24th is the deadline for the frontend implementations. Following this
+        schedule will allow the team a full day to fix possible bugs and merge conflicts as we saw it happen during sprint 2.
+   
+
+Next step: 
+- Finish all backend implementations for friday following the established "rules"
+- Finish all frontend immplementations by sunday to allow the team 1 day of testing
+- Write the acceptance tests

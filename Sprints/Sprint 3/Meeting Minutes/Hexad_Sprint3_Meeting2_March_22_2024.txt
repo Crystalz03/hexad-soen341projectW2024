@@ -1,0 +1,27 @@
+Hexad Meeting Minutes
+
+Date: Friday, February 2nd, 2024
+Time: 7h00 pm - 9h00 pm (2h)
+Location: Concordia University, Hall Building 8th floor
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Sydney Campbell (40243309)
+Yaroslava (40242907)
+Rania Maoukout (40249281)
+Malak Sefrioui(40252907)
+
+Agenda:
+    1. Unique feature for sprint 4
+
+
+Disscussion: 
+
+        Unique feature for sprint 4
+            The team decided to implement a list of interesting touristic places based on the pick up and the drop off
+            location/branch set by the renter. This feature can most likely be implemented using the Google Map API.
+
+
+Next: 
+- Write down the plan for sprint 4  

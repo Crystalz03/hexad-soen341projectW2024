@@ -235,14 +235,19 @@ header {
   font-style: italic;
   font-size: var(--xxl-size);
 }
+.view-title {
+  text-align: center;
+  color: var( --primary-text-color);
+  font-weight: var(--bold);
+  font-style: italic;
+  font-size: var(--xxl-size);
+}
 /*Reservation-Box 
   - First line: All fields are required
   - Top-box -> Location
   - Bottom-Box -> pickup, return, check availability (all next to eachother)
   */
-.reservation-label {
-  color: var(--primary-text-color);
-}
+
 .reservation-box {
   display: flex;
   flex-direction: column;
@@ -299,11 +304,6 @@ header {
 .return-box input::placeholder {
   color: var(--tertiary-text-color);
   font-size: var(--m-size);
-}
-.location-title {
-  font-size: var(--xs-size);
-  font-weight: var(--bold);
-  color: var(--second-white);
 }
 
 /*Extra Content -> To adjust later*/
@@ -463,66 +463,7 @@ label {
   touch-action: manipulation;
 }
 
-.reservation-label {
-  color: var(--primary-text-color);
-}
-.reservation-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.reservation-label {
-  color: var(--primary-text-color);
-  font-size: var(--s-size);
-}
-.top-box {
-  height: var(--top-box-height);
-}
-.top-box-input input {
-  border-style: none;
-  outline: none;
-  font-size: var(--m-size);
-  box-sizing: border-box;
-  height: var(--input-box-height);
-  width: var(--main-content-width);
-  background-color: var(--second-white);
-}
-.top-box-input input::placeholder {
-  color: var(--tertiary-text-color);
-  font-size: var(--m-size);
-}
-.bottom-box {
-  display: flex;
-  flex-direction: row;
 
-  width: var(--main-content-width);
-  gap: 10px;
-  align-items: flex-start;
-}
-.bottom-input-boxes {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-/*Input Boxes*/
-.location-title {
-  font-size: var(--xs-size);
-  font-weight: var(--bold);
-  color: var(--secondary-text-color);
-}
-.pickup-box input,
-.return-box input {
-  border-style: none;
-  outline: none;
-  font-size: var(--m-size);
-  box-sizing: border-box;
-  width: var(--pickup-return-box-width);
-}
-.pickup-box input::placeholder,
-.return-box input::placeholder {
-  color: var(--tertiary-text-color);
-  font-size: var(--m-size);
-}
 .location-title {
   font-size: var(--xs-size);
   font-weight: var(--bold);
@@ -532,14 +473,6 @@ label {
   color: var(--current-page);
 }
 
-/*Extra Content -> To adjust later*/
-.extra-content {
-  background-color: var(--second-white);
-  color: var(--secondary-text-color);
-  width: var(--main-content-width);
-  height: 200px;
-  margin-bottom: 100px;
-}
 
 .link-style {
   text-decoration: none;

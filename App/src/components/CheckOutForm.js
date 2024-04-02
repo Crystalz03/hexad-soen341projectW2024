@@ -144,8 +144,8 @@ const CheckoutForm = () => {
   
 
   const handleCheckout = () => {
-    // Navigate to Payment page with totalPrice in state
-    navigate("/Payment", { state: { totalPrice } });
+    // Navigate to Payment page with totalPrice and reservationID in state
+    navigate("/Payment", { state: { totalPrice, reservationId} });
   };
 
   return (
