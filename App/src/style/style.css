@@ -442,6 +442,26 @@ label {
   margin-bottom: 15px;
 }
 
+.review-form {
+  text-align: left;
+  color: white;
+  display: inline-block;
+  margin: 0px 0px;
+  width: 550px;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5; /* #f0a5c2; */
+  div {
+    position: relative;
+    margin: 0 0 1.5em;
+  }
+  label {
+    color: white;
+    font-style: italic;
+  
+  }
+}
+
 .button-1 {
   background-color: #ea4c89;
   border-radius: 8px;
@@ -461,6 +481,23 @@ label {
   transition: color 100ms;
   vertical-align: baseline;
   touch-action: manipulation;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.3em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before,
+.rating > span.selected:before,
+.rating > span.selected ~ span:before {
+   content: "\2605";
+   position: absolute;
 }
 
 
