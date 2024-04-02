@@ -1,19 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
-import { Link } from "react-router-dom";
 import SignInPopover from "../components/SignInPopover";
 import { useSelector } from "react-redux";
+import { getUser, getUserRole } from "./DisplayUserInfo";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpenAccount, setIsDropdownOpenAccount] = useState(false);
+  const [isDropdownOpenBrowse, setIsDropdownOpenBrowse] = useState(false);
+  const [user, setUser] = useState(getUser());
+  const [userType, setUserType]=useState('');
+  const [signedIn, setSignedIn] = useState(false);
 
-  const handleMouseEnter = () => {
-    setIsDropdownOpen(true);
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      setSignedIn(true);
+    } else {
+      setSignedIn(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      setUserType(getUserRole(user.id)); // Use user.id directly
+    }
+  }, [user]);
+
+  const handleMouseEnterAccount = () => {
+    setIsDropdownOpenAccount(true);
   };
 
-  const handleMouseLeave = () => {
-    setIsDropdownOpen(false);
+  const handleMouseLeaveAccount = () => {
+    setIsDropdownOpenAccount(false);
+  };
+
+  const handleMouseEnterBrowse = () => {
+    setIsDropdownOpenBrowse(true);
+  };
+
+  const handleMouseLeaveBrowse = () => {
+    setIsDropdownOpenBrowse(false);
   };
 
   return (
@@ -23,11 +51,7 @@ function Navbar() {
           <h2>Drive the experience, rent the journey</h2>
         </div>
 
-        <div
-          className={`collapse navbar-collapse`}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+        <div className={`collapse navbar-collapse`}>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/">
@@ -38,40 +62,31 @@ function Navbar() {
               <a
                 className="nav-link dropdown-toggle"
                 href="/Browse"
-                id="navbarDropdown"
+                id="navbarDropdownBrowse"
                 role="button"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                onMouseEnter={handleMouseEnterBrowse}
+                onMouseLeave={handleMouseLeaveBrowse}
               >
                 Browse Vehicles
               </a>
-              <ul
-                className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}
-                aria-labelledby="navbarDropdown"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+              <div
+                className={`dropdown-menu ${isDropdownOpenBrowse ? 'show' : ''}`}
+                onMouseEnter={handleMouseEnterBrowse}
+                onMouseLeave={handleMouseLeaveBrowse}
               >
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Cars
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    SUVs
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Vans
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Trucks
-                  </a>
-                </li>
-              </ul>
+                <a className="dropdown-item" href="#">
+                  Cars
+                </a>
+                <a className="dropdown-item" href="#">
+                  SUVs
+                </a>
+                <a className="dropdown-item" href="#">
+                  Vans
+                </a>
+                <a className="dropdown-item" href="#">
+                  Trucks
+                </a>
+              </div>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/Branches">
@@ -89,15 +104,28 @@ function Navbar() {
               </a>
             </li>
           </ul>
-           {/* Conditional rendering based on authentication state */}
-           {isAuthenticated ? (
-            <img src="" alt="Account" />
+          {signedIn ? (
+            <div
+              className="dropdown"
+              onMouseEnter={handleMouseEnterAccount}
+              onMouseLeave={handleMouseLeaveAccount}
+            >
+              <img
+                src={require("./../../public/assets/images/account.png").default}
+                alt="account"
+                style={{ height: "40px" }}
+              />
+              <div
+                className={`dropdown-menu ${isDropdownOpenAccount ? 'show' : ''}`}
+              >
+                {/* Dropdown content */}
+                <Link to="/MyAccountPage"><a className="dropdown-item">My Account</a></Link>
+                <a className="dropdown-item">Sign Out</a>
+              </div>
+            </div>
           ) : (
-            
             <SignInPopover />
-         
           )}
-          
         </div>
       </div>
     </nav>
