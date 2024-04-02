@@ -290,7 +290,7 @@ header {
 .location-title {
   font-size: var(--xs-size);
   font-weight: var(--bold);
-  color: var(--secondary-text-color);
+  color: black;
 }
 .pickup-box input,
 .return-box input {
@@ -332,7 +332,7 @@ header {
 
 
 .title-accounts {
-  color: var(--second-white);
+  color: #ea4c89;
   font-weight: var(--bold);
   font-style: italic;
   font-size: var(--xxl-size);
@@ -349,20 +349,20 @@ header {
 }
 
 .account-card {
-  border: 1px solid #ccc;
-  color: #ccc;
+  border: 1px solid black;
+  color: black;
   padding: 10px;
   /* Additional styling for each customer card */
 }
 
 .account-content {
-  color: var(--secondary-text-color);
+  color: black;
   width: var(--main-content-width);
   margin-left: 200px;
 }
 
 .accounts-title {
-  color: var(--second-white);
+  color: black;
   font-weight: var(--bold);
   font-style: italic;
   font-size: var(--xl-size);
@@ -511,12 +511,6 @@ label {
    color: #ea4c89;
 }
 
-
-.location-title {
-  font-size: var(--xs-size);
-  font-weight: var(--bold);
-  color: var(--second-white);
-}
 .current-page {
   color: var(--current-page);
 }
