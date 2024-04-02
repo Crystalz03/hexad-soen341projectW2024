@@ -39,17 +39,8 @@ function App() {
       .then(res => setApiResponse(res))
       .catch(error => console.error('Error fetching data:', error));
   }
-  const callAPI2 = () => {
-    fetch("http://localhost:9000/vehicles", {
-      method: 'GET', 
-    })
-      .then(data => data.json())
-      .then(data => setApiResponse(data))
-      .catch(error => console.error(error));
-  };
   useEffect(() => {
     callAPI();
-    callAPI2();
   }, []);
 
   return (

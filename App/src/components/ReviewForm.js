@@ -11,7 +11,13 @@ const ReviewForm = () => {
   });
 
   const [error, setError] = useState("");
+  const [average, setAverage] = useState();
+  const [loading, setLoading] = useState(false);
+  const [seeForm, setSeeForm] = useState(true);
+
+
   const sendReview = async () => {
+    setLoading(true);
     try {
       const response = await fetch("http://localhost:9000/review", {
         method: "POST",
@@ -23,20 +29,42 @@ const ReviewForm = () => {
 
       const data = await response.json();
 
-      console.log(data);
-
       if (!response.ok) {
         throw new Error(
           "Server error: review not sent. Please try again later."
         );
       }
-      alert("Thank you for the review!");
-      navigate("/");
+    getAverageRating();
+    
     } catch (error) {
       setError(error.message);
       console.error(error);
+    } finally {
+      setLoading(false);
+      setSeeForm(false);
     }
   };
+
+  const getAverageRating = async() => {
+    try {
+      const response = await fetch("http://localhost:9000/average-rating", {
+      method: 'GET', 
+    })
+
+    const data = await response.json();
+
+    if (response.ok) {
+      setAverage(data.averageRating);
+    }
+
+   } catch (error) {
+    setError("Error getting the average rating");
+    console.error(error);
+   }
+
+  };
+
+
 
   const handleRatingChange = (value) => {
     setFormData({ ...formData, rating: value });
@@ -45,7 +73,6 @@ const ReviewForm = () => {
  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     sendReview();
   };
 
@@ -58,6 +85,8 @@ const ReviewForm = () => {
   };
 
   return (
+    <div>
+      {seeForm ?
     <div className='review-form'>
       <form onSubmit={handleSubmit}>
         <div>
@@ -84,7 +113,12 @@ const ReviewForm = () => {
         </div>
         <button className="button-1" type="submit">Submit Review</button>
       </form>
-    </div>
+    </div> : null}
+      {!loading && average ?
+        <div> Our current rating is {average.toFixed(2)} stars. 
+        </div>
+        : null}
+      </div>
   );
 };
 
