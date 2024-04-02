@@ -11,7 +11,6 @@ import Navbar from "../components/NavBar";
 function Home() {
   return (
     <div>
-      
       <Navbar />
       <Main />
       <Footer />
@@ -26,9 +25,6 @@ function Main() {
         <div className="main-content">
           <div className="title-box">
             <div className="reservation-title">Start a Reservation or View/ Modify/ Cancel Reservation</div>
-            <div className="car-image">
-              <img src="" alt="Car Image" className="car-image" />
-            </div>
           </div>
           <div className="reservation-box">
             <label className="reservation-label">
