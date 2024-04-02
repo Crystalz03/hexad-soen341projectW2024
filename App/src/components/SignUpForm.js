@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../style/SignUpForm.css";
 import { useNavigate } from "react-router-dom";
 
 function SignupForm() {
@@ -146,7 +145,7 @@ function SignupForm() {
           onChange={handleChange}
         ></input>
         <br />
-        <button type="submit">Sign Up</button>
+        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Sign Up</button>
       </div>
     </form>
   );

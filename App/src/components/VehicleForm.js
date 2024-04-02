@@ -111,7 +111,7 @@ function VehicleForm() {
           <option value="0">Not Available</option>
         </select> */}
 
-        <button type="submit">Submit</button>
+        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Submit</button>
       </form>
       {error && <p className="error">{error}</p>}
     </div>

@@ -115,8 +115,8 @@ function ConfirmBookingComp(props){
             <p>Additional Services: {formData.additionalServices}</p>
             <p>Extra Equipment: {formData.extraEquipment}</p>
             <p>Total : {vehicle.Price} $ x {ReservationDuration} = {total} $ </p><br/>
-            <button style={{display: "block", margin: "auto", backgroundColor :"#d6ffef"}} onClick={()=>{navigate(`/ConfirmPayment/${formData.vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}/${total}`)}}>Confirm</button><br/>
-            <button style={{display: "block", margin: "auto", backgroundColor:"#ffb0b9"}} onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
+            <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white', display: "block", margin: "auto", backgroundColor :"#d6ffef"}} onClick={()=>{navigate(`/ConfirmPayment/${formData.vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}/${total}`)}}>Confirm</button><br/>
+            <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white', display: "block", margin: "auto", backgroundColor:"#ffb0b9"}} onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
         </div>
     );
 }/*

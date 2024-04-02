@@ -211,7 +211,7 @@ header {
   width: var(--main-content-width);
   padding: 0 50px;
   max-height: calc(100vh - 230px); 
-  overflow-y: auto;
+
 }
 
 .check-in-title {
@@ -329,9 +329,7 @@ header {
   align-items: center; /* Vertically center items */
 }
 
-.account-card-scroll-container {
-  overflow-y: visible;
-}
+
 
 .title-accounts {
   color: var(--second-white);
@@ -358,7 +356,6 @@ header {
 }
 
 .account-content {
-  overflow-y: scroll;
   color: var(--secondary-text-color);
   width: var(--main-content-width);
   margin-left: 200px;
@@ -370,6 +367,18 @@ header {
   font-style: italic;
   font-size: var(--xl-size);
 }
+
+.reservation-id {
+  max-width: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reservation-id.expanded {
+  white-space: normal;
+}
+
 
 .form-1 {
   outline: #ea4c89;
@@ -395,21 +404,19 @@ label {
   color: #222;
 }
 
-.check-in-forms {
+.form-template {
   text-align: left;
   color: var(--primary-text-color);
   display: inline-block;
   margin: 0px 0px;
   width: 550px;
   padding: 25px; 
-  border-radius: 8px;
-  border: 1px solid #e5e5e5; /* #f0a5c2; */
   div {
     position: relative;
     margin: 0 0 1.5em;
   }
   label {
-    color: white;
+    color: black;
     font-style: italic;
   }
 
@@ -456,9 +463,8 @@ label {
     margin: 0 0 1.5em;
   }
   label {
-    color: white;
+    color: black;
     font-style: italic;
-  
   }
 }
 
@@ -527,7 +533,7 @@ label {
   flex-wrap: wrap;
   gap: 20px;
   max-height: calc(100vh - var(--footer-height));
-  overflow-y: scroll;
+  
 }
 .vehicle-list {
   display: frid;

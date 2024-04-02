@@ -55,7 +55,6 @@
   flex-wrap:wrap;
   gap:20px;
   max-height:calc(100vh - var(--footer-height));
- overflow-y:auto;
  }
  .vehicle-list{
    display:frid;

@@ -250,7 +250,7 @@ The Renter acknowledges receiving and reviewing a copy of the vehicle's insuranc
     }
 
     return (
-        <div className="check-in-forms">
+        <div className="form-template">
             <form onSubmit={handleReservationSubmit} action="Get Reservation">
                 <div>
                     {error && <p className="error">{error}</p>}
@@ -265,7 +265,7 @@ The Renter acknowledges receiving and reviewing a copy of the vehicle's insuranc
                         />
                     </div>
                     <br />
-                    <button type="submit">Start Check-in</button>
+                    <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Start Check-in</button>
                 </div>
             </form>
 

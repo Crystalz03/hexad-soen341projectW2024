@@ -100,7 +100,7 @@ const PaymentForm = () => {
           />
         </label>
         <br />
-        <button type="submit">Pay Now</button>
+        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Pay Now</button>
         {error && <div style={{ color: "red" }}>{error}</div>}
       </form>
     </div>

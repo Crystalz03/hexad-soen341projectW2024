@@ -1,6 +1,3 @@
- .account-card-scroll-container {
-    overflow-y:visible;
-  }
 
   .title-accounts{
     color: var(--second-white);
@@ -26,7 +23,6 @@
   }
 
   .account-content {
-    overflow-y: scroll;
     color: var(--secondary-text-color);
     width: var(--main-content-width);
     margin-left: 200px;

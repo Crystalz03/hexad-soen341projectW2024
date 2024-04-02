@@ -207,10 +207,10 @@ const CheckoutForm = () => {
           Flat Tire (+$80)
         </label>
       </div>
-      <button onClick={calculateTotalPrice}>Calculate Total Price</button>
+      <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} onClick={calculateTotalPrice}>Calculate Total Price</button>
       <div>Total Price: ${totalPrice}</div>
       {error && <div style={{ color: "red" }}>{error}</div>}
-      <button onClick={handleCheckout}>Check Out</button> {/* Modified*/}
+      <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} onClick={handleCheckout}>Check Out</button> {/* Modified*/}
     </div>
   );
 };

@@ -116,7 +116,7 @@ const ReviewForm = () => {
         <label for="exampleFormControlInput1" class="form-label">Review</label>
           <textarea name="review" rows="10" cols="70" onChange={handleChange} />
         </div>
-        <button className="btn btn-primary" type="submit">Submit Review</button>
+        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Submit Review</button>
       </form>
     </div> : null}
       {!loading && average ?
