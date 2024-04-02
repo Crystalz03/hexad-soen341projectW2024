@@ -1,12 +1,9 @@
-
-import React from 'react';
-import ViewReservation from '../components/ViewReservation';
+import React from "react";
+import ViewReservation from "../components/ViewReservation";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
-import SideMenu from "../components/SideMenu";
-import './../style/View.css';
-import './../style/style.css';
-import Navbar from '../components/NavBar';
+import "./../style/View.css";
+import "./../style/style.css";
+import Navbar from "../components/NavBar";
 
 function ViewTheReservation() {
   return (
@@ -20,12 +17,14 @@ function ViewTheReservation() {
 
 function Main() {
   return (
-<div className="main-content">
-  <div className="view-container">
-    <h2 className="view-title">View Reservation</h2>
-      <div className="view-form"><ViewReservation/></div>
-  </div>
-</div>
+    <div className="main-content">
+      <div className="view-container">
+        <h2 className="view-title">View Reservation</h2>
+        <div className="view-form">
+          <ViewReservation />
+        </div>
+      </div>
+    </div>
   );
 }
 

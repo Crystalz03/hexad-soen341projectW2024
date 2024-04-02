@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./../style/style.css";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
-import SideMenu from "../components/SideMenu";
 import Navbar from "../components/NavBar";
 
 

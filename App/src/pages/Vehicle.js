@@ -1,12 +1,10 @@
-
 // import React, { useState, useEffect } from 'react';
 // import "./../style/style.css";
 // import Header from "./../components/Header";
 // import Footer from "./../components/Footer";
-    
+
 // function VehicleForm() {
 
-  
 //  /*fetch("http://localhost:9000/vehicles", {
 //             method: "POST",
 //             headers: {
@@ -21,25 +19,21 @@
 //             }),
 //           }).then(res => res.json())
 //           .then(data => {
-//             console.log("API Response:", data); //!!FOR DEBUGGING ONLY remove the log when done 
+//             console.log("API Response:", data); //!!FOR DEBUGGING ONLY remove the log when done
 //           })
-//           .catch(error => console.error(error));*/                                                                                                                                                                                                            
+//           .catch(error => console.error(error));*/
 
-    
-//     const [vehicles, setVehicles] = useState([]);      
+//     const [vehicles, setVehicles] = useState([]);
 
 //     const getVehicles = () => {
 //       fetch("http://localhost:9000/vehicles", {
-//         method: 'GET', 
+//         method: 'GET',
 //       })
 //         .then(data => data.json())
 //         .then(data => {console.log(data.vehicle[0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
 //         setVehicles(data.vehicle[0]);})
 //         .catch(error => console.error(error));
 //     }
-    
-    
-
 
 //     const [formData, setFormData] = useState({
 //       id: '0000000000',
@@ -50,14 +44,14 @@
 //       availability: '1',
 //     });
 
-//     const [apiResponse, setApiResponse] = useState(''); 
+//     const [apiResponse, setApiResponse] = useState('');
 
 //     const handleChange = (e) => {
 //       const { name, value } = e.target;
 //       setFormData({ ...formData, [name]: value });
-    
+
 //     };
-  
+
 //     const CallAPISet =  (e) => {
 //       console.log('Submitted Data:', formData);
 
@@ -68,7 +62,7 @@
 //             },
 //             body: JSON.stringify(formData),
 //           }).then(res => res.json()).then(data => {
-//             console.log("API Response:", data); 
+//             console.log("API Response:", data);
 //             setApiResponse(data); // Update state with the JSON response
 //           }).catch(error => console.error(error));
 
@@ -80,7 +74,7 @@
 //         price: 0,
 //         availability: '1',
 //       });
-      
+
 //       getVehicles();
 //     };
 
@@ -94,7 +88,6 @@
 //     const callAPI = async () => {
 //       try {
 
-
 //         const response = await fetch("http://localhost:9000/vehicles", {
 //           method: "POST",
 //           headers: {
@@ -103,13 +96,13 @@
 //           body: JSON.stringify(formData),
 //         });
 //         console.log(JSON.stringify(formData));
-  
+
 //         if (!response.ok) {
 //           throw new Error(
 //             "This email is already associated with an account. Please sign in."
 //           );
 //         }
-  
+
 //         navigate("/");
 //       } catch (error) {
 //         setError(error.message);
@@ -124,7 +117,7 @@
 
 //     return (
 //       <div>
-        
+
 //       <Header/>
 //       <aside className="nav sticky">
 //           <div className="company-name-nav all-caps">hexad</div>
@@ -159,7 +152,7 @@
 //           />
 //         </label>
 //         <br />
-  
+
 //         <label>
 //           Type:
 //           <input
@@ -171,7 +164,7 @@
 //           />
 //         </label>
 //         <br />
-  
+
 //         <label>
 //           Category:
 //           <input
@@ -183,7 +176,7 @@
 //           />
 //         </label>
 //         <br />
-  
+
 //         <label>
 //           Model:
 //           <input
@@ -195,7 +188,7 @@
 //           />
 //         </label>
 //         <br />
-  
+
 //         <label>
 //           Price:
 //           <input
@@ -222,7 +215,7 @@
 //       </form>
 
 //         </div>
-     
+
 //         <div>
 //       <Main vehicles={vehicles} />
 //     </div>
@@ -236,22 +229,21 @@
 // function BrowseVehicles() {
 //   const [vehicles, setVehicles] = useState([]);
 //   fetch("http://localhost:9000/vehicles", {
-//         method: 'GET', 
+//         method: 'GET',
 //       })
 //         .then(data => data.json())
 //         .then(data => {console.log(data.vehicle[0]); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
 //         setVehicles(data.vehicle[0]);})
 //         .catch(error => console.error(error));
 
-
 //  /* useEffect(() => {
 //     const callAPIGet = async () => {
 //       const response = await fetch("http://localhost:9000/vehicles", {
-//         method: 'GET', 
+//         method: 'GET',
 //       })
 //         .then(data => data.json())
 //         .then(data => {console.log(data.vehicle[0][0].ID); // always keep data.vehicle[0] this will return you an arrray with all the vehilce
-//           setApiResponse(data                              // data.vehicle[0] => array of vehicles -- data.vehicle[0][0] => 1st vehicle in the list -- data.vehicle[0][0].ID == ID 
+//           setApiResponse(data                              // data.vehicle[0] => array of vehicles -- data.vehicle[0][0] => 1st vehicle in the list -- data.vehicle[0][0].ID == ID
 //           )})
 //         .catch(error => console.error(error));
 
@@ -309,25 +301,20 @@
 //   );
 // }
 
-
-
 // export default VehicleForm;
 
-
-import React from 'react';
-import AdminSideMenu from '../components/AdminSideMenu';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import VehicleForm from '../components/VehicleForm';
+import React from "react";
+import Footer from "../components/Footer";
+import VehicleForm from "../components/VehicleForm";
+import Navbar from "../components/NavBar";
 
 export default function Vehicle() {
   return (
     <div>
-      <Header />
-      <AdminSideMenu />
+      <Navbar />
       <Main />
       <Footer />
-      </div>
+    </div>
   );
 }
 
@@ -339,7 +326,9 @@ function Main() {
           <div className="title-box">
             <div className="reservation-title">Create A New Vehicle</div>
           </div>
-          <div className="extra-content" style={{height:"400px"}}><VehicleForm /></div>
+          <div className="extra-content" style={{ height: "400px" }}>
+            <VehicleForm />
+          </div>
         </div>
       </div>
     </div>
