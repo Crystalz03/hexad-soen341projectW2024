@@ -1,15 +1,14 @@
 import React from "react";
 import SignUpFrom from "../components/SignUpForm";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
 import CRSideMenu from "../components/CRSideMenu";
+import Navbar from "../components/NavBar";
 
 export default function () {
   return (
     <div>
       {" "}
-      <Header />
-      <CRSideMenu />
+      <Navbar />
       <Main />
       <Footer />
     </div>

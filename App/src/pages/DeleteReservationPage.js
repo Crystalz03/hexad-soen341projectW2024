@@ -1,8 +1,6 @@
 import React from 'react';
 import DeleteReservation from '../components/DeleteReservation';
 import Footer from "../components/Footer";
-import Header from "../components/Header";
-import SideMenu from "../components/SideMenu";
 import Navbar from "../components/NavBar";
 import './../style/Cancel.css';
  
@@ -11,7 +9,6 @@ import './../style/Cancel.css';
       return (
         <div>
           <Navbar />
-          
           <Main />
           <Footer />
         </div>

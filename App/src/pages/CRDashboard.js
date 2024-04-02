@@ -1,14 +1,12 @@
 import React from 'react';
-import CRSideMenu from '../components/CRSideMenu';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Navbar from '../components/NavBar';
 import "../style/style.css";
 
 function CRDashboard() {
   return (
     <div>
-     <Header />
-     <CRSideMenu />
+     <Navbar />
      <Main />
      <Footer />
      

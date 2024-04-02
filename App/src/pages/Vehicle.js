@@ -7,11 +7,10 @@ import VehicleForm from '../components/VehicleForm';
 export default function Vehicle() {
   return (
     <div>
-      <Header />
-      <AdminSideMenu />
+      <Navbar />
       <Main />
       <Footer />
-      </div>
+    </div>
   );
 }
 
@@ -23,7 +22,9 @@ function Main() {
           <div className="title-box">
             <div className="reservation-title">Create A New Vehicle</div>
           </div>
-          <div className="extra-content" style={{height:"400px"}}><VehicleForm /></div>
+          <div className="extra-content" style={{ height: "400px" }}>
+            <VehicleForm />
+          </div>
         </div>
       </div>
     </div>
