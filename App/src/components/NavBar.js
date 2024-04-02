@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import SignInPopover from "../components/SignInPopover";
 import { useSelector } from "react-redux";
 import { getUser, getUserRole } from "./DisplayUserInfo";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 function Navbar() {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
@@ -12,6 +13,7 @@ function Navbar() {
   const [user, setUser] = useState(getUser());
   const [userType, setUserType]=useState('');
   const [signedIn, setSignedIn] = useState(false);
+  const navigate=useNavigate();
 
   useEffect(() => {
     const user = localStorage.getItem("user");
@@ -27,6 +29,13 @@ function Navbar() {
       setUserType(getUserRole(user.id)); // Use user.id directly
     }
   }, [user]);
+
+  const handleSignOut = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    navigate("/");
+
+  };
 
   const handleMouseEnterAccount = () => {
     setIsDropdownOpenAccount(true);
@@ -119,8 +128,8 @@ function Navbar() {
                 className={`dropdown-menu ${isDropdownOpenAccount ? 'show' : ''}`}
               >
                 {/* Dropdown content */}
-                <Link to="/MyAccountPage"><a className="dropdown-item">My Account</a></Link>
-                <a className="dropdown-item">Sign Out</a>
+                <Link to="/MyAccountPage" style={{textDecoration:"none"}}><a className="dropdown-item">My Account</a></Link>
+                <a className="dropdown-item" onClick={handleSignOut}>Sign Out</a>
               </div>
             </div>
           ) : (

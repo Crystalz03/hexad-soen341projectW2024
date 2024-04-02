@@ -1,7 +1,5 @@
 import React from "react";
-
 import BrowseVehicles from "../components/BrowseVehicles";
-
 import "./../style/style.css";
 import "./../style/BrowseVehicles.css";
 

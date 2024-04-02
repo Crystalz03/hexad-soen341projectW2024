@@ -1,7 +1,6 @@
 import React from 'react';
-import AdminSideMenu from '../components/AdminSideMenu';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Navbar from '../components/NavBar';
 import "../style/style.css";
 
 function Main() {
@@ -21,8 +20,7 @@ function Main() {
 function AdminDashboard() {
   return (
     <div>
-     <Header />
-     <AdminSideMenu />
+     <Navbar />
      <Main />
      <Footer />
      

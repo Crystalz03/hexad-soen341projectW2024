@@ -1,18 +1,17 @@
 import React from "react";
-import Header from '../components/Header';
-import AdminSideMenu from "../components/AdminSideMenu";
 import BrowseAccountsComponent from "../components/BrowseCustomerAccounts";
 import BrowseAdminAccounts from "../components/BrowseAdminAccounts";
 import BrowseCSRAccounts from "../components/BrowseCSRAccounts";
-
+import Navbar from "../components/NavBar";
+import Footer from "../components/Footer";
 import "./../style/style.css";
 
 export default function BrowseAccounts() {
     return (
         <div >
-          <Header />
-          <AdminSideMenu/>
+          <Navbar />
           <Main />
+          <Footer />
           </div>
       );
 }
@@ -34,4 +33,5 @@ function Main() {
         </div>
       </div>
     );
+    
   }

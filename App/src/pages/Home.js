@@ -24,7 +24,7 @@ function Main() {
       <div className="general-structure">
         <div className="main-content">
           <div className="title-box">
-            <div className="reservation-title">Start a Reservation or View/ Modify/ Cancel Reservation</div>
+            <div className="reservation-title">Start a Reservation</div>
           </div>
           <div className="reservation-box">
             <label className="reservation-label">

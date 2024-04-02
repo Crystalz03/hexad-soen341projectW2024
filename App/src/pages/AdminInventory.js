@@ -1,15 +1,12 @@
 import React from "react";
-import AdminSideMenu from "../components/AdminSideMenu";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
-
 import AdminInventoryVehicles from "../components/AdminInventoryVehicles";
+import Navbar from "../components/NavBar";
 
 function Inventory() {
   return (
     <div>
-      <Header />
-      <AdminSideMenu />
+      <Navbar />
       <AdminInventoryVehicles />
       <Footer />
     </div>
