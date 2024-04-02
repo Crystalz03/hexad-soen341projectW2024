@@ -75,7 +75,7 @@ export default function DeleteUser() {
 
   return (
     <div>
-      <button onClick={handleDeleteUser}>Delete Account</button>
+      <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} onClick={handleDeleteUser}>Delete Account</button>
       {error && <p>{error}</p>}
     </div>
   );

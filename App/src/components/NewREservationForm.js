@@ -185,9 +185,9 @@ function ReservationForm(props){
             <br/>
 
 
-                <button type='submit'>Continue</button>
+                <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type='submit'>Continue</button>
                     
-                <button onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
+                <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
         </form>
     </div>
     );

@@ -94,7 +94,7 @@ function AdminInventoryVehicles() {
                   <div>Price: {vehicle.Price}</div>
                   <div>Availability: {vehicle.Availability}</div>
                   <div>
-                    <button
+                    <button 
                       className="all-caps sign-in-btn btn-background-color reserve-btn"
                       onClick={() => deleteVehicle(vehicle.ID)}
                     >

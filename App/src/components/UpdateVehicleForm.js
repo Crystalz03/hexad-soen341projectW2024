@@ -200,7 +200,7 @@ function UpdateVehicleForm(props) {
           value={formData.damages}
           onChange={handleChange}
         />
-        <button make="submit">Submit</button>
+        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} make="submit">Submit</button>
       </form>
     </div>
   

@@ -157,7 +157,7 @@ function UpdateCustomer({ customer, onSubmit }) {
                     />
                     </div>
                 </div>
-                <button type="submit">Confirm</button>
+                <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Confirm</button>
             </form>
         </div>
     );

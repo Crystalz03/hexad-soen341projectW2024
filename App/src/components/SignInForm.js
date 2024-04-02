@@ -38,7 +38,7 @@ function SignInForm() {
       <label>Password</label>
       <input type="password" required value={password} onChange={(e)=>setPassword(e.target.value)}/>
       <br/>
-      <button type='submit'>{loading?'Loading...':'SignIn'}</button>
+      <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type='submit'>{loading?'Loading...':'SignIn'}</button>
     {error&&(<div>{error}</div>)}
     </form>
   </div>);

@@ -166,7 +166,7 @@ export function DisplayUserInfo() {
             </div>
           )}
           <DeleteUser />
-          <Link to="/UpdateUserInfo"><button>Update</button></Link>
+          <Link to="/UpdateUserInfo"><button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}}>Update</button></Link>
         </>
       ) : (
         <h1>Not signed in</h1>

@@ -68,6 +68,7 @@ function VehicleInspection({ vehicle, onSubmit }) {
                             checked={damages.includes("scratch")}
                             onChange={handleChange}
                         />
+                        {' '}
                         Scratch
                     </label>
                 </div>
@@ -79,10 +80,11 @@ function VehicleInspection({ vehicle, onSubmit }) {
                             checked={damages.includes("dent")}
                             onChange={handleChange}
                         />
+                        {' '}
                         Dent
                     </label>
                 </div>
-                <button type="submit">Confirm</button>
+                <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Confirm</button>
             </form>
             </div>
     );

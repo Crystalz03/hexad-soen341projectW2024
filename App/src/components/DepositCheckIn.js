@@ -62,7 +62,7 @@ function Deposit({ customer, onSubmit }) {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit">Pay</button>
+                <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Pay</button>
             </form>
         </div>
     );

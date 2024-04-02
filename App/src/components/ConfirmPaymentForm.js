@@ -290,7 +290,7 @@ function ConfirmPaymentForm(props){
                     placeholder='CVV' 
                     id='cvv'/><br/><br/>
 
-                <button type="submit" style={{display: "block", margin: "auto", backgroundColor :"#d6ffef"}}>Confirm Payment</button>
+                <button type="submit" className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white', display: "block", margin: "auto", backgroundColor :"#d6ffef"}}>Confirm Payment</button>
             </form>
         </div>
     );

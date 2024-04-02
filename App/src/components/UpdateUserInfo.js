@@ -317,7 +317,7 @@ export default function UpdateUserInfo() {
             />
           </div>
         )}
-        <button type="submit">Update</button>
+        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Update</button>
       </form>
     </div>
   );

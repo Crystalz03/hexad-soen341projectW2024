@@ -53,6 +53,7 @@ function SignInPopover() {
         ref={buttonRef}
         type="button"
         className="btn btn-primary"
+        style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}}
         onClick={togglePopover}
       >
         Sign In/Sign Up
