@@ -49,25 +49,7 @@
   --content-box-height: 120px;
   --footer-height: 100px;
 /*Browse Vehicles CSS*/
-.vehicle-grid {
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-  max-height:calc(100vh - var(--footer-height));
- }
- .vehicle-list{
-   display:frid;
-   grid-template-columns:repeat(2, 1fr);
-   gap:20px;
-   list-style:none;
- }
- 
- .vehicle-card {
-   border: 1px solid #ccc;
-   padding: 10px;
-   flex:1 0 30px;
- 
- }
+
  .reserve-btn {
    margin-top: 10px;
  }

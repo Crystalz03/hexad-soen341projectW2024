@@ -1,19 +1,7 @@
 import React from "react";
-import Navbar from "../components/NavBar";
-import Footer from "../components/Footer";
 import PaymentForm from "../components/PaymentForm";
 
-export default function Payment() {
-  return (
-    <div>
-      <Navbar />
-      <Main />
-      <Footer />
-    </div>
-  );
-}
-
-function Main() {
+function Payment() {
   return (
     <div className="main">
       <div className="general-structure">
@@ -29,3 +17,5 @@ function Main() {
     </div>
   );
 }
+
+export default Payment;

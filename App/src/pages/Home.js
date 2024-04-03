@@ -1,22 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./../style/style.css";
-import Footer from "../components/Footer";
-import Navbar from "../components/NavBar";
 
 
 
 function Home() {
-  return (
-    <div>
-      <Navbar />
-      <Main />
-      <Footer />
-    </div>
-  );
-}
-
-function Main() {
   return (
         <div className="main-content">
           <div className="title-box">

@@ -1,21 +1,7 @@
 import React from "react";
 import SignUpFrom from "../components/SignUpForm";
-import Footer from "../components/Footer";
-import CRSideMenu from "../components/CRSideMenu";
-import Navbar from "../components/NavBar";
 
-export default function () {
-  return (
-    <div>
-      {" "}
-      <Navbar />
-      <Main />
-      <Footer />
-    </div>
-  );
-}
-
-function Main() {
+function CreateUser() {
     return (
       <div className="main">
         <div className="general-structure">
@@ -29,3 +15,5 @@ function Main() {
       </div>
     );
   }
+
+export default CreateUser;

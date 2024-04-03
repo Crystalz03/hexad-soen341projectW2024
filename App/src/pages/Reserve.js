@@ -1,9 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import "./../style/style.css";
-import Footer from "../components/Footer";
 import ReservationForm from "../components/NewReservationForm";
-import Navbar from "../components/NavBar";
 
 function Reserve() {
   const params = useParams();
@@ -11,7 +9,6 @@ function Reserve() {
 
   return (
     <div>
-      <Navbar />
       <div className="main">
         <div className="general-structure">
           <div className="main-content">
@@ -42,7 +39,6 @@ function Reserve() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

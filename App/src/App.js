@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import BrowseAccounts from "./pages/BrowseAccounts";
 import Vehicle from "./pages/Vehicle";
@@ -44,6 +46,7 @@ function App() {
   return (
     <Router>
       <div className="app">
+      <NavBar/>
       
         <Routes>
           <Route path="/" exact element={<Home />} />
@@ -73,8 +76,10 @@ function App() {
           <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} />
           <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} />
         </Routes>
+        <Footer/>
       </div>
     </Router>
+    
   );
 }
 

@@ -1,19 +1,7 @@
 import React from "react";
 import UpdateUserInfo from "../components/UpdateUserInfo";
-import Footer from "../components/Footer";
-import Navbar from "../components/NavBar";
 
-export default function UpdateUserInfoPage() {
-  return (
-    <div>
-      <Navbar />
-      <Footer />
-      <Main />
-    </div>
-  );
-}
-
-function Main() {
+function UpdateUserInfoPage() {
   return (
     <div className="main">
       <div className="general-structure">
@@ -35,3 +23,5 @@ function Main() {
     </div>
   );
 }
+
+export default UpdateUserInfoPage;

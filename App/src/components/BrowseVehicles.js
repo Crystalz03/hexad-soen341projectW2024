@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "./Header";
-import SideMenu from "./SideMenu";
-import Footer from "./Footer";
 import "./../style/style.css";
 import "./../style/BrowseVehicles.css";
 import Navbar from "./NavBar";

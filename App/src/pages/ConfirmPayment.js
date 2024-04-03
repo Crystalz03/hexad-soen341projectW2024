@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import Footer from "../components/Footer";
 import ConfirmPaymentForm from "../components/ConfirmPaymentForm";
-import Navbar from "../components/NavBar";
 
 function ConfirmPayment() {
   const params = useParams();
@@ -20,7 +18,6 @@ function ConfirmPayment() {
 
   return (
     <div>
-      <Navbar />
       <div className="main">
         <div className="general-structure">
           <div className="main-content">
@@ -51,7 +48,6 @@ function ConfirmPayment() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -1,9 +1,6 @@
 import React from "react";
-import AdminSideMenu from "../components/AdminSideMenu";
-import Footer from "../components/Footer";
 import UpdateVehicleForm from "../components/UpdateVehicleForm";
 import { useParams } from "react-router-dom";
-import Navbar from "../components/NavBar";
 
 function UpdateVehicle() {
   const params = useParams();
@@ -11,8 +8,6 @@ function UpdateVehicle() {
 
   return (
     <div>
-      <Navbar />
-      <Footer />
       <div className="main">
         <div className="general-structure">
           <div className="main-content">

@@ -59,7 +59,6 @@ function AdminInventoryVehicles() {
 
   return (
     <div>
-      <div className="main-content">
         <h2 className="reservation-title">Vehicle Inventory</h2>
         <div>
           <label htmlFor="typeFilter">Filter by Type:</label>
@@ -109,7 +108,6 @@ function AdminInventoryVehicles() {
               ))
           )}
         </div>
-      </div>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import Header from "../components/Header";
-import SideMenu from "../components/SideMenu";
+
 import ConfirmBookingComp from "../components/ConfirmBookingComp";
 import Navbar from "../components/NavBar";
 
@@ -21,7 +20,6 @@ function ConfirmBooking() {
 
   return (
     <div>
-      <Navbar />
       <div className="main">
         <div className="general-structure">
           <div className="main-content">

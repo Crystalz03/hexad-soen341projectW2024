@@ -2,21 +2,9 @@ import React from "react";
 import BrowseAccountsComponent from "../components/BrowseCustomerAccounts";
 import BrowseAdminAccounts from "../components/BrowseAdminAccounts";
 import BrowseCSRAccounts from "../components/BrowseCSRAccounts";
-import Navbar from "../components/NavBar";
-import Footer from "../components/Footer";
 import "./../style/style.css";
 
-export default function BrowseAccounts() {
-    return (
-        <div >
-          <Navbar />
-          <Main />
-          <Footer />
-          </div>
-      );
-}
-
-function Main() {
+function BrowseAccounts() {
     return (
       <div className="accounts">
         <div >
@@ -35,3 +23,5 @@ function Main() {
     );
     
   }
+
+  export default BrowseAccounts; 

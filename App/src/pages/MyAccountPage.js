@@ -1,20 +1,8 @@
 import React from "react";
-import Footer from "../components/Footer";
 import "../style/style.css";
 import DisplayUserInfo from "../components/DisplayUserInfo";
-import Navbar from "../components/NavBar";
 
-export default function MyAccountPage() {
-  return (
-    <div>
-      <Navbar />
-      <Main />
-      <Footer/>
-    </div>
-  );
-}
-
-function Main() {
+function MyAccountPage() {
   return (
     <div className="main">
     <div className="general-structure">
@@ -33,3 +21,5 @@ function Main() {
   </div>
   );
 }
+
+export default MyAccountPage

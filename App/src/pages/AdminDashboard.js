@@ -1,9 +1,7 @@
 import React from 'react';
-import Footer from '../components/Footer';
-import Navbar from '../components/NavBar';
 import "../style/style.css";
 
-function Main() {
+function AdminDashboard() {
   return (
     <div className="main">
       <div className="general-structure">
@@ -17,17 +15,5 @@ function Main() {
     </div>
   );
 }
-function AdminDashboard() {
-  return (
-    <div>
-     <Navbar />
-     <Main />
-     <Footer />
-     
-    </div>
-    
-  );
-}
-
 export default AdminDashboard;
 
