@@ -57,49 +57,79 @@ function VehicleForm() {
   };
 
   return (
-    <div>
-      <h2>Add New Vehicle</h2>
-      <form onSubmit={handleSubmit} className="add-vehicle-form">
-        <label>ID:</label>
-        <input
-          type="text"
-          name="id"
-          value={formData.id}
-          onChange={handleChange}
-          required
-        />
-        <label>Type:</label>
-        <input
-          type="text"
-          name="type"
-          value={formData.type}
-          onChange={handleChange}
-          required
-        />
-        <label>Category:</label>
-        <input
-          type="text"
-          name="category"
-          value={formData.category}
-          onChange={handleChange}
-          required
-        />
-        <label>Model:</label>
-        <input
-          type="text"
-          name="model"
-          value={formData.model}
-          onChange={handleChange}
-          required
-        />
-        <label>Price:</label>
-        <input
-          type="number"
-          name="price"
-          value={formData.price}
-          onChange={handleChange}
-          required
-        />
+    <div style={{width: '85%'}}>
+      <form onSubmit={handleSubmit} className="base-form">
+      <div >
+          <label>
+            ID:
+          </label>
+          <div>
+            <input
+              type="text"
+              name="id"
+              value={formData.id}
+              onChange={handleChange}
+              required
+            />
+            </div>
+      </div>
+      <div>
+          <label>
+            Type:
+          </label>
+          <div>
+            <input
+            type="text"
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+            required
+          />
+            </div>
+      </div>
+      <div>
+          <label>
+            Category:
+          </label>
+          <div >
+            <input
+            type="text"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            required
+          />
+            </div>
+      </div>      
+      <div >
+          <label >
+            Model:
+          </label>
+          <div >
+            <input
+            type="text"
+            name="model"
+            value={formData.model}
+            onChange={handleChange}
+            required
+          />
+            </div>
+      </div>
+      <div>
+          <label>
+            Price:
+          </label>
+          <div>
+            <input
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+            required
+          />
+            </div>
+      </div>
+        
         {/* <label>Availability:</label>
         <select
           name="availability"
@@ -110,8 +140,10 @@ function VehicleForm() {
           <option value="1">Available</option>
           <option value="0">Not Available</option>
         </select> */}
-
-        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Submit</button>
+        <br/><br/>
+        <div>
+        <button className="all-caps btn-background-color check-availability-button" type="submit">Submit</button>
+        </div>
       </form>
       {error && <p className="error">{error}</p>}
     </div>

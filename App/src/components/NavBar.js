@@ -9,6 +9,7 @@ function Navbar() {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const [isDropdownOpenAccount, setIsDropdownOpenAccount] = useState(false);
   const [isDropdownOpenBrowse, setIsDropdownOpenBrowse] = useState(false);
+  const [isDropdownOpenReservation, setIsDropdownOpenReservation] = useState(false);
   const [user, setUser] = useState(getUser());
   const [userType, setUserType] = useState('');
   const [signedIn, setSignedIn] = useState(false);
@@ -49,6 +50,14 @@ function Navbar() {
 
   const handleMouseLeaveBrowse = () => {
     setIsDropdownOpenBrowse(false);
+  };
+
+  const handleMouseEnterReservation = () => {
+    setIsDropdownOpenReservation(true);
+  };
+
+  const handleMouseLeaveReservation = () => {
+    setIsDropdownOpenReservation(false);
   };
 
   return (
@@ -100,10 +109,32 @@ function Navbar() {
                 Find A Branch
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Contact Us
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="/"
+                id="navbarDropdownReservation"
+                role="button"
+                onMouseEnter={handleMouseEnterReservation}
+                onMouseLeave={handleMouseLeaveReservation}
+              >
+                Reservations
               </a>
+              <div
+                className={`dropdown-menu ${isDropdownOpenReservation ? 'show' : ''}`}
+                onMouseEnter={handleMouseEnterReservation}
+                onMouseLeave={handleMouseLeaveReservation}
+              >
+                <a className="dropdown-item" href="/View">
+                  View
+                </a>
+                <a className="dropdown-item" href="/Modify">
+                  Modify
+                </a>
+                <a className="dropdown-item" href="/DeleteReservationPage">
+                  Cancel
+                </a>
+              </div>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/Reviews">

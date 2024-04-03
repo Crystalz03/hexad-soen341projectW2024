@@ -80,7 +80,6 @@ function SignupForm() {
     <form onSubmit={handleSubmit} action="Sign Up">
       <div>
         {error && <p className="error">{error}</p>}{" "}
-        {/* Display error message */}
         <div className="split-input">
           <input
             type="text"
@@ -89,6 +88,7 @@ function SignupForm() {
             required={true}
             placeholder="First name"
             onChange={handleChange}
+            style={{height: '50%'}}
           ></input>
           <input
             type="text"
@@ -97,9 +97,11 @@ function SignupForm() {
             required={true}
             placeholder="Last name"
             onChange={handleChange}
+            style={{height: '50%'}}
           ></input>
         </div>
         <br />
+        <div>
         <input
           type="email"
           id="email"
@@ -107,8 +109,10 @@ function SignupForm() {
           required={true}
           placeholder="E-mail"
           onChange={handleChange}
+          style={{height: '50%'}}
         ></input>
-        <br />
+        </div>
+        <div>
         <input
           type="text"
           id="location"
@@ -117,7 +121,8 @@ function SignupForm() {
           placeholder="Location"
           onChange={handleChange}
         ></input>
-        <br />
+       </div>
+      <div>
         <input
           type="password"
           id="password"
@@ -126,7 +131,8 @@ function SignupForm() {
           placeholder="Password"
           onChange={handleChange}
         ></input>
-        <br />
+        </div>
+        <div>
         <input
           type="text"
           id="address"
@@ -135,7 +141,8 @@ function SignupForm() {
           placeholder="Address"
           onChange={handleChange}
         ></input>
-        <br />
+        </div>
+        <div>
         <input
           type="text"
           id="licenseNumber"
@@ -144,8 +151,7 @@ function SignupForm() {
           placeholder="License Number"
           onChange={handleChange}
         ></input>
-        <br />
-        <br />
+       </div>
         <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Sign Up</button>
       </div>
     </form>

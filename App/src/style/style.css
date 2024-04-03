@@ -79,6 +79,8 @@ header {
   align-items: center;
   top: 0;
 }
+
+
 .company-name-header {
   font-size: 20px;
 }
@@ -203,11 +205,48 @@ header {
 
 /* Main Styles*/
 .main-content {
+  position: relative;
   display: flex;
   align-items: center; /* Vertical centering */
   justify-content: center; /* Horizontal centering */
   min-height: calc(100vh - 10em); 
   max-height: calc(100vh- 10em);
+}
+
+.main-content-container{
+  position: relative;
+}
+
+.base-form{
+  text-transform: uppercase;
+  div{
+    height: var(--top-box-height);
+    input {
+      border-style: none;
+      outline: none;
+      font-size: var(--m-size);
+      box-sizing: border-box;
+      height: var(--input-box-height);
+      width: 100%;
+      background-color: var(--second-white);
+    }
+    input::placeholder{
+      color: var(--tertiary-text-color);
+      font-size: var(--m-size);
+    }
+  }
+
+  label{
+    font-size: var(--xs-size);
+    font-weight: var(--bold);
+    color: black;
+  }
+}
+
+.form-label {
+  font-size: var(--xs-size);
+  font-weight: var(--bold);
+  color: black;
 }
 
 
@@ -314,15 +353,12 @@ header {
 }
 
 
-
-
-.title-accounts {
+.title-accounts{
   color: #ea4c89;
   font-weight: var(--bold);
   font-style: italic;
   font-size: var(--xxl-size);
-  margin-left: 200px;
-  margin-bottom: 10px;
+
 }
 
 .account-card-container {
@@ -337,13 +373,12 @@ header {
   border: 1px solid black;
   color: black;
   padding: 10px;
-  /* Additional styling for each customer card */
 }
 
 .account-content {
   color: black;
   width: var(--main-content-width);
-  margin-left: 200px;
+
 }
 
 .accounts-title {
@@ -393,12 +428,10 @@ label {
   text-align: left;
   color: var(--primary-text-color);
   display: inline-block;
-  margin: 0px 0px;
-  width: 550px;
   padding: 25px; 
-  div {
+  input {
     position: relative;
-    margin: 0 0 1.5em;
+    margin: 0 0 1em;
   }
   label {
     color: black;

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./../style/style.css";
 import "./../style/BrowseVehicles.css";
-import Navbar from "./NavBar";
 import HorizontalCard from "./HorizontalCard";
 
 function BrowseVehicles() {
@@ -48,7 +47,6 @@ function BrowseVehicles() {
 
   return (
     <div>
-      <Navbar />
       <br />
       <br />
       <div style={{ marginLeft: "140px" }}>

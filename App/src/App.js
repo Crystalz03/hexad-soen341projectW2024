@@ -49,10 +49,10 @@ function App() {
       <NavBar/>
       
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          <Route path="/" exact element={<Home />} /> {/* missing the implementation */}
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="SignUp" exact element={<SignUp />} />
-          <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} />
+          <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} /> {/* filtering */}
           <Route path="/Vehicle" exact element={<Vehicle />} />
           <Route path="/Inventory" exact element={<AdminInventory />} />
           <Route path="/Reserve/:vehicleID" exact element={<Reserve />} />

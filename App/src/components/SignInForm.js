@@ -63,14 +63,16 @@ const handleSignIn = (e) => {
 };
 
   return (
-    <div>
-      <form onSubmit={handleSignIn}>
+      <form onSubmit={handleSignIn} action="Sign In">
+      <div>
+      {error && <p className="error">{error}</p>}{" "}
         <label>Username</label>
         <input
           type="text"
           required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          style={{height: '50%'}}
         />
         <br />
         <label>Password</label>
@@ -79,13 +81,13 @@ const handleSignIn = (e) => {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          style={{height: '50%'}}
         />
         <br/>
         <br/>
         <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">{loading ? "Loading..." : "Sign In"}</button>
-        {error && <div>{error}</div>}
+        </div>
       </form>
-    </div>
   );
 }
 

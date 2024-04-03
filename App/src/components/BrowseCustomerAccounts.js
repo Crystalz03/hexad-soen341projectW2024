@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./../style/style.css";
-import "./../style/accountsView.css";
 
 function BrowseAccountsComponent() {
     const [apiResponse, setApiResponse] = useState(null); 

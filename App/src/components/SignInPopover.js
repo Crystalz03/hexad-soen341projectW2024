@@ -26,7 +26,7 @@ function SignInPopover() {
 
     const handleClickOutside = (event) => {
       if (!popover.contains(event.target) && !button.contains(event.target)) {
-        popoverRef.current.style.display = 'none';
+        popover.style.display = 'none';
       }
     };
 
@@ -65,12 +65,13 @@ function SignInPopover() {
         Sign In/Sign Up
       </button>
       <div ref={popoverRef} className="popover" style={{ display: 'none' }}>
+        {/* Content of the popover */}
         <div className="popover-body">
           {showSignUp ? (
             <div>
               <h3>Sign Up</h3>
               <SignupForm />
-              <p>
+<p>
                 Already have an account?{' '}
                 <button type="button" className="btn btn-link" onClick={openSignIn}>
                   Sign In
@@ -80,6 +81,7 @@ function SignInPopover() {
           ) : (
             <div>
               <h3>Sign In</h3>
+              {/* Include your Sign In component here */}
               <SignInForm />
               <p>
                 Don't have an account?{' '}
