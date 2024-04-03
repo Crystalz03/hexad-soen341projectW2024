@@ -1,4 +1,5 @@
 import React from "react";
+
 import NavBar from "../components/NavBar";
 import BranchFinder from "../components/FindBranch";
 import Footer from "../components/Footer";
@@ -9,9 +10,18 @@ function Branches() {
   return (
     <div>
       <NavBar/>
-      <BranchFinder />
+      <Main />
       <Footer/>
     </div>
+  );
+}
+
+function Main() {
+  return (
+        <div className="main-content" >
+            <BranchFinder />
+
+        </div>
   );
 }
 export default Branches;

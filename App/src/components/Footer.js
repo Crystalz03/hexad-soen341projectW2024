@@ -1,10 +1,14 @@
 // Footer.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+import imageSrc from './../../public/assets/images/footer_world.png';
 
 function Footer() {
   return (
-    <footer className="bg-light text-dark py-4">
+    <footer>
+      <br/><br/>
+      {/*<img src={imageSrc} alt="Footer Image" style={{ width: '100%', maxHeight: '15em', objectFit: 'cover' }} /> */}
+    <div className="bg-light text-dark py-4" >
       <div className="container">
         <div className="row">
           <div className="col-md-3">
@@ -35,6 +39,7 @@ function Footer() {
             </address>
           </div>
         </div>
+      </div>
       </div>
     </footer>
   );

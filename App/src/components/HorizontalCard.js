@@ -15,7 +15,7 @@ function HorizontalCard({ imageUrl, title, description, buttonText }) {
             <div className="card-body" style={{ height: "100%" }}> {/* Enforce fixed height for the card body */}
               <h5 className="card-title">{title}</h5>
               <p className="card-text">{description}</p>
-              <a href="#" className="btn btn-primary custom-btn-primary">
+              <a href="#" className="btn btn-primary custom-btn-primary" style={{ backgroundColor: '#ea4c89', border: '1px solid #ea4c89', color: 'white' }}> 
                 {buttonText}
               </a>
             </div>

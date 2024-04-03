@@ -105,9 +105,8 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   };
  
   return (
-    <div className="main">
-    <div className="general-structure">
-      <div className="main-content">
+
+      <div>
       <div className="title-box">
             <div className="reservation-title">Find Nearest Branch</div>
       </div>
@@ -149,8 +148,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
                     >Explore</button>
         </div>
       </div>
-    </div>
-    </div>
+
   );
 };
 

@@ -203,16 +203,14 @@ header {
 
 /* Main Styles*/
 .main-content {
-  margin-left: var(--nav-width);
-  min-height: calc(100vh - 15em); 
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: var(--main-content-width);
-  padding: 0 50px;
-  max-height: calc(100vh - 230px); 
-
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+  min-height: calc(100vh - 10em); 
+  max-height: 100vh;
 }
+
+
 
 .check-in-title {
   color: var(--primary-text-color);
@@ -314,20 +312,7 @@ header {
   height: 200px;
   margin-bottom: 100px;
 }
-.footer {
-  background-color: var(--secondary-text-color);
-  color: var(--white-background-color);
-  height: var(--footer-height);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px; /* Add padding for better spacing */
-  box-sizing: border-box; /* Include padding in width calculation */
-  display: flex;
-  justify-content: space-between; /* Spread items evenly across */
-  align-items: center; /* Vertically center items */
-}
+
 
 
 
