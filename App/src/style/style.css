@@ -204,7 +204,7 @@ header {
 /* Main Styles*/
 .main-content {
   margin-left: var(--nav-width);
-  /** margin-top: var(--header-height);**/
+  min-height: calc(100vh - 15em); 
   display: flex;
   flex-direction: column;
   gap: 20px;

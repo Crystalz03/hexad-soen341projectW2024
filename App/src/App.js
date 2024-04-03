@@ -13,8 +13,8 @@ import DeleteReservationPage from "./pages/DeleteReservationPage";
 import MyAccountPage from "./pages/MyAccountPage";
 import CreateAdminAccount from "./pages/CreateAdminAccount";
 import Reviews from"./pages/Reviews";
-
-
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import AdminInventory from "./pages/AdminInventory";
 import Modify from "./pages/Modify";
 import Branches from "./pages/Branches";
@@ -47,6 +47,8 @@ function App() {
       
         <Routes>
           <Route path="/" exact element={<Home />} />
+          <Route path="/SignIn" exact element={<SignIn />} />
+          <Route path="SignUp" exact element={<SignUp />} />
           <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} />
           <Route path="/Vehicle" exact element={<Vehicle />} />
           <Route path="/Inventory" exact element={<AdminInventory />} />

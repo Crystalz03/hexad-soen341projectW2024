@@ -16,12 +16,10 @@ function checkIn() {
 
 function Main() {
   return (
-      <div className="general-structure">
         <div className="main-content" >
             <div className="check-in-title">Customer Check-in</div>
             <CheckInForm />
         </div>
-      </div>
   );
 }
 

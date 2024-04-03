@@ -16,12 +16,10 @@ function ReviewPage() {
 
 function Main() {
   return (
-    <div className="general-structure">
       <div className="main-content">
         <div className="check-in-title">Leave a Review</div>
         <ReviewForm />
       </div>
-    </div>
   );
 }
 

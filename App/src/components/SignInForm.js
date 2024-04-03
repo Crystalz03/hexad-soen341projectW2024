@@ -80,8 +80,9 @@ const handleSignIn = (e) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <br />
-        <button type="submit">{loading ? "Loading..." : "SignIn"}</button>
+        <br/>
+        <br/>
+        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">{loading ? "Loading..." : "Sign In"}</button>
         {error && <div>{error}</div>}
       </form>
     </div>

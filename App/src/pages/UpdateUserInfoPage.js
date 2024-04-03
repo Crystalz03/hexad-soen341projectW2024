@@ -29,21 +29,6 @@ function Main() {
             style={{ height: "300px", overflow: "scroll" }}
           >
             <UpdateUserInfo />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
           </div>
         </div>
       </div>
