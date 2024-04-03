@@ -4,16 +4,16 @@ import SignInForm from './SignInForm';
 import SignupForm from './SignUpForm';
 
 function SignInPopover() {
-  const buttonRef = useRef();
-  const popoverRef = useRef();
+  const buttonRef = useRef(null);
+  const popoverRef = useRef(null);
   const [showSignUp, setShowSignUp] = useState(false);
 
   useEffect(() => {
     const button = buttonRef.current;
     const popover = popoverRef.current;
 
-    createPopper(button, popover, {
-      placement: 'bottom',
+    const popperInstance = createPopper(button, popover, {
+      placement: 'bottom-end',
       modifiers: [
         {
           name: 'offset',
@@ -26,7 +26,7 @@ function SignInPopover() {
 
     const handleClickOutside = (event) => {
       if (!popover.contains(event.target) && !button.contains(event.target)) {
-        popover.style.display = 'none';
+        popoverRef.current.style.display = 'none';
       }
     };
 
@@ -43,8 +43,14 @@ function SignInPopover() {
       : (popoverRef.current.style.display = 'none');
   };
 
-  const toggleSignUp = () => {
-    setShowSignUp(!showSignUp);
+  const openSignUp = () => {
+    setShowSignUp(true);
+    togglePopover();
+  };
+
+  const openSignIn = () => {
+    setShowSignUp(false); // Set showSignUp to false to switch content back to sign-in form
+    togglePopover();
   };
 
   return (
@@ -53,29 +59,33 @@ function SignInPopover() {
         ref={buttonRef}
         type="button"
         className="btn btn-primary"
-        style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}}
+        style={{ backgroundColor: '#ea4c89', borderColor: '#ea4c89', color: 'white' }}
         onClick={togglePopover}
       >
         Sign In/Sign Up
       </button>
       <div ref={popoverRef} className="popover" style={{ display: 'none' }}>
-        {/* Content of the popover */}
         <div className="popover-body">
           {showSignUp ? (
             <div>
               <h3>Sign Up</h3>
               <SignupForm />
+              <p>
+                Already have an account?{' '}
+                <button type="button" className="btn btn-link" onClick={openSignIn}>
+                  Sign In
+                </button>
+              </p>
             </div>
           ) : (
             <div>
               <h3>Sign In</h3>
-              {/* Include your Sign In component here */}
               <SignInForm />
               <p>
                 Don't have an account?{' '}
-                <span className="link" onClick={toggleSignUp}>
+                <button type="button" className="btn btn-link" onClick={openSignUp}>
                   Sign Up
-                </span>
+                </button>
               </p>
             </div>
           )}
