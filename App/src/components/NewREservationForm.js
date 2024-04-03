@@ -121,15 +121,18 @@ function ReservationForm(props){
   return (
     <div>
         <form onSubmit={handleSubmit}>
+          <div>
             <label>Email:</label>
+            <div>
             <input 
                 name="email"
                 required={true}
                 onChange={handleChange} 
                 type='text' 
                 placeholder='Email Address' 
-                id='email'/><br/>
-
+                id='email'/>
+                </div>
+            </div>
             <label>Pick-up date of your reservation:</label>
             <input 
                 name="pickUpDate"

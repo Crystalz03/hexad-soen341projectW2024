@@ -4,21 +4,14 @@ import "../style/style.css";
 
 function AdminAccount() {
   return (
-    <div className="main">
-      <div className="general-structure">
         <div className="main-content">
           <div className="title-box">
-            <div className="reservation-title">
+            <div className="check-in-title">
               Create Admin Account 
             </div>
           </div>
-          <div className="extra-content">
-            {" "}
             <CreateAdminAccount />
-          </div>
         </div>
-      </div>
-    </div>
   );
 }
 

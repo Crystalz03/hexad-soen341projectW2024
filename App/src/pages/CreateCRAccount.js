@@ -4,21 +4,14 @@ import "../style/style.css";
 
 function CreateCRAccount() {
   return (
-    <div className="main">
-      <div className="general-structure">
         <div className="main-content">
           <div className="title-box">
-            <div className="reservation-title">
+            <div className="check-in-title">
               Create Admin Account 
             </div>
           </div>
-          <div className="extra-content">
-            {" "}
             <CRAccount />
-          </div>
         </div>
-      </div>
-    </div>
   );
 }
 export default CreateCRAccount;

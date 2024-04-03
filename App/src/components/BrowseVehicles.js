@@ -86,7 +86,7 @@ function BrowseVehicles() {
         <div className="general-structure">
           <div className="main-content">
             <div className="title-box">
-              <div className="reservation-title">Browse Vehicles</div>
+              <h2 className="check-in-title">Browse Vehicles</h2>
               <div>
                 <label htmlFor="typeFilter">Filter by Make:</label>
                 <select

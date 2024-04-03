@@ -8,38 +8,12 @@ function Reserve() {
   const vehicleID = params.vehicleID;
 
   return (
-    <div>
-      <div className="main">
-        <div className="general-structure">
           <div className="main-content">
             <div className="title-box">
-              <div className="reservation-title">Start a Reservation</div>
-              <div className="car-image">
-                <img src="" alt="Car Image" className="car-image" />
-              </div>
+              <div className="check-in-title">Start a Reservation</div>
             </div>
-            <div className="extra-content" style={{ height: "300px" }}>
               <ReservationForm vehicleID={vehicleID} />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
           </div>
-        </div>
-      </div>
-    </div>
   );
 }
 

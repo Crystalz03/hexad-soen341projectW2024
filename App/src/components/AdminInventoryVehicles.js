@@ -59,7 +59,6 @@ function AdminInventoryVehicles() {
 
   return (
     <div>
-        <h2 className="reservation-title">Vehicle Inventory</h2>
         <div>
           <label htmlFor="typeFilter">Filter by Type:</label>
           <select
@@ -74,6 +73,7 @@ function AdminInventoryVehicles() {
             <option value="Truck">Truck</option>
           </select>
         </div>
+        <br/>
         <div className="vehicle-grid">
           {loading ? (
             <div>Loading...</div>
@@ -96,12 +96,14 @@ function AdminInventoryVehicles() {
                     <button 
                       className="all-caps sign-in-btn btn-background-color reserve-btn"
                       onClick={() => deleteVehicle(vehicle.ID)}
+                      style={{marginRight: '0.3em'}}
                     >
                       Delete Vehicle
                     </button>
                     <button
                       className="all-caps sign-in-btn btn-background-color reserve-btn"
                       onClick={() => navigate(`/UpdateVehicle/${vehicle.ID}`)}
+                      style={{marginLeft: '0.3em'}}
                     >Update Vehicle</button>
                   </div>
                 </div>

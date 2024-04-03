@@ -78,7 +78,7 @@ function UpdateCustomer({ customer, onSubmit }) {
     };
   
     return (
-        <div>
+        <span>
             <h2>Confirm Customer Information</h2>
             {error && <p className="error">{error}</p>}
             <form onSubmit={handleSubmit}>
@@ -134,11 +134,11 @@ function UpdateCustomer({ customer, onSubmit }) {
                     <input
                         type="text"
                         name="licenseNumber"
-                        value                             ={updatedCustomer.licenseNumber || ""}
+                        value={updatedCustomer.licenseNumber || ""}
                         onChange={handleChange}
                     />
                 </div>
-                <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+                <div  style={{ display: 'flex', marginTop: '0px', marginBottom: '0px'}}>
                     <div style={{ flex: 1, marginRight: '10px' }}>
                     <label>Credit Card:</label>
                     <input
@@ -156,10 +156,10 @@ function UpdateCustomer({ customer, onSubmit }) {
                         onChange={handleChange}
                     />
                     </div>
-                </div>
-                <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Confirm</button>
+                </div> <br/>
+                <button type="submit">Confirm</button>
             </form>
-        </div>
+        </span>
     );
 }
 

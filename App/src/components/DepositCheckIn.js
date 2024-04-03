@@ -46,7 +46,8 @@ function Deposit({ customer, onSubmit }) {
             <h2>Payment</h2>
             {error && <p className="error">{error}</p>}
             <form onSubmit={handleSubmit}>
-                <div>
+                <div style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+                <div style={{ flex: 1, marginRight: '10px' }}>
                     <label>Credit Card:</label>
                     <input
                         type="text"
@@ -54,6 +55,8 @@ function Deposit({ customer, onSubmit }) {
                         value={updatedCustomer.creditCard || ""}
                         onChange={handleChange}
                     />
+                </div>
+                <div style={{ flex: 1, marginRight: '10px' }}>
                     <label>CVV:</label>
                     <input
                         type="text"
@@ -61,8 +64,9 @@ function Deposit({ customer, onSubmit }) {
                         value={updatedCustomer.cvv || ""}
                         onChange={handleChange}
                     />
-                </div>
-                <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Pay</button>
+                    </div>
+                </div> <br/>
+                <button type="submit">Pay</button>
             </form>
         </div>
     );

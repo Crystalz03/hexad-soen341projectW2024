@@ -179,7 +179,7 @@ header {
   border-style: none;
   color: var(--white-background-color);
   font-weight: var(--bold);
-  font-size: var(--xs-size);
+  font-size: var(--m-size);
 }
 .sign-in-btn {
   width: 130px;
@@ -203,15 +203,17 @@ header {
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
 }
 
-/* Main Styles*/
 .main-content {
   position: relative;
   display: flex;
-  align-items: center; /* Vertical centering */
-  justify-content: center; /* Horizontal centering */
+  align-items: center; 
+  justify-content: center; 
   min-height: calc(100vh - 10em); 
   max-height: calc(100vh- 10em);
+  width: 90%;
+
 }
+
 
 .main-content-container{
   position: relative;
@@ -221,6 +223,7 @@ header {
   text-transform: uppercase;
   div{
     height: var(--top-box-height);
+    margin-top: 1em;
     input {
       border-style: none;
       outline: none;
@@ -229,6 +232,7 @@ header {
       height: var(--input-box-height);
       width: 100%;
       background-color: var(--second-white);
+      padding-left: 1em;
     }
     input::placeholder{
       color: var(--tertiary-text-color);
@@ -237,14 +241,28 @@ header {
   }
 
   label{
-    font-size: var(--xs-size);
+    font-size: var(--m-size);
     font-weight: var(--bold);
     color: black;
+  }
+  button{
+    background-color: var(--primary-text-color);
+    box-shadow: var(--box-shadow);
+    height: 45px;
+    border-style: none;
+    color: var(--white-background-color);
+    font-weight: var(--bold);
+    font-size: var(--m-size);
+    width: var(--check-availability-button-width);
+    height: var(--check-availability-button-height);
+    transition: 0.3s;
+    margin-right: 0.5em;
+
   }
 }
 
 .form-label {
-  font-size: var(--xs-size);
+  font-size: var(--m-size);
   font-weight: var(--bold);
   color: black;
 }
@@ -292,7 +310,7 @@ header {
 }
 .reservation-label {
   color: var(--primary-text-color);
-  font-size: var(--s-size);
+  font-size: var(--m-size);
 }
 .top-box {
   height: var(--top-box-height);
@@ -325,7 +343,7 @@ header {
 }
 /*Input Boxes*/
 .location-title {
-  font-size: var(--xs-size);
+  font-size: var(--m-size);
   font-weight: var(--bold);
   color: black;
 }
@@ -518,7 +536,7 @@ label {
   display: inline-block;
   position: relative;
   width: 1.3em;
-  font-size: 20px;
+  font-size: 25px;
 }
 .rating > span:hover:before,
 .rating > span:hover ~ span:before,
