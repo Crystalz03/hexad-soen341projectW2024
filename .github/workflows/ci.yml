@@ -18,6 +18,9 @@
          with:
            node-version: 20
            cache: 'npm'
+           
+        - name: Lint Code
+          run: npm run lint
 
        - name: Run Tests
          run: |
