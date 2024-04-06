@@ -28,6 +28,7 @@ import CRCreateAUserAccount from "./pages/CRCreateAUserAccount";
 import ConfirmBooking from "./pages/ConfirmBooking";
 import ConfirmPayment from "./pages/ConfirmPayment";
 import UpdateVehicle from "./pages/UpdateVehicle";
+import Recommendations from "./pages/Recommendations";
 
 
 
@@ -74,6 +75,7 @@ function App() {
           <Route path="/ConfirmBooking/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment" exact element={<ConfirmBooking/>} />
           <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} />
           <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} />
+          <Route path="/Recommendations" exact element={<Recommendations/>}/>
         </Routes>
       </div>
     </Router>
