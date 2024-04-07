@@ -1,0 +1,56 @@
+import { useParams } from "react-router-dom";
+import React from "react";
+import Header from "./../../components/layout/Header";
+import SideMenu from "./../../components/layout/SideMenu";
+import ConfirmBookingComp from "./../../components/checkInOut/ConfirmBookingComp";
+
+function ConfirmBooking() {
+  const params = useParams();
+  const formData = {
+    vehicleID: params.vehicleID,
+    email: params.email,
+    pickUpDate: params.pickUpDate,
+    returnDate: params.returnDate,
+    pickUpLocation: params.pickUpLocation,
+    dropOffLocation: params.dropOffLocation,
+    additionalServices: params.additionalServices,
+    extraEquipment: params.extraEquipment,
+  };
+  //<button onClick={()=>{navigate(`/ConfirmBooking/${vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}`)}}>Continue</button>
+
+  return (
+    <div>
+      <Header />
+      <SideMenu />
+      <div className="main">
+        <div className="general-structure">
+          <div className="main-content">
+            <div
+              className="extra-content"
+              style={{ height: "560px", width: "400px", padding: "20px" }}
+            >
+              <ConfirmBookingComp formData={formData} />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ConfirmBooking;

@@ -1,33 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import BrowseAccounts from "./pages/BrowseAccounts";
-import Vehicle from "./pages/Vehicle";
-import Browse from "./pages/Browse";
-import Reserve from "./pages/Reserve";
-import View from "./pages/View";
-import SignUp from "./pages/SignUp";
-import AdminDashboard from "./pages/AdminDashboard";
-import CreateCRAccount from "./pages/CreateCRAccount";
-import SignIn from "./pages/SignIn";
-import CRDashboard from "./pages/CRDashboard";
-import DeleteReservationPage from "./pages/DeleteReservationPage";
-import MyAccountPage from "./pages/MyAccountPage";
-import CreateAdminAccount from "./pages/CreateAdminAccount";
-import Reviews from"./pages/Reviews";
-
-
-import AdminInventory from "./pages/AdminInventory";
-import Modify from "./pages/Modify";
-import Branches from "./pages/Branches";
-import UpdateUserInfoPage from "./pages/UpdateUserInfoPage";
-import CheckIn from "./pages/CheckIn";
-import CheckOut from "./pages/CheckOut";
-import Payment from "./pages/Payment";
-import CRCreateAUserAccount from "./pages/CRCreateAUserAccount";
-import ConfirmBooking from "./pages/ConfirmBooking";
-import ConfirmPayment from "./pages/ConfirmPayment";
-import UpdateVehicle from "./pages/UpdateVehicle";
+import Home from "./pages/allUsers/Home";
+import BrowseAccounts from "./pages/admin/BrowseAccounts";
+import Vehicle from "./pages/admin/Vehicle";
+import Browse from "./pages/allUsers/Browse";
+import Reserve from "./pages/allUsers/Reserve";
+import View from "./pages/allUsers/View";
+import SignUp from "./pages/allUsers/SignUp";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import CreateCRAccount from "./pages/admin/CreateCRAccount";
+import SignIn from "./pages/allUsers/SignIn";
+import CRDashboard from "./pages/csr/CRDashboard";
+import DeleteReservationPage from "./pages/allUsers/DeleteReservationPage";
+import MyAccountPage from "./pages/allUsers/MyAccountPage";
+import CreateAdminAccount from "./pages/admin/CreateAdminAccount";
+import Reviews from"./pages/allUsers/Reviews";
+import AdminInventory from "./pages/admin/AdminInventory";
+import Modify from "./pages/allUsers/Modify";
+import Branches from "./pages/allUsers/Branches";
+import UpdateUserInfoPage from "./pages/allUsers/UpdateUserInfoPage";
+import CheckIn from "./pages/csr/CheckIn";
+import CheckOut from "./pages/csr/CheckOut";
+import Payment from "./pages/csr/Payment";
+import CRCreateAUserAccount from "./pages/csr/CRCreateAUserAccount";
+import ConfirmBooking from "./pages/csr/ConfirmBooking";
+import ConfirmPayment from "./pages/csr/ConfirmPayment";
+import UpdateVehicle from "./pages/admin/UpdateVehicle";
 
 
 
