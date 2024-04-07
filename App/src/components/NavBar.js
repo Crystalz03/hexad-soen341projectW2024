@@ -8,10 +8,12 @@ import { Link, useNavigate } from "react-router-dom";
 function Navbar() {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const [isDropdownOpenAccount, setIsDropdownOpenAccount] = useState(false);
-  const [isDropdownOpenBrowse, setIsDropdownOpenBrowse] = useState(false);
-  const [isDropdownOpenReservation, setIsDropdownOpenReservation] = useState(false);
+  const [isDropdownOpenReservation, setIsDropdownOpenReservation] =
+    useState(false);
+  const [isDropdownOpenAccounts, setIsDropdownOpenAccounts] = useState(false);
+  const [isDropdownOpenVehicle, setIsDropdownOpenVehicle] = useState(false);
   const [user, setUser] = useState(getUser());
-  const [userType, setUserType] = useState('');
+  const [userType, setUserType] = useState("");
   const [signedIn, setSignedIn] = useState(false);
   const navigate = useNavigate();
 
@@ -36,139 +38,211 @@ function Navbar() {
     navigate("/");
   };
 
-  const handleMouseEnterAccount = () => {
-    setIsDropdownOpenAccount(true);
-  };
-
-  const handleMouseLeaveAccount = () => {
-    setIsDropdownOpenAccount(false);
-  };
-
-  const handleMouseEnterBrowse = () => {
-    setIsDropdownOpenBrowse(true);
-  };
-
-  const handleMouseLeaveBrowse = () => {
-    setIsDropdownOpenBrowse(false);
-  };
-
-  const handleMouseEnterReservation = () => {
-    setIsDropdownOpenReservation(true);
-  };
-
-  const handleMouseLeaveReservation = () => {
-    setIsDropdownOpenReservation(false);
-  };
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container">
+      <div className="container-fluid">
         <div className="navbar-brand">
           <h2>Drive the experience, rent the journey</h2>
         </div>
-
-        <div className={`collapse navbar-collapse`}>
+        <div className="collapse navbar-collapse">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
-                Home
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="/Browse"
-                id="navbarDropdownBrowse"
-                role="button"
-                onMouseEnter={handleMouseEnterBrowse}
-                onMouseLeave={handleMouseLeaveBrowse}
-              >
-                Browse Vehicles
-              </a>
-              <div
-                className={`dropdown-menu ${isDropdownOpenBrowse ? 'show' : ''}`}
-                onMouseEnter={handleMouseEnterBrowse}
-                onMouseLeave={handleMouseLeaveBrowse}
-              >
-                <a className="dropdown-item" href="#">
-                  Cars
-                </a>
-                <a className="dropdown-item" href="#">
-                  SUVs
-                </a>
-                <a className="dropdown-item" href="#">
-                  Vans
-                </a>
-                <a className="dropdown-item" href="#">
-                  Trucks
-                </a>
-              </div>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/Branches">
-                Find A Branch
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="/"
-                id="navbarDropdownReservation"
-                role="button"
-                onMouseEnter={handleMouseEnterReservation}
-                onMouseLeave={handleMouseLeaveReservation}
-              >
-                Reservations
-              </a>
-              <div
-                className={`dropdown-menu ${isDropdownOpenReservation ? 'show' : ''}`}
-                onMouseEnter={handleMouseEnterReservation}
-                onMouseLeave={handleMouseLeaveReservation}
-              >
-                <a className="dropdown-item" href="/View">
-                  View
-                </a>
-                <a className="dropdown-item" href="/Modify">
-                  Modify
-                </a>
-                <a className="dropdown-item" href="/DeleteReservationPage">
-                  Cancel
-                </a>
-              </div>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/Reviews">
-                Review
-              </a>
-            </li>
+            {!signedIn && (
+              <>
+                <li className="nav-item">
+                  <a className="nav-link active" aria-current="page" href="/">
+                    Home
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/Browse">
+                    Browse Vehicles
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/Branches">
+                    Find A Branch
+                  </a>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="/"
+                    id="navbarDropdownReservation"
+                    role="button"
+                    onMouseEnter={() => setIsDropdownOpenReservation(true)}
+                    onMouseLeave={() => setIsDropdownOpenReservation(false)}
+                  >
+                    Reservations
+                  </a>
+                  <ul
+                    className={`dropdown-menu ${
+                      isDropdownOpenReservation ? "show" : ""
+                    }`}
+                    aria-labelledby="navbarDropdownReservation"
+                    onMouseEnter={() => setIsDropdownOpenReservation(true)}
+                    onMouseLeave={() => setIsDropdownOpenReservation(false)}
+                  >
+                    <li>
+                      <a className="dropdown-item" href="/View">
+                        View
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/Modify">
+                        Modify
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="dropdown-item"
+                        href="/DeleteReservationPage"
+                      >
+                        Cancel
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/Reviews">
+                    Review
+                  </a>
+                </li>
+                <SignInPopover />
+              </>
+            )}
+            {signedIn && userType === "admin" && (
+              <>
+                <li className="nav-item">
+                  <Link to="/AdminDashboard" className="nav-link">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="/"
+                    id="navbarDropdownVehicle"
+                    role="button"
+                    onMouseEnter={() => setIsDropdownOpenVehicle(true)}
+                    onMouseLeave={() => setIsDropdownOpenVehicle(false)}
+                  >
+                    Vehicles
+                  </a>
+                  <ul
+                    className={`dropdown-menu ${
+                      isDropdownOpenVehicle ? "show" : ""
+                    }`}
+                    aria-labelledby="navbarDropdownVehicle"
+                    onMouseEnter={() => setIsDropdownOpenVehicle(true)}
+                    onMouseLeave={() => setIsDropdownOpenVehicle(false)}
+                  >
+                    <li>
+                      <Link to="/AdminDashboard" className="dropdown-item">
+                        Add New Vehicle
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/AdminDashboard" className="dropdown-item">
+                        View Inventory
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/AdminDashboard" className="dropdown-item">
+                        Modify Inventory
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="/"
+                    id="navbarDropdownAccounts"
+                    role="button"
+                    onMouseEnter={() => setIsDropdownOpenAccounts(true)}
+                    onMouseLeave={() => setIsDropdownOpenAccounts(false)}
+                  >
+                    Account
+                  </a>
+                  <ul
+                    className={`dropdown-menu ${
+                      isDropdownOpenAccounts ? "show" : ""
+                    }`}
+                    aria-labelledby="navbarDropdownAccounts"
+                    onMouseEnter={() => setIsDropdownOpenAccounts(true)}
+                    onMouseLeave={() => setIsDropdownOpenAccounts(false)}
+                  >
+                    <li>
+                      <Link to="/BrowseAccounts" className="dropdown-item">
+                        View All Accounts
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/CreateAdminAccount"
+                        className="dropdown-item"
+                      >
+                        Create Admin Account
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/CreateCRAccount" className="dropdown-item">
+                        Create CR Account
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+              </>
+            )}
+            {signedIn && userType === "customer_representative" && (
+              <>
+                <li className="nav-item">
+                  <Link to="/CRDashboard" className="nav-link">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/Browse" className="nav-link">
+                    Browse Vehicles
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/Signup" className="nav-link">
+                    Create Customer Account
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
-          {signedIn ? (
+          {signedIn && (
             <div
               className="dropdown"
-              onMouseEnter={handleMouseEnterAccount}
-              onMouseLeave={handleMouseLeaveAccount}
+              onMouseEnter={() => setIsDropdownOpenAccount(true)}
+              onMouseLeave={() => setIsDropdownOpenAccount(false)}
             >
               <img
-                src={require("./../../public/assets/images/account.png").default}
+                src={require("./../../public/assets/images/account.png")
+                  .default}
                 alt="account"
                 style={{ height: "40px" }}
               />
-              <div
-                className={`dropdown-menu ${isDropdownOpenAccount ? 'show' : ''}`}
+              <ul
+                className={`dropdown-menu ${
+                  isDropdownOpenAccount ? "show" : ""
+                }`}
               >
-                <Link to="/MyAccountPage" style={{ textDecoration: "none" }}>
-                  <a className="dropdown-item">My Account</a>
-                </Link>
-                {userType === 'admin' && (
-                  <Link to="/AdminDashboard" style={{ textDecoration: "none" }}>
-                    <a className="dropdown-item">Admin Page</a>
+                <li>
+                  <Link to="/MyAccountPage" style={{ textDecoration: "none" }}>
+                    <a className="dropdown-item">My Account</a>
                   </Link>
-                )}
-                <a className="dropdown-item" onClick={handleSignOut}>Sign Out</a>
-              </div>
+                </li>
+                <li>
+                  <a className="dropdown-item" onClick={handleSignOut}>
+                    Sign Out
+                  </a>
+                </li>
+              </ul>
             </div>
-          ) : (
-            <SignInPopover />
           )}
         </div>
       </div>
