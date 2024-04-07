@@ -2,8 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/new.css";
 
-
-function HorizontalCard({ imageUrl, title, description, buttonText }) {
+function HorizontalCard({ imageUrl, title, description, buttonText, onClick }) {
   return (
     <div className="d-flex justify-content-center">
       <div
@@ -15,9 +14,9 @@ function HorizontalCard({ imageUrl, title, description, buttonText }) {
             <div className="card-body" style={{ height: "100%" }}> {/* Enforce fixed height for the card body */}
               <h5 className="card-title">{title}</h5>
               <p className="card-text">{description}</p>
-              <a href="#" className="btn btn-primary custom-btn-primary" style={{ backgroundColor: '#ea4c89', border: '1px solid #ea4c89', color: 'white' }}> 
+              <button onClick={onClick} className="btn btn-primary custom-btn-primary" style={{ backgroundColor: '#ea4c89', border: '1px solid #ea4c89', color: 'white' }}> 
                 {buttonText}
-              </a>
+              </button>
             </div>
           </div>
           <div className="col-md-4 d-flex align-items-center justify-content-center"> {/* Centering image vertically and horizontally */}
