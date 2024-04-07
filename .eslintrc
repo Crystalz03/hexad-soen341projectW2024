@@ -23,6 +23,8 @@
     "no-dupe-else-if": "warn",
     "no-unreachable": "warn",
     "no-empty-function": "warn",
-    "no-useless-return": "warn"
+    "no-useless-return": "warn",
+    "react/prop-types": "off",
+    "no-irregular-whitespace": "warn"
   }
 }

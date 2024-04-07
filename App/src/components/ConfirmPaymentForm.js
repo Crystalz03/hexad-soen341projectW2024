@@ -35,7 +35,6 @@ function ConfirmPaymentForm(props){
     };
     const [customer, setCustomer] = useState({});
     const [vehicle, setVehicle] = useState({});
-    const [customerID, setCustomerID] = useState("");
     const [input, setInput] = useState({
         cardNumber: "",
         expiryDate: "",
@@ -71,7 +70,6 @@ function ConfirmPaymentForm(props){
             }
         };
         fetchCustomer();
-        setCustomerID(customer.ID);
     }
     , []);
 
@@ -110,7 +108,7 @@ function ConfirmPaymentForm(props){
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    make:Vehicle.Make, 
+                    make:vehicle.Make, 
                     category:vehicle.Category, 
                     model:vehicle.Model, 
                     price:vehicle.Price, 
@@ -161,13 +159,13 @@ function ConfirmPaymentForm(props){
         }else if(input.expiryDate[0] > 1 || input.expiryDate[0] < 0){
             alert("Invalid Expiry Date");
             return false;
-        }else if(input.expiryDate[0] == 1 && input.expiryDate[1] > 2){
+        }else if(input.expiryDate[0] === 1 && input.expiryDate[1] > 2){
             alert("Invalid Expiry Date");
             return false;
         }else if(input.expiryDate[3] < 2){
             alert("Invalid Expiry Date");
             return false;
-        }else if(input.expiryDate[3] == 2 && input.expiryDate[4] < 4){
+        }else if(input.expiryDate[3] === 2 && input.expiryDate[4] < 4){
             alert("Invalid Expiry Date");
             return false;
         }
@@ -226,7 +224,7 @@ function ConfirmPaymentForm(props){
             reservation.extraEquipment = formData.extraEquipment;
             reservation.total = formData.total;
 
-            var templateParams = {
+           /* var templateParams = {
                 name: formData.email,
                 id: reservationID,
                 make: vehicle.Make,
@@ -238,7 +236,7 @@ function ConfirmPaymentForm(props){
                 add: formData.additionalServices,
                 extra: formData.extraEquipment,
                 total: formData.total,
-              };
+              };*/
 
             customer.Reservation_ID += ","+reservationID;
             vehicle.Availability = "0";

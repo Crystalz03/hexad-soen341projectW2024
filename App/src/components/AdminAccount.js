@@ -2,7 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import AdminAccount from "../components/AdminAccount";
+//import AdminAccount from "../components/AdminAccount";
 
 export default function CreateAdminAccount() {
   function generateRandomString(length) {
@@ -28,7 +28,7 @@ export default function CreateAdminAccount() {
     email: "",
     password: "",
   });
-
+  
   const navigate = useNavigate();
   const callAPI = async () => {
     try {
@@ -40,7 +40,6 @@ export default function CreateAdminAccount() {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
 
       if (!response.ok) {
         throw new Error("Please try again.");
@@ -48,7 +47,6 @@ export default function CreateAdminAccount() {
       alert("Admin Account Successfully Added!");
       navigate("/AdminDashboard");
     } catch (error) {
-      setError(error.message);
       console.error(error);
     }
   };
