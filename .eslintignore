@@ -1,5 +1,6 @@
 node_modules/
-build/
 dist/
+public/
+Sprints/
 *.min.js
 config/*.js
