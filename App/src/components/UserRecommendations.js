@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Map from './map';
+import { Loader } from '@googlemaps/js-api-loader';
 
 function calculateDistance(lat1, lon1, lat2, lon2) { //using the Haversine formula to compute distance
     const R = 6371; // Radius of the Earth in kilometers
@@ -14,46 +15,70 @@ function calculateDistance(lat1, lon1, lat2, lon2) { //using the Haversine formu
     return distance;
 }
 
-
-function PointsInBetween({ coord1, coord2, otherCoords, threshold }) {
+function PointsInBetween({ coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude, otherCoords, threshold }) {
   const [pointsInBetween, setPointsInBetween] = useState([]);
 
-  const findPointsInBetween = () => {
-      const distanceBetweenCoords = calculateDistance(coord1[0], coord1[1], coord2[0], coord2[1]);
-      const result = otherCoords.filter(coord => {
-          const distanceToCoord1 = calculateDistance(coord1[0], coord1[1], coord[0], coord[1]);
-          const distanceToCoord2 = calculateDistance(coord2[0], coord2[1], coord[0], coord[1]);
-          return (distanceToCoord1 + distanceToCoord2) <= (distanceBetweenCoords + threshold);
-      });
-      setPointsInBetween(result);
-  };
-
-  // Call findPointsInBetween when component mounts
-  useState(() => {
+  useEffect(() => {
+      const findPointsInBetween = () => {
+          const distanceBetweenCoords = calculateDistance(coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude);
+          const result = otherCoords.filter(coord => {
+              const distanceToCoord1 = calculateDistance(coord[0], coord[1], coord1Latitude, coord1Longitude);
+              const distanceToCoord2 = calculateDistance(coord[0], coord[1], coord2Latitude, coord2Longitude);
+              return (distanceToCoord1 + distanceToCoord2) <= (distanceBetweenCoords + threshold);
+          });
+          setPointsInBetween(result);
+      };
+      
       findPointsInBetween();
-  }, []);
+  }, [coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude, otherCoords, threshold]);
 
-  
   return (
     <div>
-        <h2>Points in between the two coordinates within {threshold} km:</h2>
-        <ul>
-            {pointsInBetween.map((point, index) => (
-                <li key={index}>{point[0]}, {point[1]}</li>
-            ))}
-        </ul>
+        {pointsInBetween.map((coord, index) => (
+            <div key={index}>{`Latitude: ${coord[0]}, Longitude: ${coord[1]}`}</div>
+        ))}
     </div>
 );
 }
 
+
 const UserRecommendations = () => {
 
-
+  const otherCoords = [
+    [41.8781, -87.6298],
+    [49.141793, -122.508096],
+    [49.174804, -122.738620]
+]; // Other coordinates test
   const [apiResponse, setApiResponse] = useState(null); 
-  const [selectedBranch1, setSelectedBranch1] = useState(null);
-  const [selectedBranch2, setSelectedBranch2] = useState(null);
+  const [selectedBranch1, setSelectedBranch1] = useState({
+    Name: "",
+    latitude: 0,
+    longitude: 0
+  });
+  const [selectedBranch2, setSelectedBranch2] = useState({
+    Name: "",
+    latitude: 0,
+    longitude: 0
+  });
+
+  const [map, setMap] = useState(null);
  
     useEffect(() => {
+
+      const loader = new Loader({
+        apiKey: 'AIzaSyDB1QSetyBSLxtSUqBXk8SyCBE2n3-CyCA',
+        version: 'weekly',
+        libraries: ['geometry', 'places']
+    });
+
+    loader.load().then(() => {
+        const mapInstance = new window.google.maps.Map(document.getElementById('map'), {
+            center: { lat: 0, lng: 0 },
+            zoom: 5
+        });
+        setMap(mapInstance);
+    });
+
     const callAPIGetBranches = async () => {
       try {
         const response = await fetch('http://localhost:9000/branches');
@@ -92,6 +117,7 @@ const UserRecommendations = () => {
     
       const handleSubmit = event => {
         event.preventDefault();
+        //PointsInBetween(selectedBranch1.latitude, selectedBranch1.longitude, selectedBranch2.latitude, selectedBranch2.longitude);
         console.log('Selected Branch 1:', selectedBranch1);
         console.log('Selected Branch 2:', selectedBranch2);
       };
@@ -125,7 +151,9 @@ const UserRecommendations = () => {
               </select>
             </div>
             <button type="submit">Submit</button>
-          </form>
+          </form> 
+          <div id="map" style={{ height: '400px' }}></div>
+          <PointsInBetween coord1Latitude={selectedBranch1.latitude} coord1Longitude={selectedBranch1.longitude} coord2Latitude={selectedBranch2.latitude} coord2Longitude={selectedBranch2.longitude} otherCoords={otherCoords} threshold={500} />
       </div>
     </div>
   </div>
