@@ -19,13 +19,8 @@
   "rules": {
     "no-unused-vars": "warn",
     "eqeqeq": "warn",
-    "indent": ["warn", 2],
-    "linebreak-style": ["warn", "unix"],
-    "quotes": ["warn", "double"],
-    "semi": ["warn", "always"],
     "no-dupe-args": "warn",
     "no-dupe-else-if": "warn",
-    "no-irregular-whitespace": ["warn", { "skipComments": true }],
     "no-unreachable": "warn",
     "no-empty-function": "warn",
     "no-useless-return": "warn"
