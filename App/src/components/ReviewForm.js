@@ -91,19 +91,19 @@ const ReviewForm = () => {
     <div>
       {seeForm ?
     <div>
-      <form onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">Name</label>
+      <form onSubmit={handleSubmit} className="base-form">
+      <div>
+        <label>Name</label>
           <input type="text" name="name" required={true} onChange={handleChange} />
         </div>
-        <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
+        <div>
+        <label>Email address</label>
           <input type="email" name="email" required={true} onChange={handleChange} />
         </div>
-        <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">Rating</label>
-          <div className="rating-container">
-          <div className="rating">
+        <div>
+        <label>Rating</label>
+          <div className="rating-container" style={{marginTop: '0'}}>
+          <div className="rating" style={{marginTop: '0'}} >
             <span onClick={() => handleRatingChange(5)} className={formData.rating >= 5 ? 'selected' : ''} >☆</span>
             <span onClick={() => handleRatingChange(4)} className={formData.rating >= 4 ? 'selected' : ''} >☆</span>
             <span onClick={() => handleRatingChange(3)} className={formData.rating >= 3 ? 'selected' : ''} >☆</span>
@@ -112,11 +112,10 @@ const ReviewForm = () => {
           </div>
           </div>
         </div>
-        <div>
         <label for="exampleFormControlInput1" class="form-label">Review</label>
-          <textarea name="review" rows="10" cols="70" onChange={handleChange} />
-        </div>
-        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Submit Review</button>
+          <textarea name="review" rows="8" cols="80" onChange={handleChange} />
+          <br/> <br/>
+        <button type="submit" style={{width: '50%'}}>Submit Review</button>
       </form>
     </div> : null}
       {!loading && average ?

@@ -70,9 +70,9 @@ export default function CreateAdminAccount() {
     }));
   };
   return (
-    <form onSubmit={handleSubmit} action="Sign Up">
-      <div className="form">
-        <div>
+    <form onSubmit={handleSubmit} action="New Admin Account" className="base-form">
+        <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+          <div style={{ flex: 1, marginRight: '10px' }}>
           <input
             type="text"
             id="name"
@@ -81,6 +81,8 @@ export default function CreateAdminAccount() {
             placeholder="First name"
             onChange={handleChange}
           ></input>
+          </div>
+          <div style={{ flex: 1}}>
           <input
             type="text"
             id="lastName"
@@ -89,8 +91,9 @@ export default function CreateAdminAccount() {
             placeholder="Last name"
             onChange={handleChange}
           ></input>
+          </div>
         </div>
-        <br />
+        <div>
         <input
           type="email"
           id="email"
@@ -99,7 +102,8 @@ export default function CreateAdminAccount() {
           placeholder="E-mail"
           onChange={handleChange}
         ></input>
-        <br />
+        </div>
+        <div>
         <input
           type="password"
           id="password"
@@ -108,8 +112,8 @@ export default function CreateAdminAccount() {
           placeholder="Password"
           onChange={handleChange}
         ></input>
-        <br />
-        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Sign Up</button>
+        </div>
+        <button style={{width: '100%'}} type="submit">Sign Up</button>
         {successMessage && (
           <div className="alert alert-success" role="alert">
             {successMessage}
@@ -121,7 +125,6 @@ export default function CreateAdminAccount() {
             {errorMessage}
           </div>
         )}
-      </div>
     </form>
     
   );

@@ -64,34 +64,39 @@ const PaymentForm = () => {
   };
 
   return (
-    <div>
+    <div >
       <h2>Payment Form</h2>
       <div>Total Price: ${totalPrice.toFixed(2)} </div>
-      <div>Reservation ID: {reservationId}</div>
+      <div>Reservation ID: {reservationId}</div> <br/>
    
-      <form onSubmit={handlePaymentSubmit}>
+      <form onSubmit={handlePaymentSubmit} className="base-form">
+        <div>
         <label>
-          Card Number (16 digits):
+          Card Number (16 digits) {' '}
           <input
             type="text"
             value={cardNumber}
             onChange={(e) => setCardNumber(e.target.value)}
             required
+            
           />
         </label>
-        <br />
+        </div>
+        <div>
         <label>
-          Expiry Date (format: MM/YY):
+          Expiry Date (format: MM/YY) {' '}
           <input
             type="text"
             value={expiryDate}
             onChange={(e) => setExpiryDate(e.target.value)}
             required
+            
           />
         </label>
-        <br />
+        </div>
+        <div>
         <label>
-          CVV:
+          CVV {' '}
           <input
             type="text"
             value={cvv}
@@ -99,8 +104,8 @@ const PaymentForm = () => {
             required
           />
         </label>
-        <br />
-        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Pay Now</button>
+        </div>
+        <button style={{width: '50%'}} type="submit">Pay Now</button>
         {error && <div style={{ color: "red" }}>{error}</div>}
       </form>
     </div>

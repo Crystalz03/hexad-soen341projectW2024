@@ -119,18 +119,22 @@ function ReservationForm(props){
 
 
   return (
-    <div>
+    <div className="base-form" style={{height: '700px'}}>
         <form onSubmit={handleSubmit}>
-            <label>Email:</label>
+          <div>
+            <label>Email:
             <input 
                 name="email"
                 required={true}
                 onChange={handleChange} 
                 type='text' 
                 placeholder='Email Address' 
-                id='email'/><br/>
-
-            <label>Pick-up date of your reservation:</label>
+                id='email'/>
+                </label>
+            </div>
+          <span style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+            <span  style={{ flex: 1, marginRight: '10px' }}>
+            <label style={{width: '20em'}}>Pick-up date of your reservation:</label>
             <input 
                 name="pickUpDate"
                 required={true}
@@ -138,9 +142,12 @@ function ReservationForm(props){
                 onChange={handleChange} 
                 type='date' 
                 placeholder='Beginning date of reservation' 
-                id='pickUpDate'/><br/>
-
-            <label>Return date of your reservation:</label>
+                id='pickUpDate'
+                className="form-select"
+                style={{width:'80%', backgroundImage: 'none', paddingRight: '0.8em'}}/>
+              </span>
+            <span  style={{ flex: 1}}>
+            <label style={{width: '20em'}}> Return date of your reservation: </label>
             <input 
                 name="returnDate"
                 required={true}
@@ -148,46 +155,48 @@ function ReservationForm(props){
                 onChange={handleChange} 
                 type='date' 
                 placeholder='Return date of reservation'
-                id='returnDate'/><br/>
-
+                id='returnDate'
+                className="form-select"
+                style={{width:'80%', backgroundImage: 'none', paddingRight: '0.8em'}}/></span>
+          </span>
+          <span style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+            <span  style={{ flex: 1, marginRight: '10px' }}>
             <label>Pick-up Location:</label><br/>
-                <select required={true} onChange={handleChange} name = "pickUpLocation">
+                <select required={true} className="form-select" style={{width:'80%'}} onChange={handleChange} name = "pickUpLocation">
                 <option value="MontrealBranch">Montreal</option>
                 <option value="TorontoBranch">Toronto</option>
                 <option value="VancouverBranch">Vancouver</option>
                 </select>
-            <br/>
-
+            </span>
+            <span style={{ flex: 1}}>
             <label>Drop-off Location:</label><br/>
-                <select required={true} onChange={handleChange} name = "dropOffLocation">
+                <select required={true} className="form-select" style={{width:'80%'}} onChange={handleChange} name = "dropOffLocation">
                 <option value="MontrealBranch">Montreal</option>
                 <option value="TorontoBranch">Toronto</option>
                 <option value="VancouverBranch">Vancouver</option>
                 </select>
-            <br/>
-
-            <label>Extra equipment:</label><br/>
-                <select required={true} onChange={handleChange} name = "extraEquipment">
+            </span>
+          </span>
+            <label style={{marginTop: '2em'}}>Extra equipment:</label><br/>
+                <select required={true} className="form-select" style={{width:'50%'}} onChange={handleChange} name = "extraEquipment">
                 <option value="none">None</option>
                 <option value="gps">GPS (Additional 80$)</option>
                 <option value="childSeat">Child Seat (Additional 120$)</option>
                 <option value="trailer">Trailer (Additional 200$)</option>
                 <option value="bikeRack">Bike Rack (Additional 175$)</option>
                 </select>
-            <br/>
-
-            <label>Additional Services:</label><br/>
-                <select required={true} onChange={handleChange} name ="additionalServices" >
+            <label style={{marginTop: '2em'}}>Additional Services:</label><br/>
+                <select required={true} className="form-select" style={{width:'50%'}} onChange={handleChange} name ="additionalServices" >
                 <option value="none">None</option>
                 <option value="accidentInsurance" >Accident Insurance (Additional 100$)</option>
                 <option value="roadsideAssistance" >Roadside Assistance (Additional 50$)</option>
                 </select>
-            <br/>
 
-
-                <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type='submit'>Continue</button>
+            <div>
+                <button style={{width:'40%', marginTop: '2em'}} type='submit'>Continue</button> <br/> <br/>
                     
-                <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
+                <button style={{width:'40%'}} onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
+            </div>
         </form>
     </div>
     );

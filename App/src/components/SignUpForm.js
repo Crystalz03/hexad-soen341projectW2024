@@ -80,7 +80,8 @@ function SignupForm() {
     <form onSubmit={handleSubmit} action="Sign Up">
       <div>
         {error && <p className="error">{error}</p>}{" "}
-        <div className="split-input">
+        <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+          <div style={{ flex: 1, marginRight: '10px' }}>
           <input
             type="text"
             id="name"
@@ -88,8 +89,9 @@ function SignupForm() {
             required={true}
             placeholder="First name"
             onChange={handleChange}
-            style={{height: '50%'}}
           ></input>
+          </div>
+          <div style={{ flex: 1 }}>
           <input
             type="text"
             id="lastName"
@@ -97,11 +99,12 @@ function SignupForm() {
             required={true}
             placeholder="Last name"
             onChange={handleChange}
-            style={{height: '50%'}}
+
           ></input>
+          </div>
         </div>
         <br />
-        <div>
+        <div style={{marginBottom: '1em'}}>
         <input
           type="email"
           id="email"
@@ -109,10 +112,9 @@ function SignupForm() {
           required={true}
           placeholder="E-mail"
           onChange={handleChange}
-          style={{height: '50%'}}
         ></input>
         </div>
-        <div>
+        <div  style={{marginBottom: '1em'}}>
         <input
           type="text"
           id="location"
@@ -122,7 +124,7 @@ function SignupForm() {
           onChange={handleChange}
         ></input>
        </div>
-      <div>
+      <div  style={{marginBottom: '1em'}}>
         <input
           type="password"
           id="password"
@@ -132,7 +134,7 @@ function SignupForm() {
           onChange={handleChange}
         ></input>
         </div>
-        <div>
+        <div  style={{marginBottom: '1em'}}>
         <input
           type="text"
           id="address"
@@ -142,7 +144,7 @@ function SignupForm() {
           onChange={handleChange}
         ></input>
         </div>
-        <div>
+        <div  style={{marginBottom: '1em'}}>
         <input
           type="text"
           id="licenseNumber"
@@ -152,7 +154,7 @@ function SignupForm() {
           onChange={handleChange}
         ></input>
        </div>
-        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Sign Up</button>
+        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white', width: '100%'}} type="submit">Sign Up</button>
       </div>
     </form>
   );

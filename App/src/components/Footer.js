@@ -19,7 +19,7 @@ function Footer() {
             <h5>Links</h5>
             <ul className="list-unstyled">
               <li><Link to="/" style={{ textDecoration: 'none', color: 'grey' }}>Home</Link></li>
-              <li><Link to="/SignIn" style={{ textDecoration: 'none', color: 'grey' }}>Sign In</Link>/<Link to="/SignUp" style={{ textDecoration: 'none', color: 'grey' }}>Sign Up</Link></li>
+              <li><Link to="/NewCustomer" style={{ textDecoration: 'none', color: 'grey' }}>Create an Account</Link></li>
               <li><Link to="/Browse" style={{ textDecoration: 'none', color: 'grey' }}>Browse Vehicles</Link></li>
             </ul>
           </div>
