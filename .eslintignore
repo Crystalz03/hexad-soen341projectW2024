@@ -2,5 +2,3 @@ node_modules/
 dist/
 public/
 Sprints/
-*.min.js
-config/*.js

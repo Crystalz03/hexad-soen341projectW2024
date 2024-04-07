@@ -5,7 +5,7 @@ on:
     branches:
       - '*'
 
-jobs:
+jobs:cn
   build-and-test:
     runs-on: ubuntu-latest
 
@@ -46,5 +46,11 @@ jobs:
 
       - name: Build Project
         run: npm run build:dev
+      - name: Automated Code Review
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review # This makes the action comment on the PR
+          eslint_flags: 'src/**/*.js' # Replace with your file patterns
 
 
