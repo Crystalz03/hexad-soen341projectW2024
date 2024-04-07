@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../style/SignUpForm.css";
 import { useNavigate } from "react-router-dom";
 
 function SignupForm() {
@@ -81,8 +80,8 @@ function SignupForm() {
     <form onSubmit={handleSubmit} action="Sign Up">
       <div>
         {error && <p className="error">{error}</p>}{" "}
-        {/* Display error message */}
-        <div className="split-input">
+        <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+          <div style={{ flex: 1, marginRight: '10px' }}>
           <input
             type="text"
             id="name"
@@ -91,6 +90,8 @@ function SignupForm() {
             placeholder="First name"
             onChange={handleChange}
           ></input>
+          </div>
+          <div style={{ flex: 1 }}>
           <input
             type="text"
             id="lastName"
@@ -98,9 +99,12 @@ function SignupForm() {
             required={true}
             placeholder="Last name"
             onChange={handleChange}
+
           ></input>
+          </div>
         </div>
         <br />
+        <div style={{marginBottom: '1em'}}>
         <input
           type="email"
           id="email"
@@ -109,7 +113,8 @@ function SignupForm() {
           placeholder="E-mail"
           onChange={handleChange}
         ></input>
-        <br />
+        </div>
+        <div  style={{marginBottom: '1em'}}>
         <input
           type="text"
           id="location"
@@ -118,7 +123,8 @@ function SignupForm() {
           placeholder="Location"
           onChange={handleChange}
         ></input>
-        <br />
+       </div>
+      <div  style={{marginBottom: '1em'}}>
         <input
           type="password"
           id="password"
@@ -127,7 +133,8 @@ function SignupForm() {
           placeholder="Password"
           onChange={handleChange}
         ></input>
-        <br />
+        </div>
+        <div  style={{marginBottom: '1em'}}>
         <input
           type="text"
           id="address"
@@ -136,7 +143,8 @@ function SignupForm() {
           placeholder="Address"
           onChange={handleChange}
         ></input>
-        <br />
+        </div>
+        <div  style={{marginBottom: '1em'}}>
         <input
           type="text"
           id="licenseNumber"
@@ -145,8 +153,8 @@ function SignupForm() {
           placeholder="License Number"
           onChange={handleChange}
         ></input>
-        <br />
-        <button type="submit">Sign Up</button>
+       </div>
+        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white', width: '100%'}} type="submit">Sign Up</button>
       </div>
     </form>
   );

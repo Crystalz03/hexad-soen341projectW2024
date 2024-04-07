@@ -1,24 +1,11 @@
 
 import React from 'react';
 import ModifyReservation from '../components/ModifyReservation';
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import SideMenu from "../components/SideMenu";
 import './../style/View.css';
 import './../style/style.css';
 
-function ModifyTheReservation() {
-  return (
-    <div>
-      <Header />
-      <SideMenu />
-      <Main />
-      <Footer />
-    </div>
-  );
-}
 
-function Main() {
+function ModifyTheReservation() {
   return (
 <div className="main-content">
   <div className="view-container">

@@ -79,6 +79,8 @@ header {
   align-items: center;
   top: 0;
 }
+
+
 .company-name-header {
   font-size: 20px;
 }
@@ -177,7 +179,7 @@ header {
   border-style: none;
   color: var(--white-background-color);
   font-weight: var(--bold);
-  font-size: var(--xs-size);
+  font-size: var(--m-size);
 }
 .sign-in-btn {
   width: 130px;
@@ -201,18 +203,71 @@ header {
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
 }
 
-/* Main Styles*/
 .main-content {
-  margin-left: var(--nav-width);
-  /** margin-top: var(--header-height);**/
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: var(--main-content-width);
-  padding: 0 50px;
-  max-height: calc(100vh - 230px); 
-  overflow-y: auto;
+  align-items: center; 
+  justify-content: center; 
+  min-height: calc(100vh - 10em); 
+  max-height: calc(100vh- 10em);
+  width: 90%;
+
 }
+
+
+.main-content-container{
+  position: relative;
+}
+
+.base-form{
+  text-transform: uppercase;
+  div{
+    height: var(--top-box-height);
+    margin-top: 1em;
+    input {
+      border-style: none;
+      outline: none;
+      font-size: var(--m-size);
+      box-sizing: border-box;
+      height: var(--input-box-height);
+      width: 100%;
+      background-color: var(--second-white);
+      padding-left: 1em;
+    }
+    input::placeholder{
+      color: var(--tertiary-text-color);
+      font-size: var(--m-size);
+    }
+  }
+
+  label{
+    font-size: var(--m-size);
+    font-weight: var(--bold);
+    color: black;
+  }
+  button{
+    background-color: var(--primary-text-color);
+    box-shadow: var(--box-shadow);
+    height: 45px;
+    border-style: none;
+    color: var(--white-background-color);
+    font-weight: var(--bold);
+    font-size: var(--m-size);
+    width: var(--check-availability-button-width);
+    height: var(--check-availability-button-height);
+    transition: 0.3s;
+    margin-right: 0.5em;
+
+  }
+}
+
+.form-label {
+  font-size: var(--m-size);
+  font-weight: var(--bold);
+  color: black;
+}
+
+
 
 .check-in-title {
   color: var(--primary-text-color);
@@ -255,7 +310,7 @@ header {
 }
 .reservation-label {
   color: var(--primary-text-color);
-  font-size: var(--s-size);
+  font-size: var(--m-size);
 }
 .top-box {
   height: var(--top-box-height);
@@ -288,9 +343,9 @@ header {
 }
 /*Input Boxes*/
 .location-title {
-  font-size: var(--xs-size);
+  font-size: var(--m-size);
   font-weight: var(--bold);
-  color: var(--secondary-text-color);
+  color: black;
 }
 .pickup-box input,
 .return-box input {
@@ -314,32 +369,14 @@ header {
   height: 200px;
   margin-bottom: 100px;
 }
-.footer {
-  background-color: var(--secondary-text-color);
-  color: var(--white-background-color);
-  height: var(--footer-height);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px; /* Add padding for better spacing */
-  box-sizing: border-box; /* Include padding in width calculation */
-  display: flex;
-  justify-content: space-between; /* Spread items evenly across */
-  align-items: center; /* Vertically center items */
-}
 
-.account-card-scroll-container {
-  overflow-y: visible;
-}
 
-.title-accounts {
-  color: var(--second-white);
+.title-accounts{
+  color: #ea4c89;
   font-weight: var(--bold);
   font-style: italic;
   font-size: var(--xxl-size);
-  margin-left: 200px;
-  margin-bottom: 10px;
+
 }
 
 .account-card-container {
@@ -351,25 +388,35 @@ header {
 }
 
 .account-card {
-  border: 1px solid #ccc;
-  color: #ccc;
+  border: 1px solid black;
+  color: black;
   padding: 10px;
-  /* Additional styling for each customer card */
 }
 
 .account-content {
-  overflow-y: scroll;
-  color: var(--secondary-text-color);
+  color: black;
   width: var(--main-content-width);
-  margin-left: 200px;
+
 }
 
 .accounts-title {
-  color: var(--second-white);
+  color: black;
   font-weight: var(--bold);
   font-style: italic;
   font-size: var(--xl-size);
 }
+
+.reservation-id {
+  max-width: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reservation-id.expanded {
+  white-space: normal;
+}
+
 
 .form-1 {
   outline: #ea4c89;
@@ -395,21 +442,17 @@ label {
   color: #222;
 }
 
-.check-in-forms {
+.form-template {
   text-align: left;
   color: var(--primary-text-color);
   display: inline-block;
-  margin: 0px 0px;
-  width: 550px;
   padding: 25px; 
-  border-radius: 8px;
-  border: 1px solid #e5e5e5; /* #f0a5c2; */
-  div {
+  input {
     position: relative;
-    margin: 0 0 1.5em;
+    margin: 0 0 1em;
   }
   label {
-    color: white;
+    color: black;
     font-style: italic;
   }
 
@@ -456,9 +499,8 @@ label {
     margin: 0 0 1.5em;
   }
   label {
-    color: white;
+    color: black;
     font-style: italic;
-  
   }
 }
 
@@ -483,6 +525,9 @@ label {
   touch-action: manipulation;
 }
 
+.rating-container{
+  text-align: left;
+}
 .rating {
   unicode-bidi: bidi-override;
   direction: rtl;
@@ -491,6 +536,7 @@ label {
   display: inline-block;
   position: relative;
   width: 1.3em;
+  font-size: 25px;
 }
 .rating > span:hover:before,
 .rating > span:hover ~ span:before,
@@ -498,14 +544,9 @@ label {
 .rating > span.selected ~ span:before {
    content: "\2605";
    position: absolute;
+   color: #ea4c89;
 }
 
-
-.location-title {
-  font-size: var(--xs-size);
-  font-weight: var(--bold);
-  color: var(--second-white);
-}
 .current-page {
   color: var(--current-page);
 }
@@ -521,21 +562,20 @@ label {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  max-height: calc(100vh - var(--footer-height));
-  overflow-y: scroll;
+  
 }
 .vehicle-list {
-  display: frid;
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
   list-style: none;
 }
 
 .vehicle-card {
   border: 1px solid #ccc;
   padding: 10px;
-  flex: 1 0 30px;
+
 }
 .reserve-btn {
   margin-top: 10px;
 }
+

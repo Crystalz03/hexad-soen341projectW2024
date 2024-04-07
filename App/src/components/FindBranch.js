@@ -105,11 +105,10 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   };
  
   return (
-    <div className="main">
-    <div className="general-structure">
-      <div className="main-content" style={{ height: '500px', overflowY: 'auto' }}>
+
+      <div>
       <div className="title-box">
-            <div className="reservation-title">Find Nearest Branch</div>
+            <h2 className="check-in-title">Find Nearest Branch</h2>
       </div>
         <div>
           <div className="top-box-input">
@@ -149,8 +148,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
                     >Explore</button>
         </div>
       </div>
-    </div>
-    </div>
+
   );
 };
 

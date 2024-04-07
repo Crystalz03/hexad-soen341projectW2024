@@ -1,23 +1,8 @@
 import React from 'react';
 import DeleteReservation from '../components/DeleteReservation';
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import SideMenu from "../components/SideMenu";
 import './../style/Cancel.css';
  
-    
     function DeleteTheReservation() {
-      return (
-        <div>
-          <Header />
-          <SideMenu />
-          <Main />
-          <Footer />
-        </div>
-      );
-    }
-    
-    function Main() {
       return (
     <div className="main-content">
       <div className="view-container">

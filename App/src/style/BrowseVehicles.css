@@ -33,8 +33,7 @@
   --header-width: 1440px; /*Will change depending on page size*/
 
   --nav-width: 180px;
-  --main-content-margin-left: 20px;
-  --main-content-width: 1180px;
+
   --bottom-box-height: 80px;
   --top-box-height: 80px;
   --input-box-height: 50px;
@@ -50,26 +49,7 @@
   --content-box-height: 120px;
   --footer-height: 100px;
 /*Browse Vehicles CSS*/
-.vehicle-grid {
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-  max-height:calc(100vh - var(--footer-height));
- overflow-y:auto;
- }
- .vehicle-list{
-   display:frid;
-   grid-template-columns:repeat(2, 1fr);
-   gap:20px;
-   list-style:none;
- }
- 
- .vehicle-card {
-   border: 1px solid #ccc;
-   padding: 10px;
-   flex:1 0 30px;
- 
- }
+
  .reserve-btn {
    margin-top: 10px;
  }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./../style/style.css";
-import "./../style/accountsView.css";
 
 function BrowseAccountsComponent() {
     const [apiResponse, setApiResponse] = useState(null); 
@@ -64,21 +63,19 @@ function BrowseAccountsComponent() {
               <div>No customers found with the specified email.</div>
             )}
             {!loading && !error && filteredAccounts.length > 0 && (
-              <div className="account-card-scroll-container">
                 <div className="account-card-container">
                   {filteredAccounts.map((customer) => (
                     <div key={customer.ID} className="account-card">
                       <div>ID: {customer.ID}</div>
                       <div>Name: {customer.Name}</div>
                       <div>Last Name: {customer.Last_Name}</div>
-                      <div>Reservation ID: {customer.Reservation_ID}</div>
+                      <div style={{ maxWidth: '350px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} >Reservation ID: {customer.Reservation_ID}</div>
                       <div>Location: {customer.Location}</div>
                       <div>Email: {customer.Email}</div>
                       <div>Password: {customer.Password}</div>
                     </div>
                   ))}
                 </div>
-              </div>
             )}
           </div>
         </div>
