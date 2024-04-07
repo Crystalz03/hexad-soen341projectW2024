@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function SignUp() {
   return (
-    <div class="centered">
+    <div className="centered">
       <div className="signUp">
         <h2>Create Account</h2>
         <h6>

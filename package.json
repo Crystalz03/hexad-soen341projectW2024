@@ -5,6 +5,9 @@
   "engines": {
     "node": "20.x"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "main": "App/src/index.js",
   "scripts": {
     "test": "jest",
@@ -14,11 +17,7 @@
     "start": "concurrently \"npm run start-api\" \"npm run start-webpack\"",
     "build:prod": "webpack --config webpack.prod.js",
     "build:dev": "webpack --config webpack.dev.js",
-    "lint": "eslint . --ext .js",
-    "start-server": "node ./bin/www",
-    "client": "cd client && npm start",
-    "server": "nodemon ./bin/www",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "lint": "eslint . --ext .js"
   },
   "keywords": [],
   "author": "Hexad Team",
@@ -27,7 +26,8 @@
     "App/*"
   ],
   "devDependencies": {
-    "@babel/core": "^7.23.9",
+    "@babel/core": "^7.24.4",
+    "@babel/eslint-parser": "^7.24.1",
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
     "@eslint/eslintrc": "^3.0.2",
@@ -46,6 +46,7 @@
     "html-webpack-plugin": "^5.6.0",
     "jest": "^29.7.0",
     "mini-css-extract-plugin": "^2.8.0",
+    "pre-commit": "^1.2.2",
     "style-loader": "^3.3.4",
     "terser-webpack-plugin": "^5.3.10",
     "webpack": "^5.90.1",
