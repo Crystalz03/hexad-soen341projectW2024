@@ -7,14 +7,16 @@
   "parser": "@babel/eslint-parser",
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:security/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "security"  
   ],
   "rules": {
     "no-unused-vars": "warn",
