@@ -53,7 +53,7 @@ function CheckInForm() {
             setError("Error getting the reservation's Information");
             console.error(error);
         } finally {
-            setFormHeight('900px')
+            setFormHeight('1000px')
             setLoading(false);
         }
     };
@@ -243,6 +243,7 @@ The Renter acknowledges receiving and reviewing a copy of the vehicle's insuranc
         console.log(vehicle);
         setLoading2(true);
         generateAgreement(customer, vehicle, reservation);
+        setFormHeight('600px')
 
     };
 
