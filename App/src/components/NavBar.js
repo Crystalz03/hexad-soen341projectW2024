@@ -137,18 +137,13 @@ function Navbar() {
                     onMouseLeave={() => setIsDropdownOpenVehicle(false)}
                   >
                     <li>
-                      <Link to="/AdminDashboard" className="dropdown-item">
+                      <Link to="/Vehicle" className="dropdown-item">
                         Add New Vehicle
                       </Link>
                     </li>
                     <li>
-                      <Link to="/AdminDashboard" className="dropdown-item">
-                        View Inventory
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/AdminDashboard" className="dropdown-item">
-                        Modify Inventory
+                      <Link to="/Inventory" className="dropdown-item">
+                        View/Modify Inventory
                       </Link>
                     </li>
                   </ul>
@@ -207,8 +202,18 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/Signup" className="nav-link">
+                  <Link to="/NewCustomer" className="nav-link">
                     Create Customer Account
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/CheckIn" className="nav-link">
+                    Check In
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/CheckOut" className="nav-link">
+                    Check Out
                   </Link>
                 </li>
               </>

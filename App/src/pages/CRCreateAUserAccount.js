@@ -9,9 +9,6 @@ function CreateUser() {
               <div className="check-in-title">Create a Customer Account</div>
             </div>
             <div className="base-form" style={{height: '700px'}}> <SignUpFrom /></div>
-            <h6>
-                Already have an account? <Link to="/SignIn">Sing In</Link>
-              </h6>
           </div>
     );
   }
