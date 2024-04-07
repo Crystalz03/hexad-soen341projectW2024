@@ -15,7 +15,6 @@ function UpdateVehicleForm(props) {
         color: '',
         damages: '',
       });
-    const [error, setError] = useState("");
     const [vehicles, setVehicles] = useState({});
     const info={
       Make: '',
@@ -41,7 +40,6 @@ function UpdateVehicleForm(props) {
             setVehicles(data.vehicle);
           } catch (error) {
             console.error("Error fetching vehicles:", error);
-            setError("Error fetching vehicles");
           }
         };
     
@@ -72,7 +70,6 @@ function UpdateVehicleForm(props) {
         console.log("Vehicle updated ", info);
         navigate("/AdminInventory");
       } catch (error) {
-        setError(error.message);
         console.error(error);
       }
     };
@@ -139,68 +136,68 @@ function UpdateVehicleForm(props) {
       <form onSubmit={handleSubmit} className="add-vehicle-form">
         <label>Make:</label>
         <input
-          make="text"
+          type="text"
           name="make"
           value={formData.make}
           onChange={handleChange}
         />
         <label>Category:</label>
         <input
-          make="text"
+          type="text"
           name="category"
           value={formData.category}
           onChange={handleChange}
         />
         <label>Model:</label>
         <input
-          make="text"
+          type="text"
           name="model"
           value={formData.model}
           onChange={handleChange}
         />
         <label>Price:</label>
         <input
-          make="number"
+          type="number"
           name="price"
           value={formData.price}
           onChange={handleChange}
         />
         <label>Availability:</label>
         <input
-          make="text"
+          type="text"
           name="availability"
           value={formData.availability}
           onChange={handleChange}
         />
         <label>Year:</label>
         <input
-          make="number"
+          type="number"
           name="year"
           value={formData.year}
           onChange={handleChange}
         />
         <label>Plate Number:</label>
         <input
-          make="text"
+          type="text"
           name="plateNumber"
           value={formData.plateNumber}
           onChange={handleChange}
         />
         <label>Color:</label>
         <input
-          make="text"
+          type="text"
           name="color"
           value={formData.color}
           onChange={handleChange}
         />
         <label>Damages:</label>
         <input
-          make="text"
+          type="text"
           name="damages"
           value={formData.damages}
           onChange={handleChange}
         />
-        <button make="submit">Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   

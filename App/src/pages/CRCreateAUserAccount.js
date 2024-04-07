@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import CRSideMenu from "../components/CRSideMenu";
 
-export default function () {
+export default function CRCreateAUserAccount() {
   return (
     <div>
       {" "}

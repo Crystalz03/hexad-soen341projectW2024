@@ -1,6 +1,5 @@
 import React from "react";
 import AdminSideMenu from "../components/AdminSideMenu";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
 import UpdateVehicleForm from "../components/UpdateVehicleForm";
 import { useParams } from 'react-router-dom';

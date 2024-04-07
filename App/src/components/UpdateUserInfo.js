@@ -8,7 +8,7 @@ import {
 } from "./DisplayUserInfo";
 
 export default function UpdateUserInfo() {
-  const [user, setUser] = useState(getUser());
+  const [user, setUser] = useState();
   const [userType, setUserType] = useState("");
   const [customerInfo, setCustomerInfo] = useState({
     ID: "",
@@ -38,7 +38,10 @@ export default function UpdateUserInfo() {
     Email: "",
     Password: "",
   });
-  const [error, setError] = useState("");
+  //const [error, setError] = useState("");
+  useEffect(() => {
+    setUser(getUser());
+  }, []);
 
   //get and set user type
   useEffect(() => {
@@ -69,7 +72,7 @@ export default function UpdateUserInfo() {
         }
       } catch (error) {
         console.error("Error fetching user information:", error);
-        setError("Error fetching user information");
+        //setError("Error fetching user information");
       }
     };
 
@@ -107,7 +110,7 @@ export default function UpdateUserInfo() {
   };
 
   //handle update
-  const handleUpdate = async (e) => {
+  const handleUpdate = async () => {
     try {
       let url;
       let data;
@@ -155,11 +158,11 @@ export default function UpdateUserInfo() {
       if (response.ok) {
         alert("Account Updated Successfully");
       } else {
-        setError("Error updating user information");
+        //setError("Error updating user information");
       }
     } catch (error) {
       console.error("Error updating user:", error);
-      setError("Error updating user");
+      //setError("Error updating user");
     }
   };
 
