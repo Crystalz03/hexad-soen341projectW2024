@@ -9,7 +9,7 @@ function ModifyTheReservation() {
   return (
 <div className="main-content">
   <div className="view-container">
-    <h2 className="view-title">Modify Reservation</h2>
+    <h2 className="view-title" style={{margin: '1.5em'}}>Modify Reservation</h2>
       <div className="view-form"><ModifyReservation/></div>
   </div>
 </div>

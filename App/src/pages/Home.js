@@ -7,7 +7,7 @@ function Home() {
   return (
         <div className="main-content">
           <div className="title-box">
-            <div className="reservation-title">Start a Reservation</div>
+            <div className="check-in-title">Start a Reservation</div>
           </div>
           <div className="reservation-box">
             <label className="reservation-label">

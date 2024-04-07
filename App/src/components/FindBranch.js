@@ -107,9 +107,6 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return (
 
       <div>
-      <div className="title-box">
-            <h2 className="check-in-title">Find Nearest Branch</h2>
-      </div>
         <div>
           <div className="top-box-input">
           <input

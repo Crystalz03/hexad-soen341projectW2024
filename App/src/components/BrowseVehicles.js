@@ -63,9 +63,6 @@ function BrowseVehicles() {
     <div>
       <br />
       <br />
-      <div style={{ marginLeft: "140px" }}>
-        <h2>Rental Vehicles</h2>
-      </div>
       <hr className="my-4" />
 
       {!filterClicked && (
@@ -102,15 +99,16 @@ function BrowseVehicles() {
       )}
 
       {filterClicked && (
-        <div className="container">
+        <div className="container main-content">
           <div className="row justify-content-center">
             <div className="col-md-8"></div>
             <div>
-              <div className="title-box">
+              <div className="title-box" style={{marginBottom: '3em'}}>
                 <h2 className="check-in-title">Browse Vehicles</h2>
                 <div>
                   <label htmlFor="typeFilter">Filter by Make:</label>
                   <select
+                  className="form-select"
                     id="typeFilter"
                     value={filter}
                     onChange={(e) => handleFilterChange(e.target.value)}
@@ -121,15 +119,11 @@ function BrowseVehicles() {
                     <option value="Van">Van</option>
                     <option value="Truck">Truck</option>
                   </select>
+                
                   {filterClicked && (
                     <button
                       onClick={handleResetFilter}
-                      className="btn btn-primary custom-btn-primary"
-                      style={{
-                        backgroundColor: "#ea4c89",
-                        border: "1px solid #ea4c89",
-                        color: "white",
-                      }}
+                      className="all-caps sign-in-btn btn-background-color reserve-btn"
                     >
                       Reset Filter
                     </button>

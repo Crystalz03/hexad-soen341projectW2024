@@ -6,8 +6,8 @@ import './../style/Cancel.css';
       return (
     <div className="main-content">
       <div className="view-container">
-        <h2 className="view-title">Delete Reservation</h2>
-          <div className="view-form"><DeleteReservation/></div>
+        <h2 className="view-title" style={{margin: '1.5em'}}>Delete Reservation</h2>
+          <div className="view-form" ><DeleteReservation/></div>
       </div>
     </div>
       );

@@ -206,18 +206,19 @@ header {
 .main-content {
   position: relative;
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+ 
   min-height: calc(100vh - 10em); 
-  max-height: calc(100vh- 10em);
-  width: 90%;
+  max-height: calc(100vh - 10em);
+  width: 90%; /* Set width to 90% of the viewport width */
+  max-width: 90vw; /* Limit width to 90% of the viewport width */
+}
 
+.main-content > * {
+  margin-left:10%;
+  margin-right: 10%;
 }
 
 
-.main-content-container{
-  position: relative;
-}
 
 .base-form{
   text-transform: uppercase;
