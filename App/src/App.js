@@ -1,31 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+
 import Home from "./pages/allUsers/Home";
-import BrowseAccounts from "./pages/admin/BrowseAccounts";
-import Vehicle from "./pages/admin/Vehicle";
 import Browse from "./pages/allUsers/Browse";
 import Reserve from "./pages/allUsers/Reserve";
 import View from "./pages/allUsers/View";
 import SignUp from "./pages/allUsers/SignUp";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import CreateCRAccount from "./pages/admin/CreateCRAccount";
 import SignIn from "./pages/allUsers/SignIn";
-import CRDashboard from "./pages/csr/CRDashboard";
 import DeleteReservationPage from "./pages/allUsers/DeleteReservationPage";
 import MyAccountPage from "./pages/allUsers/MyAccountPage";
-import CreateAdminAccount from "./pages/admin/CreateAdminAccount";
 import Reviews from"./pages/allUsers/Reviews";
-import AdminInventory from "./pages/admin/AdminInventory";
 import Modify from "./pages/allUsers/Modify";
 import Branches from "./pages/allUsers/Branches";
 import UpdateUserInfoPage from "./pages/allUsers/UpdateUserInfoPage";
+
+import BrowseAccounts from "./pages/admin/BrowseAccounts";
+import Vehicle from "./pages/admin/Vehicle";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import CreateCRAccount from "./pages/admin/CreateCRAccount";
+import CreateAdminAccount from "./pages/admin/CreateAdminAccount";
+import AdminInventory from "./pages/admin/AdminInventory";
+import UpdateVehicle from "./pages/admin/UpdateVehicle";
+
+import CRDashboard from "./pages/csr/CRDashboard";
 import CheckIn from "./pages/csr/CheckIn";
 import CheckOut from "./pages/csr/CheckOut";
 import Payment from "./pages/csr/Payment";
 import CRCreateAUserAccount from "./pages/csr/CRCreateAUserAccount";
 import ConfirmBooking from "./pages/csr/ConfirmBooking";
 import ConfirmPayment from "./pages/csr/ConfirmPayment";
-import UpdateVehicle from "./pages/admin/UpdateVehicle";
+
 
 
 
