@@ -1,14 +1,14 @@
-name: Continuous Integration Workflow
+ name: Continuous Integration Workflow
 
-on:
-  pull_request:
-    branches:
-      - '*'
+ on:
+   pull_request:
+     branches:
+       - '*'
 
  jobs:
    build:
      runs-on: ubuntu-latest
-
+        
      steps:
        - name: Checkout Repository
          uses: actions/checkout@v3
@@ -24,7 +24,4 @@ on:
            npm ci
            npm run build:dev
            npm test
-      
-        - name: Lint Code
-          run: npm run lint
-
+           npm run lint
