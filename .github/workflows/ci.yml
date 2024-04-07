@@ -24,5 +24,7 @@ on:
            npm ci
            npm run build:dev
            npm test
-           npm run lint 
+      
+        - name: Lint Code
+          run: npm run lint
 
