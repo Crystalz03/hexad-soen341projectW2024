@@ -21,6 +21,7 @@ function Navbar() {
     const user = localStorage.getItem("user");
     if (user) {
       setSignedIn(true);
+      
     } else {
       setSignedIn(false);
     }
@@ -29,12 +30,14 @@ function Navbar() {
   useEffect(() => {
     if (user) {
       setUserType(getUserRole(user.id)); // Use user.id directly
+      navigate(window.location.pathname);
     }
-  }, [user]);
+  }, [user, navigate]);
 
   const handleSignOut = () => {
     localStorage.removeItem("user");
     setUser(null);
+    setSignedIn(false);
     navigate("/");
   };
 
@@ -108,6 +111,70 @@ function Navbar() {
                   </a>
                 </li>
                 <SignInPopover />
+              </>
+            )}
+            {signedIn && userType === "customer" && (
+              <>
+                <li className="nav-item">
+                  <a className="nav-link active" aria-current="page" href="/">
+                    Home
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/Browse">
+                    Browse Vehicles
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/Branches">
+                    Find A Branch
+                  </a>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="/"
+                    id="navbarDropdownReservation"
+                    role="button"
+                    onMouseEnter={() => setIsDropdownOpenReservation(true)}
+                    onMouseLeave={() => setIsDropdownOpenReservation(false)}
+                  >
+                    Reservations
+                  </a>
+                  <ul
+                    className={`dropdown-menu ${
+                      isDropdownOpenReservation ? "show" : ""
+                    }`}
+                    aria-labelledby="navbarDropdownReservation"
+                    onMouseEnter={() => setIsDropdownOpenReservation(true)}
+                    onMouseLeave={() => setIsDropdownOpenReservation(false)}
+                  >
+                    <li>
+                      <a className="dropdown-item" href="/View">
+                        View
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/Modify">
+                        Modify
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="dropdown-item"
+                        href="/DeleteReservationPage"
+                      >
+                        Cancel
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/Reviews">
+                    Review
+                  </a>
+                </li>
+               
               </>
             )}
             {signedIn && userType === "admin" && (
@@ -219,7 +286,7 @@ function Navbar() {
               </>
             )}
           </ul>
-          {signedIn && (
+          {signedIn &&   (
             <div
               className="dropdown"
               onMouseEnter={() => setIsDropdownOpenAccount(true)}
