@@ -1,5 +1,8 @@
 import React from "react";
 import "./../style/style.css";
+import HomeForm from "../components/HomeForm";
+import BranchFinder from "../components/FindBranch";
+import BrowseVehicles from "../components/BrowseVehicles";
 
 
 
@@ -9,63 +12,20 @@ function Home() {
           <div className="title-box">
             <div className="check-in-title">Start a Reservation</div>
           </div>
-          <div className="reservation-box">
-            <label className="reservation-label">
-              *All fields are required
-            </label>
-            <div className="top-box">
-              <label className="all-caps location-title" htmlFor="location">
-                Location*
-              </label>
-              <div className="top-box-input">
-                <input
-                  type="text"
-                  id="location"
-                  placeholder="Enter a City, Postal Code, Airport"
-                />
-              </div>
-            </div>
-
-            <div className="bottom-box">
-              <div className="bottom-input-boxes">
-                <div className="pickup-box">
-                  <label className="all-caps location-title" htmlFor="location">
-                    Pickup*
-                  </label>
-                  <div className="top-box-input">
-                    <input
-                      type="text"
-                      id="pickup"
-                      placeholder="Date and Time (to implement in the future)"
-                    />
-                  </div>
-                </div>
-                <div className="return-box">
-                  <label className="all-caps location-title" htmlFor="location">
-                    Dropoff*
-                  </label>
-                  <div className="top-box-input">
-                    <input
-                      type="text"
-                      id="pickup"
-                      placeholder="Date and Time (to implement in the future)"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="reservation-btn">
-                <label className="blank">blank</label>
-                <div>
-                  <button className="all-caps btn-background-color check-availability-button">
-                    Check availability
-                  </button>
-                </div>
-              </div>
+          <div>
+          <label className="all-caps location-title" htmlFor="location" style={{marginBottom: '0'}}>
+            Location*
+          </label>
+            <BranchFinder map={false}/>
+            <HomeForm />
+            <div>
+            <BrowseVehicles card={"card"}/>
             </div>
           </div>
-          <div className="extra-content">Extra content</div>
+          
         </div>
   );
 }
 
 export default Home;
+

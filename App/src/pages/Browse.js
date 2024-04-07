@@ -1,7 +1,7 @@
 import React from "react";
 import BrowseVehicles from "../components/BrowseVehicles";
 import "./../style/style.css";
-import "./../style/BrowseVehicles.css";
+
 
 function Browse() {
   return (
@@ -9,7 +9,8 @@ function Browse() {
       <div className="title-box" style={{ marginLeft: "10em" }}>
             <div className="check-in-title">Rental Vehicles</div>
           </div>
-      <BrowseVehicles />
+          <hr className="my-4" />
+      <BrowseVehicles card={"Horizontal"} />
     </div>
   );
 }

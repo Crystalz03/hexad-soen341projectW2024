@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import React from "react";
 
 import ConfirmBookingComp from "../components/ConfirmBookingComp";
-import Navbar from "../components/NavBar";
 
 function ConfirmBooking() {
   const params = useParams();

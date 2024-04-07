@@ -10,7 +10,7 @@ function Branches() {
             <div className="check-in-title">Find Nearest Branch</div>
           </div>
 
-            <BranchFinder />
+            <BranchFinder map={true}/>
 
     </div>
   );

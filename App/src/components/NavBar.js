@@ -69,7 +69,7 @@ function Navbar() {
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle"
-                    href="/"
+                    href="#"
                     id="navbarDropdownReservation"
                     role="button"
                     onMouseEnter={() => setIsDropdownOpenReservation(true)}
@@ -85,6 +85,11 @@ function Navbar() {
                     onMouseEnter={() => setIsDropdownOpenReservation(true)}
                     onMouseLeave={() => setIsDropdownOpenReservation(false)}
                   >
+                    <li>
+                      <a className="dropdown-item" href="/">
+                        New Reservation
+                      </a>
+                    </li>
                     <li>
                       <a className="dropdown-item" href="/View">
                         View
@@ -133,7 +138,7 @@ function Navbar() {
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle"
-                    href="/"
+                    href="#"
                     id="navbarDropdownReservation"
                     role="button"
                     onMouseEnter={() => setIsDropdownOpenReservation(true)}
@@ -149,6 +154,11 @@ function Navbar() {
                     onMouseEnter={() => setIsDropdownOpenReservation(true)}
                     onMouseLeave={() => setIsDropdownOpenReservation(false)}
                   >
+                     <li>
+                      <a className="dropdown-item" href="/">
+                        New Reservation
+                      </a>
+                    </li>
                     <li>
                       <a className="dropdown-item" href="/View">
                         View
