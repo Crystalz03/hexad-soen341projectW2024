@@ -6,7 +6,7 @@ import ContactInfoForm from "../components/ContactInfoForm";
 function ContactInfoPage() {
     return (
         <div>
-        <Navbar/>
+        
         <ContactInfoForm/>
         </div>
     );

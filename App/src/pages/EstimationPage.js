@@ -6,7 +6,7 @@ import EstimationForm from "../components/EstimationForm";
 function EstimationPage() {
     return (
         <div>
-        <Navbar/>
+        
         <EstimationForm/>
         </div>
     );

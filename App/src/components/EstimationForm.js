@@ -17,6 +17,7 @@ function EstimationForm() {
       <p>Mileage: {vehicleInfo.mileage}</p>
       <p>Year: {vehicleInfo.year}</p>
 
+
     </div>
   );
 }
