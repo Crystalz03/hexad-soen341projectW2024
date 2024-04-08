@@ -18,6 +18,7 @@ function ContactInfoForm () {
                 <button type="submit">Submit</button>
             </form>
         </div>
+        
     );
 }
 

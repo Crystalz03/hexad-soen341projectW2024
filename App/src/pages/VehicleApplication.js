@@ -6,7 +6,7 @@ import VehicleApplicationForm from "../components/VehicleApplicationForm";
 function VehicleApplication() {
     return (
         <div>
-        <Navbar/>
+     
         <VehicleApplicationForm/>
         </div>
     );
