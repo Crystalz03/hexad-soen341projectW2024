@@ -1,23 +1,24 @@
-import { useState, useEffect } from "react";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 function EstimationForm() {
-    return (
-        <div className="form-container">
-            <form>
-                <h1>Estimation Form</h1>
-                
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" required/>
-                <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="email" required/>
-                <label htmlFor="phone">Phone:</label>
-                <input type="tel" id="phone" name="phone" required/>
-                <label htmlFor="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    );
+  const location = useLocation();
+  const vehicleInfo = location.state?.vehicleInfo || {}; 
+
+  return (
+    <div>
+      <h1>Estimation Form</h1>
+
+      <p>Category: {vehicleInfo.category}</p>
+      <p>Color: {vehicleInfo.color}</p>
+      <p>Damages: {vehicleInfo.damages}</p>
+      <p>Make: {vehicleInfo.make}</p>
+      <p>Model: {vehicleInfo.model}</p>
+      <p>Mileage: {vehicleInfo.mileage}</p>
+      <p>Year: {vehicleInfo.year}</p>
+
+    </div>
+  );
 }
 
 export default EstimationForm;
