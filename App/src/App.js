@@ -27,6 +27,7 @@ import CRCreateAUserAccount from "./pages/CRCreateAUserAccount";
 import ConfirmBooking from "./pages/ConfirmBooking";
 import ConfirmPayment from "./pages/ConfirmPayment";
 import UpdateVehicle from "./pages/UpdateVehicle";
+import VehicleApplication from "./pages/VehicleApplication";
 
 function NotFound() {
 return (
@@ -79,6 +80,7 @@ function App() {
           <Route path="/ConfirmBooking/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment" exact element={<ConfirmBooking/>} /> {/* not reviewed */}
           <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} /> {/* not reviewed */}
           <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} /> {/* not reviewed */}
+          <Route path ="/VehicleApplication" element = {<VehicleApplication/>}></Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer/>

@@ -1,3 +1,5 @@
+import React from "react";
+import "./../style/style.css";
 import {useState, useEffect} from "react";
 
 function VehicleApplicationForm () {
