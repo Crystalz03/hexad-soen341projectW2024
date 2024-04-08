@@ -24,8 +24,23 @@ function VehicleApplicationForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Navigate to the EstimationForm route and pass vehicleInfo as state
-    navigate('/EstimationPage', { state: { vehicleInfo } });
+   
+  const mileage = Number(vehicleInfo.mileage);
+  const year = Number(vehicleInfo.year);
+  const currentYear = new Date().getFullYear();
+
+  if (mileage < 0) {
+    alert("Mileage must be a positive number.");
+    return; 
+  }
+
+  if (year < 1900 || year > currentYear) {
+    alert(`Year must be between 1900 and ${currentYear}.`);
+    return; 
+  }
+
+  
+  navigate('/EstimationPage', { state: { vehicleInfo } });
   };
 
   return (
