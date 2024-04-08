@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import React from "react";
 
 import ConfirmBookingComp from "../components/ConfirmBookingComp";
-import Navbar from "../components/NavBar";
 
 function ConfirmBooking() {
   const params = useParams();
@@ -19,35 +18,12 @@ function ConfirmBooking() {
   //<button onClick={()=>{navigate(`/ConfirmBooking/${vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}`)}}>Continue</button>
 
   return (
-    <div>
-      <div className="main">
-        <div className="general-structure">
-          <div className="main-content">
-            <div
-              className="extra-content"
-              style={{ height: "560px", width: "400px", padding: "20px" }}
-            >
-              <ConfirmBookingComp formData={formData} />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
-          </div>
+    <div className="main-content">
+        <div className="title-box" style={{alignItems: 'center', justifyContent: 'center'}}>
+          <div className="check-in-title">Confirm Booking</div>
         </div>
+            <ConfirmBookingComp formData={formData} />
       </div>
-    </div>
   );
 }
 

@@ -14,6 +14,10 @@ function UpdateCustomer({ customer, onSubmit }) {
             setError("Invalid CVV.");
             return;
         }
+        if (!validateExDate(updatedCustomer.exDate)) {
+            setError("Invalid Expiration Date.");
+            return;
+        }
         try {
             const response = await fetch(
                 `http://localhost:9000/customers/${customer.id}`,
@@ -76,7 +80,28 @@ function UpdateCustomer({ customer, onSubmit }) {
     const validateCVV = (cvv) => {
         return /^\d{3}$/.test(cvv);
     };
-  
+
+    const validateExDate = (exDate) => {
+        if (!/^\d{2}\/\d{2}$/.test(exDate)) {
+            return false;
+        }
+    
+        const [expMonth, expYear] = exDate.split('/').map(part => parseInt(part, 10));
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear() % 100;
+        const currentMonth = currentDate.getMonth() + 1;
+    
+        if (expYear < currentYear || (expYear === currentYear && expMonth < currentMonth)) {
+            return false;
+        }
+
+        if(expMonth > 12){
+            return false
+        }
+    
+        return true;
+    };
+
     return (
         <span>
             <h2>Confirm Customer Information</h2>
@@ -138,13 +163,22 @@ function UpdateCustomer({ customer, onSubmit }) {
                         onChange={handleChange}
                     />
                 </div>
-                <div  style={{ display: 'flex', marginTop: '0px', marginBottom: '0px'}}>
-                    <div style={{ flex: 1, marginRight: '10px' }}>
+                <div>
                     <label>Credit Card:</label>
                     <input
                         type="text"
                         name="creditCard"
                         value={updatedCustomer.creditCard || ""}
+                        onChange={handleChange}
+                    />
+                    </div>
+                <div  style={{ display: 'flex', marginTop: '0px', marginBottom: '0px'}}>
+                    <div style={{ flex: 1, marginRight: '10px' }}>
+                    <label>Expiration date:</label>
+                    <input
+                        type="text"
+                        name="exDate"
+                        value={updatedCustomer.exDate || ""}
                         onChange={handleChange}
                     />
                     </div>
@@ -156,7 +190,7 @@ function UpdateCustomer({ customer, onSubmit }) {
                         onChange={handleChange}
                     />
                     </div>
-                </div> <br/>
+                </div> <br/> <br/>
                 <button type="submit">Confirm</button>
             </form>
         </span>

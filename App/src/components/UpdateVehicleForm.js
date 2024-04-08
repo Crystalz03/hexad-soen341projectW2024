@@ -133,10 +133,10 @@ function UpdateVehicleForm(props) {
   };
   
     return(
-      
       <div>
-      <h2>Update Existing Vehicle</h2>
-      <form onSubmit={handleSubmit} className="add-vehicle-form">
+      <form onSubmit={handleSubmit} className="base-form">
+      <div  style={{ display: 'flex',marginBottom: '0px', width: '900px'}}>
+          <div style={{ flex: 1, marginRight: '10px' }}>
         <label>Make:</label>
         <input
           make="text"
@@ -144,6 +144,8 @@ function UpdateVehicleForm(props) {
           value={formData.make}
           onChange={handleChange}
         />
+        </div>
+        <div style={{flex: 1}}>
         <label>Category:</label>
         <input
           make="text"
@@ -151,6 +153,10 @@ function UpdateVehicleForm(props) {
           value={formData.category}
           onChange={handleChange}
         />
+        </div>
+      </div>
+      <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+          <div style={{ flex: 1, marginRight: '10px' }}>
         <label>Model:</label>
         <input
           make="text"
@@ -158,6 +164,8 @@ function UpdateVehicleForm(props) {
           value={formData.model}
           onChange={handleChange}
         />
+        </div>
+        <div style={{flex: 1}}>
         <label>Price:</label>
         <input
           make="number"
@@ -165,6 +173,10 @@ function UpdateVehicleForm(props) {
           value={formData.price}
           onChange={handleChange}
         />
+        </div>
+        </div>
+        <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+          <div style={{ flex: 1, marginRight: '10px' }}>
         <label>Availability:</label>
         <input
           make="text"
@@ -172,6 +184,8 @@ function UpdateVehicleForm(props) {
           value={formData.availability}
           onChange={handleChange}
         />
+        </div>
+        <div style={{flex: 1}}>
         <label>Year:</label>
         <input
           make="number"
@@ -179,6 +193,10 @@ function UpdateVehicleForm(props) {
           value={formData.year}
           onChange={handleChange}
         />
+        </div>
+        </div>
+        <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '40px'}}>
+          <div style={{ flex: 1, marginRight: '10px' }}>
         <label>Plate Number:</label>
         <input
           make="text"
@@ -186,6 +204,8 @@ function UpdateVehicleForm(props) {
           value={formData.plateNumber}
           onChange={handleChange}
         />
+        </div>
+        <div style={{flex: 1}}>
         <label>Color:</label>
         <input
           make="text"
@@ -193,6 +213,9 @@ function UpdateVehicleForm(props) {
           value={formData.color}
           onChange={handleChange}
         />
+        </div>
+        </div>
+        <div>
         <label>Damages:</label>
         <input
           make="text"
@@ -200,7 +223,9 @@ function UpdateVehicleForm(props) {
           value={formData.damages}
           onChange={handleChange}
         />
-        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} make="submit">Submit</button>
+        </div>
+        <br/>
+        <button make="submit">Submit</button>
       </form>
     </div>
   

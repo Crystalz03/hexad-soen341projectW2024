@@ -7,9 +7,6 @@ function MyAccountPage() {
       <div className="main-content" style={{alignItems: 'normal'}}>
         <div className="title-box" style={{alignItems: 'center', justifyContent: 'center'}}>
           <div className="check-in-title">My Account</div>
-          {/*<div className="car-image">
-            <img src="" alt="Car Image" className="car-image" />
-          </div> */}
         </div>
         <DisplayUserInfo />
       </div>

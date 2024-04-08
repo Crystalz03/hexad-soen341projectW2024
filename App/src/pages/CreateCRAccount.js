@@ -7,7 +7,7 @@ function CreateCRAccount() {
         <div className="main-content">
           <div className="title-box">
             <div className="check-in-title">
-              Create Admin Account 
+              Create Customer Representative Account 
             </div>
           </div>
             <CRAccount />

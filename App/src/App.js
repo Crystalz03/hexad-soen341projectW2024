@@ -59,15 +59,15 @@ function App() {
           <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} /> {/* filtering */}
           <Route path="/Vehicle" exact element={<Vehicle />} />
-          <Route path="/Inventory" exact element={<AdminInventory />} /> {/* filtering */}
-          <Route path="/Reserve/:vehicleID" exact element={<Reserve />} /> {/* not reviewed */}
+          <Route path="/Inventory" exact element={<AdminInventory />} /> 
+          <Route path="/Reserve/:vehicleID" exact element={<Reserve />} /> 
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} /> {/* empty */}
           <Route path="/CRDashboard" exact element={<CRDashboard />} /> {/* empty */}
           <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} /> 
           <Route path="/DeleteReservationPage" exact element={<DeleteReservationPage />} /> 
           <Route path="/MyAccountPage" exact element={<MyAccountPage />} />
           <Route path="/CreateAdminAccount" exact element={<CreateAdminAccount/>} />
-          <Route path="/Browse" exact element={<Browse/>} /> {/* fix filtering and component display */}
+          <Route path="/Browse" exact element={<Browse/>} />
           <Route path="/Reviews" exact element={<Reviews/>} /> 
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
@@ -77,9 +77,9 @@ function App() {
           <Route path="/CheckOut" exact element={<CheckOut/>} />
           <Route path="/Payment" exact element={<Payment/>} />
           <Route path="/NewCustomer" exact element={<CRCreateAUserAccount/>} /> 
-          <Route path="/ConfirmBooking/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment" exact element={<ConfirmBooking/>} /> {/* not reviewed */}
-          <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} /> {/* not reviewed */}
-          <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} /> {/* not reviewed */}
+          <Route path="/ConfirmBooking/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment" exact element={<ConfirmBooking/>} /> 
+          <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} />
+          <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} /> 
           <Route path ="/VehicleApplication" element = {<VehicleApplication/>}></Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
