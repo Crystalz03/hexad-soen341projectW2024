@@ -59,7 +59,7 @@ function SignupForm () { // change to  your component's name
         <input type="email" id="email" name="email" required={true} placeholder='E-mail' onChange={handleChange}></input><br/>
         <input type="text" id="location" name="location" required={true} placeholder='Location' onChange={handleChange}></input><br/>
         <input type="password" id="password" name="password" required={true} placeholder='Password' onChange={handleChange}></input><br/>
-        <button>Sign Up</button>
+        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} >Sign Up</button>
       </div>
     </form>
   );

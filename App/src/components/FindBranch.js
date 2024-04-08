@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Map from './map';
 
-const BranchFinder = () => {
+const BranchFinder = ({map}) => {
 
+const [showMap, setShowMap] = useState(map);
 const [apiResponse, setApiResponse] = useState(null); 
 const [postalCode, setPostalCode] = useState('');
 const [nearestBranch, setNearestBranch] = useState({
@@ -75,6 +76,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
         shortestDistance = distance;
         nearestBranch = branch;
       }
+      setShowMap(true);
     });
   
     return nearestBranch;
@@ -96,7 +98,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
       const data = await response.json();
       const { lat, lng } = data.results[0].geometry.location;
       setNearestBranch(findNearestBranch(lat, lng));
-      setShowButtons(true);
+  
 
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -105,12 +107,8 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   };
  
   return (
-    <div className="main">
-    <div className="general-structure">
-      <div className="main-content" style={{ height: '500px', overflowY: 'auto' }}>
-      <div className="title-box">
-            <div className="reservation-title">Find Nearest Branch</div>
-      </div>
+
+      <div>
         <div>
           <div className="top-box-input">
           <input
@@ -122,35 +120,23 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
           </div>
           
           <button className="all-caps sign-in-btn btn-background-color reserve-btn check-availability-button" onClick={findBranch}>Find Nearest Branch</button>
-          {nearestBranch && (
+          {nearestBranch.Name ? (
             <div>
               
               <p>Name: {nearestBranch.Name}</p>
             
             </div>
-          )}
-          <Map
-            latitude={parseFloat(nearestBranch.latitude)}
-            longitude={parseFloat(nearestBranch.longitude)}
-          />
-            <button
-                      className="all-caps sign-in-btn btn-background-color reserve-btn"
-                     
-                    >
-                      Check-In
-                    </button>
-                    <button
-                      className="all-caps sign-in-btn btn-background-color reserve-btn"
-                     
-                    >Check-out</button>
-                    <button
-                      className="all-caps sign-in-btn btn-background-color reserve-btn"
-                     
-                    >Explore</button>
+          ) :null}
+          {showMap ? 
+          <div>
+            <Map 
+              latitude={parseFloat(nearestBranch.latitude)}
+              longitude={parseFloat(nearestBranch.longitude)}
+            /> 
+            </div> : null}
         </div>
       </div>
-    </div>
-    </div>
+
   );
 };
 

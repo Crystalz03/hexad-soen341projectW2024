@@ -16,6 +16,7 @@ function CheckInForm() {
     const [loading, setLoading] = useState(false); 
     const [loading2, setLoading2] = useState(false); 
     const [loading3, setLoading3] = useState(false); 
+    const [formHeight, setFormHeight] = useState("200px");
 
 
 
@@ -52,6 +53,7 @@ function CheckInForm() {
             setError("Error getting the reservation's Information");
             console.error(error);
         } finally {
+            setFormHeight('1000px')
             setLoading(false);
         }
     };
@@ -230,6 +232,7 @@ The Renter acknowledges receiving and reviewing a copy of the vehicle's insuranc
         setCustomer(updatedCustomer);
         setLoading(true);
         getVehicle(reservation.vehicleID);
+        setFormHeight('300px')
     };
 
     const handleVehicleInspection = (damages) => {
@@ -240,6 +243,7 @@ The Renter acknowledges receiving and reviewing a copy of the vehicle's insuranc
         console.log(vehicle);
         setLoading2(true);
         generateAgreement(customer, vehicle, reservation);
+        setFormHeight('600px')
 
     };
 
@@ -250,9 +254,8 @@ The Renter acknowledges receiving and reviewing a copy of the vehicle's insuranc
     }
 
     return (
-        <div className="check-in-forms">
-            <form onSubmit={handleReservationSubmit} action="Get Reservation">
-                <div>
+        <div className="base-form" style={{alignItems: 'center', justifyContent: 'center', height: formHeight}}>
+            <form onSubmit={handleReservationSubmit} action="Get Reservation" >
                     {error && <p className="error">{error}</p>}
                     <div className="split-input">
                         <label>Reservation</label>
@@ -266,7 +269,6 @@ The Renter acknowledges receiving and reviewing a copy of the vehicle's insuranc
                     </div>
                     <br />
                     <button type="submit">Start Check-in</button>
-                </div>
             </form>
 
             {!loading && customer.id ?

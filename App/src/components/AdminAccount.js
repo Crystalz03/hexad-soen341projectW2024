@@ -5,6 +5,10 @@ import { useState } from "react";
 import AdminAccount from "../components/AdminAccount";
 
 export default function CreateAdminAccount() {
+
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   function generateRandomString(length) {
     const characters = "0123456789";
     let result = "";
@@ -45,10 +49,10 @@ export default function CreateAdminAccount() {
       if (!response.ok) {
         throw new Error("Please try again.");
       }
-      alert("Admin Account Successfully Added!");
+      setSuccessMessage("Admin Account Successfully Added!");
       navigate("/AdminDashboard");
     } catch (error) {
-      setError(error.message);
+      setErrorMessage(error.message);
       console.error(error);
     }
   };
@@ -66,9 +70,9 @@ export default function CreateAdminAccount() {
     }));
   };
   return (
-    <form onSubmit={handleSubmit} action="Sign Up">
-      <div className="form">
-        <div>
+    <form onSubmit={handleSubmit} action="New Admin Account" className="base-form">
+        <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+          <div style={{ flex: 1, marginRight: '10px' }}>
           <input
             type="text"
             id="name"
@@ -77,6 +81,8 @@ export default function CreateAdminAccount() {
             placeholder="First name"
             onChange={handleChange}
           ></input>
+          </div>
+          <div style={{ flex: 1}}>
           <input
             type="text"
             id="lastName"
@@ -85,8 +91,9 @@ export default function CreateAdminAccount() {
             placeholder="Last name"
             onChange={handleChange}
           ></input>
+          </div>
         </div>
-        <br />
+        <div>
         <input
           type="email"
           id="email"
@@ -95,7 +102,8 @@ export default function CreateAdminAccount() {
           placeholder="E-mail"
           onChange={handleChange}
         ></input>
-        <br />
+        </div>
+        <div>
         <input
           type="password"
           id="password"
@@ -104,9 +112,20 @@ export default function CreateAdminAccount() {
           placeholder="Password"
           onChange={handleChange}
         ></input>
-        <br />
-        <button type="submit">Sign Up</button>
-      </div>
+        </div>
+        <button style={{width: '100%'}} type="submit">Sign Up</button>
+        {successMessage && (
+          <div className="alert alert-success" role="alert">
+            {successMessage}
+          </div>
+        )}
+        
+        {errorMessage && (
+          <div className="alert alert-danger" role="alert">
+            {errorMessage}
+          </div>
+        )}
     </form>
+    
   );
 }
