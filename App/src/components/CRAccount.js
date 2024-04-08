@@ -39,7 +39,7 @@ import { useState } from "react";
         body: JSON.stringify(formData),
       });
 
-      //const data = await response.json();
+ 
 
       if (!response.ok) {
         throw new Error("Please try again.");
@@ -47,7 +47,7 @@ import { useState } from "react";
       alert("CR Account Successfully Created!");
       navigate("/CRDashboard");
     } catch (error) {
-       //setError(error.message);
+      setError(error.message);
       console.error(error);
     }
   };

@@ -119,8 +119,6 @@ function ConfirmBookingComp(props){
             <button style={{display: "block", margin: "auto", backgroundColor:"#ffb0b9"}} onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
         </div>
     );
-}/*
-  display: block;
-  margin: auto;*/
+}
 
 export default ConfirmBookingComp;
