@@ -38,7 +38,7 @@ export default function UpdateUserInfo() {
     Email: "",
     Password: "",
   });
-  //const [error, setError] = useState("");
+  const [error, setError] = useState("");
   useEffect(() => {
     setUser(getUser());
   }, []);
@@ -59,15 +59,15 @@ export default function UpdateUserInfo() {
           if (userType === "admin") {
             userInformation = await getAdminInfo(user.id);
             console.log("Admin Info:", userInformation.admin); // Log admin info
-            setAdminInfo(userInformation.admin); // Corrected variable name
+            setAdminInfo(userInformation.admin);
           } else if (userType === "customer_representative") {
             userInformation = await getCRInfo(user.id);
             console.log("CSR Info:", userInformation.csr); // Log CSR info
-            setCSRInfo(userInformation.csr); // Corrected variable name
+            setCSRInfo(userInformation.csr); 
           } else if (userType === "customer") {
             userInformation = await getCustomerInfo(user.id);
             console.log("Customer Info:", userInformation.customer); // Log customer info
-            setCustomerInfo(userInformation.customer); // Corrected variable name
+            setCustomerInfo(userInformation.customer); 
           }
         }
       } catch (error) {
