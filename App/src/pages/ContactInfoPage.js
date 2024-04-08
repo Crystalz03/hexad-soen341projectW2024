@@ -5,10 +5,14 @@ import ContactInfoForm from "../components/ContactInfoForm";
 
 function ContactInfoPage() {
     return (
-        <div>
-        
-        <ContactInfoForm/>
+        <div className="main-content">
+        <div className="title-box">
+          <div className="check-in-title">
+          Contact Info
+          </div>
         </div>
+        <ContactInfoForm/>
+      </div>
     );
 }
 
