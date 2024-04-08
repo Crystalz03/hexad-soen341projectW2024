@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-//import emailjs from '@emailjs/browser';
+
 
 function generateReservationID() {
     const prefix = 'R';
     const randomDigits = Math.floor(Math.random() * 1000000000); // Generate 9 random digits
     const reservationID = prefix + randomDigits.toString().padStart(9, '0'); // Ensure 9 digits with leading zeros if necessary
     return reservationID;
-  }//1111222233334444
+  }
 
 function ConfirmPaymentForm(props){
     const formData = {
@@ -19,7 +19,7 @@ function ConfirmPaymentForm(props){
     additionalServices: props.formData.additionalServices,
     extraEquipment: props.formData.extraEquipment,
     total: props.formData.total,
-    };//{ id, vehicleID, customerID, pickUpDate, returnDate, extraEquipment, additionalServices, total, pickUpLocation, dropOffLocation}
+    };
     const reservationID = generateReservationID();
     const reservation = {
         id: "",
@@ -175,32 +175,6 @@ function ConfirmPaymentForm(props){
         }
         return true;
     }
-/*
-    const sendEmail = async () => {
-        const transporter = nodemailer.createTransport({
-          host: 'smtp.example.com',
-          port: 587,
-          secure: false,
-          auth: {
-            user: 'hexad97@gmail.com',
-            pass: 'hexadteam2024',
-          },
-        });
-        const mailOptions = {
-          from: 'hexad97@gmail.com',
-          to: formData.email,
-          subject: 'Reservation Confirmation',
-          text: "Your reservation has been confirmed. Your reservation ID is " + reservationID + ".\n\nHere are your reservation's details:\n\n"+
-          "Vehicle: " + vehicle.Make + " " + vehicle.Model + "\n" +"Pick-up Date: " + formData.pickUpDate + "\n" + "Return Date: " + formData.returnDate + "\n" + "Pick-up Location: " + formData.pickUpLocation + "\n" + "Drop-off Location: " + formData.dropOffLocation + "\n" + "Additional Services: " + formData.additionalServices + "\n" + "Extra Equipment: " + formData.extraEquipment + "\n" + "Total: " + formData.total + "\n\n" + "Thank you for choosing our services!n\n\nHexad",
-        };
-        try {
-          await transporter.sendMail(mailOptions);
-          console.log('Email sent successfully');
-        } catch (error) {
-          console.error('Error sending email:', error);
-        }
-      };*/
-    
     const handleChange = (e) => {
         const { name, value } = e.target;
         setInput(prevState => ({
@@ -212,7 +186,7 @@ function ConfirmPaymentForm(props){
     const handleSubmit = (e) => {
         e.preventDefault();
         if(verifyPayment()){
-            //{ id, vehicleID, customerID, pickUpDate, returnDate, extraEquipment, additionalServices, total, pickUpLocation, dropOffLocation}
+
             reservation.id = reservationID;
             reservation.vehicleID = vehicle.ID;
             reservation.customerID = customer.ID;
@@ -224,33 +198,14 @@ function ConfirmPaymentForm(props){
             reservation.extraEquipment = formData.extraEquipment;
             reservation.total = formData.total;
 
-           /* var templateParams = {
-                name: formData.email,
-                id: reservationID,
-                make: vehicle.Make,
-                model: vehicle.Model,
-                upDate: formData.pickUpDate,
-                returnDate: formData.returnDate,
-                upLocation: formData.pickUpLocation,
-                offLocation: formData.dropOffLocation,
-                add: formData.additionalServices,
-                extra: formData.extraEquipment,
-                total: formData.total,
-              };*/
 
             customer.Reservation_ID += ","+reservationID;
             vehicle.Availability = "0";
             console.log(reservation);
             updateCustomer();
-            //updateVehicle();
+        
             createReservation();
-            /*emailjs.send('service_lw7vdor', 'template_k1l5dc8', templateParams, '-R6mvprDiAiDiBZp4').then(
-            (response) => {
-              console.log('SUCCESS!', response.status, response.text);
-            })
-            .catch((error) => {
-              console.log('FAILED...', error);
-            });*/
+         
             alert("Payment Saved Successfully! Your reservation ID is: "+reservationID+" and the total cost is: "+formData.total+"$. An email has been sent to you with the reservation details.");
 
         }
