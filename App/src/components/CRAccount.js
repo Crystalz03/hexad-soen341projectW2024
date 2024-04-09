@@ -67,7 +67,8 @@ import { useState } from "react";
   return (
     <form onSubmit={handleSubmit} action="Sign Up">
       <div className="form">
-        <div>
+      {error && <p className="error">{error}</p>}{" "}
+      <div>
           <input
             type="text"
             id="name"

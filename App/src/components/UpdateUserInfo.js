@@ -171,6 +171,7 @@ export default function UpdateUserInfo() {
   return (
     <div>
       <form onSubmit={handleUpdate}>
+       {error && <p className="error">{error}</p>}{" "}
         {userType === "admin" && (
           <div>
             <p>Admin Information:</p>

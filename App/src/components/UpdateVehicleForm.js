@@ -134,76 +134,77 @@ function UpdateVehicleForm(props) {
       <div>
       <h2>Update Existing Vehicle</h2>
       <form onSubmit={handleSubmit} className="add-vehicle-form">
-        <label>Make:</label>
-        <input
-          type="text"
-          name="make"
-          value={formData.make}
-          onChange={handleChange}
-        />
-        <label>Category:</label>
-        <input
-          type="text"
-          name="category"
-          value={formData.category}
-          onChange={handleChange}
-        />
-        <label>Model:</label>
-        <input
-          type="text"
-          name="model"
-          value={formData.model}
-          onChange={handleChange}
-        />
-        <label>Price:</label>
-        <input
-          type="number"
-          name="price"
-          value={formData.price}
-          onChange={handleChange}
-        />
-        <label>Availability:</label>
-        <input
-          type="text"
-          name="availability"
-          value={formData.availability}
-          onChange={handleChange}
-        />
-        <label>Year:</label>
-        <input
-          type="number"
-          name="year"
-          value={formData.year}
-          onChange={handleChange}
-        />
-        <label>Plate Number:</label>
-        <input
-          type="text"
-          name="plateNumber"
-          value={formData.plateNumber}
-          onChange={handleChange}
-        />
-        <label>Color:</label>
-        <input
-          type="text"
-          name="color"
-          value={formData.color}
-          onChange={handleChange}
-        />
-        <label>Damages:</label>
-        <input
-          type="text"
-          name="damages"
-          value={formData.damages}
-          onChange={handleChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  
-    );
-  
-  }
-  
+        {error && <p className="error">{error}</p>}{" "}
+          <label>Make:</label>
+          <input
+            type="text"
+            name="make"
+            value={formData.make}
+            onChange={handleChange}
+          />
+          <label>Category:</label>
+          <input
+            type="text"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+          />
+          <label>Model:</label>
+          <input
+            type="text"
+            name="model"
+            value={formData.model}
+            onChange={handleChange}
+          />
+          <label>Price:</label>
+          <input
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+          />
+          <label>Availability:</label>
+          <input
+            type="text"
+            name="availability"
+            value={formData.availability}
+            onChange={handleChange}
+          />
+          <label>Year:</label>
+          <input
+            type="number"
+            name="year"
+            value={formData.year}
+            onChange={handleChange}
+          />
+          <label>Plate Number:</label>
+          <input
+            type="text"
+            name="plateNumber"
+            value={formData.plateNumber}
+            onChange={handleChange}
+          />
+          <label>Color:</label>
+          <input
+            type="text"
+            name="color"
+            value={formData.color}
+            onChange={handleChange}
+          />
+          <label>Damages:</label>
+          <input
+            type="text"
+            name="damages"
+            value={formData.damages}
+            onChange={handleChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    
+      );
+    
+    }
+    
 
-export default UpdateVehicleForm;
+  export default UpdateVehicleForm;
