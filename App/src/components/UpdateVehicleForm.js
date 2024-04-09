@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function UpdateVehicleForm(props) {
     const vehicleID = props.vehicleID;
     const navigate = useNavigate();
-    const [error, setError] = useState("");//error was used but not defined
+    const [error, setError] = useState("");
     const [formData, setFormData] = useState({
         make: '',
         category: '',

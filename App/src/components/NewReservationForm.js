@@ -1,4 +1,3 @@
-//removed unused imports
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -19,8 +18,6 @@ function ReservationForm(props){
   const [vehicle, setVehicle] = useState({});
   const [customers, setCustomers] = useState({});
   const [error, setError] = useState("");
-  //customerID state not used
-
   
   useEffect(() => {
     const fetchVehicle = async () => {
@@ -78,7 +75,7 @@ function ReservationForm(props){
             alert("The return date must be in the future.");
             return false;
         }
-        if(vehicle.Availability === "0"){//comparator symbol fixed
+        if(vehicle.Availability === "0"){
             alert("The vehicle you selected is unavailable.");
             return false;
           }

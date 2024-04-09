@@ -44,7 +44,7 @@ function ConfirmBookingComp(props){
             const data = await response.json();
             setVehicle(data.vehicle);
         } catch (error) {
-          setError("Error fetching vehicle");//added error handling
+          setError("Error fetching vehicle");
           console.error("Error fetching vehicle:", error);
         }
     };

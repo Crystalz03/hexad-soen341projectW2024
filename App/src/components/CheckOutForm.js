@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//removed unused imports
 import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {

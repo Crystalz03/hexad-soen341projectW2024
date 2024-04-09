@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 function SignIn() {
-  const apostrophe = "'";//added apostrophe variable to replace the apostrophe in the html code
+  const apostrophe = "'";
 
     return (
         <div className="main-content" >

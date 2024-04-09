@@ -4,9 +4,8 @@ import { useNavigate } from 'react-router';
 
 export default function DeleteUser() {
   const [error, setError] = useState('');
-  const [user] = useState(getUser());//setUser is not used
+  const [user] = useState(getUser());
   const [userType, setUserType]=useState('');
-  //signedIn state was being set but not used therefore removed from code
   const navigate= useNavigate();
 
 

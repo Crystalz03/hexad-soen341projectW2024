@@ -10,7 +10,7 @@ function DeleteReservation() {
         if(id.length !== 10) {
             setError("Reservation ID must be 10 characters long");
             return false;
-        }//added code to check if reservation ID is 10 characters long to make id parameter not unused
+        }
         return true; 
     }
 

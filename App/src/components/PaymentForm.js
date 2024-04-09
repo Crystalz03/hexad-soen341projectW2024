@@ -1,4 +1,4 @@
-import React, { useState} from "react";//useEffect not used
+import React, { useState} from "react";
 import { useLocation} from "react-router-dom";
 
 const PaymentForm = () => {

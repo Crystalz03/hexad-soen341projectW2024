@@ -3,13 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signIn } from "../Store/UserSlice";
 import { getUserRole } from "./DisplayUserInfo";
-//removed unused imports
 
 function SignInForm() {
   // States
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  //removed unused states, values were already implemented in const variables in dispatch code below
 
   // Redux state
   const { loading, error } = useSelector((state) => state.user);

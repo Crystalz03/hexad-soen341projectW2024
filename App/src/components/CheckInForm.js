@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../style/style.css";
-//removed unused imports
 import UpdateCustomer from "./UpdateCustomerInfoCheckIn";
 import VehicleInspection from "./VehicleInspection";
 import Deposit from "./DepositCheckIn";
@@ -8,7 +7,7 @@ import jsPDF from"jspdf";
 import moment from 'moment';
 
 function CheckInForm() {
-    let reservationID = "";//removed unnecessary whitespace
+    let reservationID = "";
     const [reservation, setReservation] = useState({}); 
     const [customer, setCustomer] = useState({}); 
     const [vehicle, setVehicle] = useState({}); 

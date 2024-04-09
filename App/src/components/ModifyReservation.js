@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-//removed unused imports
 import './../style/View.css';
 
 function ModifyReservation() {
@@ -14,7 +13,6 @@ function ModifyReservation() {
     const [newDropOffLocation, setNewDropOffLocation] = useState('');
     const [error, setError] = useState('');
     const [isButtonClicked, setIsButtonClicked] = useState(false);
-    //navigate was unsued
 
     useEffect(() => {
         setReservationDetails(null);

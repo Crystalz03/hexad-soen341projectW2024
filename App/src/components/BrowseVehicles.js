@@ -11,7 +11,7 @@ function BrowseVehicles({card}) {
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("All");
   const [filterClicked, setFilterClicked] = useState(false);
-  const [useHorizontalCard] = useState(card === "Horizontal");//setUseHorizontalCard not used
+  const [useHorizontalCard] = useState(card === "Horizontal");
   const navigate = useNavigate();
 
   const callAPIGet = () => {

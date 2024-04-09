@@ -38,7 +38,7 @@ export default function UpdateUserInfo() {
     Email: "",
     Password: "",
   });
-  const [error, setError] = useState("");//fixed error handling
+  const [error, setError] = useState("");
   useEffect(() => {
     setUser(getUser());
   }, []);

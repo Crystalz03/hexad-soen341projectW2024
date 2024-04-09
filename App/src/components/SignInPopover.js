@@ -23,7 +23,7 @@ function SignInPopover() {
         },
       ],
     });
-    popperInstance;//unused variable popperInstance, this call does not affect the website (tested)
+    popperInstance;
 
     const handleClickOutside = (event) => {
       if (!popover.contains(event.target) && !button.contains(event.target)) {
@@ -54,7 +54,7 @@ function SignInPopover() {
     togglePopover();
   };
 
-  const apostrophe = "'";//apostrophe variable to be used in the text
+  const apostrophe = "'";
 
   return (
     <div>

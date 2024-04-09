@@ -1,6 +1,5 @@
 import React from "react";
 import SignUpFrom from "../components/SignUpForm";
-//deleted unused import
 
 function CreateUser() {
     return (

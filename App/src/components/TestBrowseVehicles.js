@@ -5,7 +5,7 @@ import "./../style/style.css";
 
 
 function BrowseVehicles() {
-  const [vehicles] = useState([//setVehicles not used
+  const [vehicles] = useState([
     {
       ID: 1,
       Type: "Car",
@@ -169,7 +169,7 @@ function BrowseVehicles() {
   ]);
 
   const [loading, setLoading] = useState(false);
-  const [error] = useState("");//setError not used
+  const [error] = useState("");
   const [filter, setFilter] = useState("All");
 
   useEffect(() => {

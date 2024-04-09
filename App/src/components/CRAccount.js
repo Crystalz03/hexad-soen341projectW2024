@@ -18,7 +18,7 @@ import { useState } from "react";
     const uniqueId = generateRandomString(8); // Generate a random string of 8 characters
     return prefix + uniqueId;
   }
-  const [error, setError] = useState("");//added error handling
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     id: generateRepId(),
     name: "",

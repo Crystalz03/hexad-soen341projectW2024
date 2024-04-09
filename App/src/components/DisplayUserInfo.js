@@ -72,12 +72,10 @@ export async function getCustomerInfo(id) {
 //component
 
 export function DisplayUserInfo() {
-  const [user] = useState(getUser());//setUser is not used
+  const [user] = useState(getUser());
   const [userType, setUserType] = useState("");
   const [userInfo, setUserInfo] = useState({});
   const [error, setError] = useState("");
-
-  //handleSignOut is not used
 
   useEffect(() => {
     if (user) {

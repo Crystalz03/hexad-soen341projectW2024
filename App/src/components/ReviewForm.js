@@ -29,7 +29,6 @@ const ReviewForm = () => {
         },
         body: JSON.stringify(formData),
       });
-      //unused variable data
       if (!response.ok) {
         throw new Error(
           "Server error: review not sent. Please try again later."
