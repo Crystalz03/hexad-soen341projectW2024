@@ -202,19 +202,4 @@ function ReservationForm(props){
     );
 }
 
-export default ReservationForm;/*
-    useEffect(() => {
-    const fetchCustomer = async () => {
-        try {
-            const response = await fetch(`http://localhost:9000/customers/${formData.email}`);
-            if (!response.ok) {
-                throw new Error("Failed to fetch customer");
-            }
-            const data = await response.json();
-            setCustomer(data.customer);
-        } catch (error) {
-            console.error("Error fetching customer:", error);
-        }
-    };
-    fetchCustomer();}, []);*/
-//navigate(`/ConfirmBooking/${vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}`)}}}>Continue</button>
+export default ReservationForm;

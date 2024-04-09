@@ -1,6 +1,5 @@
 import React from 'react';
 import DeleteReservation from "../../components/reservationManagement/DeleteReservation";
-import "../../../public/assets/css/cancel.css";
  
     function DeleteTheReservation() {
       return (
