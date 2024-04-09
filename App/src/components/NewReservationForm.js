@@ -1,4 +1,4 @@
-import { on } from 'events';
+//removed unused imports
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +19,7 @@ function ReservationForm(props){
   const [vehicle, setVehicle] = useState({});
   const [customers, setCustomers] = useState({});
   const [error, setError] = useState("");
-  const [customerID, setCustomerID] = useState("");
+  //customerID state not used
 
   
   useEffect(() => {
@@ -65,7 +65,6 @@ function ReservationForm(props){
     function verifyInput(){
 
     const customer = customers.find((customer) => customer.Email === formData.email);
-    setCustomerID (customer.ID);
 
     if (formData.pickUpDate > formData.returnDate) {
         alert("The return date must be after the pick-up date.");
@@ -79,11 +78,11 @@ function ReservationForm(props){
             alert("The return date must be in the future.");
             return false;
         }
-        if(vehicle.Availability == "0"){
+        if(vehicle.Availability === "0"){//comparator symbol fixed
             alert("The vehicle you selected is unavailable.");
             return false;
           }
-          if (customer == null){
+          if (customer === null){
             alert("The email you entered is not associated with an account.");
             return false;
           }
@@ -95,13 +94,13 @@ function ReservationForm(props){
         if (
           verifyInput()
           ) {
-            if(formData.extraEquipment == ""){
+            if(formData.extraEquipment === ""){
               formData.extraEquipment = "none";}
-            if(formData.additionalServices == ""){
+            if(formData.additionalServices === ""){
               formData.additionalServices = "none";}
-            if(formData.pickUpLocation == ""){
+            if(formData.pickUpLocation === ""){
               formData.pickUpLocation = "MontrealBranch";}
-            if(formData.dropOffLocation == ""){
+            if(formData.dropOffLocation === ""){
               formData.dropOffLocation = "MontrealBranch";}
             console.log(formData);
             navigate(`/ConfirmBooking/${vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}`);
@@ -121,6 +120,7 @@ function ReservationForm(props){
   return (
     <div className="base-form" style={{height: '700px'}}>
         <form onSubmit={handleSubmit}>
+            {error && <p className="error">{error}</p>}[error handling added]
           <div>
             <label>Email:
             <input 

@@ -4,19 +4,11 @@ import { useNavigate } from 'react-router';
 
 export default function DeleteUser() {
   const [error, setError] = useState('');
-  const [user, setUser] = useState(getUser());
+  const [user] = useState(getUser());//setUser is not used
   const [userType, setUserType]=useState('');
-  const [signedIn, setSignedIn] = useState(false);
+  //signedIn state was being set but not used therefore removed from code
   const navigate= useNavigate();
 
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      setSignedIn(true);
-    } else {
-      setSignedIn(false);
-    }
-  }, []);
 
   useEffect(() => {
     if (user) {
@@ -26,7 +18,6 @@ export default function DeleteUser() {
 
   const handleSignOut = () => {
     localStorage.removeItem("user");
-    setSignedIn(false);
     navigate("/");
   };
 

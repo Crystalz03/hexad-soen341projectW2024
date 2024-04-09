@@ -18,7 +18,7 @@ import { useState } from "react";
     const uniqueId = generateRandomString(8); // Generate a random string of 8 characters
     return prefix + uniqueId;
   }
-
+  const [error, setError] = useState("");//added error handling
   const [formData, setFormData] = useState({
     id: generateRepId(),
     name: "",
@@ -88,8 +88,8 @@ import { useState } from "react";
             onChange={handleChange}
           ></input>
           </div>
-        </div>
-        <select id="branch" class="form-select" aria-label="Default select example" style={{width: '40%', marginBottom: '2em'}}>
+        </div>[fixed class tag for the form]
+        <select id="branch" className="form-select" aria-label="Default select example" style={{width: '40%', marginBottom: '2em'}}>
           <option value="option 1">Laval</option>
           <option value="option 2">Montréal</option>
           <option value="option 3">Airport</option>

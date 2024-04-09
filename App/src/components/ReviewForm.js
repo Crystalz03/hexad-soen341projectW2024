@@ -29,9 +29,7 @@ const ReviewForm = () => {
         },
         body: JSON.stringify(formData),
       });
-
-      const data = await response.json();
-
+      //unused variable data
       if (!response.ok) {
         throw new Error(
           "Server error: review not sent. Please try again later."
@@ -92,6 +90,7 @@ const ReviewForm = () => {
       {seeForm ?
     <div>
       <form onSubmit={handleSubmit} className="base-form">
+      {error && <p className="error">{error}</p>}[error handling added]
       <div>
         <label>Name</label>
           <input type="text" name="name" required={true} onChange={handleChange} />
@@ -112,7 +111,7 @@ const ReviewForm = () => {
           </div>
           </div>
         </div>
-        <label for="exampleFormControlInput1" class="form-label">Review</label>
+        <label htmlFor="exampleFormControlInput1" className="form-label">Review</label>[fixed for and class tag]
           <textarea name="review" rows="8" cols="80" onChange={handleChange} />
           <br/> <br/>
         <button type="submit" style={{width: '50%'}}>Submit Review</button>

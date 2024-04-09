@@ -1,37 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signIn } from "../Store/UserSlice";
 import { getUserRole } from "./DisplayUserInfo";
-import { Link } from "react-router-dom";
+//removed unused imports
 
 function SignInForm() {
   // States
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [userType, setUserType] = useState("");
-  const [user, setUser] = useState(null); // State to store user details
+  //removed unused states, values were already implemented in const variables in dispatch code below
 
   // Redux state
   const { loading, error } = useSelector((state) => state.user);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // Fetch user details from localStorage on component mount
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
-
-  // Set user type when user details change
-  useEffect(() => {
-    if (user) {
-      setUserType(getUserRole(user.id)); // Use user.id directly
-    }
-  }, [user]);
 
 
 const handleSignIn = (e) => {

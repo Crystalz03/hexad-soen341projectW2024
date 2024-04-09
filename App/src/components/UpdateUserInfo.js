@@ -38,7 +38,7 @@ export default function UpdateUserInfo() {
     Email: "",
     Password: "",
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState("");//fixed error handling
   useEffect(() => {
     setUser(getUser());
   }, []);
@@ -72,7 +72,7 @@ export default function UpdateUserInfo() {
         }
       } catch (error) {
         console.error("Error fetching user information:", error);
-        //setError("Error fetching user information");
+        setError("Error fetching user information");
       }
     };
 

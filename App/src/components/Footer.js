@@ -1,7 +1,7 @@
 // Footer.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import imageSrc from './../../public/assets/images/footer_world.png';
+//removed unused imports
 
 function Footer() {
   return (

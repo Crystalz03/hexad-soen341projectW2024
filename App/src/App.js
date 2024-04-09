@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";//removed unused imports
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Route, Routes, } from "react-router-dom";
@@ -37,17 +37,7 @@ return (
 }
 
 function App() {
-  const [apiResponse, setApiResponse] = useState("");
-  const callAPI = () => {
-    fetch("http://localhost:9000/testAPI")
-      .then(res => res.text())
-      .then(res => setApiResponse(res))
-      .catch(error => console.error('Error fetching data:', error));
-  }
-  useEffect(() => {
-    callAPI();
-  }, []);
-
+  //removed unnecessary API call
   return (
     <Router>
       <div className="app">

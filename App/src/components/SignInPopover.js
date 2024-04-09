@@ -23,6 +23,7 @@ function SignInPopover() {
         },
       ],
     });
+    popperInstance;//unused variable popperInstance, this call does not affect the website (tested)
 
     const handleClickOutside = (event) => {
       if (!popover.contains(event.target) && !button.contains(event.target)) {
@@ -52,6 +53,8 @@ function SignInPopover() {
     setShowSignUp(false); // Set showSignUp to false to switch content back to sign-in form
     togglePopover();
   };
+
+  const apostrophe = "'";//apostrophe variable to be used in the text
 
   return (
     <div>
@@ -84,7 +87,7 @@ function SignInPopover() {
               {/* Include your Sign In component here */}
               <SignInForm />
               <p>
-                Don't have an account?{' '}
+                Don{apostrophe}t have an account?{' '}
                 <button type="button" className="btn btn-link" onClick={openSignUp}>
                   Sign Up
                 </button>

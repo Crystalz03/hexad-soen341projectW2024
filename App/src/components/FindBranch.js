@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Map from './map';
 
 const BranchFinder = ({map}) => {
-const [showButtons, setShowButtons] = useState(false);
+  //showButtons state not used
 const [showMap, setShowMap] = useState(map);
 const [apiResponse, setApiResponse] = useState(null); 
 const [postalCode, setPostalCode] = useState('');

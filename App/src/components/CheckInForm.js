@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/style.css";
-import { useNavigate } from "react-router-dom";
+//removed unused imports
 import UpdateCustomer from "./UpdateCustomerInfoCheckIn";
 import VehicleInspection from "./VehicleInspection";
 import Deposit from "./DepositCheckIn";
@@ -8,8 +8,7 @@ import jsPDF from"jspdf";
 import moment from 'moment';
 
 function CheckInForm() {
-    let reservationID = "";
-
+    let reservationID = "";//removed unnecessary whitespace
     const [reservation, setReservation] = useState({}); 
     const [customer, setCustomer] = useState({}); 
     const [vehicle, setVehicle] = useState({}); 
@@ -17,9 +16,6 @@ function CheckInForm() {
     const [loading2, setLoading2] = useState(false); 
     const [loading3, setLoading3] = useState(false); 
     const [formHeight, setFormHeight] = useState("200px");
-
-
-
     const [error, setError] = useState("");
 
     const getReservation = async () => {
@@ -137,7 +133,7 @@ const generateAgreement = (customer, vehicle, reservation) => {
     doc.text("Car Rental Agreement", 72, 60);
     doc.setFontSize(11);
     doc.text(`Rental Agreement Number: ${reservation.id}`, 72, 90);
-    doc.text(`This Rental Agreement ("Agreement") is entered into between Hexad, located at Montreal,QC.,  hereinafter referred to as the "Rental Company," and the individual or entity identified below, hereinafter referred to as the "Renter":
+    doc.text(`This Rental Agreement ("Agreement") is entered into between Hexad, located at Montreal,QC.,[debugger recognized the whitespace as a warning] hereinafter referred to as the "Rental Company," and the individual or entity identified below, hereinafter referred to as the "Renter":
     `, 72, 110,{lineHeightFactor: 1.35 ,maxWidth: 451});
 
     doc.text("1. Renter's Information:", 72, 170)
@@ -212,9 +208,9 @@ The Renter acknowledges receiving and reviewing a copy of the vehicle's insuranc
 
 
     doc.save("RentalAgreement.pdf");
- 
+
   };
-  
+
 
 
     const handleReservationSubmit = (e) => {
@@ -289,8 +285,8 @@ The Renter acknowledges receiving and reviewing a copy of the vehicle's insuranc
             </div>
             : null}
 
-            
 
+            
         </div>
     );
 }

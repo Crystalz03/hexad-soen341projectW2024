@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 function UpdateVehicleForm(props) {
     const vehicleID = props.vehicleID;
     const navigate = useNavigate();
+    const [error, setError] = useState("");//error was used but not defined
     const [formData, setFormData] = useState({
         make: '',
         category: '',
@@ -40,6 +41,7 @@ function UpdateVehicleForm(props) {
             setVehicles(data.vehicle);
           } catch (error) {
             console.error("Error fetching vehicles:", error);
+            setError("Error fetching vehicles");
           }
         };
     
@@ -71,6 +73,7 @@ function UpdateVehicleForm(props) {
         navigate("/AdminInventory");
       } catch (error) {
         console.error(error);
+        setError(error.message);
       }
     };
   

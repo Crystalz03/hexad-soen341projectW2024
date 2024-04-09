@@ -47,9 +47,7 @@ function SignupForm() {
         },
         body: JSON.stringify(formData),
       });
-
-      const data = await response.json();
-
+      //data variable unused
       if (!response.ok) {
         throw new Error(
           "This email is already associated with an account. Please sign in."

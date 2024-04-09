@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 
 
 function SignIn() {
+  const apostrophe = "'";//added apostrophe variable to replace the apostrophe in the html code
+
     return (
         <div className="main-content" >
           <div className="check-in-title">Sign In</div>
           <h6>
-            Don't have an account? <Link to="/SignUp">Sing In</Link>
+            Don{apostrophe}t have an account? <Link to="/SignUp">Sing In</Link>
           </h6>
           <SignInForm />
         </div>

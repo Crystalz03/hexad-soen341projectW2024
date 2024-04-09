@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignInPopover from "../components/SignInPopover";
-import { useSelector } from "react-redux";
+//removed unused imports
 import { getUser, getUserRole } from "./DisplayUserInfo";
 import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  //isAuthenticated not used, removing did not affect the code (tested)
   const [isDropdownOpenAccount, setIsDropdownOpenAccount] = useState(false);
   const [isDropdownOpenReservation, setIsDropdownOpenReservation] =
     useState(false);

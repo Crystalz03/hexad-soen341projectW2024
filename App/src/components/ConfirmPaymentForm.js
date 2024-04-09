@@ -198,12 +198,11 @@ function ConfirmPaymentForm(props){
             reservation.extraEquipment = formData.extraEquipment;
             reservation.total = formData.total;
 
-
             customer.Reservation_ID += ","+reservationID;
             vehicle.Availability = "0";
             console.log(reservation);
             updateCustomer();
-        
+            updateVehicle();//added update vehicle which wasnt called
             createReservation();
          
             alert("Payment Saved Successfully! Your reservation ID is: "+reservationID+" and the total cost is: "+formData.total+"$. An email has been sent to you with the reservation details.");
