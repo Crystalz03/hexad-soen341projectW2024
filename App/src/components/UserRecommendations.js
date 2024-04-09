@@ -63,6 +63,38 @@ const UserRecommendations = () => {
     latitude: 0,
     longitude: 0
   });
+
+const [AllRecommendations, setAllRecommendations] = useState(null);
+
+useEffect(() => {
+    const callAPIGetRecommendations = async () => {
+      try {
+        const response = await fetch('http://localhost:9000/recommendations');
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch branches');
+        }
+
+        const data = await response.json();
+        const recommendations = data.recommendation[0].map(recommendation => ({
+          Name: recommendation.Name,
+          latitude: recommendation.Latitude,
+          longitude: recommendation.LongitudeCoor,
+          Category: recommendation.Category,
+          Address: recommendation.Address
+        }));
+
+        setAllRecommendations(recommendations);
+        console.log(recommendations);
+
+      } catch (error) {
+        console.error('Error fetching recommendations:', error);
+      }
+    };
+
+      callAPIGetRecommendations();
+
+      }, []);
  
      useEffect(() => {
 
