@@ -93,7 +93,6 @@ function EstimationForm(props) {
         fontWeight: 600, 
         fontSize: 16, 
         width: 360,
-        height: 50,
         transition: "0.3s",
         marginRight: "0.5em"}
       } onClick={handleNext}>Next</button>

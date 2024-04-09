@@ -1,7 +1,6 @@
 import React from "react";
 import "./../style/style.css";
-import Navbar from "../components/NavBar";
-import EstimationForm from "../components/EstimationForm";
+import EstimationForm from "../../components/applicationManagement/EstimationForm";
 import {useParams} from "react-router-dom";
 
 function EstimationPage() {

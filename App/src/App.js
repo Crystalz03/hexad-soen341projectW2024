@@ -1,37 +1,3 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
-import Home from "./pages/Home";
-import BrowseAccounts from "./pages/BrowseAccounts";
-import Vehicle from "./pages/Vehicle";
-import Browse from "./pages/Browse";
-import Reserve from "./pages/Reserve";
-import View from "./pages/View";
-import AdminDashboard from "./pages/AdminDashboard";
-import CreateCRAccount from "./pages/CreateCRAccount";
-import CRDashboard from "./pages/CRDashboard";
-import DeleteReservationPage from "./pages/DeleteReservationPage";
-import MyAccountPage from "./pages/MyAccountPage";
-import CreateAdminAccount from "./pages/CreateAdminAccount";
-import Reviews from"./pages/Reviews";
-import SignIn from "./pages/SignIn";
-import AdminInventory from "./pages/AdminInventory";
-import Modify from "./pages/Modify";
-import Branches from "./pages/Branches";
-import UpdateUserInfoPage from "./pages/UpdateUserInfoPage";
-import CheckIn from "./pages/CheckIn";
-import CheckOut from "./pages/CheckOut";
-import Payment from "./pages/Payment";
-import CRCreateAUserAccount from "./pages/CRCreateAUserAccount";
-import ConfirmBooking from "./pages/ConfirmBooking";
-import ConfirmPayment from "./pages/ConfirmPayment";
-import UpdateVehicle from "./pages/UpdateVehicle";
-import VehicleApplication from "./pages/VehicleApplication";
-import EstimationPage from "./pages/EstimationPage";
-import ContactInfoPage from "./pages/ContactInfoPage";
-=======
 import React from "react";
 
 import Footer from "./components/layout/Footer";
@@ -67,7 +33,9 @@ import CRCreateAUserAccount from "./pages/csr/CRCreateAUserAccount";
 import ConfirmBooking from "./pages/csr/ConfirmBooking";
 import ConfirmPayment from "./pages/csr/ConfirmPayment";
 
->>>>>>> Static-analysis-Tool
+import VehicleApplication from "./pages/allUsers/VehicleApplication";
+import ContactInfoPage from "./pages/allUsers/ContactInfoPage";
+import EstimationPage from "./pages/allUsers/EstimationPage";
 
 function NotFound() {
 return (

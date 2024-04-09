@@ -1,7 +1,6 @@
 import React from "react";
 import "./../style/style.css";
-import Navbar from "../components/NavBar";
-import VehicleApplicationForm from "../components/VehicleApplicationForm";
+import VehicleApplicationForm from "../../components/applicationManagement/VehicleApplicationForm";
 
 function VehicleApplication() {
     return (

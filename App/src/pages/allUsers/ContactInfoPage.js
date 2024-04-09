@@ -1,7 +1,7 @@
 import React from "react";
 import "./../style/style.css";
 import {useParams} from "react-router-dom";
-import ContactInfoForm from "../components/ContactInfoForm";
+import ContactInfoForm from "../../components/applicationManagement/ContactInfoForm";
 
 function ContactInfoPage() {
   const params = useParams();

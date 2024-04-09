@@ -43,11 +43,12 @@ function VehicleApplicationForm() {
             alert("Please fill out all required fields.");
         }
     };
+    const apostrophe = "'";
 
     return (
         <div>
             <form onSubmit={handleSubmit} className="base-form">
-                <p style={{ textTransform: 'none' }}>Welcome to our vehicle recycling service. We appreciate your decision to responsibly recycle your car. Please fill out the form below with your vehicle's information. Once submitted, we will provide you with an estimation of the amount we can offer. Let's get started!</p>
+                <p style={{ textTransform: 'none' }}>Welcome to our vehicle recycling service. We appreciate your decision to responsibly recycle your car. Please fill out the form below with your vehicle{apostrophe}s information. Once submitted, we will provide you with an estimation of the amount we can offer. Let{apostrophe}s get started!</p>
 
                 {/* Existing form */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '30px' }}>
