@@ -1,5 +1,4 @@
 import React from "react";
-import "./../style/style.css";
 import EstimationForm from "../../components/applicationManagement/EstimationForm";
 import {useParams} from "react-router-dom";
 

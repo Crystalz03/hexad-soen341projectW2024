@@ -1,5 +1,4 @@
 import React from "react";
-import "./../style/style.css";
 import VehicleApplicationForm from "../../components/applicationManagement/VehicleApplicationForm";
 
 function VehicleApplication() {
