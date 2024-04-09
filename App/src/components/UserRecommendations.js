@@ -21,8 +21,8 @@ function PointsInBetween({ coord1Latitude, coord1Longitude, coord2Latitude, coor
     const findPointsInBetween = () => {
       const distanceBetweenCoords = calculateDistance(coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude);
       const result = otherCoords.filter(coord => {
-        const distanceToCoord1 = calculateDistance(coord[0], coord[1], coord1Latitude, coord1Longitude);
-        const distanceToCoord2 = calculateDistance(coord[0], coord[1], coord2Latitude, coord2Longitude);
+        const distanceToCoord1 = calculateDistance(coord.latitude, coord.longitude, coord1Latitude, coord1Longitude);
+        const distanceToCoord2 = calculateDistance(coord.latitude, coord.longitude, coord2Latitude, coord2Longitude);
         return (distanceToCoord1 + distanceToCoord2) <= (distanceBetweenCoords + threshold);
       });
       setPointsInBetween(result);
@@ -32,9 +32,9 @@ function PointsInBetween({ coord1Latitude, coord1Longitude, coord2Latitude, coor
   }, [coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude, otherCoords, threshold]);
 
   const formattedPoints = pointsInBetween.map(coord => ({
-    latitude: coord[0],
-    longitude: coord[1],
-    title: 'Some Title' 
+    latitude: coord.latitude,
+    longitude: coord.longitude,
+    title: coord.Name 
   }));
 
   console.log(formattedPoints);
@@ -64,7 +64,12 @@ const UserRecommendations = () => {
     longitude: 0
   });
 
-const [AllRecommendations, setAllRecommendations] = useState(null);
+const [AllRecommendations, setAllRecommendations] = useState(
+  [{Name: '', 
+  latitude: 0, 
+  longitude: 0, 
+  Category: '', 
+  Address: ''}]);
 
 useEffect(() => {
     const callAPIGetRecommendations = async () => {
@@ -79,7 +84,7 @@ useEffect(() => {
         const recommendations = data.recommendation[0].map(recommendation => ({
           Name: recommendation.Name,
           latitude: recommendation.Latitude,
-          longitude: recommendation.LongitudeCoor,
+          longitude: recommendation.Longitude,
           Category: recommendation.Category,
           Address: recommendation.Address
         }));
@@ -170,7 +175,7 @@ useEffect(() => {
             </div>
             <button type="submit">Submit</button>
           </form> 
-          <PointsInBetween coord1Latitude={selectedBranch1.latitude} coord1Longitude={selectedBranch1.longitude} coord2Latitude={selectedBranch2.latitude} coord2Longitude={selectedBranch2.longitude} otherCoords={otherCoords} threshold={500} />
+          <PointsInBetween coord1Latitude={selectedBranch1.latitude} coord1Longitude={selectedBranch1.longitude} coord2Latitude={selectedBranch2.latitude} coord2Longitude={selectedBranch2.longitude} otherCoords={AllRecommendations} threshold={500} />
       </div>
     </div>
   </div>
