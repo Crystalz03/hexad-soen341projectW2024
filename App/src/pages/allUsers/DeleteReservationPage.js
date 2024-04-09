@@ -1,16 +1,20 @@
-import React from 'react';
+import React from "react";
 import DeleteReservation from "../../components/reservationManagement/DeleteReservation";
- 
-    function DeleteTheReservation() {
-      return (
+import "../../../public/assets/css/Cancel.css";
+
+function DeleteTheReservation() {
+  return (
     <div className="main-content">
       <div className="view-container">
-        <h2 className="view-title" style={{margin: '1.5em'}}>Delete Reservation</h2>
-          <div className="view-form" ><DeleteReservation/></div>
+        <h2 className="view-title" style={{ margin: "1.5em" }}>
+          Delete Reservation
+        </h2>
+        <div className="view-form">
+          <DeleteReservation />
+        </div>
       </div>
     </div>
-      );
-    }
-    
-    export default DeleteTheReservation;
-    
+  );
+}
+
+export default DeleteTheReservation;

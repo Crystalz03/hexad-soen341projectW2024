@@ -206,13 +206,11 @@ header {
 .main-content {
   position: relative;
   display: flex;
-  min-height: 100vh;
-  width: 90%; 
-  max-width: 100vw; 
-  .main-content{
-    width: 100%; 
-
-  }
+ 
+  min-height: calc(100vh - 10em); 
+  max-height: calc(100vh - 10em);
+  width: 90%; /* Set width to 90% of the viewport width */
+  max-width: 90vw; /* Limit width to 90% of the viewport width */
 }
 
 .main-content > * {
@@ -324,7 +322,7 @@ header {
   font-size: var(--m-size);
   box-sizing: border-box;
   height: var(--input-box-height);
-  width: 100%;
+  width: var(--main-content-width);
   background-color: var(--second-white);
 }
 .top-box-input input::placeholder {
@@ -335,7 +333,7 @@ header {
   display: flex;
   flex-direction: row;
 
-  width: 100%;
+  width: var(--main-content-width);
   gap: 10px;
   align-items: flex-start;
 }
@@ -356,7 +354,7 @@ header {
   outline: none;
   font-size: var(--m-size);
   box-sizing: border-box;
-
+  width: var(--pickup-return-box-width);
 }
 .pickup-box input::placeholder,
 .return-box input::placeholder {

@@ -1,10 +1,18 @@
 import React from "react";
 import CreateAdminAccount from "../../components/adminActions/AdminAccount";
+import "../../../public/assets/css/style.css";
 
-export default function AdminAccount() {
+function AdminAccount() {
   return (
-    <div>
-      <CreateAdminAccount />
-    </div>
+        <div className="main-content">
+          <div className="title-box">
+            <div className="check-in-title">
+              Create Admin Account 
+            </div>
+          </div>
+            <CreateAdminAccount />
+        </div>
   );
 }
+
+export default AdminAccount;

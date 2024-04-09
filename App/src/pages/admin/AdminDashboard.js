@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../public/assets/css/style.css";
 
-function Main() {
+function AdminDashboard() {
   return (
     <div className="main">
       <div className="general-structure">
@@ -15,12 +15,4 @@ function Main() {
     </div>
   );
 }
-function AdminDashboard() {
-  return (
-    <div>
-      <Main />
-    </div>
-  );
-}
-
 export default AdminDashboard;
