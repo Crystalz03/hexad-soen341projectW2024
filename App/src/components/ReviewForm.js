@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import "../style/SignUpForm.css";
-import { useNavigate } from "react-router-dom";
+import "../style/style.css";
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+
+
+
 
 const ReviewForm = () => {
   const [formData, setFormData] = useState({
@@ -87,31 +90,32 @@ const ReviewForm = () => {
   return (
     <div>
       {seeForm ?
-    <div className='review-form'>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
+    <div>
+      <form onSubmit={handleSubmit} className="base-form">
+      <div>
+        <label>Name</label>
           <input type="text" name="name" required={true} onChange={handleChange} />
         </div>
         <div>
-          <label>Email:</label>
+        <label>Email address</label>
           <input type="email" name="email" required={true} onChange={handleChange} />
         </div>
         <div>
-          <label>Rating:</label>
-          <div className="rating">
+        <label>Rating</label>
+          <div className="rating-container" style={{marginTop: '0'}}>
+          <div className="rating" style={{marginTop: '0'}} >
             <span onClick={() => handleRatingChange(5)} className={formData.rating >= 5 ? 'selected' : ''} >☆</span>
             <span onClick={() => handleRatingChange(4)} className={formData.rating >= 4 ? 'selected' : ''} >☆</span>
             <span onClick={() => handleRatingChange(3)} className={formData.rating >= 3 ? 'selected' : ''} >☆</span>
             <span onClick={() => handleRatingChange(2)} className={formData.rating >= 2 ? 'selected' : ''} >☆</span>
             <span onClick={() => handleRatingChange(1)} className={formData.rating >= 1 ? 'selected' : ''} >☆</span>
           </div>
+          </div>
         </div>
-        <div>
-          <label>Review:</label>
-          <textarea name="review" rows="10" cols="70" onChange={handleChange} />
-        </div>
-        <button className="button-1" type="submit">Submit Review</button>
+        <label for="exampleFormControlInput1" class="form-label">Review</label>
+          <textarea name="review" rows="8" cols="80" onChange={handleChange} />
+          <br/> <br/>
+        <button type="submit" style={{width: '50%'}}>Submit Review</button>
       </form>
     </div> : null}
       {!loading && average ?

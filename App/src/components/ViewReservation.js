@@ -84,7 +84,7 @@ function ViewReservation() {
                         onChange={handleChange}
                     />
                 </label>
-                <button type="submit">View</button>
+                <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">View</button>
             </form>
             {error && <p className="error">{error}</p>}
             {isButtonClicked && reservationDetails && ( // Render reservationDetails only when the button is clicked

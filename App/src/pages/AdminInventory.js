@@ -1,19 +1,17 @@
 import React from "react";
-import AdminSideMenu from "../components/AdminSideMenu";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-
 import AdminInventoryVehicles from "../components/AdminInventoryVehicles";
+
 
 function Inventory() {
   return (
-    <div>
-      <Header />
-      <AdminSideMenu />
-      <AdminInventoryVehicles />
-      <Footer />
+    <div className="main-content" >
+      <div className="title-box">
+            <div className="check-in-title">Vehicle Inventory</div>
+          </div>
+        <AdminInventoryVehicles />
     </div>
-  );
+);
 }
+
 
 export default Inventory;

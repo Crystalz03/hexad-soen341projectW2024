@@ -36,7 +36,6 @@ function ConfirmPaymentForm(props){
     const [customer, setCustomer] = useState({});
     const [vehicle, setVehicle] = useState({});
     const [input, setInput] = useState({
-        cardNumber: "",
         expiryDate: "",
         cvv: "",
     });
@@ -89,7 +88,7 @@ function ConfirmPaymentForm(props){
                     address : customer.Address, 
                     contactNumber : customer.Contact_Number, 
                     licenseNumber : customer.License_Number, 
-                    creditCard : input.cardNumber
+                    creditCard : customer.cardNumber
                 }),
             });
             if (!response.ok) {
@@ -146,7 +145,7 @@ function ConfirmPaymentForm(props){
     };
 
         function verifyPayment(){
-        if(input.cardNumber.length !== 16){
+        if(customer.Credit_Card.length !== 19){
             alert("Invalid Card Number");
             return false;
         }
@@ -181,6 +180,7 @@ function ConfirmPaymentForm(props){
             ...prevState,
             [name]: value,
         }));
+        console.log(customer);
         };
     
     const handleSubmit = (e) => {
@@ -214,17 +214,20 @@ function ConfirmPaymentForm(props){
     return (
         
         <div>
-            <form onSubmit={handleSubmit}>
-                <label className="reservation-title" style={{marginTop:"20px", color: "black"}}>Card Number:</label>
+            <form onSubmit={handleSubmit} className="base-form">
+                <div>
+                <label>Card Number:</label>
                 <input 
                     name="cardNumber"
                     required={true}
                     type='text' 
-                    value= {input.cardNumber}
+                    value= {customer.Credit_Card || ""}
                     onChange={handleChange}
                     placeholder='Card Number' 
-                    id='cardNumber'/><br/>
-                <label className="reservation-title" style={{marginTop:"5px", color: "black"}}>Expiry Date:</label>
+                    id='cardNumber'/>
+                </div>
+                <div>
+                <label>Expiry Date:</label>
                 <input 
                     name="expiryDate"
                     required={true}
@@ -232,8 +235,10 @@ function ConfirmPaymentForm(props){
                     value= {input.expiryDate}
                     onChange={handleChange}
                     placeholder='MM/YY' 
-                    id='expiryDate'/><br/>
-                <label className="reservation-title" style={{marginTop:"5px", color: "black"}}>CVV:</label>
+                    id='expiryDate'/>
+                </div>
+                <div>
+                <label>CVV:</label>
                 <input 
                     name="cvv"
                     required={true}
@@ -241,9 +246,10 @@ function ConfirmPaymentForm(props){
                     value= {input.cvv}
                     onChange={handleChange}
                     placeholder='CVV' 
-                    id='cvv'/><br/><br/>
+                    id='cvv'/>
+                </div> <br/>
 
-                <button type="submit" style={{display: "block", margin: "auto", backgroundColor :"#d6ffef"}}>Confirm Payment</button>
+                <button type="submit" >Confirm Payment</button>
             </form>
         </div>
     );

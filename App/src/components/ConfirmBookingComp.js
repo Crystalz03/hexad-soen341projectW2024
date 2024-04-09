@@ -95,18 +95,27 @@ function ConfirmBookingComp(props){
     const ReservationDuration = (new Date(formData.returnDate) - new Date(formData.pickUpDate))/(1000*60*60*24);
         total +=vehicle.Price*ReservationDuration;
 
+    const formatPhoneNumber = (phoneNumber) => {
+      // Assuming phoneNumber is a string of 10 digits
+      const cleaned = ('' + phoneNumber).replace(/\D/g, '');
+      const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+      if (match) {
+        return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+      }
+      return null; // return null for invalid phone numbers
+    };
+
     return(
         <div>
-            <div className="reservation-title" style={{marginTop:"10px", fontSize: "40px"}}>Confirm Booking</div>
             <div className="reservation-title" style={{marginTop:"5px", color: "black"}}>Vehicle Information</div>
             <p>Make: {vehicle.Make}</p>
             <p>Model: {vehicle.Model}</p>
             <p>Category: {vehicle.Category}</p>
-            <p>Price: {vehicle.Price}</p>
+            <p>Price: {vehicle.Price}$</p>
             <div className="reservation-title" style={{marginTop:"5px", color: "black"}}>Customer Information</div>
             <p>Name: {customer.Name}</p>
             <p>Email: {customer.Email}</p>
-            <p>Phone: {customer.Contact_Number}</p>
+            <p>Phone: {customer.Contact_Number && formatPhoneNumber(customer.Contact_Number)}</p>
             <div className="reservation-title" style={{marginTop:"5px", color: "black"}}>Reservation Information</div>
             <p>Pick Up Date: {formData.pickUpDate}</p>
             <p>Return Date: {formData.returnDate}</p>
@@ -114,9 +123,9 @@ function ConfirmBookingComp(props){
             <p>Drop Off Location: {formData.dropOffLocation}</p>
             <p>Additional Services: {formData.additionalServices}</p>
             <p>Extra Equipment: {formData.extraEquipment}</p>
-            <p>Total : {vehicle.Price} $ x {ReservationDuration} = {total} $ </p><br/>
-            <button style={{display: "block", margin: "auto", backgroundColor :"#d6ffef"}} onClick={()=>{navigate(`/ConfirmPayment/${formData.vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}/${total}`)}}>Confirm</button><br/>
-            <button style={{display: "block", margin: "auto", backgroundColor:"#ffb0b9"}} onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
+            <p>Total : {vehicle.Price}$/day x {ReservationDuration} days = {total}$ </p><br/>
+            <button style={{ padding: '0.5em', border: 'none', borderRadius: '10%', display: "block", margin: "auto", backgroundColor :"#d6ffef"}} onClick={()=>{navigate(`/ConfirmPayment/${formData.vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}/${total}`)}}>Confirm</button><br/>
+            <button style={{ padding: '0.5em', border: 'none', borderRadius: '10%', display: "block", margin: "auto", backgroundColor:"#ffb0b9"}} onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
         </div>
     );
 }

@@ -169,19 +169,22 @@ export default function UpdateUserInfo() {
  
 
   return (
-    <div>
-      <form onSubmit={handleUpdate}>
+    <div style={{width: '80%'}}>
+      <form onSubmit={handleUpdate} className="base-form">
        {error && <p className="error">{error}</p>}{" "}
         {userType === "admin" && (
-          <div>
-            <p>Admin Information:</p>
+          <span>
+            <i>Admin Information</i>
             <label>Name</label>
+            <div>
             <input
               type="text"
               name="Name"
               value={adminInfo.Name}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Last Name:</label>
             <input
               type="text"
@@ -189,6 +192,8 @@ export default function UpdateUserInfo() {
               value={adminInfo.Last_Name}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Email:</label>
             <input
               type="text"
@@ -196,6 +201,8 @@ export default function UpdateUserInfo() {
               value={adminInfo.Email}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Password:</label>
             <input
               type="password"
@@ -203,12 +210,14 @@ export default function UpdateUserInfo() {
               value={adminInfo.Password}
               onChange={handleChange}
             />
-          </div>
+            </div>
+          </span>
         )}
 
         {userType === "customer_representative" && (
-          <div>
-            <p>Customer Representative Information:</p>
+          <span>
+            <i>Customer Representative Information</i>
+            <div>
             <label>Name</label>
             <input
               type="text"
@@ -216,6 +225,8 @@ export default function UpdateUserInfo() {
               value={csrInfo.Name}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Last Name:</label>
             <input
               type="text"
@@ -223,6 +234,8 @@ export default function UpdateUserInfo() {
               value={csrInfo.Last_Name}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Branch:</label>
             <input
               type="text"
@@ -230,6 +243,8 @@ export default function UpdateUserInfo() {
               value={csrInfo.Branch}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Email:</label>
             <input
               type="text"
@@ -237,6 +252,8 @@ export default function UpdateUserInfo() {
               value={csrInfo.Email}
               onChange={handleChange}
             />
+            </div>  
+            <div>
             <label>Password:</label>
             <input
               type="password"
@@ -244,11 +261,13 @@ export default function UpdateUserInfo() {
               value={csrInfo.Password}
               onChange={handleChange}
             />
-          </div>
+            </div>
+          </span>
         )}
         {userType === "customer" && (
-          <div>
-            <p>Customer Information:</p>
+          <span >
+            <i>Customer Information</i>
+            <div>
             <label>Name</label>
             <input
               type="text"
@@ -256,6 +275,8 @@ export default function UpdateUserInfo() {
               value={customerInfo.Name}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Last Name:</label>
             <input
               type="text"
@@ -263,6 +284,8 @@ export default function UpdateUserInfo() {
               value={customerInfo.Last_Name}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Reservation ID:</label>
             <input
               type="text"
@@ -270,6 +293,8 @@ export default function UpdateUserInfo() {
               value={customerInfo.Reservation_ID}
               disabled
             />
+            </div>
+            <div>
             <label>Location:</label>
             <input
               type="text"
@@ -277,6 +302,8 @@ export default function UpdateUserInfo() {
               value={customerInfo.Location}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Email:</label>
             <input
               type="text"
@@ -284,6 +311,8 @@ export default function UpdateUserInfo() {
               value={customerInfo.Email}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Password:</label>
             <input
               type="password"
@@ -291,6 +320,8 @@ export default function UpdateUserInfo() {
               value={customerInfo.Password}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Address:</label>
             <input
               type="text"
@@ -298,6 +329,8 @@ export default function UpdateUserInfo() {
               value={customerInfo.Address}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Contact Number:</label>
             <input
               type="text"
@@ -305,6 +338,8 @@ export default function UpdateUserInfo() {
               value={customerInfo.Contact_Number}
               onChange={handleChange}
             />
+              </div>
+            <div>
             <label>License Number:</label>
             <input
               type="text"
@@ -312,6 +347,8 @@ export default function UpdateUserInfo() {
               value={customerInfo.License_Number}
               onChange={handleChange}
             />
+            </div>
+            <div>
             <label>Credit Card:</label>
             <input
               type="text"
@@ -319,8 +356,10 @@ export default function UpdateUserInfo() {
               value={customerInfo.Credit_Card}
               onChange={handleChange}
             />
-          </div>
+            </div>
+          </span>
         )}
+        <br/>
         <button type="submit">Update</button>
       </form>
     </div>

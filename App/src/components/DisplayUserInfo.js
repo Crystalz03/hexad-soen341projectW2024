@@ -126,7 +126,7 @@ export function DisplayUserInfo() {
           {/* Display user information based on userType */}
           {userType === "admin" && (
             <div>
-              <p>Admin Information:</p>
+              <i>Admin Information</i>
               <p>ID: {userInfo.ID}</p>
               <p>Name: {userInfo.Name}</p>
               <p>Last Name: {userInfo.Last_Name}</p>
@@ -138,7 +138,7 @@ export function DisplayUserInfo() {
           )}
           {userType === "customer_representative" && (
             <div>
-              <p>Customer Representative Information:</p>
+              <i>Customer Representative Information</i>
               <p>ID: {userInfo.ID}</p>
               <p>Name: {userInfo.Name}</p>
               <p>Last Name: {userInfo.Last_Name}</p>
@@ -150,7 +150,7 @@ export function DisplayUserInfo() {
           )}
           {userType === "customer" && (
             <div>
-              <p>Customer Information:</p>
+              <i>Customer Information</i>
               <p>ID: {userInfo.ID}</p>
               <p>Name: {userInfo.Name}</p>
               <p>Last Name: {userInfo.Last_Name}</p>
@@ -165,8 +165,10 @@ export function DisplayUserInfo() {
               {/* Add other customer-specific fields here */}
             </div>
           )}
+          <Link to="/UpdateUserInfo"><button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}}>Update</button></Link>
+          <br/> <br/>
           <DeleteUser />
-          <Link to="/UpdateUserInfo"><button>Update</button></Link>
+  
         </>
       ) : (
         <h1>Not signed in</h1>

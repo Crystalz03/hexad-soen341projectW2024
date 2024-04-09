@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
 
 import "./../style/style.css";
 
@@ -189,7 +187,6 @@ function BrowseVehicles() {
 
   return (
     <div>
-      <Header />
       <div className="main">
         <div className="general-structure">
           <aside className="nav sticky">
@@ -262,7 +259,6 @@ function BrowseVehicles() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -1,37 +1,23 @@
 import React from "react";
-import Header from '../components/Header';
-import AdminSideMenu from "../components/AdminSideMenu";
 import BrowseAccountsComponent from "../components/BrowseCustomerAccounts";
 import BrowseAdminAccounts from "../components/BrowseAdminAccounts";
 import BrowseCSRAccounts from "../components/BrowseCSRAccounts";
-
 import "./../style/style.css";
 
-export default function BrowseAccounts() {
+function BrowseAccounts() {
     return (
-        <div >
-          <Header />
-          <AdminSideMenu/>
-          <Main />
+      <div className="main-content">
+          <div className="title-box">
+            <div className="title-accounts" >Accounts</div>
           </div>
-      );
-}
-
-function Main() {
-    return (
-      <div className="accounts">
-        <div >
-          <div >
-            <div className="title-box">
-              <div className="title-accounts" >Accounts</div>
-            </div>
-            <div className="account-content" style={{height:"600px"}}>
-                <BrowseAccountsComponent />
-                <BrowseAdminAccounts />
-                <BrowseCSRAccounts />
-            </div>
+          <div className="account-content">
+              <BrowseAccountsComponent /> <br/>
+              <BrowseAdminAccounts /> <br/>
+              <BrowseCSRAccounts />
           </div>
         </div>
-      </div>
     );
+    
   }
+
+  export default BrowseAccounts; 

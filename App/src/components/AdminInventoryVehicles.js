@@ -9,7 +9,6 @@ function AdminInventoryVehicles() {
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("All");
 
-
   const callAPIGet = () => {
     fetch("http://localhost:9000/vehicles", {
       method: "GET",
@@ -18,7 +17,7 @@ function AdminInventoryVehicles() {
       .then((data) => {
         const formattedVehicles = data.vehicle[0].map((vehicle) => ({
           ID: vehicle.ID,
-          Type: vehicle.Type,
+          Make: vehicle.Make,
           Category: vehicle.Category,
           Model: vehicle.Model,
           Price: `$${vehicle.Price}/day`,
@@ -59,10 +58,8 @@ function AdminInventoryVehicles() {
 
   return (
     <div>
-      <div className="main-content">
-        <h2 className="reservation-title">Vehicle Inventory</h2>
         <div>
-          <label htmlFor="typeFilter">Filter by Type:</label>
+          <label htmlFor="typeFilter">Filter by Make:</label>
           <select
             id="typeFilter"
             value={filter}
@@ -75,6 +72,7 @@ function AdminInventoryVehicles() {
             <option value="Truck">Truck</option>
           </select>
         </div>
+        <br/>
         <div className="vehicle-grid">
           {loading ? (
             <div>Loading...</div>
@@ -84,33 +82,37 @@ function AdminInventoryVehicles() {
             <div>No vehicles match the selected filter.</div>
           ) : (
             apiResponse
-              .filter((vehicle) => filter === "All" || vehicle.Type === filter)
+              .filter((vehicle) => filter === "All" || vehicle.Make === filter)
               .map((vehicle) => (
                 <div key={vehicle.ID} className="vehicle-card">
                   <div>ID: {vehicle.ID}</div>
-                  <div>Type: {vehicle.Type}</div>
+                  <div>Make: {vehicle.Make}</div>
                   <div>Category: {vehicle.Category}</div>
                   <div>Model: {vehicle.Model}</div>
                   <div>Price: {vehicle.Price}</div>
                   <div>Availability: {vehicle.Availability}</div>
                   <div>
-                    <button
+                    <button 
                       className="all-caps sign-in-btn btn-background-color reserve-btn"
                       onClick={() => deleteVehicle(vehicle.ID)}
+                      style={{marginRight: '0.3em'}}
                     >
                       Delete Vehicle
                     </button>
                     <button
                       className="all-caps sign-in-btn btn-background-color reserve-btn"
                       onClick={() => navigate(`/UpdateVehicle/${vehicle.ID}`)}
+                      style={{marginLeft: '0.3em'}}
                     >Update Vehicle</button>
                   </div>
                 </div>
               ))
           )}
         </div>
+      
+       
       </div>
-    </div>
+   
   );
 }
 

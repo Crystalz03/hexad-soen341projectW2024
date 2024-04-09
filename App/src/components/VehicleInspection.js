@@ -60,25 +60,29 @@ function VehicleInspection({ vehicle, onSubmit }) {
             <h2>Vehicle Inspection</h2>
             {error && <p className="error">{error}</p>}
             <form onSubmit={handleSubmit}>
-                <div>
+                <div style={{height: '2em'}}>
                     <label>
                         <input
                             type="checkbox"
                             name="scratch"
                             checked={damages.includes("scratch")}
                             onChange={handleChange}
+                            style={{height: '1.2em', width: '1.2em'}}
                         />
+                        {' '}
                         Scratch
                     </label>
                 </div>
-                <div>
+                <div style={{height: '2em'}}>
                     <label>
                         <input
                             type="checkbox"
                             name="dent"
                             checked={damages.includes("dent")}
                             onChange={handleChange}
+                            style={{height: '1.2em', width: '1.2em'}}
                         />
+                        {' '}
                         Dent
                     </label>
                 </div>

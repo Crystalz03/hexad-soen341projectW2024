@@ -231,7 +231,8 @@ function ReservationForm(){
 
   
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="base-form">
+      <div>
       <label>Email:</label>
       <input 
         name="email"
@@ -240,7 +241,7 @@ function ReservationForm(){
         type='text' 
         placeholder='Email Address' 
         id='email'/><br/>
-
+      </div>
       <label>Pick-up date of your reservation:</label>
       <input 
         name="pickUpDate"
