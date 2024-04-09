@@ -10,9 +10,9 @@ import "./../style/style.css";
 function Recommendations() {
   return (
     <div>
-      <Header/>
+      
       <UserRecommendations />
-      <Footer/>
+    
     </div>
   );
 }

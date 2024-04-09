@@ -34,7 +34,8 @@ function PointsInBetween({ coord1Latitude, coord1Longitude, coord2Latitude, coor
   const formattedPoints = pointsInBetween.map(coord => ({
     latitude: coord.latitude,
     longitude: coord.longitude,
-    title: coord.Name 
+    title: coord.Name, 
+    address: coord.Address
   }));
 
   console.log(formattedPoints);
