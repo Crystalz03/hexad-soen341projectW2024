@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import "../../../public/assets//css/View.css";
 
 function ModifyReservation() {
@@ -14,7 +13,6 @@ function ModifyReservation() {
     const [newDropOffLocation, setNewDropOffLocation] = useState('');
     const [error, setError] = useState('');
     const [isButtonClicked, setIsButtonClicked] = useState(false);
-    const navigate = useNavigate();
 
     useEffect(() => {
         setReservationDetails(null);

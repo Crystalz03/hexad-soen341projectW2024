@@ -1,5 +1,4 @@
 import React, { useState} from 'react';
-import { useNavigate } from 'react-router-dom';
 import "../../../public/assets/css/View.css";
 
 function ViewReservation() {
@@ -23,7 +22,6 @@ function ViewReservation() {
    
     const [error, setError] = useState('');
     const [isButtonClicked, setIsButtonClicked] = useState(false); // Track whether the button is clicked or not
-    const navigate = useNavigate();
 
     function isFormatValidReservationId(reservationId) {
         const regex = /^[A-Z]{1}\d{9}$/;
