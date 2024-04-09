@@ -88,7 +88,7 @@ import { useState } from "react";
             onChange={handleChange}
           ></input>
           </div>
-        </div>[fixed class tag for the form]
+        </div>
         <select id="branch" className="form-select" aria-label="Default select example" style={{width: '40%', marginBottom: '2em'}}>
           <option value="option 1">Laval</option>
           <option value="option 2">Montréal</option>

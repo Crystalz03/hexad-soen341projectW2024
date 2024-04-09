@@ -90,7 +90,7 @@ const ReviewForm = () => {
       {seeForm ?
     <div>
       <form onSubmit={handleSubmit} className="base-form">
-      {error && <p className="error">{error}</p>}[error handling added]
+      {error && <p className="error">{error}</p>}
       <div>
         <label>Name</label>
           <input type="text" name="name" required={true} onChange={handleChange} />
@@ -111,7 +111,7 @@ const ReviewForm = () => {
           </div>
           </div>
         </div>
-        <label htmlFor="exampleFormControlInput1" className="form-label">Review</label>[fixed for and class tag]
+        <label htmlFor="exampleFormControlInput1" className="form-label">Review</label>
           <textarea name="review" rows="8" cols="80" onChange={handleChange} />
           <br/> <br/>
         <button type="submit" style={{width: '50%'}}>Submit Review</button>

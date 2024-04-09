@@ -4,7 +4,7 @@ import "../style/new.css";
 
 function Card({imageUrl, title, description, buttonText, onClick}){
  return(
-    <div className="card" style={{width: '30rem'}}>[//fixed all class tags to className]
+    <div className="card" style={{width: '30rem'}}>
         <img
               style={{marginTop: '2em'}}
               src={imageUrl}

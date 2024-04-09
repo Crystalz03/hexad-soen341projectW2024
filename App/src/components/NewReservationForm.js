@@ -120,7 +120,7 @@ function ReservationForm(props){
   return (
     <div className="base-form" style={{height: '700px'}}>
         <form onSubmit={handleSubmit}>
-            {error && <p className="error">{error}</p>}[error handling added]
+            {error && <p className="error">{error}</p>}
           <div>
             <label>Email:
             <input 
