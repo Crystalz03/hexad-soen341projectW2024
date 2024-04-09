@@ -12,10 +12,8 @@ function VehicleApplicationForm() {
         model: "",
         mileage: "",
         year: "",
+        offerAmount: "",
     });
-
-    const [showOfferForm, setShowOfferForm] = useState(false);
-    const [offerAmount, setOfferAmount] = useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,7 +23,8 @@ function VehicleApplicationForm() {
         }));
     };
 
-    const handleNext = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         const mileage = Number(vehicleInfo.mileage);
         const year = Number(vehicleInfo.year);
         if (
@@ -39,20 +38,10 @@ function VehicleApplicationForm() {
             mileage > 0 && 
             year > 1900 && year <= new Date().getFullYear() 
         ) {
-            setShowOfferForm(true);
+            navigate(`/EstimationPage/${vehicleInfo.category}/${vehicleInfo.color}/${vehicleInfo.damages}/${vehicleInfo.make}/${vehicleInfo.model}/${vehicleInfo.mileage}/${vehicleInfo.year}/${vehicleInfo.offerAmount}`);
         } else {
             alert("Please fill out all required fields.");
         }
-    };
-
-    const handleOfferAmountChange = (e) => {
-        setOfferAmount(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        navigate('/ContactInfoPage');
     };
 
     return (
@@ -139,26 +128,19 @@ function VehicleApplicationForm() {
                         style={{ width: '100%', marginBottom: '20px' }}
                     ></input>
 
-                    {/* Next button */}
-                    <button type="button" style={{width: '100%'}} onClick={handleNext}>Next</button>
-
-                    {/* Offer amount form */}
-                    {showOfferForm && (
-                        <form onSubmit={handleSubmit} className="base-form" style={{ marginTop: '20px' }}>
                             <label htmlFor="offerAmount">Your Offer Amount:</label>
                             <input
                                 type="number"
                                 id="offerAmount"
                                 name="offerAmount"
-                                value={offerAmount}
-                                onChange={handleOfferAmountChange}
+                                value={vehicleInfo.offerAmount}
+                                onChange={handleChange}
                                 required
                                 placeholder="Enter the amount"
                             ></input>
 
                             <button type="submit" style={{ marginTop: '10px' }}>Submit</button>
-                        </form>
-                    )}
+                        
                 </div>
             </form>
         </div>

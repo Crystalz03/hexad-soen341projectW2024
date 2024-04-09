@@ -6,7 +6,7 @@ function generateReservationID() {
     const randomDigits = Math.floor(Math.random() * 1000000000); // Generate 9 random digits
     const reservationID = prefix + randomDigits.toString().padStart(9, '0'); // Ensure 9 digits with leading zeros if necessary
     return reservationID;
-  }//1111222233334444
+  }
 
 function ConfirmPaymentForm(props){
     const formData = {

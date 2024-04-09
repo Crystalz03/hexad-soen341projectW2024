@@ -28,7 +28,7 @@ import ConfirmBooking from "./pages/ConfirmBooking";
 import ConfirmPayment from "./pages/ConfirmPayment";
 import UpdateVehicle from "./pages/UpdateVehicle";
 import VehicleApplication from "./pages/VehicleApplication";
-
+import EstimationPage from "./pages/EstimationPage";
 import ContactInfoPage from "./pages/ContactInfoPage";
 
 function NotFound() {
@@ -83,7 +83,8 @@ function App() {
           <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} />
           <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} /> 
           <Route path ="/VehicleApplication" exact element = {<VehicleApplication/>}></Route>
-          <Route path ="/ContactInfoPage" exact element = {<ContactInfoPage/>}></Route>
+          <Route path ="/ContactInfoPage/:category/:color/:damages/:make/:model/:mileage/:year/:offerAmount" exact element = {<ContactInfoPage/>}></Route>
+          <Route path="/EstimationPage/:category/:color/:damages/:make/:model/:mileage/:year/:offerAmount" exact element={<EstimationPage/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer/>

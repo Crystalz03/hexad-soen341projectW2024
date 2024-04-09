@@ -1,9 +1,21 @@
 import React from "react";
 import "./../style/style.css";
-import Navbar from "../components/NavBar";
+import {useParams} from "react-router-dom";
 import ContactInfoForm from "../components/ContactInfoForm";
 
 function ContactInfoPage() {
+  const params = useParams();
+  const vehicleApplicationInfo = {
+      category: params.category,
+      color: params.color,
+      damages: params.damages,
+      make: params.make,
+      model: params.model,
+      mileage: params.mileage,
+      year: params.year,
+      offerAmount: params.offerAmount,
+  };
+
     return (
         <div className="main-content">
         <div className="title-box">
@@ -11,7 +23,7 @@ function ContactInfoPage() {
           Contact Info
           </div>
         </div>
-        <ContactInfoForm/>
+        <ContactInfoForm vehicleApplicationInfo={vehicleApplicationInfo}/>
       </div>
     );
 }
