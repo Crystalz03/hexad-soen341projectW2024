@@ -102,7 +102,7 @@ function ContactInfoForm(props) {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     <label htmlFor="phone">Phone:</label>
-                    <input onChange={handleChange} placeholder="XXXXXXXXX" type="tel" id="phone" name="phone" required style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
+                    <input onChange={handleChange} placeholder="XXXXXXXXX" type="text" id="phone" name="phone" required style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} />
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
