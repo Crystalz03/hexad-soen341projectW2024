@@ -6,7 +6,11 @@ import "./../style/style.css";
 function Branches() {
   return (
     <div className="main-content" >
-            <BranchFinder />
+      <div className="title-box">
+            <div className="check-in-title">Find Nearest Branch</div>
+          </div>
+
+            <BranchFinder map={true}/>
 
     </div>
   );

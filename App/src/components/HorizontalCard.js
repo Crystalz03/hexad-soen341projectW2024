@@ -9,7 +9,7 @@ function HorizontalCard({ imageUrl, title, description, buttonText, onClick }) {
         className="card mb-3"
         style={{ width: "80vw", height: "250px" }} // Enforce fixed height
       >
-        <div className="row g-0">
+        <div className="row g-0" style={{ overflow: 'hidden' }}>
           <div className="col-md-8">
             <div className="card-body" style={{ height: "100%" }}> {/* Enforce fixed height for the card body */}
               <h5 className="card-title">{title}</h5>
@@ -19,12 +19,12 @@ function HorizontalCard({ imageUrl, title, description, buttonText, onClick }) {
               </button>
             </div>
           </div>
-          <div className="col-md-4 d-flex align-items-center justify-content-center"> {/* Centering image vertically and horizontally */}
+          <div className="col-md-4 d-flex align-items-center justify-content-center"style={{ height: '100%' }} > 
             <img
               src={imageUrl}
               className="img-fluid"
               alt="CARIMAGE"
-              style={{ height: "100%", objectFit: "cover" }} // Ensure image covers the entire height of the card
+              style={{ height: "100%", objectFit: "cover" }}
             />{" "}
             {/* Use rounded-end to round the right side of the image */}
           </div>
