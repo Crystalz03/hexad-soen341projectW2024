@@ -11,7 +11,6 @@ function Recommendations() {
   return (
     <div>
       <Header/>
-      <SideMenu/>
       <UserRecommendations />
       <Footer/>
     </div>

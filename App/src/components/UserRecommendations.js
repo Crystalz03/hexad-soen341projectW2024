@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Map from './map';
-import { Loader } from '@googlemaps/js-api-loader';
+import Map from './LocationsMap';
 
 function calculateDistance(lat1, lon1, lat2, lon2) { //using the Haversine formula to compute distance
     const R = 6371; // Radius of the Earth in kilometers
@@ -17,28 +16,32 @@ function calculateDistance(lat1, lon1, lat2, lon2) { //using the Haversine formu
 
 function PointsInBetween({ coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude, otherCoords, threshold }) {
   const [pointsInBetween, setPointsInBetween] = useState([]);
-
+  
   useEffect(() => {
-      const findPointsInBetween = () => {
-          const distanceBetweenCoords = calculateDistance(coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude);
-          const result = otherCoords.filter(coord => {
-              const distanceToCoord1 = calculateDistance(coord[0], coord[1], coord1Latitude, coord1Longitude);
-              const distanceToCoord2 = calculateDistance(coord[0], coord[1], coord2Latitude, coord2Longitude);
-              return (distanceToCoord1 + distanceToCoord2) <= (distanceBetweenCoords + threshold);
-          });
-          setPointsInBetween(result);
-      };
-      
-      findPointsInBetween();
+    const findPointsInBetween = () => {
+      const distanceBetweenCoords = calculateDistance(coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude);
+      const result = otherCoords.filter(coord => {
+        const distanceToCoord1 = calculateDistance(coord[0], coord[1], coord1Latitude, coord1Longitude);
+        const distanceToCoord2 = calculateDistance(coord[0], coord[1], coord2Latitude, coord2Longitude);
+        return (distanceToCoord1 + distanceToCoord2) <= (distanceBetweenCoords + threshold);
+      });
+      setPointsInBetween(result);
+    };
+    
+    findPointsInBetween();
   }, [coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude, otherCoords, threshold]);
 
-  return (
-    <div>
-        {pointsInBetween.map((coord, index) => (
-            <div key={index}>{`Latitude: ${coord[0]}, Longitude: ${coord[1]}`}</div>
-        ))}
-    </div>
-);
+  const formattedPoints = pointsInBetween.map(coord => ({
+    latitude: coord[0],
+    longitude: coord[1],
+    title: 'Some Title' 
+  }));
+
+  console.log(formattedPoints);
+  if(formattedPoints.length != 0){
+    return <Map locations={formattedPoints}></Map>;
+  }
+  return <Map locations={[{ latitude: 0, longitude: 0, title: '' }]}></Map>
 }
 
 
@@ -60,24 +63,8 @@ const UserRecommendations = () => {
     latitude: 0,
     longitude: 0
   });
-
-  const [map, setMap] = useState(null);
  
-    useEffect(() => {
-
-      const loader = new Loader({
-        apiKey: 'AIzaSyDB1QSetyBSLxtSUqBXk8SyCBE2n3-CyCA',
-        version: 'weekly',
-        libraries: ['geometry', 'places']
-    });
-
-    loader.load().then(() => {
-        const mapInstance = new window.google.maps.Map(document.getElementById('map'), {
-            center: { lat: 0, lng: 0 },
-            zoom: 5
-        });
-        setMap(mapInstance);
-    });
+     useEffect(() => {
 
     const callAPIGetBranches = async () => {
       try {
@@ -117,7 +104,6 @@ const UserRecommendations = () => {
     
       const handleSubmit = event => {
         event.preventDefault();
-        //PointsInBetween(selectedBranch1.latitude, selectedBranch1.longitude, selectedBranch2.latitude, selectedBranch2.longitude);
         console.log('Selected Branch 1:', selectedBranch1);
         console.log('Selected Branch 2:', selectedBranch2);
       };
@@ -152,7 +138,6 @@ const UserRecommendations = () => {
             </div>
             <button type="submit">Submit</button>
           </form> 
-          <div id="map" style={{ height: '400px' }}></div>
           <PointsInBetween coord1Latitude={selectedBranch1.latitude} coord1Longitude={selectedBranch1.longitude} coord2Latitude={selectedBranch2.latitude} coord2Longitude={selectedBranch2.longitude} otherCoords={otherCoords} threshold={500} />
       </div>
     </div>
