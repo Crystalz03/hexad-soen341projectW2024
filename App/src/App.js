@@ -9,7 +9,6 @@ import Home from "./pages/allUsers/Home";
 import Browse from "./pages/allUsers/Browse";
 import Reserve from "./pages/allUsers/Reserve";
 import View from "./pages/allUsers/View";
-import SignUp from "./pages/allUsers/SignUp";
 import SignIn from "./pages/allUsers/SignIn";
 import DeleteReservationPage from "./pages/allUsers/DeleteReservationPage";
 import MyAccountPage from "./pages/allUsers/MyAccountPage";

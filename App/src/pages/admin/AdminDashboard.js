@@ -1,8 +1,5 @@
 import React from "react";
-import AdminSideMenu from "./../../components/layout/AdminSideMenu";
-import Footer from "./../../components/layout/Footer";
-import Header from "./../../components/layout/Header";
-import "../../../public/css/style.css";
+import "../../../public/assets/css/style.css";
 
 function Main() {
   return (
@@ -21,10 +18,7 @@ function Main() {
 function AdminDashboard() {
   return (
     <div>
-      <Header />
-      <AdminSideMenu />
       <Main />
-      <Footer />
     </div>
   );
 }

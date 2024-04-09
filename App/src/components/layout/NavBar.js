@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import SignInPopover from "../checkInOut/SignInPopover";
+import SignInPopover from "../authentication/SignInPopover";
 import { useSelector } from "react-redux";
-import { getUser, getUserRole } from "./DisplayUserInfo";
+import { getUser, getUserRole } from "../userManagement/DisplayUserInfo";
 import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
@@ -303,7 +303,7 @@ function Navbar() {
               onMouseLeave={() => setIsDropdownOpenAccount(false)}
             >
               <img
-                src={require("./../../public/assets/images/account.png")
+                src={require("../../../public/assets/images/account.png")
                   .default}
                 alt="account"
                 style={{ height: "40px" }}

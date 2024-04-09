@@ -1,6 +1,6 @@
 import React from "react";
-import BrowseVehicles from "../components/BrowseVehicles";
-import "./../style/style.css";
+import BrowseVehicles from "../../components/vehicleManagement/BrowseVehicles";
+import "../../../public/assets/css/style.css";
 
 
 function Browse() {

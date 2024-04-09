@@ -1,6 +1,5 @@
 import React from "react";
-import SignUpFrom from "../components/SignUpForm";
-import { Link } from "react-router-dom";
+import SignUpFrom from "../../components/authentication/SignUpForm";
 
 function CreateUser() {
     return (

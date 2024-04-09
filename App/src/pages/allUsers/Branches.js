@@ -1,7 +1,7 @@
 import React from "react";
 import BranchFinder from "../../components/branchLocator/FindBranch";
 
-import "./../style/style.css";
+import "../../../public/assets/css/style.css";
 
 function Branches() {
   return (

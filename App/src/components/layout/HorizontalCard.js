@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../style/new.css";
+import "../../../public/assets/css/new.css";
 
 function HorizontalCard({ imageUrl, title, description, buttonText, onClick }) {
   return (

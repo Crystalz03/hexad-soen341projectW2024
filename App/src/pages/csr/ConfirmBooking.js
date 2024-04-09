@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import React from "react";
 
-import ConfirmBookingComp from "../components/ConfirmBookingComp";
+import ConfirmBookingComp from "../../components/checkInOut/ConfirmBookingComp";
 
 function ConfirmBooking() {
   const params = useParams();

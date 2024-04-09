@@ -1,5 +1,5 @@
 import React from "react";
-import CheckOutForm from "../components/checkInOut/CheckOutForm";
+import CheckOutForm from "../../components/checkInOut/CheckOutForm";
 
 function CheckOut() {
   return (

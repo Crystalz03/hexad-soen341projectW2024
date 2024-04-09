@@ -1,6 +1,6 @@
 import React from "react";
-import "./../style/style.css";
-import CheckInForm from "../components/CheckInForm";
+import "../../../public/assets/css/style.css";
+import CheckInForm from "../../components/checkInOut/CheckInForm";
 
 function CheckIn() {
   return (

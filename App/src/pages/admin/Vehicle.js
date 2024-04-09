@@ -1,5 +1,5 @@
 import React from 'react';
-import VehicleForm from '../components/VehicleForm';
+import VehicleForm from "../../components/vehicleManagement/VehicleForm";
 
 function Vehicle() {
   return (

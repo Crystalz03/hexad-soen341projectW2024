@@ -1,5 +1,5 @@
 import React from 'react';
-import SignInForm from '../../components/checkInOut/SignInForm';
+import SignInForm from '../../components/authentication/SignInForm';
 import { Link } from "react-router-dom";
 
 

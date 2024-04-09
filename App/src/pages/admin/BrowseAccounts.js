@@ -2,7 +2,7 @@ import React from "react";
 import BrowseAccountsComponent from "../../components/adminActions/BrowseCustomerAccounts";
 import BrowseAdminAccounts from "../../components/adminActions/BrowseAdminAccounts";
 import BrowseCSRAccounts from "../../components/adminActions/BrowseCSRAccounts";
-import "./../style/style.css";
+import "../../../public/assets/css/style.css";
 
 function BrowseAccounts() {
     return (

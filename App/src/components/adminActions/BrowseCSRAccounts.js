@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./../style/style.css";
+import "../../../public/assets/css/style.css";
 
 function BrowseAdminAccounts() {
     const [apiResponse, setApiResponse] = useState(null); 

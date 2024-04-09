@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import "./../style/style.css";
+import "../../../public/assets/css/style.css";
 import ReservationForm from "../../components/reservationManagement/NewReservationForm";
 
 function Reserve() {
@@ -18,13 +18,3 @@ function Reserve() {
 }
 
 export default Reserve;
-
-/*
-function Reserve() {
-  return (
-    <><div className="pageTitle">Start a reservation</div>
-    <div className="reservationForm"><ReservationForm /></div></>
-        );
-}
-
-export default Reserve;*/

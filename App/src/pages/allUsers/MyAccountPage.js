@@ -1,6 +1,6 @@
 import React from "react";
-import "../style/style.css";
-import DisplayUserInfo from "../components/DisplayUserInfo";
+import "../../../public/assets/css/style.css";
+import DisplayUserInfo from "../../components/userManagement/DisplayUserInfo";
 
 function MyAccountPage() {
   return (

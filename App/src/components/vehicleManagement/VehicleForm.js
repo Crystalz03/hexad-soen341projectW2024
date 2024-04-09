@@ -130,16 +130,6 @@ function VehicleForm() {
             </div>
       </div>
         
-        {/* <label>Availability:</label>
-        <select
-          name="availability"
-          value={formData.availability}
-          onChange={handleChange}
-          required
-        >
-          <option value="1">Available</option>
-          <option value="0">Not Available</option>
-        </select> */}
         <br/><br/>
         <div>
         <button className="all-caps btn-background-color check-availability-button" type="submit">Submit</button>

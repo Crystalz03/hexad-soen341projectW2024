@@ -1,7 +1,5 @@
 import React from "react";
-import AdminSideMenu from "./../../components/layout/AdminSideMenu";
-import Header from "./../../components/layout/Header";
-import UpdateVehicleForm from "./../../components/vehicleManagement/UpdateVehicleForm";
+import UpdateVehicleForm from "../../components/vehicleManagement/UpdateVehicleForm";
 import { useParams } from "react-router-dom";
 
 function UpdateVehicle() {
@@ -10,8 +8,6 @@ function UpdateVehicle() {
 
   return (
     <div>
-      <Header />
-      <AdminSideMenu />
       <div className="main">
         <div className="general-structure">
           <div className="main-content">
@@ -34,17 +30,3 @@ function UpdateVehicle() {
 }
 
 export default UpdateVehicle;
-
-/*<Header />
-      <AdminSideMenu />
-      <div className="main">
-        <div className="general-structure">
-          <div className="main-content">
-            <div className="title-box">
-              <div className="reservation-title">Update an Existing Vehicle</div>
-            </div>
-            <div className="extra-content" style={{ height: "400px" }}><UpdateVehicleForm vehicleID={vehicleID} /></div>
-          </div>
-        </div>
-      </div>
-      <Footer />*/

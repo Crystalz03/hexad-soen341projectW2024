@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../../../public/css/View.css";
+import "../../../public/assets/css/View.css";
 
 function ViewReservation() {
     const [reservationId, setReservationId] = useState('');

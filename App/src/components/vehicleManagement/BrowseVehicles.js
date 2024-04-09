@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../layout/Header";
-import SideMenu from "../layout/SideMenu";
-
-import "../../../public/css/style.css";
-import "../../../public/css/BrowseVehicles.css";
+import "../../../public/assets/css/style.css";
+import "../../../public/assets/css/BrowseVehicles.css";
 
 function BrowseVehicles() {
   const [apiResponse, setApiResponse] = useState(null); // Define apiResponse state
@@ -49,8 +46,6 @@ function BrowseVehicles() {
 
   return (
     <div>
-      <Header />
-      <SideMenu />
       <div className="main">
         <div className="general-structure">
           <div className="main-content">

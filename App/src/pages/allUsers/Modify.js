@@ -1,9 +1,8 @@
 
 import React from 'react';
-import ModifyReservation from '../components/ModifyReservation';
-import './../style/View.css';
-import './../style/style.css';
-
+import ModifyReservation from "../../components/reservationManagement/ModifyReservation";
+import "../../../public/assets/css/style.css";
+import "../../../public/assets/css/View.css";
 
 function ModifyTheReservation() {
   return (

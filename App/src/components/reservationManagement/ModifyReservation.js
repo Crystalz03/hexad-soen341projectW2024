@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../../../public/css/View.css";
+import "../../../public/assets//css/View.css";
 
 function ModifyReservation() {
     const [reservationId, setReservationId] = useState('');

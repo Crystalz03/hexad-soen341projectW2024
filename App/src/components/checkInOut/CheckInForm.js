@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../../public/css/style.css";
+import "../../../public/assets/css/style.css";
 import UpdateCustomer from "./UpdateCustomerInfoCheckIn";
 import VehicleInspection from "./VehicleInspection";
 import Deposit from "./DepositCheckIn";
@@ -295,4 +295,3 @@ The Renter acknowledges receiving and reviewing a copy of the vehicle's insuranc
 }
 
 export default CheckInForm;
-

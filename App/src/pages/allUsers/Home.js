@@ -1,16 +1,10 @@
 import React from "react";
-import "../../../public/css/style.css";
-import Footer from "./../../components/layout/Footer";
-import Header from "./../../components/layout/Header";
-import SideMenu from "./../../components/layout/SideMenu";
+import "../../../public/assets/css/style.css";
 
 function Home() {
   return (
     <div>
-      <Header />
-      <SideMenu />
       <Main />
-      <Footer />
     </div>
   );
 }

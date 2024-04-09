@@ -1,6 +1,6 @@
 import React from "react";
-import CreateAdminAccount from "../components/AdminAccount";
-import "../style/style.css";
+import CreateAdminAccount from "../../components/adminActions/AdminAccount";
+import "../../../public/assets/css/style.css";
 
 function AdminAccount() {
   return (

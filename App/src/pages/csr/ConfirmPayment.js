@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import ConfirmPaymentForm from "../components/ConfirmPaymentForm";
+import ConfirmPaymentForm from "../../components/checkInOut/ConfirmPaymentForm";
 
 function ConfirmPayment() {
   const params = useParams();
