@@ -1,30 +1,18 @@
-import React from "react";
-import SignInForm from "./../../components/authentication/SignInForm";
-import Footer from "./../../components/layout/Footer";
-import Header from "./../../components/layout/Header";
-import SideMenu from "./../../components/layout/SideMenu";
+import React from 'react';
+import SignInForm from '../../components/checkInOut/SignInForm';
+import { Link } from "react-router-dom";
+
 
 function SignIn() {
-  return (
-    <div>
-      <Header />
-      <SideMenu />
-      <Main />
-      <Footer />
-    </div>
-  );
-}
-
-function Main() {
-  return (
-    <div className="general-structure">
-      <div className="main-content">
-        <div className="sign-in-form">
+    return (
+        <div className="main-content" >
+          <div className="check-in-title">Sign In</div>
+          <h6>
+            Don't have an account? <Link to="/SignUp">Sing In</Link>
+          </h6>
           <SignInForm />
         </div>
-      </div>
-    </div>
-  );
-}
+    );
+  }
 
 export default SignIn;

@@ -65,9 +65,9 @@ import { useState } from "react";
     }));
   };
   return (
-    <form onSubmit={handleSubmit} action="Sign Up">
-      <div className="form">
-        <div>
+    <form onSubmit={handleSubmit} action="New CR account" className="base-form">
+      <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+          <div style={{ flex: 1, marginRight: '10px' }}>
           <input
             type="text"
             id="name"
@@ -76,6 +76,8 @@ import { useState } from "react";
             placeholder="First name"
             onChange={handleChange}
           ></input>
+          </div>
+          <div style={{ flex: 1 }}>
           <input
             type="text"
             id="lastName"
@@ -84,14 +86,14 @@ import { useState } from "react";
             placeholder="Last name"
             onChange={handleChange}
           ></input>
+          </div>
         </div>
-        <br />
-        <select id="branch">
+        <select id="branch" class="form-select" aria-label="Default select example" style={{width: '40%', marginBottom: '2em'}}>
           <option value="option 1">Laval</option>
           <option value="option 2">Montréal</option>
           <option value="option 3">Airport</option>
         </select>
-        <br />
+       <div>
         <input
           type="email"
           id="email"
@@ -100,7 +102,8 @@ import { useState } from "react";
           placeholder="E-mail"
           onChange={handleChange}
         ></input>
-        <br />
+        </div>
+        <div>
         <input
           type="password"
           id="password"
@@ -109,9 +112,8 @@ import { useState } from "react";
           placeholder="Password"
           onChange={handleChange}
         ></input>
-        <br />
-        <button type="submit">Sign Up</button>
-      </div>
+        </div>
+        <button type="submit" style={{width: '100%'}}>Sign Up</button>
     </form>
   );
 }

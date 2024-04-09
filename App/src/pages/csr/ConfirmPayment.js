@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
 import React from "react";
-import Header from "./../../components/layout/Header";
-import SideMenu from "./../../components/layout/SideMenu";
-import ConfirmPaymentForm from "./../../components/checkInOut/ConfirmPaymentForm";
+import ConfirmPaymentForm from "../components/ConfirmPaymentForm";
 
 function ConfirmPayment() {
   const params = useParams();
@@ -19,40 +17,12 @@ function ConfirmPayment() {
   };
 
   return (
-    <div>
-      <Header />
-      <SideMenu />
-      <div className="main">
-        <div className="general-structure">
-          <div className="main-content">
-            <div className="title-box">
-              <div className="reservation-title">Start a Reservation</div>
-            </div>
-            <div
-              className="extra-content"
-              style={{ height: "300px", width: "200px", padding: "20px" }}
-            >
-              <ConfirmPaymentForm formData={formData} />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
+    <div className="main-content">
+      <div className="title-box">
+        <div className="check-in-title">Confirm Payment</div>
           </div>
+              <ConfirmPaymentForm formData={formData} />
         </div>
-      </div>
-    </div>
   );
 }
 

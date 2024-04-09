@@ -1,35 +1,16 @@
 import React from "react";
-import SignUpFrom from "./../../components/authentication/SignUpForm";
-import Footer from "./../../components/layout/Footer";
-import Header from "./../../components/layout/Header";
-import CRSideMenu from "./../../components/layout/CRSideMenu";
+import SignUpFrom from "../components/SignUpForm";
+import { Link } from "react-router-dom";
 
-export default function () {
-  return (
-    <div>
-      {" "}
-      <Header />
-      <CRSideMenu />
-      <Main />
-      <Footer />
-    </div>
-  );
-}
+function CreateUser() {
+    return (
+          <div className="main-content">
+            <div className="title-box">
+              <div className="check-in-title">Create a Customer Account</div>
+            </div>
+            <div className="base-form" style={{height: '700px'}}> <SignUpFrom /></div>
+          </div>
+    );
+  }
 
-function Main() {
-  return (
-    <div className="main">
-      <div className="general-structure">
-        <div className="main-content">
-          <div className="title-box">
-            <div className="reservation-title">Create a customer account</div>
-          </div>
-          <div className="extra-content">
-            {" "}
-            <SignUpFrom />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+export default CreateUser;

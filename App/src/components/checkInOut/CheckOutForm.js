@@ -150,11 +150,10 @@ const CheckoutForm = () => {
   };
 
   return (
-    <div>
-      <h2>Checkout Form</h2>
+    <div className="base-form">
       <div>
         <label>
-          Reservation ID:
+          Reservation ID {' '}
           <input
             type="text"
             value={reservationId}
@@ -164,53 +163,61 @@ const CheckoutForm = () => {
       </div>
       <div>
         <label>
-          Original Price:
+          Original Price {' '}
           <input type="number" value={originalPrice} readOnly />
         </label>
       </div>
-      <div>
+      <div  style={{height: '2em'}}>
         <label>
           <input
             type="checkbox"
             checked={damages.scratch}
             onChange={() => handleDamageChange("scratch")}
+            style={{height: '1.2em', width: '1.2em'}}
           />
-          Scratch (+$50)
+
+          <span style={{ marginLeft: "5px", fontSize:'1.1em' }}>Scratch (+$50)</span>
         </label>
       </div>
-      <div>
+      <div  style={{height: '2em'}}>
         <label>
           <input
             type="checkbox"
             checked={damages.dent}
             onChange={() => handleDamageChange("dent")}
+            style={{height: '1.2em', width: '1.2em'}}
           />
-          Dent (+$100)
+
+          <span style={{ marginLeft: "5px", fontSize:'1.1em' }}> Dent (+$100) </span>
         </label>
       </div>
-      <div>
+      <div  style={{height: '2em'}}>
         <label>
           <input
             type="checkbox"
             checked={damages.brokenMirror}
             onChange={() => handleDamageChange("brokenMirror")}
+            style={{height: '1.2em', width: '1.2em'}}
           />
-          Broken Mirror (+$150)
+
+        <span style={{ marginLeft: "5px", fontSize:'1.1em' }}> Broken Mirror (+$150) </span>
         </label>
       </div>
-      <div>
+      <div style={{height: '2em'}}>
         <label>
           <input
             type="checkbox"
             checked={damages.flatTire}
             onChange={() => handleDamageChange("flatTire")}
+            style={{height: '1.2em', width: '1.2em'}}
           />
-          Flat Tire (+$80)
+           <span style={{ marginLeft: "5px", fontSize:'1.1em' }}> Flat Tire (+$80) </span>
         </label>
       </div>
-      <button onClick={calculateTotalPrice}>Calculate Total Price</button>
-      <div>Total Price: ${totalPrice}</div>
+      <br/>
+      <p style={{marginBottom: '1em'}}>Total Price: ${totalPrice}</p> 
       {error && <div style={{ color: "red" }}>{error}</div>}
+      <button onClick={calculateTotalPrice}>Calculate Total Price</button>
       <button onClick={handleCheckout}>Check Out</button> {/* Modified*/}
     </div>
   );

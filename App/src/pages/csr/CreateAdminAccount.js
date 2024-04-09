@@ -1,17 +1,18 @@
 import React from "react";
-import CRAccount from '../components/CRAccount';
+import CreateAdminAccount from "../components/AdminAccount";
 import "../style/style.css";
 
-function CreateCRAccount() {
+function AdminAccount() {
   return (
         <div className="main-content">
           <div className="title-box">
             <div className="check-in-title">
-              Create Customer Representative Account 
+              Create Admin Account 
             </div>
           </div>
-            <CRAccount />
+            <CreateAdminAccount />
         </div>
   );
 }
-export default CreateCRAccount;
+
+export default AdminAccount;

@@ -1,13 +1,16 @@
 import React from "react";
+import BrowseVehicles from "../components/BrowseVehicles";
+import "./../style/style.css";
 
-import BrowseVehicles from "./../../components/vehicleManagement/BrowseVehicles";
-import "../../../public/css/style.css";
-import "../../../public/css/BrowseVehicles.css";
 
 function Browse() {
   return (
     <div>
-      <BrowseVehicles />
+      <div className="title-box" style={{ marginLeft: "10em" }}>
+            <div className="check-in-title">Rental Vehicles</div>
+          </div>
+          <hr className="my-4" />
+      <BrowseVehicles card={"Horizontal"} />
     </div>
   );
 }

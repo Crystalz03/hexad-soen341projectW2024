@@ -1,41 +1,45 @@
-import React, { useState, useEffect } from "react";
-import Map from "./map";
+import React, { useState, useEffect } from 'react';
+import Map from './map';
 
-const BranchFinder = () => {
-  const [apiResponse, setApiResponse] = useState(null);
-  const [postalCode, setPostalCode] = useState("");
-  const [nearestBranch, setNearestBranch] = useState({
-    Name: "",
+const BranchFinder = ({map}) => {
+
+const [showMap, setShowMap] = useState(map);
+const [apiResponse, setApiResponse] = useState(null); 
+const [postalCode, setPostalCode] = useState('');
+const [nearestBranch, setNearestBranch] = useState({
+    Name: '',
     latitude: 0.0,
-    longitude: 0.0,
+    longitude: 0.0
   });
-
-  useEffect(() => {
+ 
+useEffect(() => {
     const callAPIGetBranches = async () => {
       try {
-        const response = await fetch("http://localhost:9000/branches");
+        const response = await fetch('http://localhost:9000/branches');
 
         if (!response.ok) {
-          throw new Error("Failed to fetch branches");
+          throw new Error('Failed to fetch branches');
         }
 
         const data = await response.json();
-        const branches = data.branch[0].map((branch) => ({
+        const branches = data.branch[0].map(branch => ({
           Name: branch.BranchName,
           latitude: branch.LatitudeCoord,
-          longitude: branch.LongitudeCoord,
+          longitude: branch.LongitudeCoord
         }));
 
         setApiResponse(branches);
+
       } catch (error) {
-        console.error("Error fetching branches:", error);
+        console.error('Error fetching branches:', error);
       }
     };
 
-    callAPIGetBranches();
-  }, []);
+      callAPIGetBranches();
 
-  function calculateDistance(lat1, lon1, lat2, lon2) {
+      }, []);
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Radius of the Earth in kilometers
     const dLat = (lat2 - lat1) * (Math.PI / 180);
     const dLon = (lon2 - lon1) * (Math.PI / 180);
@@ -51,16 +55,17 @@ const BranchFinder = () => {
   }
 
   function findNearestBranch(userLatitude, userLongitude) {
-    if (apiResponse === null) {
-      return null;
-    }
 
+    if (apiResponse === null) {
+        return null; 
+    }
+    
     const testBranches = apiResponse;
 
     let nearestBranch = null;
     let shortestDistance = Infinity;
-
-    testBranches.forEach((branch) => {
+  
+    testBranches.forEach(branch => {
       const distance = calculateDistance(
         userLatitude,
         userLongitude,
@@ -71,8 +76,9 @@ const BranchFinder = () => {
         shortestDistance = distance;
         nearestBranch = branch;
       }
+      setShowMap(true);
     });
-
+  
     return nearestBranch;
   }
 
@@ -85,67 +91,52 @@ const BranchFinder = () => {
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${postalCode}&key=AIzaSyDB1QSetyBSLxtSUqBXk8SyCBE2n3-CyCA`
       );
-
+      
       if (!response.ok) {
-        throw new Error("Failed to fetch location data");
+        throw new Error('Failed to fetch location data');
       }
       const data = await response.json();
       const { lat, lng } = data.results[0].geometry.location;
       setNearestBranch(findNearestBranch(lat, lng));
-      setShowButtons(true);
+  
+
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error('Error fetching data:', error);
     }
+   
   };
-
+ 
   return (
-    <div className="main">
-      <div className="general-structure">
-        <div
-          className="main-content"
-          style={{ height: "500px", overflowY: "auto" }}
-        >
-          <div className="title-box">
-            <div className="reservation-title">Find Nearest Branch</div>
-          </div>
-          <div>
-            <div className="top-box-input">
-              <input
-                type="text"
-                value={postalCode}
-                onChange={handlePostalCodeChange}
-                placeholder="Enter your postal code"
-              />
-            </div>
 
-            <button
-              className="all-caps sign-in-btn btn-background-color reserve-btn check-availability-button"
-              onClick={findBranch}
-            >
-              Find Nearest Branch
-            </button>
-            {nearestBranch && (
-              <div>
-                <p>Name: {nearestBranch.Name}</p>
-              </div>
-            )}
-            <Map
+      <div>
+        <div>
+          <div className="top-box-input">
+          <input
+            type="text"
+            value={postalCode}
+            onChange={handlePostalCodeChange}
+            placeholder="Enter your postal code"
+          />
+          </div>
+          
+          <button className="all-caps sign-in-btn btn-background-color reserve-btn check-availability-button" onClick={findBranch}>Find Nearest Branch</button>
+          {nearestBranch.Name ? (
+            <div>
+              
+              <p>Name: {nearestBranch.Name}</p>
+            
+            </div>
+          ) :null}
+          {showMap ? 
+          <div>
+            <Map 
               latitude={parseFloat(nearestBranch.latitude)}
               longitude={parseFloat(nearestBranch.longitude)}
-            />
-            <button className="all-caps sign-in-btn btn-background-color reserve-btn">
-              Check-In
-            </button>
-            <button className="all-caps sign-in-btn btn-background-color reserve-btn">
-              Check-out
-            </button>
-            <button className="all-caps sign-in-btn btn-background-color reserve-btn">
-              Explore
-            </button>
-          </div>
+            /> 
+            </div> : null}
         </div>
       </div>
-    </div>
+
   );
 };
 

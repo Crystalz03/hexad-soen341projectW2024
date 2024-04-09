@@ -133,7 +133,7 @@ function ModifyReservation() {
                         onChange={handleChange}
                     />
                 </label>
-                <button type="submit">View</button>
+                <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">View</button>
             </form>
             {error && <p className="error">{error}</p>}
             {reservationDetails && (
@@ -210,7 +210,7 @@ function ModifyReservation() {
                                 onChange={(e) => setNewDropOffLocation(e.target.value)}
                             />
                         </label>
-                        <button type="submit">Update</button>
+                        <button className="btn btn-primary" style={{backgroundColor: '#ea4c89', border: '#ea4c89', color: 'white'}} type="submit">Update</button>
                     </form>
                     {isButtonClicked && <p>Reservation updated successfully!</p>}
                 </div>

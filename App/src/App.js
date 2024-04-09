@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+
+import Footer from "./components/layout/Footer";
+import NavBar from "./components/layout/NavBar";
+
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 import Home from "./pages/allUsers/Home";
@@ -31,7 +35,13 @@ import ConfirmBooking from "./pages/csr/ConfirmBooking";
 import ConfirmPayment from "./pages/csr/ConfirmPayment";
 
 
-
+function NotFound() {
+return (
+  <div className="main-content">
+    <h1>404: Page Not Found</h1>
+    </div>
+);
+}
 
 function App() {
   const [apiResponse, setApiResponse] = useState("");
@@ -48,37 +58,40 @@ function App() {
   return (
     <Router>
       <div className="app">
+      <NavBar/>
       
         <Routes>
           <Route path="/" exact element={<Home />} />
+          <Route path="/SignIn" exact element={<SignIn />} />
           <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} />
           <Route path="/Vehicle" exact element={<Vehicle />} />
-          <Route path="/Inventory" exact element={<AdminInventory />} />
-          <Route path="/Reserve/:vehicleID" exact element={<Reserve />} />
-          <Route path="/SignUp" exact element={<SignUp />} />
-          <Route path="/SignIn" exact element={<SignIn />} />
+          <Route path="/Inventory" exact element={<AdminInventory />} /> 
+          <Route path="/Reserve/:vehicleID" exact element={<Reserve />} /> 
           <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
           <Route path="/CRDashboard" exact element={<CRDashboard />} />
-          <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} />
-          <Route path="/DeleteReservationPage" exact element={<DeleteReservationPage />} />
+          <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} /> 
+          <Route path="/DeleteReservationPage" exact element={<DeleteReservationPage />} /> 
           <Route path="/MyAccountPage" exact element={<MyAccountPage />} />
           <Route path="/CreateAdminAccount" exact element={<CreateAdminAccount/>} />
           <Route path="/Browse" exact element={<Browse/>} />
-          <Route path="/Reviews" exact element={<Reviews/>} />
+          <Route path="/Reviews" exact element={<Reviews/>} /> 
           <Route path="/View" exact element={<View/>} />
           <Route path="/Modify" exact element={<Modify/>} />
-          <Route path="/Branches" exact element={<Branches/>} />
-          <Route path="/CheckIn" exact element={<CheckIn/>} />
-          <Route path="/UpdateUserInfo" exact element={<UpdateUserInfoPage />} />
+          <Route path="/Branches" exact element={<Branches/>} /> 
+          <Route path="/CheckIn" exact element={<CheckIn/>} /> 
+          <Route path="/UpdateUserInfo" exact element={<UpdateUserInfoPage />} /> 
           <Route path="/CheckOut" exact element={<CheckOut/>} />
           <Route path="/Payment" exact element={<Payment/>} />
-          <Route path="/CreateACustomerAccount" exact element={<CRCreateAUserAccount/>} />
-          <Route path="/ConfirmBooking/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment" exact element={<ConfirmBooking/>} />
+          <Route path="/NewCustomer" exact element={<CRCreateAUserAccount/>} /> 
+          <Route path="/ConfirmBooking/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment" exact element={<ConfirmBooking/>} /> 
           <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} />
-          <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} />
+          <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} /> 
+          <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer/>
       </div>
     </Router>
+    
   );
 }
 
