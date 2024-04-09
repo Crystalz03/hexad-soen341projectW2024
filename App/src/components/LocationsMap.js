@@ -6,21 +6,29 @@ const Map = ({ locations }) => {
 
   useEffect(() => {
     const loader = new Loader({
-      apiKey: 'AIzaSyDB1QSetyBSLxtSUqBXk8SyCBE2n3-CyCA', 
+      apiKey: 'AIzaSyDB1QSetyBSLxtSUqBXk8SyCBE2n3-CyCA',
       version: 'weekly',
     });
 
     loader.load().then(() => {
       const map = new window.google.maps.Map(mapContainerRef.current, {
-        center: { lat: locations[0].latitude, lng: locations[0].longitude }, // Center map on the first location
+        center: { lat: locations[0].latitude, lng: locations[0].longitude }, 
         zoom: 12,
       });
 
       locations.forEach(location => {
-        new window.google.maps.Marker({
+        const marker = new window.google.maps.Marker({
           position: { lat: location.latitude, lng: location.longitude },
           map,
           title: location.title || 'Location',
+        });
+
+        const infoWindow = new window.google.maps.InfoWindow({
+          content: `<h3>${location.title}</h3><p>Latitude: ${location.latitude}</p><p>Longitude: ${location.longitude}</p>`,
+        });
+
+        marker.addListener('click', () => {
+          infoWindow.open(map, marker);
         });
       });
     });
