@@ -8,20 +8,20 @@ app.use(express.json());
 app.use(applicationRoutes);
 
 const application = {
-    id: 'A123456789',
-    category: 'Compact',
-    color: 'black',
-    damages: 'none',
-    make: 'Sedan',
-    model: 'Civic',
-    mileage: 10000,
-    year: 2024,
-    offerAmount: 25000,
-    first_name: 'John',
-    last_name: 'Doe',
-    email:'johnDoe@gmail.com',
-    phone: '1234567890',
-    message: null
+    ID: '123456789',
+    Category: 'Compact',
+    Color: 'black',
+    Damages: 'none',
+    Make: 'Sedan',
+    Model: 'Civic',
+    Mileage: 10000,
+    Year: 2024,
+    OfferAmount: 25000,
+    FirstName: 'John',
+    LastName: 'Doe',
+    Email:'johnDoe@gmail.com',
+    Phone: '1234567890',
+    Message: ''
 }
 
 describe('Application Routes', () => {
