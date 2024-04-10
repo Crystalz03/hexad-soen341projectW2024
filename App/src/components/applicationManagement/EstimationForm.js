@@ -61,29 +61,38 @@ function EstimationForm(props) {
 
   return (
     <div>
-      <div>
-        <p>Category: {vehicleApplicationInfo.category}</p>
-        <p>Color: {vehicleApplicationInfo.color}</p>
-        <p>Damages: {vehicleApplicationInfo.damages}</p>
-        <p>Make: {vehicleApplicationInfo.make}</p>
-        <p>Model: {vehicleApplicationInfo.model}</p>
-        <p>Mileage: {vehicleApplicationInfo.mileage}</p>
-        <p>Year: {vehicleApplicationInfo.year}</p>
-      </div>
-      <div>
-        <p>Estimation for year: {yearEstimation}$</p>
-        <p>Estimation for make: {makeEstimation}$</p>
-        <p>Estimation for damages: {damagesEstimation}$</p>
-        <p>Estimation for mileage: {mileageEstimation}$</p>
-        <p>Total estimation: {totalEstimation}$</p>
-      </div>
-      <div>
-        <p>Your offered Amount: {vehicleApplicationInfo.offerAmount}$</p><br/>
+      <div className='vehicle-card' style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        backgroundColor: "#f0f0f0",
+        boxShadow: "0 4px 8px rgba(210, 195, 195, 0.3)",
+        padding: "1em",
+        margiinBottom: "2em",
+        borderRadius: "5px",
+        width: "60%",
+      }}>
+        <div>
+          <p>Category: {vehicleApplicationInfo.category}</p>
+          <p>Color: {vehicleApplicationInfo.color}</p>
+          <p>Damages: {vehicleApplicationInfo.damages}</p>
+          <p>Make: {vehicleApplicationInfo.make}</p>
+          <p>Model: {vehicleApplicationInfo.model}</p>
+          <p>Mileage: {vehicleApplicationInfo.mileage}</p>
+          <p>Year: {vehicleApplicationInfo.year}</p>
+        </div>
+        <div>
+          <p>Estimation for year: {yearEstimation}$</p>
+          <p>Estimation for make: {makeEstimation}$</p>
+          <p>Estimation for damages: {damagesEstimation}$</p>
+          <p>Estimation for mileage: {mileageEstimation}$</p>
+          <p>Total estimation: {totalEstimation}$</p>
+        </div>
+        <div>
+          <p>Your offered Amount: {vehicleApplicationInfo.offerAmount}$</p><br/>
+        </div>
       </div>
 
-      <div>
-        Please proceed to the next page to enter your contact information
-        </div>
       <button style={{ 
         backgroundColor: "#f75990",
         boxShadow: "0 4px 8px rgba(210, 195, 195, 0.3)",
@@ -92,9 +101,14 @@ function EstimationForm(props) {
         color: "#ffffff",
         fontWeight: 600, 
         fontSize: 16, 
-        width: 360,
+        width: 160,
         transition: "0.3s",
-        marginRight: "0.5em"}
+        marginRight: "0.5em",
+        borderRadius: "5px",
+        cursor: "pointer",
+        position: "centered",
+        marginTop: "1em",
+      }
       } onClick={handleNext}>Next</button>
 
     </div>
