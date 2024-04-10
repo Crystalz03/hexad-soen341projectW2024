@@ -1,33 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
-import Home from "./pages/Home";
-import BrowseAccounts from "./pages/BrowseAccounts";
-import Vehicle from "./pages/Vehicle";
-import Browse from "./pages/Browse";
-import Reserve from "./pages/Reserve";
-import View from "./pages/View";
-import AdminDashboard from "./pages/AdminDashboard";
-import CreateCRAccount from "./pages/CreateCRAccount";
-import CRDashboard from "./pages/CRDashboard";
-import DeleteReservationPage from "./pages/DeleteReservationPage";
-import MyAccountPage from "./pages/MyAccountPage";
-import CreateAdminAccount from "./pages/CreateAdminAccount";
-import Reviews from"./pages/Reviews";
-import SignIn from "./pages/SignIn";
-import AdminInventory from "./pages/AdminInventory";
-import Modify from "./pages/Modify";
-import Branches from "./pages/Branches";
-import UpdateUserInfoPage from "./pages/UpdateUserInfoPage";
-import CheckIn from "./pages/CheckIn";
-import CheckOut from "./pages/CheckOut";
-import Payment from "./pages/Payment";
-import CRCreateAUserAccount from "./pages/CRCreateAUserAccount";
-import ConfirmBooking from "./pages/ConfirmBooking";
-import ConfirmPayment from "./pages/ConfirmPayment";
-import UpdateVehicle from "./pages/UpdateVehicle";
+import React from "react";
+
+import Footer from "./components/layout/Footer";
+import NavBar from "./components/layout/NavBar";
+
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+
+import Home from "./pages/allUsers/Home";
+import Browse from "./pages/allUsers/Browse";
+import Reserve from "./pages/allUsers/Reserve";
+import View from "./pages/allUsers/View";
+import SignIn from "./pages/allUsers/SignIn";
+import DeleteReservationPage from "./pages/allUsers/DeleteReservationPage";
+import MyAccountPage from "./pages/allUsers/MyAccountPage";
+import Reviews from"./pages/allUsers/Reviews";
+import Modify from "./pages/allUsers/Modify";
+import Branches from "./pages/allUsers/Branches";
+import UpdateUserInfoPage from "./pages/allUsers/UpdateUserInfoPage";
 import Recommendations from "./pages/Recommendations";
+
+import BrowseAccounts from "./pages/admin/BrowseAccounts";
+import Vehicle from "./pages/admin/Vehicle";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import CreateCRAccount from "./pages/admin/CreateCRAccount";
+import CreateAdminAccount from "./pages/admin/CreateAdminAccount";
+import AdminInventory from "./pages/admin/AdminInventory";
+import UpdateVehicle from "./pages/admin/UpdateVehicle";
+
+import CRDashboard from "./pages/csr/CRDashboard";
+import CheckIn from "./pages/csr/CheckIn";
+import CheckOut from "./pages/csr/CheckOut";
+import Payment from "./pages/csr/Payment";
+import CRCreateAUserAccount from "./pages/csr/CRCreateAUserAccount";
+import ConfirmBooking from "./pages/csr/ConfirmBooking";
+import ConfirmPayment from "./pages/csr/ConfirmPayment";
 
 function NotFound() {
 return (
@@ -38,31 +43,20 @@ return (
 }
 
 function App() {
-  const [apiResponse, setApiResponse] = useState("");
-  const callAPI = () => {
-    fetch("http://localhost:9000/testAPI")
-      .then(res => res.text())
-      .then(res => setApiResponse(res))
-      .catch(error => console.error('Error fetching data:', error));
-  }
-  useEffect(() => {
-    callAPI();
-  }, []);
-
   return (
     <Router>
       <div className="app">
       <NavBar/>
       
         <Routes>
-          <Route path="/" exact element={<Home />} /> {/* missing the implementation */}
+          <Route path="/" exact element={<Home />} />
           <Route path="/SignIn" exact element={<SignIn />} />
-          <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} /> {/* filtering */}
+          <Route path="/BrowseAccounts" exact element={<BrowseAccounts/>} />
           <Route path="/Vehicle" exact element={<Vehicle />} />
           <Route path="/Inventory" exact element={<AdminInventory />} /> 
           <Route path="/Reserve/:vehicleID" exact element={<Reserve />} /> 
-          <Route path="/AdminDashboard" exact element={<AdminDashboard />} /> {/* empty */}
-          <Route path="/CRDashboard" exact element={<CRDashboard />} /> {/* empty */}
+          <Route path="/AdminDashboard" exact element={<AdminDashboard />} />
+          <Route path="/CRDashboard" exact element={<CRDashboard />} />
           <Route path="/CreateCRAccount" exact element={<CreateCRAccount />} /> 
           <Route path="/DeleteReservationPage" exact element={<DeleteReservationPage />} /> 
           <Route path="/MyAccountPage" exact element={<MyAccountPage />} />
