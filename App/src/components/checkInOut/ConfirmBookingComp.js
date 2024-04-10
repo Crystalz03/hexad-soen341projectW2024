@@ -44,7 +44,8 @@ function ConfirmBookingComp(props){
             const data = await response.json();
             setVehicle(data.vehicle);
         } catch (error) {
-            console.error("Error fetching vehicle:", error);
+          setError("Error fetching vehicle");
+          console.error("Error fetching vehicle:", error);
         }
     };
     fetchVehicle();
@@ -106,7 +107,8 @@ function ConfirmBookingComp(props){
     };
 
     return(
-        <div>
+        <div> 
+          {error && <p className="error">{error}</p>}{" "}
             <div className="reservation-title" style={{marginTop:"5px", color: "black"}}>Vehicle Information</div>
             <p>Make: {vehicle.Make}</p>
             <p>Model: {vehicle.Model}</p>
@@ -128,8 +130,6 @@ function ConfirmBookingComp(props){
             <button style={{ padding: '0.5em', border: 'none', borderRadius: '10%', display: "block", margin: "auto", backgroundColor:"#ffb0b9"}} onClick={()=>{navigate(`/Browse`)}}>Cancel</button>
         </div>
     );
-}/*
-  display: block;
-  margin: auto;*/
+}
 
 export default ConfirmBookingComp;

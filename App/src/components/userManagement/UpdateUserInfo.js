@@ -8,7 +8,7 @@ import {
 } from "./DisplayUserInfo";
 
 export default function UpdateUserInfo() {
-  const [user, setUser] = useState(getUser());
+  const [user, setUser] = useState();
   const [userType, setUserType] = useState("");
   const [customerInfo, setCustomerInfo] = useState({
     ID: "",
@@ -39,6 +39,9 @@ export default function UpdateUserInfo() {
     Password: "",
   });
   const [error, setError] = useState("");
+  useEffect(() => {
+    setUser(getUser());
+  }, []);
 
   //get and set user type
   useEffect(() => {
@@ -56,15 +59,15 @@ export default function UpdateUserInfo() {
           if (userType === "admin") {
             userInformation = await getAdminInfo(user.id);
             console.log("Admin Info:", userInformation.admin); // Log admin info
-            setAdminInfo(userInformation.admin); // Corrected variable name
+            setAdminInfo(userInformation.admin);
           } else if (userType === "customer_representative") {
             userInformation = await getCRInfo(user.id);
             console.log("CSR Info:", userInformation.csr); // Log CSR info
-            setCSRInfo(userInformation.csr); // Corrected variable name
+            setCSRInfo(userInformation.csr); 
           } else if (userType === "customer") {
             userInformation = await getCustomerInfo(user.id);
             console.log("Customer Info:", userInformation.customer); // Log customer info
-            setCustomerInfo(userInformation.customer); // Corrected variable name
+            setCustomerInfo(userInformation.customer); 
           }
         }
       } catch (error) {
@@ -107,7 +110,7 @@ export default function UpdateUserInfo() {
   };
 
   //handle update
-  const handleUpdate = async (e) => {
+  const handleUpdate = async () => {
     try {
       let url;
       let data;
@@ -155,11 +158,11 @@ export default function UpdateUserInfo() {
       if (response.ok) {
         alert("Account Updated Successfully");
       } else {
-        setError("Error updating user information");
+        //setError("Error updating user information");
       }
     } catch (error) {
       console.error("Error updating user:", error);
-      setError("Error updating user");
+      //setError("Error updating user");
     }
   };
 
@@ -168,6 +171,7 @@ export default function UpdateUserInfo() {
   return (
     <div style={{width: '80%'}}>
       <form onSubmit={handleUpdate} className="base-form">
+       {error && <p className="error">{error}</p>}{" "}
         {userType === "admin" && (
           <span>
             <i>Admin Information</i>

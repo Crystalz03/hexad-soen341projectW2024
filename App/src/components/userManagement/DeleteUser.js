@@ -4,19 +4,10 @@ import { useNavigate } from 'react-router';
 
 export default function DeleteUser() {
   const [error, setError] = useState('');
-  const [user, setUser] = useState(getUser());
+  const [user] = useState(getUser());
   const [userType, setUserType]=useState('');
-  const [signedIn, setSignedIn] = useState(false);
   const navigate= useNavigate();
 
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      setSignedIn(true);
-    } else {
-      setSignedIn(false);
-    }
-  }, []);
 
   useEffect(() => {
     if (user) {
@@ -26,7 +17,6 @@ export default function DeleteUser() {
 
   const handleSignOut = () => {
     localStorage.removeItem("user");
-    setSignedIn(false);
     navigate("/");
   };
 

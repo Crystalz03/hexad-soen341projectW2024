@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import Footer from "./components/layout/Footer";
 import NavBar from "./components/layout/NavBar";
@@ -43,17 +43,6 @@ return (
 }
 
 function App() {
-  const [apiResponse, setApiResponse] = useState("");
-  const callAPI = () => {
-    fetch("http://localhost:9000/testAPI")
-      .then(res => res.text())
-      .then(res => setApiResponse(res))
-      .catch(error => console.error('Error fetching data:', error));
-  }
-  useEffect(() => {
-    callAPI();
-  }, []);
-
   return (
     <Router>
       <div className="app">

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 function UpdateVehicleForm(props) {
     const vehicleID = props.vehicleID;
     const navigate = useNavigate();
+    const [error, setError] = useState("");
     const [formData, setFormData] = useState({
         make: '',
         category: '',
@@ -15,7 +16,6 @@ function UpdateVehicleForm(props) {
         color: '',
         damages: '',
       });
-    const [error, setError] = useState("");
     const [vehicles, setVehicles] = useState({});
     const info={
       Make: '',
@@ -72,8 +72,8 @@ function UpdateVehicleForm(props) {
         console.log("Vehicle updated ", info);
         navigate("/AdminInventory");
       } catch (error) {
-        setError(error.message);
         console.error(error);
+        setError(error.message);
       }
     };
   
@@ -137,101 +137,102 @@ function UpdateVehicleForm(props) {
       <form onSubmit={handleSubmit} className="base-form">
       <div  style={{ display: 'flex',marginBottom: '0px', width: '900px'}}>
           <div style={{ flex: 1, marginRight: '10px' }}>
-        <label>Make:</label>
-        <input
-          make="text"
-          name="make"
-          value={formData.make}
-          onChange={handleChange}
-        />
+        {error && <p className="error">{error}</p>}{" "}
+          <label>Make:</label>
+          <input
+            type="text"
+            name="make"
+            value={formData.make}
+            onChange={handleChange}
+          />
         </div>
         <div style={{flex: 1}}>
-        <label>Category:</label>
-        <input
-          make="text"
-          name="category"
-          value={formData.category}
-          onChange={handleChange}
-        />
+          <label>Category:</label>
+          <input
+            type="text"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+          />
         </div>
       </div>
       <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
           <div style={{ flex: 1, marginRight: '10px' }}>
-        <label>Model:</label>
-        <input
-          make="text"
-          name="model"
-          value={formData.model}
-          onChange={handleChange}
-        />
+          <label>Model:</label>
+          <input
+            type="text"
+            name="model"
+            value={formData.model}
+            onChange={handleChange}
+          />
         </div>
         <div style={{flex: 1}}>
-        <label>Price:</label>
-        <input
-          make="number"
-          name="price"
-          value={formData.price}
-          onChange={handleChange}
-        />
+          <label>Price:</label>
+          <input
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+          />
         </div>
         </div>
         <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
           <div style={{ flex: 1, marginRight: '10px' }}>
-        <label>Availability:</label>
-        <input
-          make="text"
-          name="availability"
-          value={formData.availability}
-          onChange={handleChange}
-        />
+          <label>Availability:</label>
+          <input
+            type="text"
+            name="availability"
+            value={formData.availability}
+            onChange={handleChange}
+          />
         </div>
         <div style={{flex: 1}}>
-        <label>Year:</label>
-        <input
-          make="number"
-          name="year"
-          value={formData.year}
-          onChange={handleChange}
-        />
+          <label>Year:</label>
+          <input
+            type="number"
+            name="year"
+            value={formData.year}
+            onChange={handleChange}
+          />
         </div>
         </div>
         <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '40px'}}>
           <div style={{ flex: 1, marginRight: '10px' }}>
-        <label>Plate Number:</label>
-        <input
-          make="text"
-          name="plateNumber"
-          value={formData.plateNumber}
-          onChange={handleChange}
-        />
+          <label>Plate Number:</label>
+          <input
+            type="text"
+            name="plateNumber"
+            value={formData.plateNumber}
+            onChange={handleChange}
+          />
         </div>
         <div style={{flex: 1}}>
-        <label>Color:</label>
-        <input
-          make="text"
-          name="color"
-          value={formData.color}
-          onChange={handleChange}
-        />
+          <label>Color:</label>
+          <input
+            type="text"
+            name="color"
+            value={formData.color}
+            onChange={handleChange}
+          />
         </div>
         </div>
         <div>
-        <label>Damages:</label>
-        <input
-          make="text"
-          name="damages"
-          value={formData.damages}
-          onChange={handleChange}
-        />
+          <label>Damages:</label>
+          <input
+            type="text"
+            name="damages"
+            value={formData.damages}
+            onChange={handleChange}
+          />
         </div>
         <br/>
-        <button make="submit">Submit</button>
-      </form>
-    </div>
-  
-    );
-  
-  }
-  
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    
+      );
+    
+    }
+    
 
-export default UpdateVehicleForm;
+  export default UpdateVehicleForm;

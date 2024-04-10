@@ -7,8 +7,11 @@ function DeleteReservation() {
     const navigate = useNavigate();
     
     const isFormatValidReservationId = (id) => {
-        // Add your validation logic here if needed
-        return true; // For simplicity, assuming format is always valid
+        if(id.length !== 10) {
+            setError("Reservation ID must be 10 characters long");
+            return false;
+        }
+        return true; 
     }
 
     const handleChange = (e) => {
@@ -31,7 +34,7 @@ function DeleteReservation() {
             if (response.ok) {
                 console.log('Reservation successfully deleted');
                 // Optionally, you can navigate to another page or perform additional actions upon successful deletion
-                navigate('/'); // Example: Navigate to homepage
+                navigate('/'); 
             } else {
                 setError('Failed to delete reservation. Please try again later.');
                 console.error('Failed to delete reservation:', response.statusText);

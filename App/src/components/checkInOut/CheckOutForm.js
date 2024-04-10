@@ -16,7 +16,7 @@ const CheckoutForm = () => {
   const [error, setError] = useState("");
   const [reservation, setReservation] = useState({});
 
-  const navigate = useNavigate(); //new
+  const navigate = useNavigate(); 
 
   const damagePrices = {
     scratch: 50,
@@ -218,7 +218,8 @@ const CheckoutForm = () => {
       <p style={{marginBottom: '1em'}}>Total Price: ${totalPrice}</p> 
       {error && <div style={{ color: "red" }}>{error}</div>}
       <button onClick={calculateTotalPrice}>Calculate Total Price</button>
-      <button onClick={handleCheckout}>Check Out</button> {/* Modified*/}
+      {error && <div style={{ color: "red" }}>{error}</div>}
+      <button onClick={handleCheckout}>Check Out</button>
     </div>
   );
 };

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignInPopover from "../authentication/SignInPopover";
-import { useSelector } from "react-redux";
 import { getUser, getUserRole } from "../userManagement/DisplayUserInfo";
 import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const [isDropdownOpenAccount, setIsDropdownOpenAccount] = useState(false);
   const [isDropdownOpenReservation, setIsDropdownOpenReservation] =
     useState(false);

@@ -81,7 +81,7 @@ function BrowseAccountsComponent() {
         </div>
       </div>
     );
-  };
+  }
   
   
   export default BrowseAccountsComponent;

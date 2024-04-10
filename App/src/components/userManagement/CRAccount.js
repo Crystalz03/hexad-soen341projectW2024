@@ -18,7 +18,7 @@ import { useState } from "react";
     const uniqueId = generateRandomString(8); // Generate a random string of 8 characters
     return prefix + uniqueId;
   }
-
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     id: generateRepId(),
     name: "",
@@ -39,7 +39,7 @@ import { useState } from "react";
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+ 
 
       if (!response.ok) {
         throw new Error("Please try again.");
@@ -67,6 +67,7 @@ import { useState } from "react";
   return (
     <form onSubmit={handleSubmit} action="New CR account" className="base-form">
       <div  style={{ display: 'flex', marginTop: '30px', marginBottom: '0px'}}>
+      {error && <p className="error">{error}</p>}{" "}
           <div style={{ flex: 1, marginRight: '10px' }}>
           <input
             type="text"
@@ -88,7 +89,7 @@ import { useState } from "react";
           ></input>
           </div>
         </div>
-        <select id="branch" class="form-select" aria-label="Default select example" style={{width: '40%', marginBottom: '2em'}}>
+        <select id="branch" className="form-select" aria-label="Default select example" style={{width: '40%', marginBottom: '2em'}}>
           <option value="option 1">Laval</option>
           <option value="option 2">Montréal</option>
           <option value="option 3">Airport</option>

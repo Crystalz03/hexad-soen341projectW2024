@@ -1,0 +1,11 @@
+node_modules/
+.vscode/
+Sprints/
+.github/
+App/tests/
+App/dist/
+App/public/
+App/api/
+App/database/
+App/src/index.js
+App/src/components/testComponent.js

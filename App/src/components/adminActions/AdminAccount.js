@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -43,8 +41,6 @@ export default function CreateAdminAccount() {
         },
         body: JSON.stringify(formData),
       });
-
-      const data = await response.json();
 
       if (!response.ok) {
         throw new Error("Please try again.");

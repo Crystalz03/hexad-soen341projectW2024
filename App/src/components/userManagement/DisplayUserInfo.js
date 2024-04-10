@@ -72,15 +72,10 @@ export async function getCustomerInfo(id) {
 //component
 
 export function DisplayUserInfo() {
-  const [user, setUser] = useState(getUser());
+  const [user] = useState(getUser());
   const [userType, setUserType] = useState("");
   const [userInfo, setUserInfo] = useState({});
   const [error, setError] = useState("");
-
-  const handleSignOut = () => {
-    localStorage.removeItem("user");
-    setUser(null);
-  };
 
   useEffect(() => {
     if (user) {
