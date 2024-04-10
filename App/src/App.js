@@ -16,6 +16,7 @@ import Reviews from"./pages/allUsers/Reviews";
 import Modify from "./pages/allUsers/Modify";
 import Branches from "./pages/allUsers/Branches";
 import UpdateUserInfoPage from "./pages/allUsers/UpdateUserInfoPage";
+import Recommendations from "./pages/allUsers/Recommendations";
 
 import BrowseAccounts from "./pages/admin/BrowseAccounts";
 import Vehicle from "./pages/admin/Vehicle";
@@ -78,6 +79,7 @@ function App() {
           <Route path="/ConfirmBooking/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment" exact element={<ConfirmBooking/>} /> 
           <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} />
           <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} /> 
+          <Route path="/Recommendations" exact element={<Recommendations/>}/>
           <Route path ="/VehicleApplication" exact element = {<VehicleApplication/>}></Route>
           <Route path ="/ContactInfoPage/:category/:color/:damages/:make/:model/:mileage/:year/:offerAmount" exact element = {<ContactInfoPage/>}></Route>
           <Route path="/EstimationPage/:category/:color/:damages/:make/:model/:mileage/:year/:offerAmount" exact element={<EstimationPage/>} />
