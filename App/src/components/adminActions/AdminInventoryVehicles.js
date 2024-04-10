@@ -2,29 +2,36 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../../public/assets/css/style.css";
 
-function AdminInventoryVehicles() {
+function AdminInventoryApplications() {
   const navigate = useNavigate();
   const [apiResponse, setApiResponse] = useState(null); // Define apiResponse state
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [filter, setFilter] = useState("All");
+  //removed Filter line here
 
   const callAPIGet = () => {
-    fetch("http://localhost:9000/vehicles", {
+    fetch("http://localhost:9000/applications", { //modified "vehicles -->applications"
       method: "GET",
     })
       .then((data) => data.json())
       .then((data) => {
-        const formattedVehicles = data.vehicle[0].map((vehicle) => ({
-          ID: vehicle.ID,
-          Make: vehicle.Make,
-          Category: vehicle.Category,
-          Model: vehicle.Model,
-          Price: `$${vehicle.Price}/day`,
-          Availability: vehicle.Availability,
+        const formattedApplications = data.application[0].map((application) => ({
+          ID: application.ID,
+          Category: application.Category,
+          Color: application.Color,
+          Damages: application.Damages,
+          Make: application.Make,
+          Model: application.Model,
+          Mileage: application.Mileage,
+          Year: application.Year,
+          ProposedPrice: `$${application.ProposedPrice}/day`,
+          FistName: application.FirstName,
+          LastName: application.LastName,
+          PhoneNumber: application.PhoneNumber,
+          Email: application.Email,
         }));
 
-        setApiResponse(formattedVehicles);
+        setApiResponse(formattedApplications);
         setLoading(false);
       })
       .catch((error) => {
@@ -116,4 +123,4 @@ function AdminInventoryVehicles() {
   );
 }
 
-export default AdminInventoryVehicles;
+export default AdminInventoryApplications;
