@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "../../../public/assets/css/style.css";
 
 function AdminInventoryApplications() {
-  const navigate = useNavigate();
   const [apiResponse, setApiResponse] = useState(null); // Define apiResponse state
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
