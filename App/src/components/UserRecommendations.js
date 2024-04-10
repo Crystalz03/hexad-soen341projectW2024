@@ -14,7 +14,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) { //using the Haversine formu
     return distance;
 }
 
-function PointsInBetween({ coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude, otherCoords, threshold }) {
+function PointsInBetween({ coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude, otherCoords, threshold, categoryFilter }) {
   const [pointsInBetween, setPointsInBetween] = useState([]);
   
   useEffect(() => {
@@ -23,13 +23,14 @@ function PointsInBetween({ coord1Latitude, coord1Longitude, coord2Latitude, coor
       const result = otherCoords.filter(coord => {
         const distanceToCoord1 = calculateDistance(coord.latitude, coord.longitude, coord1Latitude, coord1Longitude);
         const distanceToCoord2 = calculateDistance(coord.latitude, coord.longitude, coord2Latitude, coord2Longitude);
-        return (distanceToCoord1 + distanceToCoord2) <= (distanceBetweenCoords + threshold);
+        return (distanceToCoord1 + distanceToCoord2) <= (distanceBetweenCoords + threshold) &&
+               (categoryFilter === '' || coord.Category === categoryFilter);
       });
       setPointsInBetween(result);
     };
     
     findPointsInBetween();
-  }, [coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude, otherCoords, threshold]);
+  }, [coord1Latitude, coord1Longitude, coord2Latitude, coord2Longitude, otherCoords, threshold, categoryFilter]);
 
   const formattedPoints = pointsInBetween.map(coord => ({
     latitude: coord.latitude,
@@ -42,12 +43,10 @@ function PointsInBetween({ coord1Latitude, coord1Longitude, coord2Latitude, coor
   if(formattedPoints.length != 0){
     return <Map locations={formattedPoints}></Map>;
   }
-  return <Map locations={[{ latitude: 0, longitude: 0, title: '' }]}></Map>
+  return <Map locations={[{ latitude: 0, longitude: 0, title: '' }]}></Map>;
 }
 
-
 const UserRecommendations = () => {
-
   const [apiResponse, setApiResponse] = useState(null); 
   const [selectedBranch1, setSelectedBranch1] = useState({
     Name: "",
@@ -59,15 +58,10 @@ const UserRecommendations = () => {
     latitude: 0,
     longitude: 0
   });
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [AllRecommendations, setAllRecommendations] = useState([{ Name: '', latitude: 0, longitude: 0, Category: '', Address: '' }]);
 
-const [AllRecommendations, setAllRecommendations] = useState(
-  [{Name: '', 
-  latitude: 0, 
-  longitude: 0, 
-  Category: '', 
-  Address: ''}]);
-
-useEffect(() => {
+  useEffect(() => {
     const callAPIGetRecommendations = async () => {
       try {
         const response = await fetch('http://localhost:9000/recommendations');
@@ -93,11 +87,11 @@ useEffect(() => {
       }
     };
 
-      callAPIGetRecommendations();
+    callAPIGetRecommendations();
 
-      }, []);
- 
-     useEffect(() => {
+  }, []);
+
+  useEffect(() => {
 
     const callAPIGetBranches = async () => {
       try {
@@ -121,55 +115,80 @@ useEffect(() => {
       }
     };
 
-      callAPIGetBranches();
+    callAPIGetBranches();
 
-      }, []);
+  }, []);
 
-      const handleSubmit = event => {
-        event.preventDefault();
-        const selectedIndex1 = event.target.elements.branch1.selectedIndex;
-        const selectedIndex2 = event.target.elements.branch2.selectedIndex;
-        setSelectedBranch1(apiResponse[selectedIndex1]);
-        setSelectedBranch2(apiResponse[selectedIndex2]);
-      };
- 
+  const handleSubmit = event => {
+    event.preventDefault();
+    const selectedIndex1 = event.target.elements.branch1.selectedIndex;
+    const selectedIndex2 = event.target.elements.branch2.selectedIndex;
+    setSelectedBranch1(apiResponse[selectedIndex1]);
+    setSelectedBranch2(apiResponse[selectedIndex2]);
+  };
+
   return (
-    <div >
-    <div className="header">
-      <h1 className="check-in-title">Travel Recommendations</h1>
-      <div>Looking for some fun places to stop at during your travels? Hexad will provide a catalogue of interesting locations that are worth visiting!</div>
-    </div>
-    <div className="content">
-      <div className="form-container">
-        <form onSubmit={handleSubmit} className="base-form" style={{marginBottom: '20px' }}>
-          <div>
-            <label htmlFor="branch1">Departure branch:</label>
-            <select name="branch1" className="form-select" style={{ width: '100%', marginBottom: '20px' }}>
-              {apiResponse && apiResponse.map((branch, index) => (
-                <option key={index} value={`${branch.latitude},${branch.longitude}`}>
-                  {branch.Name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label htmlFor="branch2">Arrival branch:</label>
-            <select name="branch2" className="form-select" style={{ width: '100%', marginBottom: '20px' }}>
-              {apiResponse && apiResponse.map((branch, index) => (
-                <option key={index} value={`${branch.latitude},${branch.longitude}`}>
-                  {branch.Name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <button className="button-1" type="submit">Submit</button>
-        </form> 
+    <div>
+      <div className="header">
+        <h1 className="check-in-title">Travel Recommendations</h1>
+        <div>Looking for some fun places to stop at during your travels? Hexad will provide a catalogue of interesting locations that are worth visiting!</div>
       </div>
-      <div className="map-container">
-      <PointsInBetween coord1Latitude={selectedBranch1.latitude} coord1Longitude={selectedBranch1.longitude} coord2Latitude={selectedBranch2.latitude} coord2Longitude={selectedBranch2.longitude} otherCoords={AllRecommendations} threshold={500} />
+      <div className="content">
+        <div className="form-container">
+          <form onSubmit={handleSubmit} className="base-form" style={{ marginBottom: '20px' }}>
+            <div>
+              <label htmlFor="branch1">Departure branch:</label>
+              <select name="branch1" className="form-select" style={{ width: '100%', marginBottom: '20px' }}>
+                {apiResponse && apiResponse.map((branch, index) => (
+                  <option key={index} value={`${branch.latitude},${branch.longitude}`}>
+                    {branch.Name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="branch2">Arrival branch:</label>
+              <select name="branch2" className="form-select" style={{ width: '100%', marginBottom: '20px' }}>
+                {apiResponse && apiResponse.map((branch, index) => (
+                  <option key={index} value={`${branch.latitude},${branch.longitude}`}>
+                    {branch.Name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <button className="button-1" type="submit">Submit</button>
+
+            <div>
+              <label htmlFor="category">Type of locations:</label>
+              <select
+                name="category"
+                className="form-select"
+                style={{ width: '100%', marginBottom: '20px' }}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                <option value="">All</option>
+                <option value="Park">Parks</option>
+                <option value="Museum">Museums</option>
+                <option value="Sight">Viewing sights</option>
+                <option value="Landmark">Landmarks</option>
+                <option value="Local">Local Businesses</option>
+              </select>
+            </div>  
+          </form>
+        </div>
+        <div className="map-container">
+          <PointsInBetween
+            coord1Latitude={selectedBranch1.latitude}
+            coord1Longitude={selectedBranch1.longitude}
+            coord2Latitude={selectedBranch2.latitude}
+            coord2Longitude={selectedBranch2.longitude}
+            otherCoords={AllRecommendations}
+            threshold={500}
+            categoryFilter={selectedCategory}
+          />
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 
