@@ -63,7 +63,7 @@ function AdminInventoryApplications() {
       });
   }; //modified the DELETE Method
 
-  return (
+  return ( //got rid of Filter functionality
     <div>
       <br/>
       <div className="application-grid">
@@ -93,16 +93,16 @@ function AdminInventoryApplications() {
               <div>
                 <button 
                   className="all-caps sign-in-btn btn-background-color reserve-btn"
-                  onClick={() => deleteVehicle(vehicle.ID)}
+                  onClick={() => deleteApplication(application.ID)}
                   style={{marginRight: '0.3em'}}
                 >
-                  Delete Vehicle
+                  Delete Application
                 </button>
                 <button
                   className="all-caps sign-in-btn btn-background-color reserve-btn"
-                  onClick={() => navigate(`/UpdateVehicle/${vehicle.ID}`)}
+                  onClick={() => navigate(`/UpdateApplication/${application.ID}`)}
                   style={{marginLeft: '0.3em'}}
-                >Update Vehicle</button>
+                >Update Application</button>
               </div>
             </div>
           ))
