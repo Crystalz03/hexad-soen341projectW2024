@@ -65,62 +65,46 @@ function AdminInventoryApplications() {
 
   return (
     <div>
-        <div>
-          <label htmlFor="typeFilter">Filter by Make:</label>
-          <select
-            id="typeFilter"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-          >
-            <option value="All">All</option>
-            <option value="Car">Car</option>
-            <option value="SUV">SUV</option>
-            <option value="Van">Van</option>
-            <option value="Truck">Truck</option>
-          </select>
-        </div>
-        <br/>
-        <div className="vehicle-grid">
-          {loading ? (
-            <div>Loading...</div>
-          ) : error ? (
-            <div>Error: {error}</div>
-          ) : apiResponse.length === 0 ? (
-            <div>No vehicles match the selected filter.</div>
-          ) : (
-            apiResponse
-              .filter((vehicle) => filter === "All" || vehicle.Make === filter)
-              .map((vehicle) => (
-                <div key={vehicle.ID} className="vehicle-card">
-                  <div>ID: {vehicle.ID}</div>
-                  <div>Make: {vehicle.Make}</div>
-                  <div>Category: {vehicle.Category}</div>
-                  <div>Model: {vehicle.Model}</div>
-                  <div>Price: {vehicle.Price}</div>
-                  <div>Availability: {vehicle.Availability}</div>
-                  <div>
-                    <button 
-                      className="all-caps sign-in-btn btn-background-color reserve-btn"
-                      onClick={() => deleteVehicle(vehicle.ID)}
-                      style={{marginRight: '0.3em'}}
-                    >
-                      Delete Vehicle
-                    </button>
-                    <button
-                      className="all-caps sign-in-btn btn-background-color reserve-btn"
-                      onClick={() => navigate(`/UpdateVehicle/${vehicle.ID}`)}
-                      style={{marginLeft: '0.3em'}}
-                    >Update Vehicle</button>
-                  </div>
-                </div>
-              ))
-          )}
-        </div>
-      
-       
+      <br/>
+      <div className="vehicle-grid">
+        {loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>Error: {error}</div>
+        ) : apiResponse.length === 0 ? (
+          <div>No vehicles available.</div>
+        ) : (
+          apiResponse.map((vehicle) => (
+            <div key={vehicle.ID} className="vehicle-card">
+              <div>ID: {vehicle.ID}</div>
+              <div>Make: {vehicle.Make}</div>
+              <div>Category: {vehicle.Category}</div>
+              <div>Model: {vehicle.Model}</div>
+              <div>Price: {vehicle.Price}</div>
+              <div>Availability: {vehicle.Availability}</div>
+              <div>
+                <button 
+                  className="all-caps sign-in-btn btn-background-color reserve-btn"
+                  onClick={() => deleteVehicle(vehicle.ID)}
+                  style={{marginRight: '0.3em'}}
+                >
+                  Delete Vehicle
+                </button>
+                <button
+                  className="all-caps sign-in-btn btn-background-color reserve-btn"
+                  onClick={() => navigate(`/UpdateVehicle/${vehicle.ID}`)}
+                  style={{marginLeft: '0.3em'}}
+                >Update Vehicle</button>
+              </div>
+            </div>
+          ))
+        )}
       </div>
-   
+    </div>
   );
+  
+
+  
 }
 
 export default AdminInventoryApplications;
