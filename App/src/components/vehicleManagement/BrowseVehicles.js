@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../../../public/assets/css/new.css";
 import HorizontalCard from "../layout/HorizontalCard";
 import Card from "../layout/Card";
 
@@ -11,7 +10,7 @@ function BrowseVehicles({card}) {
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("All");
   const [filterClicked, setFilterClicked] = useState(false);
-  const useHorizontalCard = useState(card == "Horizontal");
+  const [useHorizontalCard, setHorizontalCard] = useState(card == "Horizontal");
   const navigate = useNavigate();
 
   const callAPIGet = () => {
@@ -76,21 +75,21 @@ function BrowseVehicles({card}) {
             onClick={() => handleFilterChange("Car")}
           />
           <HorizontalCard
-            imageUrl={require("./../../../public/assets/images/SUV.png").default}
+            imageUrl={require("../../../public/assets/images/SUV.png").default}
             title="SUVs"
             description="Adventure-ready and spacious, SUVs are designed for families and explorers alike. With ample cargo space and rugged capability, they're ideal for both city cruising and off-road adventures."
             buttonText="View All SUVs"
             onClick={() => handleFilterChange("SUV")}
           />
           <HorizontalCard
-            imageUrl={require("./../../../public/assets/images/Truck.png").default}
+            imageUrl={require("../../../public/assets/images/Truck.png").default}
             title="Trucks"
             description="Power and utility define trucks. From hauling heavy loads to conquering rough terrain, trucks offer unmatched performance and towing capacity, making them indispensable for work or play."
             buttonText="View All Trucks"
             onClick={() => handleFilterChange("Truck")}
           />
           <HorizontalCard
-            imageUrl={require("./../../../public/assets/images/Van.png").default}
+            imageUrl={require("../../../public/assets/images/Van.png").default}
             title="Vans"
             description="Versatile and spacious, vans are the ultimate solution for transporting passengers or cargo. Whether for business or leisure, vans provide comfort and flexibility for all your transportation needs."
             buttonText="View All Vans"
@@ -99,7 +98,7 @@ function BrowseVehicles({card}) {
         </div>
       :  <div className="row" style={{width: '100%'}}>
         <Card
-          imageUrl={require("./../../public/assets/images/Car.png").default}
+          imageUrl={require("../../../public/assets/images/Car.png").default}
           title="Cars"
           description="Everyday versatility meets efficiency in small cars. Perfect for city commutes or highway drives, they offer comfort, modern features, and fuel efficiency for your daily travels."
           buttonText="Browse Available Cars"
@@ -107,7 +106,7 @@ function BrowseVehicles({card}) {
         />
         <Card
           style={{margin: '1em'}}
-          imageUrl={require("./../../public/assets/images/SUV.png").default}
+          imageUrl={require("../../../public/assets/images/SUV.png").default}
           title="SUVs"
           description="Adventure-ready and spacious, SUVs are designed for families and explorers alike. With ample cargo space and rugged capability, they're ideal for both city cruising and off-road adventures."
           buttonText="Browse Available SUVs"
@@ -115,7 +114,7 @@ function BrowseVehicles({card}) {
         />
         <Card
          style={{margin: '1em'}}
-          imageUrl={require("./../../public/assets/images/Truck.png").default}
+          imageUrl={require("../../../public/assets/images/Truck.png").default}
           title="Trucks"
           description="Power and utility define trucks. From hauling heavy loads to conquering rough terrain, trucks offer unmatched performance and towing capacity, making them indispensable for work or play."
           buttonText="Browse Available Trucks"
@@ -123,7 +122,7 @@ function BrowseVehicles({card}) {
         />
         <Card
          style={{margin: '1em'}}
-          imageUrl={require("./../../public/assets/images/Van.png").default}
+          imageUrl={require("../../../public/assets/images/Van.png").default}
           title="Vans"
           description="Versatile and spacious, vans are the ultimate solution for transporting passengers or cargo. Whether for business or leisure, vans provide comfort and flexibility for all your transportation needs."
           buttonText="Browse Available Vans"

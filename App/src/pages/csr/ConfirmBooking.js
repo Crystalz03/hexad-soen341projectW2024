@@ -15,7 +15,6 @@ function ConfirmBooking() {
     additionalServices: params.additionalServices,
     extraEquipment: params.extraEquipment,
   };
-  //<button onClick={()=>{navigate(`/ConfirmBooking/${vehicleID}/${formData.email}/${formData.pickUpDate}/${formData.returnDate}/${formData.pickUpLocation}/${formData.dropOffLocation}/${formData.additionalServices}/${formData.extraEquipment}`)}}>Continue</button>
 
   return (
     <div className="main-content">

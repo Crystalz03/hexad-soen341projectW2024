@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../../../public/assets/css/new.css";
+import "../../../public/assets/css/style.css";
 
 function Card({imageUrl, title, description, buttonText, onClick}){
  return(

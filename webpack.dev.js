@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 module.exports = {
   mode: 'development',
   entry: './App/src/index.js',
@@ -8,7 +7,6 @@ module.exports = {
     path: path.resolve(__dirname, './App/dist'),
     filename: 'App.js',
     publicPath: '/',
-
   },
   module: {
     rules: [
@@ -32,12 +30,17 @@ module.exports = {
           use: [
             {
               loader: 'file-loader',
-            },
-          ],
-        },
+              options: {
+                name: '[name].[ext]',
+                outputPath: 'assets/images/', 
+                publicPath: '/assets/images/' 
+              }
+            }
+          ]
+        }
       ],
     },
- 
+
     devServer: {
       historyApiFallback: true,
     },
