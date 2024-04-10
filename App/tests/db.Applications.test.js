@@ -8,20 +8,37 @@ app.use(express.json());
 app.use(applicationRoutes);
 
 const application = {
-    ID: '123456789',
-    Category: 'Compact',
-    Color: 'black',
-    Damages: 'none',
-    Make: 'Sedan',
-    Model: 'Civic',
-    Mileage: 10000,
-    Year: 2024,
-    OfferAmount: 25000,
-    FirstName: 'John',
-    LastName: 'Doe',
-    Email:'johnDoe@gmail.com',
-    Phone: '1234567890',
-    Message: ''
+    id: "123456789",
+    category: 'Compact',
+    color: 'black',
+    damages: 'none',
+    make: 'Sedan',
+    model: 'Civic',
+    mileage: 10000,
+    year: 2024,
+    offerAmount: 25000,
+    firstName: 'John',
+    lastName: 'Doe',
+    email:'johnDoe@gmail.com',
+    phone: '1234567890',
+    message: ''
+}
+
+const dbapplication = {
+    id: '223456789',
+    category: 'Compact',
+    color: 'black',
+    damages: 'none',
+    make: 'Sedan',
+    model: 'Civic',
+    mileage: 10000,
+    year: 2024,
+    offerAmount: 25000,
+    firstName: 'John',
+    lastName: 'Doe',
+    email:'johnDoe@gmail.com',
+    phone: '1234567890',
+    message: ''
 }
 
 describe('Application Routes', () => {
@@ -47,7 +64,7 @@ describe('Application Routes', () => {
         const response = await request(app)
             .post('/applications')
             .send(application);
-        expect(response.statusCode).toBe(201);
+        expect(response.status).toBe(201);
         expect(response.body.message).toBe('Application created successfully');
         expect(response.body.application).toEqual(application);
     });
@@ -55,21 +72,21 @@ describe('Application Routes', () => {
     //Retrieving all applications
     it('should retrieve all applications', async () => {
         const response = await request(app).get('/applications');
-        expect(response.statusCode).toBe(200);
+        expect(response.status).toBe(200);
         expect(response.body.application).toBeTruthy();
     });
 
     //Retrieving an application by ID
     it('should retrieve an application by ID', async () => {
-        const response = await request(app).get(`/applications/${application.ID}`);
-        expect(response.statusCode).toBe(200);
-        expect(response.body.application).toEqual(application);
+        const response = await request(app).get(`/applications/223456789`);
+        expect(response.status).toBe(200);
+        expect(response.body.application).toEqual(dbapplication);
     });
 
     //Deleting an application by ID
     it('should delete an application by ID', async () => {
-        const response = await request(app).delete(`/applications/${application.ID}`);
-        expect(response.statusCode).toBe(200);
+        const response = await request(app).delete(`/applications/223456789`);
+        expect(response.status).toBe(200);
         expect(response.body.message).toBe('Application deleted successfully');
     });
 });
