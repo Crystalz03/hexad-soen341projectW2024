@@ -24,7 +24,7 @@ const Map = ({ locations }) => {
         });
 
         const infoWindow = new window.google.maps.InfoWindow({
-          content: `<h3>${location.title}</h3><p>Address: ${location.address}</p>`,
+          content: `<h3>${location.title}</h3>${location.address}</p>`,
         });
 
         marker.addListener('click', () => {
