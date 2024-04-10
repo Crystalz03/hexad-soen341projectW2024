@@ -41,8 +41,8 @@ function ContactInfoForm(props) {
         mileage: props.vehicleApplicationInfo.mileage,
         year: props.vehicleApplicationInfo.year,
         offerAmount: props.vehicleApplicationInfo.offerAmount,
-        first_name: contactInfo.first_name,
-        last_name: contactInfo.last_name,
+        firstName: contactInfo.first_name,
+        lastName: contactInfo.last_name,
         email: contactInfo.email,
         phone: contactInfo.phone,
         message: contactInfo.message,
@@ -76,7 +76,8 @@ function ContactInfoForm(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(verifyContactInfo(contactInfo)){
-            console.log("Your contact information as well as the vehicle application information have been saved into the database. We will contact you shortly. Thank you for your interest in saving our planet and helping Hexad!");
+            createVehiclaApplication();
+            alert("Your contact information as well as the vehicle application information have been saved into the database. We will contact you shortly. Thank you for your interest in saving our planet and helping Hexad!");
         }
     }
 
