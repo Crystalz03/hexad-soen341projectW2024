@@ -9,7 +9,7 @@ function Browse() {
       <div className="title-box" style={{ marginLeft: "10em" }}>
             <div className="check-in-title">Rental Vehicles</div>
           </div>
-      <BrowseVehicles />
+      <BrowseVehicles crad={"Horizontal"} />
     </div>
   );
 }
