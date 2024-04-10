@@ -16,6 +16,7 @@ import Reviews from"./pages/allUsers/Reviews";
 import Modify from "./pages/allUsers/Modify";
 import Branches from "./pages/allUsers/Branches";
 import UpdateUserInfoPage from "./pages/allUsers/UpdateUserInfoPage";
+import Recommendations from "./pages/allUsers/Recommendations";
 
 import BrowseAccounts from "./pages/admin/BrowseAccounts";
 import Vehicle from "./pages/admin/Vehicle";
@@ -32,7 +33,6 @@ import Payment from "./pages/csr/Payment";
 import CRCreateAUserAccount from "./pages/csr/CRCreateAUserAccount";
 import ConfirmBooking from "./pages/csr/ConfirmBooking";
 import ConfirmPayment from "./pages/csr/ConfirmPayment";
-
 
 function NotFound() {
 return (
@@ -74,6 +74,7 @@ function App() {
           <Route path="/ConfirmBooking/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment" exact element={<ConfirmBooking/>} /> 
           <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} />
           <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} /> 
+          <Route path="/Recommendations" exact element={<Recommendations/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer/>
