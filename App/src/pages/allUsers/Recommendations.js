@@ -1,6 +1,6 @@
 import React from "react";
-import UserRecommendations from "../components/UserRecommendations";
-import "./../style/style.css";
+import UserRecommendations from "../../components/RecommendationsGenerator/UserRecommendations";
+import "../../../public/assets/css/style.css";
 
 function Recommendations() {
   return (

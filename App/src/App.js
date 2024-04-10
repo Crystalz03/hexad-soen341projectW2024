@@ -16,7 +16,7 @@ import Reviews from"./pages/allUsers/Reviews";
 import Modify from "./pages/allUsers/Modify";
 import Branches from "./pages/allUsers/Branches";
 import UpdateUserInfoPage from "./pages/allUsers/UpdateUserInfoPage";
-import Recommendations from "./pages/Recommendations";
+import Recommendations from "./pages/allUsers/Recommendations";
 
 import BrowseAccounts from "./pages/admin/BrowseAccounts";
 import Vehicle from "./pages/admin/Vehicle";
