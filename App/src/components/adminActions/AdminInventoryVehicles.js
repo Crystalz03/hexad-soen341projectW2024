@@ -28,15 +28,15 @@ function AdminInventoryApplications() {
           FistName: application.FirstName,
           LastName: application.LastName,
           PhoneNumber: application.PhoneNumber,
-          Email: application.Email,
+          Email: application.Email, //attributes for applications
         }));
 
-        setApiResponse(formattedApplications);
+        setApiResponse(formattedApplications); //modified
         setLoading(false);
       })
       .catch((error) => {
         console.error(error);
-        setError("Error fetching vehicles");
+        setError("Error fetching applications"); //modified
         setLoading(false);
       });
   };
@@ -45,23 +45,23 @@ function AdminInventoryApplications() {
     callAPIGet();
   }, []);
 
-  const deleteVehicle = (vehicleId) => {
-    fetch(`http://localhost:9000/vehicles/${vehicleId}`, {
+  const deleteApplication = (applicationId) => {
+    fetch(`http://localhost:9000/applications/${applicationId}`, {
       method: "DELETE",
     })
       .then((response) => {
         if (response.ok) {
-          // If deletion is successful, fetch the updated list of vehicles
+          // If deletion is successful, fetch the updated list of applications
           callAPIGet();
         } else {
-          throw new Error("Failed to delete vehicle");
+          throw new Error("Failed to delete application");
         }
       })
       .catch((error) => {
         console.error(error);
-        setError("Error deleting vehicle");
+        setError("Error deleting application");
       });
-  };
+  }; //modified the DELETE Method
 
   return (
     <div>
