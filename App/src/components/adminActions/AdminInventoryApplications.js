@@ -66,22 +66,30 @@ function AdminInventoryApplications() {
   return (
     <div>
       <br/>
-      <div className="vehicle-grid">
+      <div className="application-grid">
         {loading ? (
           <div>Loading...</div>
         ) : error ? (
           <div>Error: {error}</div>
         ) : apiResponse.length === 0 ? (
-          <div>No vehicles available.</div>
+          <div>No applications available.</div>
         ) : (
-          apiResponse.map((vehicle) => (
-            <div key={vehicle.ID} className="vehicle-card">
-              <div>ID: {vehicle.ID}</div>
-              <div>Make: {vehicle.Make}</div>
-              <div>Category: {vehicle.Category}</div>
-              <div>Model: {vehicle.Model}</div>
-              <div>Price: {vehicle.Price}</div>
-              <div>Availability: {vehicle.Availability}</div>
+          apiResponse.map((application) => (
+            <div key={application.ID} className="application-card">
+              <div>ID: {application.ID}</div>
+              <div>Category: {application.Category}</div>
+              <div>Color: {application.Color}</div>
+              <div>Damages: {application.Damages}</div>
+              <div>Make: {application.Make}</div>
+              <div>Model: {application.Model}</div>
+              <div>Mileage: {application.Mileage}</div>
+              <div>Year: {application.Year}</div>
+              <div>ProposedPrice: {application.ProposedPrice}</div>
+              <div>FistName: {application.FirstName}</div>
+              <div>LastName: {application.LastName}</div>
+              <div>PhoneNumber: {application.PhoneNumber}</div>
+              <div>Email: {application.Email}</div>
+  
               <div>
                 <button 
                   className="all-caps sign-in-btn btn-background-color reserve-btn"
