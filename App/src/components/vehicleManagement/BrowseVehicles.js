@@ -69,7 +69,7 @@ function BrowseVehicles({card}) {
       {!filterClicked && (useHorizontalCard ? 
         <div>
           <HorizontalCard
-            imageUrl={require("./../../../public/assets/images/Car.png").default}
+            imageUrl={require("../../../public/assets/images/Car.png").default}
             title="Cars"
             description="Everyday versatility meets efficiency in small cars. Perfect for city commutes or highway drives, they offer comfort, modern features, and fuel efficiency for your daily travels."
             buttonText="View All Cars"
