@@ -48,11 +48,6 @@ function PointsInBetween({ coord1Latitude, coord1Longitude, coord2Latitude, coor
 
 const UserRecommendations = () => {
 
-  const otherCoords = [
-    [41.8781, -87.6298],
-    [49.141793, -122.508096],
-    [49.174804, -122.738620]
-]; // Other coordinates test
   const [apiResponse, setApiResponse] = useState(null); 
   const [selectedBranch1, setSelectedBranch1] = useState({
     Name: "",
@@ -130,55 +125,43 @@ useEffect(() => {
 
       }, []);
 
-      const handleBranch1Select = event => {
-        const selectedIndex = event.target.selectedIndex;
-        setSelectedBranch1(apiResponse[selectedIndex]);
-      };
-    
-      const handleBranch2Select = event => {
-        const selectedIndex = event.target.selectedIndex;
-        setSelectedBranch2(apiResponse[selectedIndex]);
-      };
-    
       const handleSubmit = event => {
         event.preventDefault();
-        console.log('Selected Branch 1:', selectedBranch1);
-        console.log('Selected Branch 2:', selectedBranch2);
+        const selectedIndex1 = event.target.elements.branch1.selectedIndex;
+        const selectedIndex2 = event.target.elements.branch2.selectedIndex;
+        setSelectedBranch1(apiResponse[selectedIndex1]);
+        setSelectedBranch2(apiResponse[selectedIndex2]);
       };
  
   return (
     <div className="main">
-    <div className="general-structure">
-      <div className="main-content" style={{ height: '500px', overflowY: 'auto' }}>
         <div className="title-box">
           <div className="reservation-title">Get recommendations</div>
         </div>
         <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="branch1">Branch 1:</label>
-              <select name="branch1" onChange={handleBranch1Select}>
-                {apiResponse && apiResponse.map((branch, index) => (
-                  <option key={index} value={`${branch.latitude},${branch.longitude}`}>
-                    {branch.Name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label htmlFor="branch2">Branch 2:</label>
-              <select name="branch2" onChange={handleBranch2Select}>
-                {apiResponse && apiResponse.map((branch, index) => (
-                  <option key={index} value={`${branch.latitude},${branch.longitude}`}>
-                    {branch.Name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <button type="submit">Submit</button>
-          </form> 
-          <PointsInBetween coord1Latitude={selectedBranch1.latitude} coord1Longitude={selectedBranch1.longitude} coord2Latitude={selectedBranch2.latitude} coord2Longitude={selectedBranch2.longitude} otherCoords={AllRecommendations} threshold={500} />
-      </div>
-    </div>
+          <div>
+            <label htmlFor="branch1">Departing branch:</label>
+            <select name="branch1">
+              {apiResponse && apiResponse.map((branch, index) => (
+                <option key={index} value={`${branch.latitude},${branch.longitude}`}>
+                  {branch.Name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="branch2">Arrival branch:</label>
+            <select name="branch2">
+              {apiResponse && apiResponse.map((branch, index) => (
+                <option key={index} value={`${branch.latitude},${branch.longitude}`}>
+                  {branch.Name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button type="submit">Submit</button>
+        </form> 
+        <PointsInBetween coord1Latitude={selectedBranch1.latitude} coord1Longitude={selectedBranch1.longitude} coord2Latitude={selectedBranch2.latitude} coord2Longitude={selectedBranch2.longitude} otherCoords={AllRecommendations} threshold={500} />
   </div>
   );
 };

@@ -13,7 +13,7 @@ const Map = ({ locations }) => {
     loader.load().then(() => {
       const map = new window.google.maps.Map(mapContainerRef.current, {
         center: { lat: locations[0].latitude, lng: locations[0].longitude }, 
-        zoom: 12,
+        zoom: 7,
       });
 
       locations.forEach(location => {
