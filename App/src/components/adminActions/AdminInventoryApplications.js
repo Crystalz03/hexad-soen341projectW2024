@@ -66,7 +66,7 @@ function AdminInventoryApplications() {
   return ( //got rid of Filter functionality
     <div>
       <br/>
-      <div className="application-grid">
+      <div className="vehicle-grid">
         {loading ? (
           <div>Loading...</div>
         ) : error ? (
@@ -75,7 +75,7 @@ function AdminInventoryApplications() {
           <div>No applications available.</div>
         ) : (
           apiResponse.map((application) => (
-            <div key={application.ID} className="application-card">
+            <div key={application.ID} className="vehicle-card">
               <div>ID: {application.ID}</div>
               <div>Category: {application.Category}</div>
               <div>Color: {application.Color}</div>
@@ -98,11 +98,6 @@ function AdminInventoryApplications() {
                 >
                   Delete Application
                 </button>
-                <button
-                  className="all-caps sign-in-btn btn-background-color reserve-btn"
-                  onClick={() => navigate(`/UpdateApplication/${application.ID}`)}
-                  style={{marginLeft: '0.3em'}}
-                >Update Application</button>
               </div>
             </div>
           ))
