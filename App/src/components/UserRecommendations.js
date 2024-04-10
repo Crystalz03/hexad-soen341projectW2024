@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Map from './LocationsMap';
+import { alignments } from '@floating-ui/utils';
 
 function calculateDistance(lat1, lon1, lat2, lon2) { //using the Haversine formula to compute distance
     const R = 6371; // Radius of the Earth in kilometers
@@ -134,14 +135,17 @@ useEffect(() => {
       };
  
   return (
-    <div className="main">
-        <div className="title-box">
-          <div className="reservation-title">Get recommendations</div>
-        </div>
-        <form onSubmit={handleSubmit}>
+    <div >
+    <div className="header">
+      <h1 className="check-in-title">Get Recommendations</h1>
+      <h8 className="extra-content">Looking for some fun places to stop at during your travels? Hexad will provide you with a catalogue of interesting locations that are worth visiting!</h8>
+    </div>
+    <div className="content">
+      <div className="form-container">
+        <form onSubmit={handleSubmit} className="base-form" style={{marginBottom: '20px' }}>
           <div>
-            <label htmlFor="branch1">Departing branch:</label>
-            <select name="branch1">
+            <label htmlFor="branch1">Beparture branch:</label>
+            <select name="branch1" style={{ width: '100%', marginBottom: '20px' }}>
               {apiResponse && apiResponse.map((branch, index) => (
                 <option key={index} value={`${branch.latitude},${branch.longitude}`}>
                   {branch.Name}
@@ -151,7 +155,7 @@ useEffect(() => {
           </div>
           <div>
             <label htmlFor="branch2">Arrival branch:</label>
-            <select name="branch2">
+            <select name="branch2" style={{ width: '100%', marginBottom: '20px' }}>
               {apiResponse && apiResponse.map((branch, index) => (
                 <option key={index} value={`${branch.latitude},${branch.longitude}`}>
                   {branch.Name}
@@ -159,9 +163,13 @@ useEffect(() => {
               ))}
             </select>
           </div>
-          <button type="submit">Submit</button>
+          <button className="button-1" type="submit">Submit</button>
         </form> 
-        <PointsInBetween coord1Latitude={selectedBranch1.latitude} coord1Longitude={selectedBranch1.longitude} coord2Latitude={selectedBranch2.latitude} coord2Longitude={selectedBranch2.longitude} otherCoords={AllRecommendations} threshold={500} />
+      </div>
+      <div className="map-container">
+      <PointsInBetween coord1Latitude={selectedBranch1.latitude} coord1Longitude={selectedBranch1.longitude} coord2Latitude={selectedBranch2.latitude} coord2Longitude={selectedBranch2.longitude} otherCoords={AllRecommendations} threshold={500} />
+      </div>
+    </div>
   </div>
   );
 };
