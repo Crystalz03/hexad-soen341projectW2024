@@ -61,14 +61,14 @@ describe('Application Routes', () => {
 
     //Retrieving an application by ID
     it('should retrieve an application by ID', async () => {
-        const response = await request(app).get(`/applications/${application.id}`);
+        const response = await request(app).get(`/applications/${application.ID}`);
         expect(response.statusCode).toBe(200);
         expect(response.body.application).toEqual(application);
     });
 
     //Deleting an application by ID
     it('should delete an application by ID', async () => {
-        const response = await request(app).delete(`/applications/${application.id}`);
+        const response = await request(app).delete(`/applications/${application.ID}`);
         expect(response.statusCode).toBe(200);
         expect(response.body.message).toBe('Application deleted successfully');
     });
