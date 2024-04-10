@@ -5,6 +5,7 @@ function Footer() {
   return (
     <footer>
       <br/><br/>
+      {/*<img src={imageSrc} alt="Footer Image" style={{ width: '100%', maxHeight: '15em', objectFit: 'cover' }} /> */}
     <div className="bg-light text-dark py-4" >
       <div className="container">
         <div className="row">
