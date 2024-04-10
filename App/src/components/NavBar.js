@@ -111,6 +111,11 @@ function Navbar() {
                   </ul>
                 </li>
                 <li className="nav-item">
+                  <a className="nav-link" href="/Recommendations">
+                    Where to go on your trip?
+                  </a>
+                </li>
+                <li className="nav-item">
                   <a className="nav-link" href="/Reviews">
                     Review
                   </a>
@@ -178,6 +183,11 @@ function Navbar() {
                       </a>
                     </li>
                   </ul>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/Reviews">
+                    Where to go on your trip?
+                  </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/Reviews">

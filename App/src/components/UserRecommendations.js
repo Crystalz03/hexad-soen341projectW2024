@@ -137,15 +137,15 @@ useEffect(() => {
   return (
     <div >
     <div className="header">
-      <h1 className="check-in-title">Get Recommendations</h1>
-      <h8 className="extra-content">Looking for some fun places to stop at during your travels? Hexad will provide you with a catalogue of interesting locations that are worth visiting!</h8>
+      <h1 className="check-in-title">Travel Recommendations</h1>
+      <h8 className="extra-content">Looking for some fun places to stop at during your travels? Hexad will provide you a catalogue of interesting locations that are worth visiting!</h8>
     </div>
     <div className="content">
       <div className="form-container">
         <form onSubmit={handleSubmit} className="base-form" style={{marginBottom: '20px' }}>
           <div>
             <label htmlFor="branch1">Beparture branch:</label>
-            <select name="branch1" style={{ width: '100%', marginBottom: '20px' }}>
+            <select name="branch1" className="form-select" style={{ width: '100%', marginBottom: '20px' }}>
               {apiResponse && apiResponse.map((branch, index) => (
                 <option key={index} value={`${branch.latitude},${branch.longitude}`}>
                   {branch.Name}
@@ -155,7 +155,7 @@ useEffect(() => {
           </div>
           <div>
             <label htmlFor="branch2">Arrival branch:</label>
-            <select name="branch2" style={{ width: '100%', marginBottom: '20px' }}>
+            <select name="branch2" className="form-select" style={{ width: '100%', marginBottom: '20px' }}>
               {apiResponse && apiResponse.map((branch, index) => (
                 <option key={index} value={`${branch.latitude},${branch.longitude}`}>
                   {branch.Name}
