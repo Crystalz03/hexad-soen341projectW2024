@@ -40,7 +40,7 @@ function PointsInBetween({ coord1Latitude, coord1Longitude, coord2Latitude, coor
   }));
 
   console.log(formattedPoints);
-  if(formattedPoints.length != 0){
+  if(formattedPoints.length !== 0){
     return <Map locations={formattedPoints}></Map>;
   }
   return <Map locations={[{ latitude: 0, longitude: 0, title: '' }]}></Map>;
