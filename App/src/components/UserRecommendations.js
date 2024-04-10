@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Map from './LocationsMap';
-import { alignments } from '@floating-ui/utils';
 
 function calculateDistance(lat1, lon1, lat2, lon2) { //using the Haversine formula to compute distance
     const R = 6371; // Radius of the Earth in kilometers
@@ -74,7 +73,7 @@ useEffect(() => {
         const response = await fetch('http://localhost:9000/recommendations');
 
         if (!response.ok) {
-          throw new Error('Failed to fetch branches');
+          throw new Error('Failed to fetch recommendations');
         }
 
         const data = await response.json();
@@ -138,7 +137,7 @@ useEffect(() => {
     <div >
     <div className="header">
       <h1 className="check-in-title">Travel Recommendations</h1>
-      <h8 className="extra-content">Looking for some fun places to stop at during your travels? Hexad will provide you a catalogue of interesting locations that are worth visiting!</h8>
+      <div>Looking for some fun places to stop at during your travels? Hexad will provide a catalogue of interesting locations that are worth visiting!</div>
     </div>
     <div className="content">
       <div className="form-container">
