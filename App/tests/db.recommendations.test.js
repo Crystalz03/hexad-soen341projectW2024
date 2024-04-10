@@ -41,7 +41,7 @@ describe('Recommendations Routes', () => {
       .send(testRecommendation);
 
     expect(response.status).toBe(201);
-    expect(response.body.message).toBe('Recommendation created successfully');
+    expect(response.body.message).toBe('Recommended location created successfully');
     expect(response.body.recommendation).toEqual(testRecommendation);
   });
 

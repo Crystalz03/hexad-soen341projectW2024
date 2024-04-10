@@ -8,8 +8,8 @@ router.post('/recommendations', async (req, res) => {
     const { Name, Latitude ,Longitude, Category, Address} = req.body;
   
     try {
-      const result = await pool.query`INSERT INTO Branch (Name, Latitude ,Longitude, Category, Address) VALUES (${Name}, ${Latitude}, ${Longitude}, ${Category}, ${Address})`;
-      res.status(201).json({ message: 'Recommended location created successfully', branch: req.body }); 
+      const result = await pool.query`INSERT INTO Recommendations (Name, Latitude ,Longitude, Category, Address) VALUES (${Name}, ${Latitude}, ${Longitude}, ${Category}, ${Address})`;
+      res.status(201).json({ message: 'Recommended location created successfully', recommendation: req.body }); 
     } catch (error) {
       console.error('Error creating new recommended location:', error);
       res.status(500).json({ error: 'Server Error' });
