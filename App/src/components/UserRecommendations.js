@@ -143,7 +143,7 @@ useEffect(() => {
       <div className="form-container">
         <form onSubmit={handleSubmit} className="base-form" style={{marginBottom: '20px' }}>
           <div>
-            <label htmlFor="branch1">Beparture branch:</label>
+            <label htmlFor="branch1">Departure branch:</label>
             <select name="branch1" className="form-select" style={{ width: '100%', marginBottom: '20px' }}>
               {apiResponse && apiResponse.map((branch, index) => (
                 <option key={index} value={`${branch.latitude},${branch.longitude}`}>
