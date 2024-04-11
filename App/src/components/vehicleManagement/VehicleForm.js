@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function VehicleForm() {
   const [formData, setFormData] = useState({
     id: "",
-    type: "",
+    make: "",
     category: "",
     model: "",
     price: "",
@@ -36,7 +36,7 @@ function VehicleForm() {
         // Optionally, you can reset the form after successful submission
         setFormData({
           id: "",
-          type: "",
+          make: "",
           category: "",
           model: "",
           price: "",
@@ -75,13 +75,13 @@ function VehicleForm() {
       </div>
       <div>
           <label>
-            Type:
+            Make:
           </label>
           <div>
             <input
             type="text"
-            name="type"
-            value={formData.type}
+            name="make"
+            value={formData.make}
             onChange={handleChange}
             required
           />
