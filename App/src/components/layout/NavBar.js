@@ -108,6 +108,16 @@ function Navbar() {
                   </ul>
                 </li>
                 <li className="nav-item">
+                  <a className="nav-link" href="/Recommendations">
+                    Where to go on your trip?
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/VehicleApplication">
+                    Recycle your vehicle with us!
+                  </a>
+                </li>
+                <li className="nav-item">
                   <a className="nav-link" href="/Reviews">
                     Review
                   </a>
@@ -179,6 +189,16 @@ function Navbar() {
                   </ul>
                 </li>
                 <li className="nav-item">
+                  <a className="nav-link" href="/Recommendations">
+                    Where to go on your trip?
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/VehicleApplication">
+                    Recycle your vehicle with us!
+                  </a>
+                </li>
+                <li className="nav-item">
                   <a className="nav-link" href="/Reviews">
                     Review
                   </a>
@@ -219,6 +239,11 @@ function Navbar() {
                     <li>
                       <Link to="/Inventory" className="dropdown-item">
                         View/Modify Inventory
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/ApplicationInventory" className="dropdown-item">
+                        View/Delete Selling Applications
                       </Link>
                     </li>
                   </ul>

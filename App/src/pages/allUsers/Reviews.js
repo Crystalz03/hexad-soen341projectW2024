@@ -1,6 +1,6 @@
 import React from "react";
 import "../../../public/assets/css/style.css";
-import ReviewForm from "./../../components/ReviewForm";
+import ReviewForm from "../../components/ReviewForm";
 
 function ReviewPage() {
   return (

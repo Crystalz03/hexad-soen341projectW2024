@@ -1,5 +1,5 @@
 import React from "react";
-import AdminInventoryVehicles from "../../components/adminActions/AdminInventoryVehicles";
+import AdminInventoryVehicles from "../../components/adminActions/AdminInventoryVehicle";
 
 function Inventory() {
   return (
