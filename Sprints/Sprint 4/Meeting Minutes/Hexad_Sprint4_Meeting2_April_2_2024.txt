@@ -1,0 +1,40 @@
+Hexad Meeting Minutes
+
+Date: Friday, March 22nd, 2024
+Time: 11h45 am - 12h15 pm (30 min)
+Location: Concordia University, Hall Building 8th floor
+
+Attendees: 
+Christelle Charles (40249246)
+Imen Khezzar (40246836)
+Sydney Campbell (40243309)
+Yaroslava (40242907)
+Malak Sefrioui(40252907)
+
+Agenda:
+    1. Overview of sprint 4
+    2. Final presentation
+    3. New Design for the website
+
+
+Disscussion: 
+
+    Unique feature for sprint 4
+        The team discussed the requirements for the new feature and finished seperating the tasks
+        we need to do such as writing the acceptance tests, how to do the code review, the MVC file structure
+        and the software bugs.
+
+    Presentation
+        The team decided that Yaro, Sydney and Malak would present. We started brainstorming on the composition
+        of the presentation based on the requirements.
+
+    New Design 
+        Imen started working on a new design for the website. The team approved it. The design is oprional to the 
+        requirements for this sprint therefore we will only submit it if it can be done before the presentation.
+
+
+
+Next: 
+-  Implement the new feature and finish our individual tasks
+- Prepare the presentation google slides
+- Continue implementing the new design

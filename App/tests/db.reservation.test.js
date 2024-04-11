@@ -181,8 +181,8 @@ describe('Reservation Routes', () => {
         dropOffLocation: 'montreal',
         mileageLimit: '150 Km'
     });
-  });
 
+  });
 
     // Test updating a reservation by ID
     it('should update a reservation by ID', async () => {
