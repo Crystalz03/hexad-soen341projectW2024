@@ -5,17 +5,9 @@ import "../../../public/assets/css/style.css";
 
 function ViewTheReservation() {
   return (
-    <div>
-      <Main />
-    </div>
-  );
-}
-
-function Main() {
-  return (
     <div className="main-content">
       <div className="view-container">
-        <h2 className="view-title">View Reservation</h2>
+        <h2 className="view-title" style={{margin: '1.5em'}}>View Reservation</h2>
         <div className="view-form">
           <ViewReservation />
         </div>

@@ -1,10 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../../../public/assets/css/new.css";
 
 function Card({imageUrl, title, description, buttonText, onClick}){
  return(
-    <div className="card" style={{width: '30rem'}}>
+    <div className="vehicle-card" style={{width: '18rem'}}>
         <img
               style={{marginTop: '2em'}}
               src={imageUrl}

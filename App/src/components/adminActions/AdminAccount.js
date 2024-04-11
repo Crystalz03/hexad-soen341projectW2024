@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+
 export default function CreateAdminAccount() {
 
   const [successMessage, setSuccessMessage] = useState("");
@@ -41,7 +42,7 @@ export default function CreateAdminAccount() {
         },
         body: JSON.stringify(formData),
       });
-
+      
       if (!response.ok) {
         throw new Error("Please try again.");
       }
@@ -115,13 +116,13 @@ export default function CreateAdminAccount() {
             {successMessage}
           </div>
         )}
-        
+
         {errorMessage && (
           <div className="alert alert-danger" role="alert">
             {errorMessage}
           </div>
         )}
     </form>
-    
+
   );
 }

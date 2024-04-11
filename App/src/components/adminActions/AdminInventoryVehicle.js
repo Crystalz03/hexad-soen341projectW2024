@@ -109,8 +109,6 @@ function AdminInventoryVehicles() {
               ))
           )}
         </div>
-      
-       
       </div>
    
   );

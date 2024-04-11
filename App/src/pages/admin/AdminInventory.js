@@ -1,7 +1,6 @@
 import React from "react";
 import AdminInventoryVehicles from "../../components/adminActions/AdminInventoryVehicle";
 
-
 function Inventory() {
   return (
     <div className="main-content" >

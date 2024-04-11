@@ -8,23 +8,14 @@ function UpdateVehicle() {
 
   return (
     <div>
-      <div className="main">
-        <div className="general-structure">
-          <div className="main-content">
-            <div className="title-box">
-              <div className="reservation-title">
-                Update an Existing Vehicle
-              </div>
+        <div className="main-content" >
+          <div className="title-box">
+            <div className="check-in-title">
+              Update an Existing Vehicle
             </div>
-            <div
-              className="extra-content"
-              style={{ height: "450px", width: "300px" }}
-            >
-              <UpdateVehicleForm vehicleID={vehicleID} />
-            </div>
-          </div>
+          </div >
+            <UpdateVehicleForm vehicleID={vehicleID} />
         </div>
-      </div>
     </div>
   );
 }

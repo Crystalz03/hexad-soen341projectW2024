@@ -19,7 +19,6 @@ function Navbar() {
     const user = localStorage.getItem("user");
     if (user) {
       setSignedIn(true);
-      
     } else {
       setSignedIn(false);
     }
@@ -123,7 +122,9 @@ function Navbar() {
                     Review
                   </a>
                 </li>
-                <SignInPopover />
+                
+                  <SignInPopover />
+                
               </>
             )}
             {signedIn && userType === "customer" && (
@@ -162,7 +163,7 @@ function Navbar() {
                     onMouseEnter={() => setIsDropdownOpenReservation(true)}
                     onMouseLeave={() => setIsDropdownOpenReservation(false)}
                   >
-                     <li>
+                    <li>
                       <a className="dropdown-item" href="/">
                         New Reservation
                       </a>
@@ -202,7 +203,6 @@ function Navbar() {
                     Review
                   </a>
                 </li>
-               
               </>
             )}
             {signedIn && userType === "admin" && (
@@ -273,10 +273,7 @@ function Navbar() {
                       </Link>
                     </li>
                     <li>
-                      <Link
-                        to="/CreateAdminAccount"
-                        className="dropdown-item"
-                      >
+                      <Link to="/CreateAdminAccount" className="dropdown-item">
                         Create Admin Account
                       </Link>
                     </li>
@@ -319,15 +316,16 @@ function Navbar() {
               </>
             )}
           </ul>
-          {signedIn &&   (
+          {signedIn && (
             <div
               className="dropdown"
               onMouseEnter={() => setIsDropdownOpenAccount(true)}
               onMouseLeave={() => setIsDropdownOpenAccount(false)}
             >
               <img
-                src={require("../../../public/assets/images/account.png")
-                  .default}
+                src={
+                  require("../../../public/assets/images/account.png").default
+                }
                 alt="account"
                 style={{ height: "40px" }}
               />
