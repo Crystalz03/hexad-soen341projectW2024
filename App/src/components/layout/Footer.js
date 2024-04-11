@@ -20,6 +20,7 @@ function Footer() {
               <li><Link to="/" style={{ textDecoration: 'none', color: 'grey' }}>Home</Link></li>
               <li><Link to="/NewCustomer" style={{ textDecoration: 'none', color: 'grey' }}>Create an Account</Link></li>
               <li><Link to="/Browse" style={{ textDecoration: 'none', color: 'grey' }}>Browse Vehicles</Link></li>
+              <li><Link to="/VehicleApplication" style={{ textDecoration: 'none', color: 'grey' }}>Recycle Your Car</Link></li>
             </ul>
           </div>
           <div className="col-md-3">

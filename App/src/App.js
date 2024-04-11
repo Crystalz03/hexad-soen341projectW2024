@@ -25,6 +25,7 @@ import CreateCRAccount from "./pages/admin/CreateCRAccount";
 import CreateAdminAccount from "./pages/admin/CreateAdminAccount";
 import AdminInventory from "./pages/admin/AdminInventory";
 import UpdateVehicle from "./pages/admin/UpdateVehicle";
+import Inventory from "./pages/admin/BrowseApplications";
 
 import CRDashboard from "./pages/csr/CRDashboard";
 import CheckIn from "./pages/csr/CheckIn";
@@ -33,6 +34,10 @@ import Payment from "./pages/csr/Payment";
 import CRCreateAUserAccount from "./pages/csr/CRCreateAUserAccount";
 import ConfirmBooking from "./pages/csr/ConfirmBooking";
 import ConfirmPayment from "./pages/csr/ConfirmPayment";
+
+import VehicleApplication from "./pages/allUsers/VehicleApplication";
+import ContactInfoPage from "./pages/allUsers/ContactInfoPage";
+import EstimationPage from "./pages/allUsers/EstimationPage";
 
 function NotFound() {
 return (
@@ -75,6 +80,10 @@ function App() {
           <Route path="/ConfirmPayment/:vehicleID/:email/:pickUpDate/:returnDate/:pickUpLocation/:dropOffLocation/:additionalServices/:extraEquipment/:total" exact element={<ConfirmPayment/>} />
           <Route path="/UpdateVehicle/:vehicleID" element={<UpdateVehicle/>} /> 
           <Route path="/Recommendations" exact element={<Recommendations/>}/>
+          <Route path ="/VehicleApplication" exact element = {<VehicleApplication/>}></Route>
+          <Route path ="/ContactInfoPage/:category/:color/:damages/:make/:model/:mileage/:year/:offerAmount" exact element = {<ContactInfoPage/>}></Route>
+          <Route path="/EstimationPage/:category/:color/:damages/:make/:model/:mileage/:year/:offerAmount" exact element={<EstimationPage/>} />
+          <Route path="/ApplicationInventory" exact element={<Inventory/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer/>
